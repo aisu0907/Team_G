@@ -4,9 +4,10 @@ public class Sheild : MonoBehaviour
 {
     public Sprite RSheild;
     public Sprite GSheild;
+    SpriteRenderer tmp_s;
+
     public GameObject follow;
     Vector2 tmp_v;
-    SpriteRenderer tmp_s;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
