@@ -64,6 +64,8 @@ public class Sheild : MonoBehaviour
 
             // ‘¬“x‚ğXV
             collision.rigidbody.linearVelocity = moveDirection_s.normalized * -moveSpeed_s;
+
+            moveSpeed_s = -moveSpeed_s;
         }
     }
 }
