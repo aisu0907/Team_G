@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a30b284efe751064fb404a8e38056449
+guid: 31f1edf376fc70e489aed39e37f6d81b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6556403868631285073
-    second: shield_red_0
+      213: -8035532418352734889
+    second: "\u30B9\u30AF\u30EA\u30FC\u30F3\u30B7\u30E7\u30C3\u30C8 2025-10-15 111920_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: shield_red_0
+      name: "\u30B9\u30AF\u30EA\u30FC\u30F3\u30B7\u30E7\u30C3\u30C8 2025-10-15 111920_0"
       rect:
         serializedVersion: 2
         x: 0
-        y: 6
-        width: 17
-        height: 6
+        y: 0
+        width: 57
+        height: 88
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fa24c363b69f205a0800000000000000
-      internalID: -6556403868631285073
+      spriteID: 75d13fee6dd0c7090800000000000000
+      internalID: -8035532418352734889
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      shield_red_0: -6556403868631285073
+      "\u30B9\u30AF\u30EA\u30FC\u30F3\u30B7\u30E7\u30C3\u30C8 2025-10-15 111920_0": -8035532418352734889
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
