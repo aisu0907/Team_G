@@ -1,25 +1,21 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class Sheild : MonoBehaviour
 {
-    public Sprite RSheild;
-    public Sprite GSheild;
+    public Sprite RED;
+    public Sprite GREEN;
     SpriteRenderer tmp_s;
+    string SheildColor;
 
     public GameObject follow;
     Vector2 tmp_v;
-
-    Vector2 moveDirection_s = new Vector2(1,1);
-    public float moveSpeed_s = 5.0f;
-
-    Rigidbody2D rb;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         tmp_s = GetComponent<SpriteRenderer>();
-        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -33,39 +29,20 @@ public class Sheild : MonoBehaviour
         // 色変更処理
         if (Input.GetKey(KeyCode.Z))
         {
-            tmp_s.sprite = RSheild;
+            tmp_s.sprite = RED;
+            SheildColor = "Red";
         }
         if (Input.GetKey(KeyCode.X))
         {
-            tmp_s.sprite = GSheild;
+            tmp_s.sprite = GREEN;
+            SheildColor = "Green";
         }
     }
-
-    //void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.gameObject.tag == "Green")
-    //    {
-    //        Debug.Log("Hit");
-    //        Destroy(collision.gameObject);
-    //    }
-    //}
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Green"))
+        if (collision.gameObject.tag == SheildColor)
         {
-            fall test = collision.gameObject.GetComponent<fall>();
-
-            moveSpeed_s = test.speed;
-            moveDirection_s = test.moveDirection;
-
-            // 法線ベクトルを使って反射する
-            Vector2 normal = collision.contacts[0].normal;
-            moveDirection_s = Vector2.Reflect(moveDirection_s, normal);
-
-            // 速度を更新
-            collision.rigidbody.linearVelocity = moveDirection_s.normalized * -moveSpeed_s;
-
-            moveSpeed_s = -moveSpeed_s;
+            collision.gameObject.GetComponent<fall>().speed = -1.0f;
         }
     }
 }
