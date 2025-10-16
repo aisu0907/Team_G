@@ -16,6 +16,6 @@ public class fall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rbody.linearVelocity = new Vector2(rbody.linearVelocity.x, -speed);
+        rbody.linearVelocity = new Vector2(0, -speed);
     }
 }
