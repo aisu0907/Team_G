@@ -1,35 +1,55 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class Sheild : MonoBehaviour
 {
-    public Sprite RSheild;
-    public Sprite GSheild;
+    public Sprite RED;
+    public Sprite GREEN;
+    SpriteRenderer img;
+    string SheildColor;
+
     public GameObject follow;
-    Vector2 tmp_v;
-    SpriteRenderer tmp_s;
+    Vector2 vec;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        tmp_s = GetComponent<SpriteRenderer>();
+        img = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
         // í«è]èàóù
-        tmp_v = follow.transform.position;
-        tmp_v.y += 0.7f;
-        transform.position = tmp_v;
+        vec = follow.transform.position;
+        vec.y += 0.7f;
+        transform.position = vec;
 
         // êFïœçXèàóù
         if (Input.GetKey(KeyCode.Z))
         {
-            tmp_s.sprite = RSheild;
+            img.sprite = RED;
+            SheildColor = "Red";
         }
         if (Input.GetKey(KeyCode.X))
         {
-            tmp_s.sprite = GSheild;
+            img.sprite = GREEN;
+            SheildColor = "Green";
+        }
+    }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Red" || collision.gameObject.tag == "Green" || collision.gameObject.tag == "Blue")
+        {
+            if (collision.gameObject.tag == SheildColor)
+            {
+                collision.gameObject.GetComponent<fall>().speed = -1.0f;
+            }
+            else
+            {
+                Debug.Log("HIT");
+            }
         }
     }
 }
