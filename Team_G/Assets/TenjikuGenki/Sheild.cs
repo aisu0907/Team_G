@@ -6,43 +6,50 @@ public class Sheild : MonoBehaviour
 {
     public Sprite RED;
     public Sprite GREEN;
-    SpriteRenderer tmp_s;
+    SpriteRenderer img;
     string SheildColor;
 
     public GameObject follow;
-    Vector2 tmp_v;
+    Vector2 vec;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        tmp_s = GetComponent<SpriteRenderer>();
+        img = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
         // í«è]èàóù
-        tmp_v = follow.transform.position;
-        tmp_v.y += 0.7f;
-        transform.position = tmp_v;
+        vec = follow.transform.position;
+        vec.y += 0.7f;
+        transform.position = vec;
 
         // êFïœçXèàóù
         if (Input.GetKey(KeyCode.Z))
         {
-            tmp_s.sprite = RED;
+            img.sprite = RED;
             SheildColor = "Red";
         }
         if (Input.GetKey(KeyCode.X))
         {
-            tmp_s.sprite = GREEN;
+            img.sprite = GREEN;
             SheildColor = "Green";
         }
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == SheildColor)
+        if (collision.gameObject.tag == "Red" || collision.gameObject.tag == "Green" || collision.gameObject.tag == "Blue")
         {
-            collision.gameObject.GetComponent<fall>().speed = -1.0f;
+            if (collision.gameObject.tag == SheildColor)
+            {
+                collision.gameObject.GetComponent<fall>().speed = -1.0f;
+            }
+            else
+            {
+                Debug.Log("HIT");
+            }
         }
     }
 }
