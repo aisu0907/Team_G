@@ -4,7 +4,7 @@ public class fall : MonoBehaviour
 {
     Rigidbody2D rbody;
     public float speed = 1f;
-    public Vector2 moveDirection = new Vector2(1, 1);
+    
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

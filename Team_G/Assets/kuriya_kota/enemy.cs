@@ -24,6 +24,15 @@ public class Enemy : MonoBehaviour
 
     }
 
+    public void ReflectY()
+    {
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * -1);
+    }
+
+    public void ReflectX()
+    {
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x * -1, rb.linearVelocity.y);
+    }
 
 
     void OnCollisionEnter2D(Collision2D collision)
