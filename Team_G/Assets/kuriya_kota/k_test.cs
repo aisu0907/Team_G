@@ -13,22 +13,21 @@ public class k_test : MonoBehaviour
     void Start()
     {
         rb = this.GetComponent<Rigidbody2D>();
-        rb.linearVelocity = new Vector2(x_speed, -y_speed);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        rb.linearVelocity = new Vector2(x_speed, -y_speed);
     }
-    public void ReflectY()
-    {
-        rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * -1);
-    }
+    //public void ReflectY()
+    //{
+    //    rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * -1);
+    //}
 
-    public void ReflectX()
-    {
-        rb.linearVelocity = new Vector2(rb.linearVelocity.x * -1, rb.linearVelocity.y);
-    }
+    //public void ReflectX()
+    //{
+    //    rb.linearVelocity = new Vector2(rb.linearVelocity.x * -1, rb.linearVelocity.y);
+    //}
 
 }
