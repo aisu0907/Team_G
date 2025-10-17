@@ -46,7 +46,7 @@ public class Sheild : MonoBehaviour
         {
             if (collision.gameObject.tag == SheildColor)
             {
-                collision.gameObject.GetComponent<fall>().speed = -1.0f;
+                collision.gameObject.GetComponent<fall>().speed *= -1.0f;
             }
             else
             {
