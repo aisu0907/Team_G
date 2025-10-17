@@ -7,10 +7,12 @@ public class Sheild : MonoBehaviour
     public Sprite RED;
     public Sprite GREEN;
     SpriteRenderer img;
-    string SheildColor;
+    string SheildColor = "Red";
 
     public GameObject follow;
     Vector2 vec;
+
+    GameObject Player;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -48,7 +50,10 @@ public class Sheild : MonoBehaviour
             }
             else
             {
-                Debug.Log("HIT");
+                // îÌíeèàóù
+                GameObject.Find("Player").GetComponent<Player>().Health --;
+                Destroy(collision.gameObject);
+                Debug.Log(GameObject.Find("Player").GetComponent<Player>().Health);
             }
         }
     }
