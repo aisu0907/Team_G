@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Enemy_ : MonoBehaviour
+public class Enemy_Green : MonoBehaviour
 {
     Rigidbody2D enemy_rbody;
     public float enemy_speed = 1f;
