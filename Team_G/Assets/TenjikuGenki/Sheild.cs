@@ -8,7 +8,7 @@ public class Sheild : MonoBehaviour
     public Sprite GREEN;
     SpriteRenderer img;
     public int EnemyColor = 1;
-    public int EnemyKind = 1;
+    public int EnemyType = 1;
 
     public GameObject follow;
     Vector2 vec;
@@ -45,7 +45,7 @@ public class Sheild : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            if (collision.gameObject.GetComponent<Sheild>().EnemyColor >= 1)
+            if (collision.gameObject.GetComponent<Sheild>().EnemyType == 2)
             {
                 collision.gameObject.GetComponent<fall>().speed *= -1.0f;
             }
