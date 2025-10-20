@@ -41,11 +41,11 @@ public class Sheild : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            if (collision.gameObject.GetComponent<g_enemy>().EnemyColor == SheildColor) {
-                if (collision.gameObject.GetComponent<g_enemy>().EnemyType != 2)
+            if (collision.gameObject.GetComponent<h_enemy>().EnemyColor == SheildColor) {
+                if (collision.gameObject.GetComponent<h_enemy>().EnemyType != 2)
                 {
                     Vector2 d = collision.gameObject.transform.position - transform.position;
-                    collision.gameObject.GetComponent<g_enemy>().v = d;
+                    collision.gameObject.GetComponent<h_enemy>().v = d;
                 }
             }
             else
