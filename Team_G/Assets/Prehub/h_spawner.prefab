@@ -105,4 +105,4 @@ MonoBehaviour:
   - {fileID: 3457435008533907693, guid: 35484c594a614a545b8db4efbeaf555c, type: 3}
   pos: {fileID: 0}
   pos2: {fileID: 0}
-  generateFrame: 180
+  generateFrame: 600
