@@ -42,10 +42,10 @@ public class Sheild : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            if (collision.gameObject.GetComponent<fall>().EnemyColor == SheildColor) {
-                if (collision.gameObject.GetComponent<fall>().EnemyType != 2)
+            if (collision.gameObject.GetComponent<h_enemy>().EnemyColor == SheildColor) {
+                if (collision.gameObject.GetComponent<h_enemy>().EnemyType != 2)
                 {
-                    collision.gameObject.GetComponent<fall>().speed *= -1.0f;
+                    collision.gameObject.GetComponent<h_enemy>().speed *= -1.0f;
                 }
             }
             else

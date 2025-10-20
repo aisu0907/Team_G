@@ -6,10 +6,9 @@ public class k_kill_death : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Green")
+        if (collision.gameObject.tag == "Enemy")
         { 
             Destroy(collision.gameObject);
-            //Debug.Log(collision.gameObject.GetComponent<k_test>().x_speed);
         }
 
     }

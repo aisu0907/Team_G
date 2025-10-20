@@ -1,21 +1,21 @@
 using UnityEngine;
 
-public class Enemy_Green : MonoBehaviour
+public class h_enemy : MonoBehaviour
 {
-    Rigidbody2D enemy_rbody;
-    public float enemy_speed = 1f;
-    public int enemy_number = 0;
-
+    Rigidbody2D rbody;
+    public float speed = 1f;
+    public int EnemyColor = 1;
+    public int EnemyType = 1;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        enemy_rbody = this.GetComponent<Rigidbody2D>();
+        rbody = this.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        enemy_rbody.linearVelocity = new Vector2(0, -enemy_speed);
+        rbody.linearVelocity = new Vector2(0, -speed);
     }
 }
