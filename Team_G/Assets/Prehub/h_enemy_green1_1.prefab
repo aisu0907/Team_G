@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 39049063710581942}
   - component: {fileID: -2983818681235565134}
   - component: {fileID: -8861976389580671334}
-  - component: {fileID: 1997767481931453330}
+  - component: {fileID: 3778148546453673842}
   m_Layer: 6
   m_Name: h_enemy_green1_1
   m_TagString: Green
@@ -153,7 +153,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1997767481931453330
+--- !u!114 &3778148546453673842
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -165,4 +165,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7842366307e97184694c5a7805565288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 1

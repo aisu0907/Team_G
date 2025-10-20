@@ -7,12 +7,10 @@ public class Sheild : MonoBehaviour
     public Sprite RED;
     public Sprite GREEN;
     SpriteRenderer img;
-    string SheildColor = "Red";
+    public int SheildColor = 1;
 
     public GameObject follow;
     Vector2 vec;
-
-    GameObject Player;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -32,26 +30,28 @@ public class Sheild : MonoBehaviour
         if (Input.GetKey(KeyCode.Z))
         {
             img.sprite = RED;
-            SheildColor = "Red";
+            SheildColor = 1;
         }
         if (Input.GetKey(KeyCode.X))
         {
             img.sprite = GREEN;
-            SheildColor = "Green";
+            SheildColor = 2;
         }
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Red" || collision.gameObject.tag == "Green" || collision.gameObject.tag == "Blue")
+        if (collision.gameObject.tag == "Enemy")
         {
-            if (collision.gameObject.tag == SheildColor)
-            {
-                collision.gameObject.GetComponent<fall>().speed *= -1.0f;
+            if (collision.gameObject.GetComponent<fall>().EnemyColor == SheildColor) {
+                if (collision.gameObject.GetComponent<fall>().EnemyType != 2)
+                {
+                    collision.gameObject.GetComponent<fall>().speed *= -1.0f;
+                }
             }
             else
             {
                 // îÌíeèàóù
-                GameObject.Find("Player").GetComponent<Player>().Health --;
+                GameObject.Find("Player").GetComponent<Player>().Health--;
                 Destroy(collision.gameObject);
                 Debug.Log(GameObject.Find("Player").GetComponent<Player>().Health);
             }

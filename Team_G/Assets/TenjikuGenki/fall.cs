@@ -4,8 +4,8 @@ public class fall : MonoBehaviour
 {
     Rigidbody2D rbody;
     public float speed = 1f;
-    
-
+    public int EnemyColor = 1;
+    public int EnemyType = 1;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
