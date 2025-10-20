@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class g_enemy : MonoBehaviour
@@ -8,6 +9,7 @@ public class g_enemy : MonoBehaviour
     public int EnemyType = 1;
     public Vector2 v;
     public bool OnHitting = false;
+    //[SerializeField] List<image> test;
 
     int timer = 0;
 
@@ -16,6 +18,7 @@ public class g_enemy : MonoBehaviour
     {
         rbody = this.GetComponent<Rigidbody2D>();
         v = new Vector2(0, -speed);
+
     }
 
     // Update is called once per frame
