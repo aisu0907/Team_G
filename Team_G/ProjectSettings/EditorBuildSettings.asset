@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/MainSecen/Play_Secen.unity
-    guid: 1aef28743e23d384d8f23a52f992f34e
+    path: Assets/kuriya_kota/k_Play_Scene.unity
+    guid: 7009cef0f20526c41a608c885dd3b49d
   - enabled: 1
     path: Assets/MainSecen/Result_Scene.unity
     guid: 11395e4f9abba1545827b53ed2a2659f
