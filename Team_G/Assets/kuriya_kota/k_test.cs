@@ -7,7 +7,7 @@ public class k_test : MonoBehaviour
     Rigidbody2D rb;
 
     public float x_speed = 3.0f;
-    public float y_speed=10.0f;//‰Šú‘¬“x
+    public float y_speed=3.0f;//‰Šú‘¬“x
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
