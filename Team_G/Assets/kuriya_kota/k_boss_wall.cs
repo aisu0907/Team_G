@@ -17,7 +17,7 @@ public class k_boss_wall : MonoBehaviour
 
             if(boss_health <= 0)
             {
-                SceneManager.LoadScene("testresult");
+                SceneManager.LoadScene("Result_Scene");
             }
         }
 

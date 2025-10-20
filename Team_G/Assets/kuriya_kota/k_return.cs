@@ -8,7 +8,7 @@ public class k_return : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.Return))
         {
-            SceneManager.LoadScene("test_kuriya");
+            SceneManager.LoadScene("Play_Scene");
         }
     }
 }
