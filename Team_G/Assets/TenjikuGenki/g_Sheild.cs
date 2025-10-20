@@ -1,6 +1,5 @@
+using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.SocialPlatforms.Impl;
 
 public class Sheild : MonoBehaviour
 {
@@ -42,10 +41,11 @@ public class Sheild : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            if (collision.gameObject.GetComponent<h_enemy>().EnemyColor == SheildColor) {
-                if (collision.gameObject.GetComponent<h_enemy>().EnemyType != 2)
+            if (collision.gameObject.GetComponent<g_enemy>().EnemyColor == SheildColor) {
+                if (collision.gameObject.GetComponent<g_enemy>().EnemyType != 2)
                 {
-                    collision.gameObject.GetComponent<h_enemy>().speed *= -1.0f;
+                    Vector2 d = collision.gameObject.transform.position - transform.position;
+                    collision.gameObject.GetComponent<g_enemy>().v = d;
                 }
             }
             else
