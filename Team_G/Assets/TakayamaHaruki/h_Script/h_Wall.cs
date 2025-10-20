@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class h_Wall : MonoBehaviour
+public class k_Wall : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     
