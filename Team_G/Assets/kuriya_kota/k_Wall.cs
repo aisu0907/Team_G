@@ -8,8 +8,8 @@ public class k_Wall : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            collision.gameObject.GetComponent<k_test>().x_speed *= -1.0f;
-            Debug.Log(collision.gameObject.GetComponent<k_test>().x_speed);
+            collision.gameObject.GetComponent<g_enemy>().speed *= -1.0f;
+            Debug.Log(collision.gameObject.GetComponent<g_enemy>().speed);
         }
     
     }
