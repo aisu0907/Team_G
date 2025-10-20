@@ -351,7 +351,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7842366307e97184694c5a7805565288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rbody: {fileID: 0}
   speed: 1
+  EnemyColor: 1
+  EnemyType: 1
 --- !u!1 &1387420668
 GameObject:
   m_ObjectHideFlags: 0
@@ -721,7 +724,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7842366307e97184694c5a7805565288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rbody: {fileID: 0}
   speed: 1
+  EnemyColor: 2
+  EnemyType: 1
 --- !u!1 &2119712471
 GameObject:
   m_ObjectHideFlags: 0
@@ -951,6 +957,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: red
       objectReference: {fileID: 0}
+    - target: {fileID: 193852142374017479, guid: a87da40b1882eb84a8d313a0f1d1303a, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 5000753942376437266, guid: a87da40b1882eb84a8d313a0f1d1303a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.23
@@ -1011,6 +1021,10 @@ PrefabInstance:
     - target: {fileID: 2610747898077628483, guid: e0ede45553d7dce4ab3b1fe64ae5120b, type: 3}
       propertyPath: m_Name
       value: green
+      objectReference: {fileID: 0}
+    - target: {fileID: 2610747898077628483, guid: e0ede45553d7dce4ab3b1fe64ae5120b, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 6432950747973416145, guid: e0ede45553d7dce4ab3b1fe64ae5120b, type: 3}
       propertyPath: m_LocalPosition.x
