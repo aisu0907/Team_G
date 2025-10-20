@@ -18,4 +18,13 @@ public class h_enemy : MonoBehaviour
     {
         rbody.linearVelocity = new Vector2(0, -speed);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Enemy")
+        {
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+        }
+    }
 }
