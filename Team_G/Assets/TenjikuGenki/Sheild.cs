@@ -45,7 +45,7 @@ public class Sheild : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            if (collision.gameObject.GetComponent<Sheild>().EnemyType == 2)
+            if (collision.gameObject.GetComponent<Sheild>().EnemyType != 2)
             {
                 collision.gameObject.GetComponent<fall>().speed *= -1.0f;
             }
