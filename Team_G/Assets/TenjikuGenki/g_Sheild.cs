@@ -40,15 +40,15 @@ public class Sheild : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
-            if(!collision.gameObject.GetComponent<h_enemy>().OnHitting)
-                if (collision.gameObject.GetComponent<h_enemy>().EnemyColor == SheildColor)
+            if(!collision.gameObject.GetComponent<g_enemy>().OnHitting)
+                if (collision.gameObject.GetComponent<g_enemy>().EnemyColor == SheildColor)
                 {
-                    if (collision.gameObject.GetComponent<h_enemy>().EnemyType != 2)
+                    if (collision.gameObject.GetComponent<g_enemy>().EnemyType != 2)
                     {
                         //îΩéÀèàóù
                         Vector2 d = collision.gameObject.transform.position - transform.position;
-                        collision.gameObject.GetComponent<h_enemy>().v = d;
-                        collision.gameObject.GetComponent<h_enemy>().OnHitting = true;
+                        collision.gameObject.GetComponent<g_enemy>().v = d;
+                        collision.gameObject.GetComponent<g_enemy>().OnHitting = true;
                     }
                 }
                 else

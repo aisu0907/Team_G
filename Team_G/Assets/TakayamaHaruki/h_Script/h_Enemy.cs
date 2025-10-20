@@ -50,7 +50,7 @@ public class h_enemy : MonoBehaviour
             Destroy(gameObject);
             if(OnHitting == true)
             {
-               new Vector2 { collision.gameObject.transform.position };
+               //new Vector2 { collision.gameObject.transform.position };
             }
         }
     }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 39049063710581942}
   - component: {fileID: -2983818681235565134}
   - component: {fileID: -8861976389580671334}
-  - component: {fileID: 833966169442385325}
+  - component: {fileID: -590157131816818799}
   m_Layer: 6
   m_Name: h_enemy_red1_1
   m_TagString: Enemy
@@ -153,7 +153,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &833966169442385325
+--- !u!114 &-590157131816818799
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,9 +162,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3457435008533907693}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ba34d3af46678c46a67272d8477217b, type: 3}
+  m_Script: {fileID: 11500000, guid: 252e8250cf193134ea8136e111e74813, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
   EnemyColor: 1
   EnemyType: 1
+  v: {x: 0, y: 0}
+  OnHitting: 0
