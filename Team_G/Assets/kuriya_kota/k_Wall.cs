@@ -11,6 +11,5 @@ public class k_Wall : MonoBehaviour
             collision.gameObject.GetComponent<g_enemy>().speed *= -1.0f;
             Debug.Log(collision.gameObject.GetComponent<g_enemy>().speed);
         }
-    
     }
 }
