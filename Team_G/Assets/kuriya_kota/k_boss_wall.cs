@@ -5,8 +5,16 @@ public class k_boss_wall : MonoBehaviour
 {
    public int boss_health = 5;
     public string nextSceneName;
+    public Player player;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
+    private void Update()
+    {
+        if (player != null&&player.Health <= 0)
+        {
+            Debug.Log("shinu");
+        }
+    }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -19,6 +27,10 @@ public class k_boss_wall : MonoBehaviour
             {
                 SceneManager.LoadScene("Result_Scene");
             }
+
+           
+
+
         }
 
     }
