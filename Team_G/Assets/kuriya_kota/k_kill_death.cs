@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class h_kill_death : MonoBehaviour
+public class k_kill_death : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Green" || collision.gameObject.tag == "Red")
+        if (collision.gameObject.tag == "Green")
         { 
             Destroy(collision.gameObject);
             //Debug.Log(collision.gameObject.GetComponent<k_test>().x_speed);
