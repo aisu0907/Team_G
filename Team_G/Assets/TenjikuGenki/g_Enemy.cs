@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class g_enemy : MonoBehaviour
 {
-    Rigidbody2D rbody;
+    public Rigidbody2D rbody;
     public float speed = 1f;
     public int EnemyColor = 1;
     public int EnemyType = 1;
@@ -18,7 +18,6 @@ public class g_enemy : MonoBehaviour
     {
         rbody = this.GetComponent<Rigidbody2D>();
         v = new Vector2(0, -speed);
-
     }
 
     // Update is called once per frame
@@ -28,20 +27,27 @@ public class g_enemy : MonoBehaviour
     }
     void FixedUpdate()
     {
+        // 速度調整
         if (rbody.linearVelocity.magnitude != speed)
         {
             rbody.linearVelocity = rbody.linearVelocity.normalized * speed;
         }
-        if(OnHitting)
+
+        // 衝突時処理
+        if (OnHitting)
         {
             transform.Rotate(0, 0, 20);
-            timer++;
-            if (timer > 100)
+            //　反射ウイルスなら復帰してくる
+            if (EnemyType == 2)
             {
-                OnHitting = false;
-                transform.localRotation = default;
-                v = new Vector2(0, -speed);
-                timer = 0;
+                timer++;
+                if (timer < 100)
+                {
+                    OnHitting = false;
+                    transform.localRotation = default;
+                    v = new Vector2(0, -speed);
+                    timer = 0;
+                }
             }
         }
     }
