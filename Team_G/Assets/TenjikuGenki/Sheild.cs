@@ -7,7 +7,8 @@ public class Sheild : MonoBehaviour
     public Sprite RED;
     public Sprite GREEN;
     SpriteRenderer img;
-    string SheildColor = "Red";
+    public int EnemyColor = 1;
+    public int EnemyKind = 1;
 
     public GameObject follow;
     Vector2 vec;
@@ -32,19 +33,19 @@ public class Sheild : MonoBehaviour
         if (Input.GetKey(KeyCode.Z))
         {
             img.sprite = RED;
-            SheildColor = "Red";
+            EnemyColor = 1;
         }
         if (Input.GetKey(KeyCode.X))
         {
             img.sprite = GREEN;
-            SheildColor = "Green";
+            EnemyColor = 2;
         }
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Red" || collision.gameObject.tag == "Green" || collision.gameObject.tag == "Blue")
+        if (collision.gameObject.tag == "Enemy")
         {
-            if (collision.gameObject.tag == SheildColor)
+            if (collision.gameObject.GetComponent<Sheild>().EnemyColor >= 1)
             {
                 collision.gameObject.GetComponent<fall>().speed *= -1.0f;
             }
