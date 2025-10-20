@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class fall : MonoBehaviour
+public class Enemy_ : MonoBehaviour
 {
     Rigidbody2D rbody;
     public float speed = 1f;
