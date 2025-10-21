@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class k_Wall : MonoBehaviour
+public class g_Wall : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     
@@ -8,9 +8,8 @@ public class k_Wall : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            collision.gameObject.GetComponent<g_enemy>().speed *= -1.0f;
-            Debug.Log(collision.gameObject.GetComponent<g_enemy>().speed);
+            Vector2 tmp = new Vector2(-collision.gameObject.GetComponent<g_enemy>().v.x, collision.gameObject.GetComponent<g_enemy>().v.y);
+            collision.gameObject.GetComponent<g_enemy>().v = tmp;
         }
-    
     }
 }
