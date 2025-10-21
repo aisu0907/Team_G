@@ -38,6 +38,7 @@ public class g_enemy : MonoBehaviour
     {
         rbody.linearVelocity = v;
     }
+
     void FixedUpdate()
     {
         // ë¨ìxí≤êÆ
@@ -67,7 +68,7 @@ public class g_enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy")
         {
             Destroy(gameObject);
         }

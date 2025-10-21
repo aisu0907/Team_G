@@ -7,9 +7,6 @@ public class Sheild : MonoBehaviour
     SpriteRenderer img;
     public int SheildColor = 0;
 
-    public GameObject follow;
-    Vector2 vec;
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,11 +16,6 @@ public class Sheild : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // ’Ç]ˆ—
-        vec = follow.transform.position;
-        vec.y += 0.7f;
-        transform.position = vec;
-
         // F•ÏXˆ—
         if (Input.GetKey(KeyCode.Z))
         {
