@@ -10,10 +10,14 @@ public class k_boss_wall : MonoBehaviour
 
     private void Update()
     {
-        //if (player.GetComponent<Player>().Health <= 0)
-        //{
-        //    Debug.Log("shinu");
-        //}
+        if (player.GetComponent<Player>().Health <= 0)
+        {
+            SceneManager.LoadScene("k_gameover");
+        }
+        if (player.GetComponent<Player>().Health <= 0)
+        {
+            Debug.Log("shinu");
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)

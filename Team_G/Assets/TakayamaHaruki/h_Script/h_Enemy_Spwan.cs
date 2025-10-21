@@ -13,6 +13,7 @@ public class g_Enemy_Spwan : MonoBehaviour
 
         void Start()
         {
+            //スポーン位置設定
             minX = Mathf.Min(pos.position.x, pos2.position.x);
             maxX = Mathf.Max(pos.position.x, pos2.position.x);
             minY = Mathf.Min(pos.position.y, pos2.position.y);
@@ -31,8 +32,9 @@ public class g_Enemy_Spwan : MonoBehaviour
                 int index = Random.Range(0, enemyList.Count);
                 float posX = Random.Range(minX, maxX);
                 float posY = Random.Range(minY, maxY);
-
-                Instantiate(enemyList[index], new Vector3(posX, posY, 0), Quaternion.identity);
+                
+            //ウイルスをスポーン
+                Instantiate(enemyList[index], new Vector2(posX, posY), Quaternion.identity);
             }
         }
     }

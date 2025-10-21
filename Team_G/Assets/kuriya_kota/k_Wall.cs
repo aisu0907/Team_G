@@ -1,15 +1,15 @@
 using UnityEngine;
 
-public class h_Wall : MonoBehaviour
+public class k_Wall : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            collision.gameObject.GetComponent<k_test>().x_speed *= -1.0f;
-            Debug.Log(collision.gameObject.GetComponent<k_test>().x_speed);
+            Vector2 tmp = new Vector2(-collision.gameObject.GetComponent<g_enemy>().v.x, collision.gameObject.GetComponent<g_enemy>().v.y);
+            collision.gameObject.GetComponent<g_enemy>().v = tmp;
         }
     }
 }
