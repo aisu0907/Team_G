@@ -12,7 +12,7 @@ public class k_boss_wall : MonoBehaviour
     {
         if (player.GetComponent<Player>().Health <= 0)
         {
-            Debug.Log("shinu");
+            SceneManager.LoadScene("k_gameover");
         }
     }
 

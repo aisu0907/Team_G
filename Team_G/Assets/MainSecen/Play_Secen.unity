@@ -837,6 +837,10 @@ PrefabInstance:
       value: -921988423
       objectReference: {fileID: 0}
     - target: {fileID: 3863672818655205687, guid: a7e659a0b9cba634996df30b2268716f, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 652196323}
+    - target: {fileID: 3863672818655205687, guid: a7e659a0b9cba634996df30b2268716f, type: 3}
       propertyPath: nextSceneName
       value: Result_Scene
       objectReference: {fileID: 0}
