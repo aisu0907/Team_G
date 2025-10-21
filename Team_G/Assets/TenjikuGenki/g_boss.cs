@@ -13,6 +13,16 @@ public class g_boss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+    }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy" && collision.gameObject.GetComponent<g_enemy>().OnHitting)
+        {
+            --Health;
+            Debug.Log("gue-----------");
+            Destroy(collision.gameObject);
+            if (Health == 0) Destroy(gameObject);
+        }
     }
 }
