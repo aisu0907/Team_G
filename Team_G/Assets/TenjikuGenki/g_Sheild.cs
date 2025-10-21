@@ -50,12 +50,5 @@ public class Sheild : MonoBehaviour
                         collision.gameObject.GetComponent<g_enemy>().OnHitting = true;
                     }
                 }
-                else
-                {
-                    // îÌíeèàóù
-                    GameObject.Find("Player").GetComponent<Player>().Health--;
-                    Destroy(collision.gameObject);
-                    Debug.Log(GameObject.Find("Player").GetComponent<Player>().Health);
-                }
     }
 }
