@@ -693,6 +693,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3863672818655205687, guid: a7e659a0b9cba634996df30b2268716f, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 652196323}
     - target: {fileID: 6777289873080417788, guid: a7e659a0b9cba634996df30b2268716f, type: 3}
       propertyPath: m_Name
       value: boss_wall
@@ -815,6 +819,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4040424419268093558, guid: d025b7f68670e044bb0e96f742cf827b, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 652196323}
     - target: {fileID: 2992029395938316488, guid: d025b7f68670e044bb0e96f742cf827b, type: 3}
       propertyPath: m_IsTrigger
       value: 1
