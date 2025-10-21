@@ -1,0 +1,73 @@
+using UnityEngine;
+
+public class k_Sheild : MonoBehaviour
+{
+    public Sprite RED;
+    public Sprite GREEN;
+    SpriteRenderer img;
+    public int SheildColor = 1;
+
+    public GameObject follow;
+    Vector2 vec;
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        img = GetComponent<SpriteRenderer>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        // 追従処理
+        vec = follow.transform.position;
+        vec.y += 0.7f;
+        transform.position = vec;
+
+        // 色変更処理
+        if (Input.GetKey(KeyCode.Z))
+        {
+            img.sprite = RED;
+            SheildColor = 1;
+        }
+        if (Input.GetKey(KeyCode.X))
+        {
+            img.sprite = GREEN;
+            SheildColor = 2;
+        }
+    }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+            if(!collision.gameObject.GetComponent<g_enemy>().OnHitting)
+                if (collision.gameObject.GetComponent<g_enemy>().EnemyColor == SheildColor)
+                {
+                    if (collision.gameObject.GetComponent<g_enemy>().EnemyType != 2)
+                    {
+                        Vector2 d = collision.gameObject.transform.position - transform.position;
+
+                        // y成分を必ず正（上方向）にする
+                        d.y = Mathf.Abs(d.y);
+
+                        // y成分が小さすぎる（ほぼ水平）の場合は最低限の上向きベクトルにする
+                        if (d.y < 0.2f)
+                        {
+                            d.y = 0.2f;
+                        }
+
+                        // 正規化（向きだけを使う）
+                        d = d.normalized;
+
+                        collision.gameObject.GetComponent<g_enemy>().v = d;
+                        collision.gameObject.GetComponent<g_enemy>().OnHitting = true;
+                    }
+                }
+                else
+                {
+                    // 被弾処理
+                    GameObject.Find("Player").GetComponent<Player>().Health--;
+                    Destroy(collision.gameObject);
+                    Debug.Log(GameObject.Find("Player").GetComponent<Player>().Health);
+                }
+    }
+}

@@ -177,3 +177,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boss_health: 5
   nextSceneName: 
+  player: {fileID: 2149414446791707951, guid: ece49d0188f35714ea82e5bc99c9d451, type: 3}
