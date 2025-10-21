@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class Sheild : MonoBehaviour
+public class k_Sheild : MonoBehaviour
 {
     public Sprite RED;
     public Sprite GREEN;
     SpriteRenderer img;
-    public int SheildColor = 0;
+    public int SheildColor = 1;
 
     public GameObject follow;
     Vector2 vec;
@@ -28,12 +28,12 @@ public class Sheild : MonoBehaviour
         if (Input.GetKey(KeyCode.Z))
         {
             img.sprite = RED;
-            SheildColor = 0;
+            SheildColor = 1;
         }
         if (Input.GetKey(KeyCode.X))
         {
             img.sprite = GREEN;
-            SheildColor = 1;
+            SheildColor = 2;
         }
     }
     void OnTriggerEnter2D(Collider2D collision)
@@ -44,8 +44,20 @@ public class Sheild : MonoBehaviour
                 {
                     if (collision.gameObject.GetComponent<g_enemy>().EnemyType != 2)
                     {
-                        //反射処理
                         Vector2 d = collision.gameObject.transform.position - transform.position;
+
+                        // y成分を必ず正（上方向）にする
+                        d.y = Mathf.Abs(d.y);
+
+                        // y成分が小さすぎる（ほぼ水平）の場合は最低限の上向きベクトルにする
+                        if (d.y < 0.2f)
+                        {
+                            d.y = 0.2f;
+                        }
+
+                        // 正規化（向きだけを使う）
+                        d = d.normalized;
+
                         collision.gameObject.GetComponent<g_enemy>().v = d;
                         collision.gameObject.GetComponent<g_enemy>().OnHitting = true;
                     }
