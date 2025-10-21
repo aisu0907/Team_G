@@ -31,4 +31,16 @@ public class Player : MonoBehaviour
         //ˆÚ“®‚Ì“K—p
         rbody.linearVelocity = new Vector2(axisH * speed, axisV * speed);
     }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+            if (!collision.gameObject.GetComponent<g_enemy>().OnHitting)
+            {
+                // ”í’eˆ—
+                GameObject.Find("Player").GetComponent<Player>().Health--;
+                Destroy(collision.gameObject);
+                Debug.Log(GameObject.Find("Player").GetComponent<Player>().Health);
+        }
+    }
 }
