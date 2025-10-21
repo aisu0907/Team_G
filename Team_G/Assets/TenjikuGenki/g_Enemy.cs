@@ -1,23 +1,36 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class g_enemy : MonoBehaviour
 {
-    public Rigidbody2D rbody;
-    public float speed = 1f;
-    public int EnemyColor = 1;
-    public int EnemyType = 1;
-    public Vector2 v;
-    public bool OnHitting = false;
-    //[SerializeField] List<image> test;
+    public Rigidbody2D rbody;   //物理
+    public Vector2 v;           //ベクトル
 
+    public float speed = 1f;            //最高速度
+    public int EnemyColor = 1;          //色
+    public int EnemyType = 1;           //種類
+    [SerializeField] List<Sprite> Img;   //画像
+
+    public bool OnHitting = false;
     int timer = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        // ベクトルの設定
         rbody = this.GetComponent<Rigidbody2D>();
         v = new Vector2(0, -speed);
+
+        // 自分が誰なのか決める
+        // ～色・種類編～
+        int[] Index = { Random.Range(0, 2), Random.Range(0, 2) };
+        EnemyType = Index[0];
+        EnemyColor = Index[1];
+
+        // ～画像編～
+        SpriteRenderer img = GetComponent<SpriteRenderer>();
+        img.sprite = Img[ Index[0] * 2 + Index[1] ];
     }
 
     // Update is called once per frame
@@ -38,10 +51,10 @@ public class g_enemy : MonoBehaviour
         {
             transform.Rotate(0, 0, 20);
             //　反射ウイルスなら復帰してくる
-            if (EnemyType == 2)
+            if (EnemyType == 1)
             {
                 timer++;
-                if (timer < 100)
+                if (timer >= 100)
                 {
                     OnHitting = false;
                     transform.localRotation = default;

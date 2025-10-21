@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class h_Enemy_Spwan : MonoBehaviour
+public class g_Enemy_Spwan : MonoBehaviour
     {
         [SerializeField] List<GameObject> enemyList;    // 生成オブジェクト
         [SerializeField] Transform pos;                 // 生成位置

@@ -5,7 +5,7 @@ public class Sheild : MonoBehaviour
     public Sprite RED;
     public Sprite GREEN;
     SpriteRenderer img;
-    public int SheildColor = 1;
+    public int SheildColor = 0;
 
     public GameObject follow;
     Vector2 vec;
@@ -28,12 +28,12 @@ public class Sheild : MonoBehaviour
         if (Input.GetKey(KeyCode.Z))
         {
             img.sprite = RED;
-            SheildColor = 1;
+            SheildColor = 0;
         }
         if (Input.GetKey(KeyCode.X))
         {
             img.sprite = GREEN;
-            SheildColor = 2;
+            SheildColor = 1;
         }
     }
     void OnTriggerEnter2D(Collider2D collision)
