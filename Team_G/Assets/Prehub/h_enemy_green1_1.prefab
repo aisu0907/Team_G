@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 39049063710581942}
   - component: {fileID: -2983818681235565134}
   - component: {fileID: -8861976389580671334}
-  - component: {fileID: -7211098803940798851}
   - component: {fileID: -2622926274404182130}
+  - component: {fileID: -7211098803940798851}
   m_Layer: 6
   m_Name: h_enemy_green1_1
   m_TagString: Enemy
@@ -154,6 +154,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &-2622926274404182130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3457435008533907693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bddfc6f2f5cce3a45872dc7491763339, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemList:
+  - {fileID: 2421750453974295715, guid: 9d236791badac4e458af18aaf6974148, type: 3}
 --- !u!114 &-7211098803940798851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,19 +186,3 @@ MonoBehaviour:
   EnemyType: 1
   v: {x: 0, y: 0}
   OnHitting: 0
---- !u!114 &-2622926274404182130
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3457435008533907693}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bddfc6f2f5cce3a45872dc7491763339, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
