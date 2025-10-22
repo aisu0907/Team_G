@@ -24,6 +24,7 @@ public class k_boss_wall : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
+            Destroy(collision.gameObject);
             boss_health--;
             Debug.Log("Boss health:"+boss_health);
 

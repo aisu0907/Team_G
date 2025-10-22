@@ -14,5 +14,10 @@ public class k_kill_death : MonoBehaviour
             //GameObject.FindWithTag("Player").GetComponent<Player>().Health--;
         }
 
+        if (collision.gameObject.tag == "Item")
+        {
+            Destroy(collision.gameObject);
+        }
+
     }
 }
