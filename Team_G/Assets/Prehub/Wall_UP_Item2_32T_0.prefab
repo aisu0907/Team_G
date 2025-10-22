@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 6530555556476378415}
   - component: {fileID: 6780154142501992280}
   - component: {fileID: -8927021291303899158}
-  - component: {fileID: -7856815242147422540}
   - component: {fileID: 5357444678368504429}
+  - component: {fileID: -7856815242147422540}
   m_Layer: 0
   m_Name: Wall_UP_Item2_32T_0
   m_TagString: Item
@@ -103,8 +103,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  fall_Velocity: 2
-  item_id: 0
+  fall_Velocity: 1
+  item_id: 1
+  reflect_speed: 0
+--- !u!50 &5357444678368504429
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2421750453974295715}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!61 &-7856815242147422540
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -151,30 +179,3 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.26, y: 0.27}
   m_EdgeRadius: 0
---- !u!50 &5357444678368504429
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2421750453974295715}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 0.5
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
