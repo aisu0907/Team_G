@@ -1,13 +1,13 @@
 using UnityEngine;
 
-public class g_boss : MonoBehaviour
+public class g_boss : CharacterBase
 {
-    public int Health = 3;  //‘Ì—Í
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        // CharacterBaseŒp³
+        Health = 3;     //‘Ì—Í
+        Speed = 3.0f;   //ˆÚ“®‘¬“x
     }
 
     // Update is called once per frame

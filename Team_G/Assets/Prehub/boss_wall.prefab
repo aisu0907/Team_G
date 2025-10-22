@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2549210940391524199}
   - component: {fileID: 3863672818655205687}
   m_Layer: 0
-  m_Name: boss_wall
+  m_Name: Boss_Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
