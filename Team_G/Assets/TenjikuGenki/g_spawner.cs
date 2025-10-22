@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class t_Enemy_Spwan : MonoBehaviour
 {
-    [SerializeField] List<GameObject> enemyList;    // 生成オブジェクト
+    public GameObject enemy;    // 生成オブジェクト
     [SerializeField] Transform pos;                 // 生成位置
     [SerializeField] Transform pos2;                // 生成位置
     float minX, maxX, minY, maxY;                   // 生成範囲
@@ -29,12 +29,11 @@ public class t_Enemy_Spwan : MonoBehaviour
             frame = 0;
 
             // ランダムで種類と位置を決める
-            int index = Random.Range(0, enemyList.Count);
             float posX = Random.Range(minX, maxX);
             float posY = Random.Range(minY, maxY);
 
             //ウイルスをスポーン
-            Instantiate(enemyList[index], new Vector2(posX, posY), Quaternion.identity);
+            //EnemyManager(new Vector2(posX,posY)
         }
     }
 }
