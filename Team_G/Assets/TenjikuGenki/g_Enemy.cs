@@ -76,6 +76,7 @@ public class g_enemy : CharacterBase
         if (collision.gameObject.tag == "Enemy" && collision.gameObject.GetComponent<g_enemy>().OnHitting)
         {
             Destroy(gameObject);
+            Destroy(collision.gameObject);
         }
     }
 }
