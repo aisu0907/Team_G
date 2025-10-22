@@ -11,17 +11,24 @@ public class g_enemy : CharacterBase
     public float speed = 1f;            //最高速度
     public int EnemyColor = 1;          //色
     public int EnemyType = 1;           //種類
+    public float enemy_speed = 0.0f;
     [SerializeField] List<Sprite> Img;   //画像
 
     public bool OnHitting = false;
     int timer = 0;
+    public static g_enemy Instance { get; private set; }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Awake()
+    {
+        Instance = this;
+    }
+        // Start is called once before the first execution of Update after the MonoBehaviour is created
+        void Start()
     {
         // CharacterBase継承
         Health = 1;     //体力
         Speed = 1.0f;   //移動速度
+        enemy_speed = speed;
 
         // ベクトルの設定
         rbody = this.GetComponent<Rigidbody2D>();
@@ -47,9 +54,9 @@ public class g_enemy : CharacterBase
     void FixedUpdate()
     {
         // 速度調整
-        if (rbody.linearVelocity.magnitude != speed)
+        if (rbody.linearVelocity.magnitude != enemy_speed)
         {
-            rbody.linearVelocity = rbody.linearVelocity.normalized * speed;
+            rbody.linearVelocity = rbody.linearVelocity.normalized * enemy_speed;
         }
 
         // 衝突時処理
@@ -76,6 +83,7 @@ public class g_enemy : CharacterBase
         if (collision.gameObject.tag == "Enemy" && collision.gameObject.GetComponent<g_enemy>().OnHitting)
         {
             Destroy(gameObject);
+            Destroy(collision.gameObject);
         }
     }
 }
