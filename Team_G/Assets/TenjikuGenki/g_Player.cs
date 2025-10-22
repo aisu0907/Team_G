@@ -4,7 +4,7 @@ using System.Collections;
 using UnityEngine.UIElements;
 using UnityEngine.Animations;
 
-public class Player : UnitBase
+public class Player : MonoBehaviour
 {
     Rigidbody2D rbody; 
     float axisH = 0.0f; //横ベクトル
@@ -12,12 +12,9 @@ public class Player : UnitBase
 
     public GameObject PreSheild;  //盾
     GameObject Sheild;  //盾
-    public static Player Instance { get; private set; }
 
-    void Awake()
-    {
-        Instance = this;
-    }
+    public float speed = 3.0f;  //移動速度
+    public int Health = 3;      //体力
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -27,10 +24,6 @@ public class Player : UnitBase
 
         // 盾の生成
         Sheild = Instantiate(PreSheild, transform.position, Quaternion.identity);
-
-        // UnitBase継承
-        Speed = 3.0f;   //移動速度
-        Health = 3;      //体力
     }
 
     // Update is called once per frame
@@ -47,7 +40,7 @@ public class Player : UnitBase
     void FixedUpdate()
     {
         //移動の適用
-        rbody.linearVelocity = new Vector2(axisH * Speed, axisV * Speed);
+        rbody.linearVelocity = new Vector2(axisH * speed, axisV * speed);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -56,7 +49,7 @@ public class Player : UnitBase
             if (!collision.gameObject.GetComponent<g_enemy>().OnHitting)
             {
                 // 被弾処理
-                Health--;
+                GameObject.Find("Player").GetComponent<Player>().Health--;
                 Destroy(collision.gameObject);
                 Debug.Log(Health);
         }
