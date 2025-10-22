@@ -73,9 +73,10 @@ public class g_enemy : CharacterBase
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy" && collision.gameObject.GetComponent<g_enemy>().OnHitting)
         {
             Destroy(gameObject);
+            Destroy(collision.gameObject);
         }
     }
 }
