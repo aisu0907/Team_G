@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 
-public class g_enemy : MonoBehaviour
+public class g_enemy : CharacterBase
 {
     public Rigidbody2D rbody;   //物理
     public Vector2 v;           //ベクトル
@@ -18,9 +19,13 @@ public class g_enemy : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        // CharacterBase継承
+        Health = 1;     //体力
+        Speed = 1.0f;   //移動速度
+
         // ベクトルの設定
         rbody = this.GetComponent<Rigidbody2D>();
-        v = new Vector2(0, -speed);
+        v = new Vector2(0, -Speed);
 
         // 自分が誰なのか決める
         // ～色・種類編～

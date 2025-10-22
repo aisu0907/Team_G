@@ -1,11 +1,17 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Sheild : MonoBehaviour
 {
-    public Sprite RED;
-    public Sprite GREEN;
     SpriteRenderer img;
     public int SheildColor = 0;
+    [SerializeField] List<Sprite> Img;   //âÊëú
+    public static Sheild Instance { get; private set; }
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -19,28 +25,27 @@ public class Sheild : MonoBehaviour
         // êFïœçXèàóù
         if (Input.GetKey(KeyCode.Z))
         {
-            img.sprite = RED;
+            img.sprite = Img[0];
             SheildColor = 0;
         }
         if (Input.GetKey(KeyCode.X))
         {
-            img.sprite = GREEN;
+            img.sprite = Img[1];
             SheildColor = 1;
         }
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
-            if(!collision.gameObject.GetComponent<g_enemy>().OnHitting)
-                if (collision.gameObject.GetComponent<g_enemy>().EnemyColor == SheildColor)
-                {
-                    if (collision.gameObject.GetComponent<g_enemy>().EnemyType != 2)
+        GameObject enemy = collision.gameObject;
+        if (enemy.tag == "Enemy")
+            if(!enemy.GetComponent<g_enemy>().OnHitting)
+                if (enemy.GetComponent<g_enemy>().EnemyColor == SheildColor)
+                    if (enemy.GetComponent<g_enemy>().EnemyType != 2)
                     {
                         //îΩéÀèàóù
-                        Vector2 d = collision.gameObject.transform.position - transform.position;
-                        collision.gameObject.GetComponent<g_enemy>().v = d;
-                        collision.gameObject.GetComponent<g_enemy>().OnHitting = true;
+                        Vector2 d = enemy.transform.position - transform.position;
+                        enemy.GetComponent<g_enemy>().v = d;
+                        enemy.GetComponent<g_enemy>().OnHitting = true;
                     }
-                }
     }
 }

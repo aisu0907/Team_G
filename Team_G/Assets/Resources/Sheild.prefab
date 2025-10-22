@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1050848629110424088}
   - component: {fileID: 489013248214253143}
   - component: {fileID: 8223017186961346377}
-  - component: {fileID: 2761241066728964869}
+  - component: {fileID: 1745352153182978386}
   m_Layer: 0
   m_Name: Sheild
   m_TagString: Red
@@ -135,7 +135,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.17, y: 0.06}
   m_EdgeRadius: 0
---- !u!114 &2761241066728964869
+--- !u!114 &1745352153182978386
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f2b41675f5c2ed4ea14cd86126ae42c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RED: {fileID: -6556403868631285073, guid: b0642d7a69aa9d64cbc86bcba14e9aea, type: 3}
-  GREEN: {fileID: -7696752515786996293, guid: 1ce3f8e14ec5b4744a9dbc307a60cd71, type: 3}
   SheildColor: 0
-  follow: {fileID: 2149414446791707951, guid: ece49d0188f35714ea82e5bc99c9d451, type: 3}
+  Img:
+  - {fileID: -6556403868631285073, guid: b0642d7a69aa9d64cbc86bcba14e9aea, type: 3}
+  - {fileID: -7696752515786996293, guid: 1ce3f8e14ec5b4744a9dbc307a60cd71, type: 3}
