@@ -101,6 +101,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arrow: {fileID: 7242955137363125525}
-  red: {fileID: 0}
-  green: {fileID: 0}
+  red: {fileID: 6878727095777458696, guid: 4906221a87adbf04f87869f873b19de8, type: 3}
+  green: {fileID: 2200937354391665997, guid: 425bd8253bd29e14296d591fc8bfa95f, type: 3}
   vec: {x: 0, y: 0}

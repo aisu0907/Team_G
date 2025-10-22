@@ -104,4 +104,4 @@ MonoBehaviour:
   HP2: {fileID: 3695540991007769659, guid: 18917d4395f4a8943a867bec101d204b, type: 3}
   HP1: {fileID: -8466629868714491950, guid: 61d96966198a2564a895c06d7a1df59c, type: 3}
   HP0: {fileID: -528507430585463172, guid: 129a7a861aa9ea444b50f8fcd2da671b, type: 3}
-  health: {fileID: 0}
+  health: {fileID: 2149414446791707951, guid: ece49d0188f35714ea82e5bc99c9d451, type: 3}
