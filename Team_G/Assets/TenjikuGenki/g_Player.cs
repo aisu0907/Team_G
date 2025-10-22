@@ -9,6 +9,7 @@ public class Player : CharacterBase
     Rigidbody2D rbody; 
     float axisH = 0.0f; //横ベクトル
     float axisV = 0.0f; //縦ベクトル
+    public GameObject sheild;
 
 
     public static Player Instance { get; private set; }
@@ -28,7 +29,7 @@ public class Player : CharacterBase
         rbody = this.GetComponent<Rigidbody2D>();
 
         // 盾の生成
-        Instantiate(Resources.Load<GameObject>("Sheild"));
+        Instantiate(sheild);
     }
 
     // Update is called once per frame
