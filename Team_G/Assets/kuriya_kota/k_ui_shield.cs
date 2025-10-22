@@ -1,31 +1,33 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class k_ui_shield : MonoBehaviour
 {
-    public Sprite shield_red;
-    public Sprite shield_green;
+    public GameObject arrow;  // 矢印
+    public GameObject red;    // 赤のターゲット
+    public GameObject green;  // 緑のターゲット
 
-    SpriteRenderer img;
+    public Vector2 vec;
+   
 
-    public GameObject shield;
-    public GameObject red;
-    public GameObject green;
-
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        img = GetComponent<SpriteRenderer>();
+       
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (gameObject.GetComponent<Sheild>().SheildColor == 0)//赤色の時
+        if (Sheild.Instance.SheildColor == 0)
         {
-           // Color_switch = 1;
+            vec = red.transform.position;
+            vec.y += 1.4f;
+            transform.position = vec;
         }
-
-
+        if (Sheild.Instance.SheildColor == 1)
+        {
+            vec = green.transform.position;
+            vec.y += 1.4f;
+            transform.position = vec;
+        }
     }
 }
