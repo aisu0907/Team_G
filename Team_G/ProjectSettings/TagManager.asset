@@ -9,6 +9,7 @@ TagManager:
   - Green
   - Red
   - Item
+  - Sheild
   layers:
   - Default
   - TransparentFX

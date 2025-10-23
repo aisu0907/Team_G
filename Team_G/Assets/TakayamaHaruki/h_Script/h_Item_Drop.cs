@@ -17,7 +17,7 @@ public class h_Item_Drop : MonoBehaviour
     {
 
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         //“G‚ÌˆÊ’uŽæ“¾
         v = new Vector2(collision.gameObject.transform.position.x, collision.gameObject.transform.position.y);
