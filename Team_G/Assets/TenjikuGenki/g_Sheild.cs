@@ -38,7 +38,8 @@ public class Sheild : MonoBehaviour
     {
         GameObject enemy = collision.gameObject;
         if (enemy.tag == "Enemy")
-            if(!enemy.GetComponent<g_enemy>().OnHitting)
+        {
+            if (!enemy.GetComponent<g_enemy>().OnHitting)
                 if (enemy.GetComponent<g_enemy>().EnemyColor == SheildColor)
                     if (enemy.GetComponent<g_enemy>().EnemyType != 2)
                     {
@@ -47,5 +48,11 @@ public class Sheild : MonoBehaviour
                         enemy.GetComponent<g_enemy>().vec = d;
                         enemy.GetComponent<g_enemy>().OnHitting = true;
                     }
+
+
+        }
+        else if (enemy.tag == "Boss")
+            if (enemy.GetComponent<g_boss>().EnemyColor == SheildColor)
+                enemy.GetComponent<g_boss>().reflect = true;
     }
 }

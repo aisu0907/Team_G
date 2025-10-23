@@ -1,23 +1,32 @@
-using UnityEditor.SearchService;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
 
 public class g_boss : CharacterBase
 {
     Rigidbody2D rb;
-    int timer;
+    public int timer;
     int mode = 0;
     bool down = true;
+    public bool reflect = false;
+    public int EnemyColor = 0;
+    SpriteRenderer img;
+    public List<Sprite> Img;
+
+    int _Health;
+    bool once = true;
+    float n = 0;
+    public bool did_vib = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         // CharacterBase�p��
         Health = 1;     //�̗�
-        Speed = 3.0f;   //�ړ����x
+        Speed = 0.0f;   //�ړ����x
 
         rb = GetComponent<Rigidbody2D>();
+        img = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -27,6 +36,7 @@ public class g_boss : CharacterBase
         {
             case 0:
                 timer++;
+                if (timer >= 200) mode = Random.Range(1,2);
                 break;
             case 1:
                 rush();
@@ -49,6 +59,59 @@ public class g_boss : CharacterBase
 
     void rush()
     {
-        
+        if (once)
+        {
+            _Health = Player.Instance.Health;
+            timer = 0;
+            once = false;
+        }
+
+        if (!did_vib) vibration(transform.position, 60);
+        else
+        {
+            n += 0.05f;
+            if (!reflect)
+            {
+                rb.linearVelocity = new Vector2(0, -Speed - n);
+                if (Player.Instance.Health != _Health) reflect = true;
+            }
+            else
+            {
+                rb.linearVelocity = new Vector2(0, 3);
+                if (transform.position.y >= 3)
+                {
+                    rb.linearVelocity = new Vector2(0, 0);
+                    n = 0;
+                    mode = 0;
+                    timer = 0;
+                    once = true;
+                    reflect = false;
+                    did_vib = false;
+                }
+            }
+        }
+    }
+
+    void vibration(Vector2 BasePos, int Time ,float range = 0.5f)
+    {
+        ++timer;
+        if (timer < Time)
+        {
+            if (timer % 10 == 0)
+            {
+                if (timer % 2 == 0)
+                    transform.position = new Vector2(BasePos.x + range / 2, BasePos.y);
+                else
+                    transform.position = new Vector2(BasePos.x - range / 2, BasePos.y);
+            }
+        }
+        else
+        {
+            timer = 0;
+            transform.position = BasePos;
+            did_vib = true;
+            EnemyColor = Random.Range(0, 2);
+            img.sprite = Img[EnemyColor];
+        }
     }
 }
