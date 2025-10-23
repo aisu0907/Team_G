@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TateScroll : MonoBehaviour
+public class TiteleScroll : MonoBehaviour
 {
-    public float speed = 2f;          // スクロール速度
+    public float speed = 0.5f;          // スクロール速度
     public float resetPositionY = -10f; // どこまで下がったらリセットするか
     public float startPositionY = 10f;  // 上に戻す位置
 
