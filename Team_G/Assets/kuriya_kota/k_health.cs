@@ -24,7 +24,7 @@ public class k_health : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int hp = health.GetComponent<Player>().Health;
+        int hp = Player.Instance.Health;
 
         switch (hp) {
             case 3:
