@@ -2,20 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-//スクロール処理です
-//画像縦に3枚並べたら使えまｽ
 public class TateScroll : MonoBehaviour
 {
-    private float speed = 1;
+    public float speed = 0.5f;          // スクロール速度
+    public float resetPositionY = -10f; // どこまで下がったらリセットするか
+    public float startPositionY = 10f;  // 上に戻す位置
 
     void Update()
     {
-        transform.position -= new Vector3(0, Time.deltaTime * speed);
+        // 下に移動
+        transform.position -= new Vector3(0, speed * Time.deltaTime, 0);
 
-        if (transform.position.y <= -11)
+        // 一定位置まで下がったら上へ戻す
+        if (transform.position.y <= resetPositionY)
         {
-            transform.position = new Vector3(1, 18.1f);
+            transform.position = new Vector3(transform.position.x, startPositionY, transform.position.z);
         }
     }
 }
