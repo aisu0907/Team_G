@@ -48,7 +48,7 @@ public class Item : MonoBehaviour
                 {
                     item_count[0]++;
                     reflect_speed += 0.5f;
-                    g_enemy.Instance.enemy_speed += reflect_speed;
+                    //g_enemy.Instance.enemy_speed += reflect_speed;
                     
                 }
             }
