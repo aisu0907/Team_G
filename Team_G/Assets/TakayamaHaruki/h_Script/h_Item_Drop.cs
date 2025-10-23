@@ -23,11 +23,11 @@ public class h_Item_Drop : MonoBehaviour
         v = new Vector2(collision.gameObject.transform.position.x, collision.gameObject.transform.position.y);
         //ランダムでアイテムを決める
         int randitem = Random.Range(0, itemList.Count);
+        if (collision.gameObject.tag == "Enemy")
+            if (collision.gameObject.GetComponent<g_enemy>().OnHitting == false)
+            {
+                Instantiate(itemList[randitem], v, Quaternion.identity);
 
-        if (collision.gameObject.GetComponent<g_enemy>().OnHitting == false)
-        {
-            Instantiate(itemList[randitem], v, Quaternion.identity);
-
-        }
+            }
     }
 }
