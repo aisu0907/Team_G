@@ -105,7 +105,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   fall_Velocity: -1
   item_id: 1
-  reflect_up: 0
+  max_up_count: 5
 --- !u!50 &5357444678368504429
 Rigidbody2D:
   serializedVersion: 5
