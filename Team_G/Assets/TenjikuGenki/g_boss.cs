@@ -1,9 +1,11 @@
 using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class g_boss : CharacterBase
 {
+    Rigidbody2D rb;
     int timer;
     int mode = 0;
     bool down = true;
@@ -11,34 +13,25 @@ public class g_boss : CharacterBase
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        // CharacterBaseŒp³
-        Health = 1;     //‘Ì—Í
-        Speed = 3.0f;   //ˆÚ“®‘¬“x
+        // CharacterBaseï¿½pï¿½ï¿½
+        Health = 1;     //ï¿½Ì—ï¿½
+        Speed = 3.0f;   //ï¿½Ú“ï¿½ï¿½ï¿½ï¿½x
+
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if (mode == 0)
-        //{
-        //    ++timer;
-        //    if (timer >= 600) mode = 1;
-        //}
-        //else if (mode == 1)
-        //{
-        //    if(down)
-        //    {
-        //        Vector2 v = new Vector2(transform.position.x, transform.position.y - 30);
-        //        transform.position = v;
-        //        if(transform.position.y <= 100) down = false;
-        //    }
-        //    else
-        //    {
-        //        Vector2 v = new Vector2(transform.position.x, transform.position.y + 30);
-        //        transform.position = v;
-        //        if (transform.position.y >= 100) down = false;
-        //    }
-        //}
+        switch (mode)
+        {
+            case 0:
+                timer++;
+                break;
+            case 1:
+                rush();
+                break;
+        }
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -52,5 +45,10 @@ public class g_boss : CharacterBase
                 SceneManager.LoadScene("Result_Scene");
             }
         }
+    }
+
+    void rush()
+    {
+        
     }
 }

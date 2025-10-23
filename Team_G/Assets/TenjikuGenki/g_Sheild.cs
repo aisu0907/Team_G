@@ -5,7 +5,7 @@ public class Sheild : MonoBehaviour
 {
     SpriteRenderer img;
     public int SheildColor = 0;
-    [SerializeField] List<Sprite> Img;   //‰æ‘œ
+    [SerializeField] List<Sprite> Img;   //ï¿½æ‘œ
     public static Sheild Instance { get; private set; }
 
     private void Awake()
@@ -22,7 +22,7 @@ public class Sheild : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // F•ÏXˆ—
+        // ï¿½Fï¿½ÏXï¿½ï¿½ï¿½ï¿½
         if (Input.GetKey(KeyCode.Z))
         {
             img.sprite = Img[0];
@@ -42,9 +42,9 @@ public class Sheild : MonoBehaviour
                 if (enemy.GetComponent<g_enemy>().EnemyColor == SheildColor)
                     if (enemy.GetComponent<g_enemy>().EnemyType != 2)
                     {
-                        //”½Ëˆ—
+                        //ï¿½ï¿½ï¿½Ëï¿½ï¿½ï¿½
                         Vector2 d = enemy.transform.position - transform.position;
-                        enemy.GetComponent<g_enemy>().v = d;
+                        enemy.GetComponent<g_enemy>().vec = d;
                         enemy.GetComponent<g_enemy>().OnHitting = true;
                     }
     }

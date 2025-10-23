@@ -5,59 +5,44 @@ using UnityEngine.UI;
 
 public class g_enemy : CharacterBase
 {
-    public Rigidbody2D rbody;   //•¨—
-    public Vector2 v;           //ƒxƒNƒgƒ‹
+    public Rigidbody2D rb;   //ï¿½ï¿½ï¿½ï¿½
+    public Vector2 vec;           //ï¿½xï¿½Nï¿½gï¿½ï¿½
 
-    public float speed = 1f;            //Å‚‘¬“x
-    public int EnemyColor = 1;          //F
-    public int EnemyType = 1;           //í—Ş
-    [SerializeField] List<Sprite> Img;   //‰æ‘œ
+    public Vector2 pos;
+    public float speed = 1f;            //ï¿½Åï¿½ï¿½ï¿½ï¿½x
+    public int EnemyColor = 1;          //ï¿½F
+    public int EnemyType = 1;           //ï¿½ï¿½ï¿½
+    [SerializeField] List<Sprite> Img;   //ï¿½æ‘œ
 
     public bool OnHitting = false;
     int timer = 0;
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
+    void Start()
     {
-        // CharacterBaseŒp³
-        Health = 1;     //‘Ì—Í
-        Speed = 1.0f;   //ˆÚ“®‘¬“x
-        
-
-        // ƒxƒNƒgƒ‹‚Ìİ’è
-        rbody = this.GetComponent<Rigidbody2D>();
-        v = new Vector2(0, -Speed);
-
-        // ©•ª‚ª’N‚È‚Ì‚©Œˆ‚ß‚é
-        // `FEí—Ş•Ò`
-        int[] Index = { Random.Range(0, 2), Random.Range(0, 2) };
-        EnemyType = Index[0];
-        EnemyColor = Index[1];
-
-        // `‰æ‘œ•Ò`
-        SpriteRenderer img = GetComponent<SpriteRenderer>();
-        img.sprite = Img[ Index[0] * 2 + Index[1] ];
+        rb = GetComponent<Rigidbody2D>();
+        transform.position = pos;
     }
 
     // Update is called once per frame
     void Update()
     {
-        rbody.linearVelocity = v;
+        rb.linearVelocity = vec;
     }
 
     void FixedUpdate()
     {
-        // ‘¬“x’²®
-        if (rbody.linearVelocity.magnitude != speed)
+        // ï¿½ï¿½ï¿½xï¿½ï¿½ï¿½ï¿½
+        if (rb.linearVelocity.magnitude != speed)
         {
-            rbody.linearVelocity = rbody.linearVelocity.normalized * speed;
+            rb.linearVelocity = vec.normalized * speed;
         }
 
-        // Õ“Ëˆ—
+        // ï¿½Õ“Ëï¿½ï¿½ï¿½ï¿½ï¿½
         if (OnHitting)
         {
             transform.Rotate(0, 0, 20);
-            //@”½ËƒEƒCƒ‹ƒX‚È‚ç•œ‹A‚µ‚Ä‚­‚é
+            //ï¿½@ï¿½ï¿½ï¿½ËƒEï¿½Cï¿½ï¿½ï¿½Xï¿½È‚ç•œï¿½Aï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½
             if (EnemyType == 1)
             {
                 timer++;
@@ -65,7 +50,7 @@ public class g_enemy : CharacterBase
                 {
                     OnHitting = false;
                     transform.localRotation = default;
-                    v = new Vector2(0, -speed);
+                    vec = new Vector2(0, -speed);
                     timer = 0;
                 }
             }
@@ -79,5 +64,28 @@ public class g_enemy : CharacterBase
             Destroy(gameObject);
             Destroy(collision.gameObject);
         }
+    }
+
+    public void Create(Vector2 _pos, Vector2 _vec, int _type, int _color, float _speed)
+    {
+        pos = _pos;
+        vec = _vec;
+        EnemyType = _type;
+        EnemyColor = _color;
+        speed = _speed;
+        SpriteRenderer img = GetComponent<SpriteRenderer>();
+        img.sprite = Img[EnemyType * 2 + EnemyColor];
+    }
+
+
+    public void RandCreate(Vector2 _pos, Vector2 _vec, float _speed)
+    {
+        pos = _pos;
+        vec = _vec;
+        EnemyType = Random.Range(0, 2);
+        EnemyColor = Random.Range(0, 2);
+        speed = _speed;
+        SpriteRenderer img = GetComponent<SpriteRenderer>();
+        img.sprite = Img[EnemyType * 2 + EnemyColor];
     }
 }

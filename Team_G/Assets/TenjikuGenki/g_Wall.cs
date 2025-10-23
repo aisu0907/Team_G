@@ -8,8 +8,8 @@ public class g_Wall : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            Vector2 tmp = new Vector2(-collision.gameObject.GetComponent<g_enemy>().v.x, collision.gameObject.GetComponent<g_enemy>().v.y);
-            collision.gameObject.GetComponent<g_enemy>().v = tmp;
+            Vector2 tmp = new Vector2(-collision.gameObject.GetComponent<g_enemy>().vec.x, collision.gameObject.GetComponent<g_enemy>().vec.y);
+            collision.gameObject.GetComponent<g_enemy>().vec = tmp;
         }
     }
 }

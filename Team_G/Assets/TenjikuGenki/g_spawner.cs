@@ -3,17 +3,17 @@ using UnityEngine;
 
 public class t_Enemy_Spwan : MonoBehaviour
 {
-    public GameObject enemy;    // ¶¬ƒIƒuƒWƒFƒNƒg
-    [SerializeField] Transform pos;                 // ¶¬ˆÊ’u
-    [SerializeField] Transform pos2;                // ¶¬ˆÊ’u
-    float minX, maxX, minY, maxY;                   // ¶¬”ÍˆÍ
+    public GameObject enemy;    // ï¿½ï¿½ï¿½ï¿½ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½g
+    [SerializeField] Transform pos;                 // ï¿½ï¿½ï¿½ï¿½ï¿½Ê’u
+    [SerializeField] Transform pos2;                // ï¿½ï¿½ï¿½ï¿½ï¿½Ê’u
+    float minX, maxX, minY, maxY;                   // ï¿½ï¿½ï¿½ï¿½ï¿½Íˆï¿½
 
     int frame = 0;
-    [SerializeField] int generateFrame = 30;        // ¶¬‚·‚éŠÔŠu
+    [SerializeField] int generateFrame = 30;        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÔŠu
 
     void Start()
     {
-        //ƒXƒ|[ƒ“ˆÊ’uİ’è
+        //ï¿½Xï¿½|ï¿½[ï¿½ï¿½ï¿½Ê’uï¿½İ’ï¿½
         minX = Mathf.Min(pos.position.x, pos2.position.x);
         maxX = Mathf.Max(pos.position.x, pos2.position.x);
         minY = Mathf.Min(pos.position.y, pos2.position.y);
@@ -28,12 +28,15 @@ public class t_Enemy_Spwan : MonoBehaviour
         {
             frame = 0;
 
-            // ƒ‰ƒ“ƒ_ƒ€‚Åí—Ş‚ÆˆÊ’u‚ğŒˆ‚ß‚é
+            // ï¿½ï¿½ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½Åï¿½Ş‚ÆˆÊ’uï¿½ï¿½ï¿½ï¿½ï¿½ß‚ï¿½
             float posX = Random.Range(minX, maxX);
             float posY = Random.Range(minY, maxY);
+            Debug.Log(posX + "+" + posY);
 
-            //ƒEƒCƒ‹ƒX‚ğƒXƒ|[ƒ“
-            //EnemyManager(new Vector2(posX,posY)
+            GameObject Enemy = Instantiate(enemy);
+            g_enemy e = Enemy.GetComponent<g_enemy>();
+            //e.Create( new Vector2(posX, posY), new Vector2(0, -3), 0, 0, 1);
+            e.RandCreate(new Vector2(posX, posY), new Vector2(0, -3), 1);
         }
     }
 }

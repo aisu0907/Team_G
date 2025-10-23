@@ -19,12 +19,12 @@ public class k_Sheild : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // ’Ç]ˆ—
+        // ï¿½Ç]ï¿½ï¿½ï¿½ï¿½
         vec = follow.transform.position;
         vec.y += 0.7f;
         transform.position = vec;
 
-        // F•ÏXˆ—
+        // ï¿½Fï¿½ÏXï¿½ï¿½ï¿½ï¿½
         if (Input.GetKey(KeyCode.Z))
         {
             img.sprite = RED;
@@ -46,25 +46,25 @@ public class k_Sheild : MonoBehaviour
                     {
                         Vector2 d = collision.gameObject.transform.position - transform.position;
 
-                        // y¬•ª‚ğ•K‚¸³iã•ûŒüj‚É‚·‚é
+                        // yï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Kï¿½ï¿½ï¿½ï¿½ï¿½iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½jï¿½É‚ï¿½ï¿½ï¿½
                         d.y = Mathf.Abs(d.y);
 
-                        // y¬•ª‚ª¬‚³‚·‚¬‚éi‚Ù‚Ú…•½j‚Ìê‡‚ÍÅ’áŒÀ‚ÌãŒü‚«ƒxƒNƒgƒ‹‚É‚·‚é
+                        // yï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½iï¿½Ù‚Úï¿½ï¿½ï¿½ï¿½jï¿½Ìê‡ï¿½ÍÅ’ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½xï¿½Nï¿½gï¿½ï¿½ï¿½É‚ï¿½ï¿½ï¿½
                         if (d.y < 0.2f)
                         {
                             d.y = 0.2f;
                         }
 
-                        // ³‹K‰»iŒü‚«‚¾‚¯‚ğg‚¤j
+                        // ï¿½ï¿½ï¿½Kï¿½ï¿½ï¿½iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½gï¿½ï¿½ï¿½j
                         d = d.normalized;
 
-                        collision.gameObject.GetComponent<g_enemy>().v = d;
+                        collision.gameObject.GetComponent<g_enemy>().vec = d;
                         collision.gameObject.GetComponent<g_enemy>().OnHitting = true;
                     }
                 }
                 else
                 {
-                    // ”í’eˆ—
+                    // ï¿½ï¿½eï¿½ï¿½ï¿½ï¿½
                     GameObject.Find("Player").GetComponent<Player>().Health--;
                     Destroy(collision.gameObject);
                     Debug.Log(GameObject.Find("Player").GetComponent<Player>().Health);
