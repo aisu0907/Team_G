@@ -12,11 +12,18 @@ public class g_boss : CharacterBase
     public int EnemyColor = 0;
     SpriteRenderer img;
     public List<Sprite> Img;
+    public GameObject Mark;
 
     int _Health;
     bool once = true;
     float n = 0;
     public bool did_vib = false;
+    public static g_boss Instance { get; private set; }
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -36,11 +43,14 @@ public class g_boss : CharacterBase
         {
             case 0:
                 timer++;
-                if (timer >= 200) mode = Random.Range(1,2);
+                if (timer >= 200) mode = Random.Range(1, 2);
                 break;
             case 1:
                 rush();
                 break;
+            // case 2:
+            //     target(1);
+            //     break;
         }
     }
     void OnTriggerEnter2D(Collider2D collision)
@@ -92,7 +102,7 @@ public class g_boss : CharacterBase
         }
     }
 
-    void vibration(Vector2 BasePos, int Time ,float range = 0.5f)
+    void vibration(Vector2 BasePos, int Time, float range = 0.5f)
     {
         ++timer;
         if (timer < Time)
@@ -114,4 +124,28 @@ public class g_boss : CharacterBase
             img.sprite = Img[EnemyColor];
         }
     }
+
+    // void target(int num)
+    // {
+    //     if (once)
+    //     {
+    //         timer = 0;
+    //         once = false;
+    //     }
+    //     else
+    //     {
+    //         ++timer;
+    //         if(timer % 20 == 0)
+    //         {
+    //             //Instantiate(Mark);
+    //             //Debug.Log("tes");
+    //             //GameObject Target = Instantiate(Mark);
+    //             // target t = Target.GetComponent<target>();
+    //             // t.init(200);
+    //             // mode = 0;
+    //             // once = true;
+    //             // timer = 0;
+    //         }
+    //     }
+    // }
 }
