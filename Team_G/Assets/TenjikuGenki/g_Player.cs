@@ -7,8 +7,8 @@ using UnityEngine.Animations;
 public class Player : CharacterBase
 {
     Rigidbody2D rbody; 
-    float axisH = 0.0f; //‰¡ƒxƒNƒgƒ‹
-    float axisV = 0.0f; //cƒxƒNƒgƒ‹
+    float axisH = 0.0f; //ï¿½ï¿½ï¿½xï¿½Nï¿½gï¿½ï¿½
+    float axisV = 0.0f; //ï¿½cï¿½xï¿½Nï¿½gï¿½ï¿½
     public GameObject sheild;
 
 
@@ -21,31 +21,31 @@ public class Player : CharacterBase
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        // CharacterBaseŒp³
-        Health = 3;     //‘Ì—Í
-        Speed = 3.0f;   //ˆÚ“®‘¬“x
+        // CharacterBaseï¿½pï¿½ï¿½
+        Health = 3;     //ï¿½Ì—ï¿½
+        Speed = 3.0f;   //ï¿½Ú“ï¿½ï¿½ï¿½ï¿½x
 
-        // RigidBody2D‚©‚çî•ñ‚ğæ“¾‚·‚é
+        // RigidBody2Dï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ“¾ï¿½ï¿½ï¿½ï¿½
         rbody = this.GetComponent<Rigidbody2D>();
 
-        // ‚‚Ì¶¬
+        // ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½
         Instantiate(sheild);
     }
 
     // Update is called once per frame
     void Update()
     {
-        // ƒL[æ“¾
+        // ï¿½Lï¿½[ï¿½æ“¾
         axisH = Input.GetAxisRaw("Horizontal");
         axisV = Input.GetAxisRaw("Vertical");
 
-        // ’Ç]ˆ—
+        // ï¿½Ç]ï¿½ï¿½ï¿½ï¿½
         Sheild.Instance.transform.position = new Vector2(transform.position.x, transform.position.y + 0.8f);
     }
 
     void FixedUpdate()
     {
-        //ˆÚ“®‚Ì“K—p
+        //ï¿½Ú“ï¿½ï¿½Ì“Kï¿½p
         rbody.linearVelocity = new Vector2(axisH * Speed, axisV * Speed);
     }
 
@@ -54,9 +54,13 @@ public class Player : CharacterBase
         if (collision.gameObject.tag == "Enemy")
             if (!collision.gameObject.GetComponent<g_enemy>().OnHitting)
             {
-                // ”í’eˆ—
+                // ï¿½ï¿½eï¿½ï¿½ï¿½ï¿½
                 Player.Instance.Health--;
                 Destroy(collision.gameObject);
+            }
+        if (collision.gameObject.tag == "Boss")
+        {
+                Player.Instance.Health--;
         }
     }
 }

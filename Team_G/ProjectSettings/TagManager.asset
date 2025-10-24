@@ -10,6 +10,7 @@ TagManager:
   - Red
   - Item
   - Sheild
+  - Boss
   layers:
   - Default
   - TransparentFX

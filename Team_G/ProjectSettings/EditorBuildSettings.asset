@@ -4,29 +4,6 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-  - enabled: 1
-<<<<<<< HEAD
-    path: Assets/kuriya_kota/Secen/k_gameover.unity
-    guid: 77fcfc4f314c4334dbf162f55f36549f
-  - enabled: 1
-    path: Assets/kuriya_kota/Secen/k_Play_Scene.unity
-    guid: 7009cef0f20526c41a608c885dd3b49d
-  - enabled: 1
-    path: Assets/kuriya_kota/Secen/k_title.unity
-    guid: 99f06a01bbbce1b4095d23fc1a6896ba
-  - enabled: 1
-    path: Assets/kuriya_kota/Secen/testresult.unity
-    guid: aa080cd1a75ebe34eb59768b89c3c66b
-=======
-    path: Assets/MainScenes/Gameover_Scene.unity
-    guid: e669854b1b622e24bb4b8c754a6d1148
-  - enabled: 1
-    path: Assets/MainScenes/Play_Scene.unity
-    guid: 1aef28743e23d384d8f23a52f992f34e
-  - enabled: 1
-    path: Assets/MainScenes/Result_Scene.unity
-    guid: df0cb020dbdac75478d4dc607d343a44
->>>>>>> a90385c3bff21aa4bfc0dc7282b07ed6946d9a27
+  m_Scenes: []
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
