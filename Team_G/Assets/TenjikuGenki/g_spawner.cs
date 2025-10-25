@@ -7,8 +7,10 @@ public class t_Enemy_Spwan : MonoBehaviour
     [SerializeField] Transform pos;                 // �����ʒu
     [SerializeField] Transform pos2;                // �����ʒu
     float minX, maxX, minY, maxY;                   // �����͈�
+    public float Enemy_speed;
 
     int frame = 0;
+    List<Sprite> Img = new List<Sprite>();
     [SerializeField] int generateFrame = 30;        // ��������Ԋu
 
     void Start()
@@ -31,12 +33,18 @@ public class t_Enemy_Spwan : MonoBehaviour
             // �����_���Ŏ�ނƈʒu�����߂�
             float posX = Random.Range(minX, maxX);
             float posY = Random.Range(minY, maxY);
-            Debug.Log(posX + "+" + posY);
 
             GameObject Enemy = Instantiate(enemy);
             g_enemy e = Enemy.GetComponent<g_enemy>();
-            //e.Create( new Vector2(posX, posY), new Vector2(0, -3), 0, 0, 1);
-            e.RandCreate(new Vector2(posX, posY), new Vector2(0, -3), 3);
+            //e.RandCreate(new Vector2(posX, posY), new Vector2(0, -3), 3);
+
+            // Add Components
+            Debug.Log(posX + "+" + +posY);
+            e.EnemyType = Random.Range(0, 2);
+            e.EnemyColor = Random.Range(0, 2);
+            e.speed = -Enemy_speed;
+            e.pos = new Vector2(posX, posY);
+            e.vec = new Vector2(0, -3);
         }
     }
 }

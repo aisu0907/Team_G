@@ -22,6 +22,8 @@ public class g_enemy : CharacterBase
     {
         rb = GetComponent<Rigidbody2D>();
         transform.position = pos;
+        SpriteRenderer img = GetComponent<SpriteRenderer>();
+        img.sprite = Img[EnemyType * 2 + EnemyColor];
     }
 
     // Update is called once per frame
@@ -73,19 +75,17 @@ public class g_enemy : CharacterBase
         EnemyType = _type;
         EnemyColor = _color;
         speed = _speed;
-        SpriteRenderer img = GetComponent<SpriteRenderer>();
-        img.sprite = Img[EnemyType * 2 + EnemyColor];
     }
 
 
-    public void RandCreate(Vector2 _pos, Vector2 _vec, float _speed)
-    {
-        pos = _pos;
-        vec = _vec;
-        EnemyType = Random.Range(0, 2);
-        EnemyColor = Random.Range(0, 2);
-        speed = _speed;
-        SpriteRenderer img = GetComponent<SpriteRenderer>();
-        img.sprite = Img[EnemyType * 2 + EnemyColor];
-    }
+    // public void RandCreate(Vector2 _pos, Vector2 _vec, float _speed)
+    // {
+    //     pos = _pos;
+    //     vec = _vec;
+    //     EnemyType = Random.Range(0, 2);
+    //     EnemyColor = Random.Range(0, 2);
+    //     speed = _speed;
+    //     SpriteRenderer img = GetComponent<SpriteRenderer>();
+    //     img.sprite = Img[EnemyType * 2 + EnemyColor];
+    // }
 }

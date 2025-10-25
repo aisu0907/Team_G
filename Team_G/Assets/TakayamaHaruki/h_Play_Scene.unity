@@ -145,6 +145,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3457435008533907693, guid: 35484c594a614a545b8db4efbeaf555c, type: 3}
     - target: {fileID: -4194156144153558061, guid: 13d9d2d191a6aff4ca50ac6e84ca5b8d, type: 3}
+      propertyPath: Enemy_speed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -4194156144153558061, guid: 13d9d2d191a6aff4ca50ac6e84ca5b8d, type: 3}
       propertyPath: generateFrame
       value: 900
       objectReference: {fileID: 0}
