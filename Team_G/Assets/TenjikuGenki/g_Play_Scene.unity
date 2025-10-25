@@ -1294,7 +1294,11 @@ PrefabInstance:
     - target: {fileID: 8710821080754064005, guid: 45a3963f61df15f43b0a5ffcba5fed10, type: 3}
       propertyPath: Mark
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2500117277771157786, guid: 5384140abcedf0d4db172b38831ac788, type: 3}
+    - target: {fileID: 8710821080754064005, guid: 45a3963f61df15f43b0a5ffcba5fed10, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 3457435008533907693, guid: 35484c594a614a545b8db4efbeaf555c, type: 3}
     - target: {fileID: 8710821080754064005, guid: 45a3963f61df15f43b0a5ffcba5fed10, type: 3}
       propertyPath: targetImg
       value: 
