@@ -15,14 +15,14 @@ public class Item : MonoBehaviour
     public float up_sheild = 0.5f;            //シールド範囲上昇率
 
     private int item_count;                   //アイテム取得回数   
-    private Vector2 sheild_size;
+    private Vector3 sheild_size;
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
     {
         rb = this.GetComponent<Rigidbody2D>();
 
-        sheild_size = new Vector2(3, 3);
+        sheild_size = new Vector3(3, 3, 3);
     }
 
     // Update is called once per frame
@@ -52,7 +52,7 @@ public class Item : MonoBehaviour
                 //反射スピード
                 else if (item_id == 1)
                 {
-                    //g_enemy.Instance.enemy_speed += reflect_speed;
+                   
                 }
                 //反射範囲
                 else if (item_id == 2)

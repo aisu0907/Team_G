@@ -36,7 +36,7 @@ public class t_Enemy_Spwan : MonoBehaviour
             GameObject Enemy = Instantiate(enemy);
             g_enemy e = Enemy.GetComponent<g_enemy>();
             //e.Create( new Vector2(posX, posY), new Vector2(0, -3), 0, 0, 1);
-            e.RandCreate(new Vector2(posX, posY), new Vector2(0, -3), 1);
+            e.RandCreate(new Vector2(posX, posY), new Vector2(0, -3), 3);
         }
     }
 }

@@ -3,7 +3,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class h_Item_Drop : MonoBehaviour
+public class Item_Drop : MonoBehaviour
 {
     [SerializeField] List<GameObject> itemList;
     Vector2 v;
