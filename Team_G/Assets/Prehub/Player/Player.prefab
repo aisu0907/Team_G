@@ -179,6 +179,7 @@ MonoBehaviour:
   Health: 3
   Speed: 2
   sheild: {fileID: 5988915149965031515, guid: b36ce76bff42ffc429c359ef883cf6a9, type: 3}
+  bom: 0
 --- !u!95 &-5964972176224715530
 Animator:
   serializedVersion: 7

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4924965865122860732}
   - component: {fileID: 2258269911255788068}
-  - component: {fileID: 8679282065261823953}
   - component: {fileID: -4194156144153558061}
   m_Layer: 0
   m_Name: Spawner
@@ -89,23 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8679282065261823953
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 691851686528095591}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 570fe1918af289947926c33297fcfc01, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyList:
-  - {fileID: 3457435008533907693, guid: 35484c594a614a545b8db4efbeaf555c, type: 3}
-  pos: {fileID: 0}
-  pos2: {fileID: 0}
-  generateFrame: 900
 --- !u!114 &-4194156144153558061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,4 +103,5 @@ MonoBehaviour:
   enemy: {fileID: 3457435008533907693, guid: 35484c594a614a545b8db4efbeaf555c, type: 3}
   pos: {fileID: 0}
   pos2: {fileID: 0}
+  Enemy_speed: 0
   generateFrame: 30

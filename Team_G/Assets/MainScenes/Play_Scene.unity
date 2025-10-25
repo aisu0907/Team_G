@@ -145,8 +145,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3457435008533907693, guid: 35484c594a614a545b8db4efbeaf555c, type: 3}
     - target: {fileID: -4194156144153558061, guid: 13d9d2d191a6aff4ca50ac6e84ca5b8d, type: 3}
+      propertyPath: Enemy_speed
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: -4194156144153558061, guid: 13d9d2d191a6aff4ca50ac6e84ca5b8d, type: 3}
       propertyPath: generateFrame
-      value: 900
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 691851686528095591, guid: 13d9d2d191a6aff4ca50ac6e84ca5b8d, type: 3}
       propertyPath: m_Name
@@ -200,14 +204,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8679282065261823953, guid: 13d9d2d191a6aff4ca50ac6e84ca5b8d, type: 3}
-      propertyPath: pos
-      value: 
-      objectReference: {fileID: 379381909}
-    - target: {fileID: 8679282065261823953, guid: 13d9d2d191a6aff4ca50ac6e84ca5b8d, type: 3}
-      propertyPath: pos2
-      value: 
-      objectReference: {fileID: 9790353}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -492,6 +488,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3687056742159463455, guid: 762027373fe739241a966b92594b7fcc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4547772086917570797, guid: 762027373fe739241a966b92594b7fcc, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4547772086917570797, guid: 762027373fe739241a966b92594b7fcc, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4547772086917570797, guid: 762027373fe739241a966b92594b7fcc, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4547772086917570797, guid: 762027373fe739241a966b92594b7fcc, type: 3}
+      propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4547772086917570797, guid: 762027373fe739241a966b92594b7fcc, type: 3}

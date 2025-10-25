@@ -10,7 +10,7 @@ public class Player : CharacterBase
     float axisH = 0.0f; //���x�N�g��
     float axisV = 0.0f; //�c�x�N�g��
     public GameObject sheild;
-
+    public int bom = 0;
 
     public static Player Instance { get; private set; }
 
