@@ -40,9 +40,6 @@ public class g_boss : CharacterBase
     void Start()
     {
         // CharacterBase�p��
-        Health = 2;     //�̗�
-        Speed = 3.0f;   //�ړ����x
-
         rb = GetComponent<Rigidbody2D>();
         img = GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();

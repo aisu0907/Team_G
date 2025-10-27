@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65e4a4cf2c8c52e40b8fe51b1e6f03f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 1
+  Health: 10
   Speed: 0
   timer: 0
   reflect: 0
@@ -161,6 +161,8 @@ MonoBehaviour:
   Mark: {fileID: 2500117277771157786, guid: 5384140abcedf0d4db172b38831ac788, type: 3}
   enemy: {fileID: 3457435008533907693, guid: 35484c594a614a545b8db4efbeaf555c, type: 3}
   did_vib: 0
+  sound1: {fileID: 8300000, guid: 31d03cf682f2e4d489f2b82e334708f5, type: 3}
+  sound2: {fileID: 8300000, guid: 31d03cf682f2e4d489f2b82e334708f5, type: 3}
 --- !u!50 &4180413312306793971
 Rigidbody2D:
   serializedVersion: 5
@@ -187,4 +189,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 6

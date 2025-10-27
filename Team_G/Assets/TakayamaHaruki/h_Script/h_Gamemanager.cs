@@ -24,16 +24,11 @@ public class GameManager : MonoBehaviour
 
         frame++;
 
-        if (frame == 600)
+        if (frame == 60)
         {
             spawner.GetComponent<t_Enemy_Spwan>().spawn_switch = false;
             item_drop.GetComponent<Item_Drop>().drop_switch = false;
             Instantiate(boss, new Vector2(-2, 3), Quaternion.identity);
-        }
-
-        if (g_boss.Instance.Health <= 0)
-        {
-            SceneManager.LoadScene("Result_Scene");
         }
     }
 }

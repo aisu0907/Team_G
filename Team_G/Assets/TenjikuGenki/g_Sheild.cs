@@ -51,8 +51,8 @@ public class Sheild : MonoBehaviour
 
 
         }
-        else if (enemy.tag == "Boss")
-            if (enemy.GetComponent<g_boss>().EnemyColor == SheildColor)
-                enemy.GetComponent<g_boss>().reflect = true;
+        //else if (enemy.tag == "Boss")
+        //    if (enemy.GetComponent<g_boss>().EnemyColor == SheildColor)
+        //        enemy.GetComponent<g_boss>().reflect = true;
     }
 }
