@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 96177109539415706}
   - component: {fileID: 5892817592725587341}
-  - component: {fileID: 2371485696048610588}
+  - component: {fileID: -1045525346173579588}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -88,7 +88,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2371485696048610588
+--- !u!114 &-1045525346173579588
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,11 +97,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3045932546470836219}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d66bd28e231fa3b4b85b58c87be4596d, type: 3}
+  m_Script: {fileID: 11500000, guid: c13208dc5fb8b1242a4a3f546b0f47ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   boss_health: 5
   nextSceneName: 
+  boss: {fileID: 870741779963481172, guid: 45a3963f61df15f43b0a5ffcba5fed10, type: 3}
   player: {fileID: 0}
-  spawner: {fileID: 0}
-  a: {fileID: 0}
+  spawner: {fileID: 3457435008533907693, guid: 35484c594a614a545b8db4efbeaf555c, type: 3}
+  item_drop: {fileID: 3457435008533907693, guid: 35484c594a614a545b8db4efbeaf555c, type: 3}

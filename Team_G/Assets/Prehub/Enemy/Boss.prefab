@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8710821080754064005}
   - component: {fileID: 4180413312306793971}
   m_Layer: 0
-  m_Name: boss_red1_0
+  m_Name: Boss
   m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -158,6 +158,8 @@ MonoBehaviour:
   Img:
   - {fileID: -8784003655823627391, guid: c7a4d6d5f118e2b42bf2dbbf21b060d5, type: 3}
   - {fileID: -8430282202468897226, guid: 93e6c17ad0a136949bbb8ff85a1059e4, type: 3}
+  Mark: {fileID: 2500117277771157786, guid: 5384140abcedf0d4db172b38831ac788, type: 3}
+  enemy: {fileID: 3457435008533907693, guid: 35484c594a614a545b8db4efbeaf555c, type: 3}
   did_vib: 0
 --- !u!50 &4180413312306793971
 Rigidbody2D:
