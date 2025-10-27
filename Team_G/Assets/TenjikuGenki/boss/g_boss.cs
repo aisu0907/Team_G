@@ -33,11 +33,12 @@ public class g_boss : CharacterBase
     void Start()
     {
         // CharacterBase�p��
-        Health = 10;     //�̗�
-        Speed = 0.0f;   //�ړ����x
+        Health = 2;     //�̗�
+        Speed = 3.0f;   //�ړ����x
 
         rb = GetComponent<Rigidbody2D>();
         img = GetComponent<SpriteRenderer>();
+        Application.targetFrameRate = 60;
     }
 
     // Update is called once per frame
@@ -86,7 +87,7 @@ public class g_boss : CharacterBase
         if (!did_vib) vibration(transform.position, 60);
         else
         {
-            n += 0.05f;
+            n += 0.5f;
             if (!reflect)
             {
                 rb.linearVelocity = new Vector2(0, -Speed - n);
@@ -128,6 +129,7 @@ public class g_boss : CharacterBase
             did_vib = true;
             EnemyColor = Random.Range(0, 2);
             img.sprite = Img[EnemyColor];
+            Debug.Log("test");
         }
     }
 
