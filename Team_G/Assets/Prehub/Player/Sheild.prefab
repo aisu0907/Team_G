@@ -168,5 +168,5 @@ MonoBehaviour:
   puls_bom: 1
   heal_hp: 1
   up_speed: 0.5
-  up_sheild: 0.5
+  up_sheild: 1
   up_reflect_speed: 0.5

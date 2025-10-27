@@ -8,6 +8,7 @@ public class t_Enemy_Spwan : MonoBehaviour
     [SerializeField] Transform pos2;                // �����ʒu
     float minX, maxX, minY, maxY;                   // �����͈�
     public float Enemy_speed;
+    public bool spawn_switch = true;
 
     int frame = 0;
     List<Sprite> Img = new List<Sprite>();
@@ -26,25 +27,28 @@ public class t_Enemy_Spwan : MonoBehaviour
     {
         ++frame;
 
-        if (frame > generateFrame)
+        if (spawn_switch)
         {
-            frame = 0;
+            if (frame > generateFrame)
+            {
+                frame = 0;
 
-            // �����_���Ŏ�ނƈʒu�����߂�
-            float posX = Random.Range(minX, maxX);
-            float posY = Random.Range(minY, maxY);
+                // �����_���Ŏ�ނƈʒu�����߂�
+                float posX = Random.Range(minX, maxX);
+                float posY = Random.Range(minY, maxY);
 
-            GameObject Enemy = Instantiate(enemy);
-            g_enemy e = Enemy.GetComponent<g_enemy>();
-            //e.RandCreate(new Vector2(posX, posY), new Vector2(0, -3), 3);
+                GameObject Enemy = Instantiate(enemy);
+                g_enemy e = Enemy.GetComponent<g_enemy>();
+                //e.RandCreate(new Vector2(posX, posY), new Vector2(0, -3), 3);
 
-            // Add Components
-            Debug.Log(posX + "+" + +posY);
-            e.EnemyType = Random.Range(0, 2);
-            e.EnemyColor = Random.Range(0, 2);
-            e.speed = -Enemy_speed;
-            e.pos = new Vector2(posX, posY);
-            e.vec = new Vector2(0, -3);
+                // Add Components
+                Debug.Log(posX + "+" + +posY);
+                e.EnemyType = Random.Range(0, 2);
+                e.EnemyColor = Random.Range(0, 2);
+                e.speed = -Enemy_speed;
+                e.pos = new Vector2(posX, posY);
+                e.vec = new Vector2(0, -3);
+            }
         }
     }
 }
