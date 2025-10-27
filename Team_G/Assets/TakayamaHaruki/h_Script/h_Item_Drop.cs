@@ -7,10 +7,11 @@ public class Item_Drop : MonoBehaviour
 {
     public GameObject Life_item;
     [SerializeField] List<GameObject> itemList;
-    Vector2 v;
+    public bool drop_switch = true;
 
     private int life_drop = 0;
     private int randitem;
+    private Vector2 v;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -30,13 +31,15 @@ public class Item_Drop : MonoBehaviour
         randitem = Random.Range(0, itemList.Count);
         life_drop = Random.Range(0, 9);
         if (collision.gameObject.tag == "Enemy")
-            if (collision.gameObject.GetComponent<g_enemy>().OnHitting == false)
-            {
-                Instantiate(itemList[randitem], v, Quaternion.identity);
+            if(drop_switch)
+                if (collision.gameObject.GetComponent<g_enemy>().OnHitting == false)
+                {
+                    Instantiate(itemList[randitem], v, Quaternion.identity);
 
-                if(life_drop < 3)
-                    Instantiate(Life_item, v, Quaternion.identity);
+                    if (life_drop < 3)
+                        Instantiate(Life_item, v, Quaternion.identity);
 
-            }
+                }
+            
     }
 }

@@ -10,24 +10,27 @@ public class k_ui_title : MonoBehaviour
 
     public int scene_arrow=0;
 
-
-
     public Vector2 vec;
-   
+
+    public AudioClip sound1;
+    public AudioClip sound2;
+    AudioSource audioSource;
 
     void Start()
     {
-       
+        audioSource = GetComponent<AudioSource>(); 
     }
 
     void Update()
     {
         if (Input.GetKeyUp(KeyCode.UpArrow)) {
-            scene_arrow++; 
+            scene_arrow++;
+            audioSource.PlayOneShot(sound1);
         }
 
         if (Input.GetKeyUp(KeyCode.DownArrow)) {
             scene_arrow--;
+            audioSource.PlayOneShot(sound1);
         }
 
         if (scene_arrow < 0) scene_arrow = 1;
@@ -49,26 +52,33 @@ public class k_ui_title : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.Z))
         {
-            switch (scene_arrow) {
-                case 0:
-                    SceneManager.LoadScene("k_Play_Scene");
-                    break;
-                case 1:
-                    EndGame();
-                    break;
-            }
+            audioSource.PlayOneShot(sound2);
+            StartCoroutine(WaitAndExecute(scene_arrow)); //コルーチンを呼び出す
         }
+    }
 
-     }
+    private System.Collections.IEnumerator WaitAndExecute(int selected)
+    {
+        // 決定音が鳴り終わるまで少し待つ
+        yield return new WaitForSeconds(0.5f);
+
+        switch (selected)
+        {
+            case 0:
+                SceneManager.LoadScene("Play_Scene");
+                break;
+            case 1:
+                EndGame();
+                break;
+        }
+    }
+
     private void EndGame()
     {
-
 #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
+        UnityEditor.EditorApplication.isPlaying = false;
 #else
-    Application.Quit();
+        Application.Quit();
 #endif
-        
-
     }
 }
