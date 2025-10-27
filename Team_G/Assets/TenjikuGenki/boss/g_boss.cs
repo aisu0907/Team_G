@@ -38,7 +38,6 @@ public class g_boss : CharacterBase
 
         rb = GetComponent<Rigidbody2D>();
         img = GetComponent<SpriteRenderer>();
-        Application.targetFrameRate = 60;
     }
 
     // Update is called once per frame
