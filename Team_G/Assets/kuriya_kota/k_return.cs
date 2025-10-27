@@ -6,9 +6,9 @@ public class k_return : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.Return))
+        if(Input.GetKey(KeyCode.Z))
         {
-            SceneManager.LoadScene("Play_Scene");
+            SceneManager.LoadScene("Title");
         }
     }
 }
