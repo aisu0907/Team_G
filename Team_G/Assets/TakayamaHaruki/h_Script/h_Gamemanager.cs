@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
 
         frame++;
 
-        if (frame == 60)
+        if (frame == 3600)
         {
             spawner.GetComponent<t_Enemy_Spwan>().spawn_switch = false;
             item_drop.GetComponent<Item_Drop>().drop_switch = false;
