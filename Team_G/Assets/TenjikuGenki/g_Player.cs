@@ -38,7 +38,6 @@ public class Player : CharacterBase
         // �L�[�擾
         axisH = Input.GetAxisRaw("Horizontal");
         axisV = Input.GetAxisRaw("Vertical");
-        Debug.Log(axisV);
         if (0.2 <= transform.position.y) axisV = -0.05f;
         if (transform.position.y <= -4.5) axisV = 0.05f;
 

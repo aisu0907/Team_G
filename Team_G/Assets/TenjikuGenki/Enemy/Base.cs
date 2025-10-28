@@ -1,7 +1,14 @@
 using UnityEngine;
 
-public class BottomArea : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
+    public int Type, Color;
+    public Vector2 Vec;
+    protected float Speed;
+    protected int Score;
+    protected int Power;
+    public bool OnHitting = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -12,13 +19,5 @@ public class BottomArea : MonoBehaviour
     void Update()
     {
 
-    }
-
-    void OnTriggerExit2D(Collider2D collision)
-    {
-        if(collision.gameObject.tag == "Enemy")
-        {
-            Destroy(collision.gameObject);
-        }
     }
 }
