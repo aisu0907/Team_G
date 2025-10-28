@@ -1,10 +1,9 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class h_GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
-    public int boss_health = 5;
-    public string nextSceneName;
+    public GameObject boss;
     public GameObject player;
     public GameObject spawner;
     public GameObject item_drop;
@@ -25,20 +24,11 @@ public class h_GameManager : MonoBehaviour
 
         frame++;
 
-        if (frame >= 36000)
+        if (frame == 60)
         {
             spawner.GetComponent<t_Enemy_Spwan>().spawn_switch = false;
             item_drop.GetComponent<Item_Drop>().drop_switch = false;
+            Instantiate(boss, new Vector2(-2, 3), Quaternion.identity);
         }
-
-        if (boss_health <= 0)
-        {
-            SceneManager.LoadScene("Result_Scene");
-        }
-    }
-
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-
     }
 }
