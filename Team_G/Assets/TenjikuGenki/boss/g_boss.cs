@@ -217,9 +217,9 @@ public class g_boss : CharacterBase
                 GameObject Enemy = Instantiate(enemy, transform.position, Quaternion.identity);
                 g_enemy e = Enemy.GetComponent<g_enemy>();
                 Vector2 direction = (t.transform.position - Enemy.transform.position).normalized;
-                if (timer == 270) { e.Create(transform.position, direction, 0, colors[0], 8); audioSource.PlayOneShot(sound1); }
-                if (timer == 300) { e.Create(transform.position, direction, 0, colors[1], 8); audioSource.PlayOneShot(sound1); }
-                if (timer == 330) { e.Create(transform.position, direction, 0, colors[2], 8); audioSource.PlayOneShot(sound1); }
+                if (timer == 270) { e.Create(transform.position, direction, 0, colors[0], 16); audioSource.PlayOneShot(sound1); }
+                if (timer == 300) { e.Create(transform.position, direction, 0, colors[1], 16); audioSource.PlayOneShot(sound1); }
+                if (timer == 330) { e.Create(transform.position, direction, 0, colors[2], 16); audioSource.PlayOneShot(sound1); }
                 }
         }
         else if (timer == 360)
