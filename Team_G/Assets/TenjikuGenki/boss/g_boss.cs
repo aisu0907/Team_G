@@ -22,6 +22,13 @@ public class g_boss : CharacterBase
     GameObject[] Target;
     GameObject t;
     int[] colors = new int[3];
+
+
+    //サウンド
+    public AudioClip sound1;
+    public AudioClip sound2;
+    AudioSource audioSource;
+
     public static g_boss Instance { get; private set; }
 
     private void Awake()
@@ -33,11 +40,9 @@ public class g_boss : CharacterBase
     void Start()
     {
         // CharacterBase�p��
-        Health = 2;     //�̗�
-        Speed = 3.0f;   //�ړ����x
-
         rb = GetComponent<Rigidbody2D>();
         img = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -59,6 +64,13 @@ public class g_boss : CharacterBase
                 rockon();
                 break;
         }
+
+        if (Health == 0)
+        {
+            Destroy(gameObject);
+            SceneManager.LoadScene("Result_Scene");
+        }
+
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -66,11 +78,6 @@ public class g_boss : CharacterBase
         {
             --Health;
             Destroy(collision.gameObject);
-            if (Health == 0)
-            {
-                Destroy(gameObject);
-                SceneManager.LoadScene("Result_Scene");
-            }
         }
     }
 
@@ -198,9 +205,10 @@ public class g_boss : CharacterBase
             {
                 if (EnemyColor == 0) { colors[0] = 1; img.sprite = Img[colors[0]]; }
                 if (EnemyColor == 1) { colors[0] = 0; img.sprite = Img[colors[0]]; }
+                audioSource.PlayOneShot(sound1);
             }
-            if (timer == 210) { colors[1] = Random.Range(0, 2); img.sprite = Img[colors[1]]; }
-            if (timer == 240) { colors[2] = Random.Range(0, 2); img.sprite = Img[colors[2]]; }
+            if (timer == 210) { colors[1] = Random.Range(0, 2); img.sprite = Img[colors[1]]; audioSource.PlayOneShot(sound1); }
+            if (timer == 240) { colors[2] = Random.Range(0, 2); img.sprite = Img[colors[2]]; audioSource.PlayOneShot(sound1); }
         }
         else if (270 <= timer && timer <= 330)
         {
@@ -209,10 +217,10 @@ public class g_boss : CharacterBase
                 GameObject Enemy = Instantiate(enemy, transform.position, Quaternion.identity);
                 g_enemy e = Enemy.GetComponent<g_enemy>();
                 Vector2 direction = (t.transform.position - Enemy.transform.position).normalized;
-                if (timer == 270) e.Create(transform.position, direction, 0, colors[0], 8);
-                if (timer == 300) e.Create(transform.position, direction, 0, colors[1], 8);
-                if (timer == 330) e.Create(transform.position, direction, 0, colors[2], 8);
-            }
+                if (timer == 270) { e.Create(transform.position, direction, 0, colors[0], 8); audioSource.PlayOneShot(sound1); }
+                if (timer == 300) { e.Create(transform.position, direction, 0, colors[1], 8); audioSource.PlayOneShot(sound1); }
+                if (timer == 330) { e.Create(transform.position, direction, 0, colors[2], 8); audioSource.PlayOneShot(sound1); }
+                }
         }
         else if (timer == 360)
         {

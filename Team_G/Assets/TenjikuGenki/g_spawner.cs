@@ -21,7 +21,8 @@ public class t_Enemy_Spwan : MonoBehaviour
         maxX = Mathf.Max(pos.position.x, pos2.position.x);
         minY = Mathf.Min(pos.position.y, pos2.position.y);
         maxY = Mathf.Max(pos.position.y, pos2.position.y);
-    }
+        spawn_switch = true;
+}
 
     void Update()
     {
