@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 
-public class g_enemy : CharacterBase
+public class g_enemy : MonoBehaviour
 {
     public Rigidbody2D rb;   //����
     public Vector2 vec;           //�x�N�g��

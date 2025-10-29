@@ -3,9 +3,9 @@ using UnityEngine;
 public class ItemBase : MonoBehaviour
 {
     //アイテム
-    protected int speed_item = 0;
-    protected int reflect_speed_item = 1;
-    protected int sheild_item = 2;
-    protected int life_item = 3;
-    protected int bomb_item = 4;
+    protected int speed_item = 0;  //スピードアイテム
+    protected int reflect_item = 1;//反射スピードアイテム
+    protected int sheild_item = 2; //反射範囲アイテム
+    protected int life_item = 3;   //回復アイテム
+    protected int bomb_item = 4;   //ボムアイテム
 }
