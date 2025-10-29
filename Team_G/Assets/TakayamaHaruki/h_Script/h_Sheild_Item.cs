@@ -88,6 +88,7 @@ public class Sheild_Item : ItemBase
 
             //ƒ{ƒ€
             if (collision.GetComponent<Item>().item_id == bomb_item)
+                //ƒ{ƒ€ŠŽ”‚ªÅ‘å‚¶‚á‚È‚¢ê‡
                 if (max_bom > Player.Instance.bom)
                 {
 
