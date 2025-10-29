@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class k_kill_death : MonoBehaviour
+public class Kill_Death : MonoBehaviour
 {
     public GameObject player;
     // Start is called once before the first execution of Update after the MonoBehaviour is created

@@ -1,6 +1,8 @@
+//‰¡‚Ì•Ç
+
 using UnityEngine;
 
-public class k_Wall : MonoBehaviour
+public class Side_Wall : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 

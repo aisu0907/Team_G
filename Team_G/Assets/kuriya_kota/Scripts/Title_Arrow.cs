@@ -2,7 +2,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class k_ui_title : MonoBehaviour
+public class Title_Arrow : MonoBehaviour
 {
     public GameObject arrow;  // –îˆó
     public GameObject start;    

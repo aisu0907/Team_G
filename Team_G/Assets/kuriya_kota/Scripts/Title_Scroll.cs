@@ -1,8 +1,12 @@
+//タイトル用のスクロール
+//プレイシーンより遅め
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TiteleScroll : MonoBehaviour
+public class Titele_Scroll : MonoBehaviour
 {
     public float speed = 0.5f;          // スクロール速度
     public float resetPositionY = -10f; // どこまで下がったらリセットするか
