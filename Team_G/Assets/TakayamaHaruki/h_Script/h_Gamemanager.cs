@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        //ƒvƒŒƒCƒ„[‚Ì‘Ì—Í‚ª0ˆÈ‰º‚É‚È‚Á‚½‚ç
         if (player.GetComponent<Player>().Health <= 0)
         {
             SceneManager.LoadScene("Gameover_Scene");
