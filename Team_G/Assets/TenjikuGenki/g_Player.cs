@@ -4,13 +4,15 @@ using System.Collections;
 using UnityEngine.UIElements;
 using UnityEngine.Animations;
 
-public class Player : CharacterBase
+public class Player : MonoBehaviour
 {
     Rigidbody2D rbody; 
     float axisH = 0.0f; //���x�N�g��
     float axisV = 0.0f; //�c�x�N�g��
     public GameObject sheild;
     public int bom = 0;
+    public int Health = 3;     //�̗�
+    public float Speed = 3.0f;   //�ړ����x
 
     public static Player Instance { get; private set; }
 
@@ -21,10 +23,6 @@ public class Player : CharacterBase
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        // CharacterBase�p��
-        Health = 3;     //�̗�
-        Speed = 3.0f;   //�ړ����x
-
         // RigidBody2D��������擾����
         rbody = this.GetComponent<Rigidbody2D>();
 

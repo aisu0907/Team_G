@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int Type, Color;
-    public Vector2 Vec;
-    protected float Speed;
-    protected int Score;
-    protected int Power;
-    public bool OnHitting = false;
+    public int type, color;
+    public Vector2 vec;
+    protected float speed;
+    protected int score;
+    protected int power;
+    public bool on_hitting = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

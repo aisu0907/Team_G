@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class g_boss : CharacterBase
+public class g_boss : MonoBehaviour
 {
     Rigidbody2D rb;
     public int timer;
@@ -14,6 +14,8 @@ public class g_boss : CharacterBase
     public GameObject Mark;
     public GameObject enemy;
 
+    public float Speed;
+    public int Health;
     int _Health;
     bool once = true;
     float n = 0;

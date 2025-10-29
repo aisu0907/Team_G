@@ -19,36 +19,36 @@ public class ENormal : Enemy
     void Update()
     {
         // Spin
-        if (OnHitting)
+        if (on_hitting)
             transform.Rotate(0, 0, 20);
     }
 
     void FixedUpdate()
     {
         // Fix Vector
-        rb.linearVelocity = Vec;
-        if (rb.linearVelocity.magnitude != Speed)
+        rb.linearVelocity = vec;
+        if (rb.linearVelocity.magnitude != speed)
         {
-            rb.linearVelocity = Vec.normalized * Speed;
+            rb.linearVelocity = vec.normalized * speed;
         }
     }
 
     public void Init(EnemyBase db, Vector2 _Vec, int _Color)
     {
         // Initialize Status
-        Type = (int)db.Type;
-        Color = _Color;
-        Vec = _Vec;
-        Speed = db.Speed;
-        Score = db.Score;
-        Power = db.Power;
+        type = (int)db.Type;
+        color = _Color;
+        vec = _Vec;
+        speed = db.Speed;
+        score = db.Score;
+        power = db.Power;
 
         // Change Img
         SpriteRenderer img = GetComponent<SpriteRenderer>();
-        img.sprite = Img[Color];
+        img.sprite = Img[color];
 
         // Decision Vector
         rb = GetComponent<Rigidbody2D>();
-        rb.linearVelocity = Vec * Speed;
+        rb.linearVelocity = vec * speed;
     }
 }
