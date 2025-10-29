@@ -1,7 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class k_ui_shield : MonoBehaviour
+public class Shield_Arrow : MonoBehaviour
 {
     public GameObject arrow;  // 矢印
     public GameObject red;    // 赤のターゲット

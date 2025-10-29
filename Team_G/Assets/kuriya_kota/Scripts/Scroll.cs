@@ -1,8 +1,11 @@
+//プレイ画面用のスクロール
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TateScroll : MonoBehaviour
+public class Scroll : MonoBehaviour
 {
     public float speed = 2f;          // スクロール速度
     public float resetPositionY = -10f; // どこまで下がったらリセットするか

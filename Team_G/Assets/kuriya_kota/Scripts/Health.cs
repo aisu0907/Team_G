@@ -3,8 +3,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class k_health : MonoBehaviour
+public class Health : MonoBehaviour
 {
+
+    //HPのグラフィック設定
     public Sprite HP3;
     public Sprite HP2;
     public Sprite HP1;
@@ -12,18 +14,19 @@ public class k_health : MonoBehaviour
 
     SpriteRenderer img;
 
+
+    //HPを取得する先のオブジェクト(プレイヤー)を入れる箱を作成
     public GameObject health;
    
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         img = GetComponent<SpriteRenderer>();
     }
-
-    // Update is called once per frame
     void Update()
     {
+
+        //現在ＨＰの量によって表示する画像を差し替える
         int hp = Player.Instance.Health;
 
         switch (hp) {

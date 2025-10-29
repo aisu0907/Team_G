@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class k_return : MonoBehaviour
+public class Return : MonoBehaviour
 {
     // Update is called once per frame
     void Update()
