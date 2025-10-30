@@ -9,8 +9,15 @@ public class GameManager : MonoBehaviour
     public GameObject item_drop;//アイテムオブジェクト
 
     private int frame = 0;  //フレーム
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is create
+
+    private void Start()
+    {
+        spawner.GetComponent<t_Enemy_Spwan>().spawn_switch = true;     //エネミーの出現をON
+        item_drop.GetComponent<Item_Drop>().drop_switch = true;        //アイテムドロップをON
+    }
+
     private void Update()
     {
         //プレイヤーの体力が0以下の場合
