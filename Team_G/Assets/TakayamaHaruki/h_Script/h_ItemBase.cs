@@ -1,3 +1,5 @@
+//h_ItemBase.cs
+
 using UnityEngine;
 
 public class ItemBase : MonoBehaviour

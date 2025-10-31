@@ -1,3 +1,5 @@
+//h_Fps_Limiter.cs
+
 using UnityEngine;
 
 public class Fps : MonoBehaviour

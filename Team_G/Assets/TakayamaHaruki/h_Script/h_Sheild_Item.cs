@@ -1,4 +1,4 @@
-//h_Item.cs
+//h_Sheild_Item.cs
 
 using JetBrains.Annotations;
 using UnityEngine;
@@ -16,7 +16,7 @@ public class Sheild_Item : ItemBase
     public float up_sheild = 0.5f;       //シールド範囲上昇率
     public float up_reflect_speed = 0.5f;//反射スピード上昇率
 
-    private int max_health = Player.Instance.Health;//最大体力  
+    private int max_health = 3;//最大体力  
     private int[] item_count;                       //アイテム取得回数   
     private int max_bom = 3;                        //ボム最大所持数
     private Vector3 sheild_size;                    //シールドサイズ

@@ -1,10 +1,10 @@
+//h_GameManager.cs
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
 public class GameManager : MonoBehaviour
 {
     public GameObject boss;     //ボスオブジェクト
-    public GameObject player;   //プレイヤーオブジェクト
     public GameObject spawner;  //スポナーオブジェクト
     public GameObject item_drop;//アイテムオブジェクト
 
@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         //プレイヤーの体力が0以下の場合
-        if (player.GetComponent<Player>().Health <= 0)
+        if (Player.Instance.Health <= 0)
         {
             //ゲームオーバーシーンに移行
             SceneManager.LoadScene("Gameover_Scene");

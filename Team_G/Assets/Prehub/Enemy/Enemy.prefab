@@ -166,12 +166,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bddfc6f2f5cce3a45872dc7491763339, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Life_item: {fileID: 1573918439574613243, guid: 0e984b1775ef31d4a8aaec7b7b537c76, type: 3}
   itemList:
   - {fileID: 7649682198198143427, guid: 1098454608030ad42b3cc46301ef6de8, type: 3}
   - {fileID: 2421750453974295715, guid: 9d236791badac4e458af18aaf6974148, type: 3}
   - {fileID: 4738802059314880400, guid: 2bba45d1e65bae5438e028a934d58f84, type: 3}
+  Life_item: {fileID: 1573918439574613243, guid: 0e984b1775ef31d4a8aaec7b7b537c76, type: 3}
   drop_switch: 1
+  life_drop: 3
 --- !u!114 &-7211098803940798851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,12 +185,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 252e8250cf193134ea8136e111e74813, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 1
-  Speed: 3
   rb: {fileID: 0}
   vec: {x: 0, y: 0}
   pos: {x: 0, y: 0}
-  speed: 13
+  speed: 13.5
   EnemyColor: 2
   EnemyType: 1
   Img:
