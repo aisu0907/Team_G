@@ -1,3 +1,5 @@
+//シールド用の矢印
+
 using Unity.VisualScripting;
 using UnityEngine;
 

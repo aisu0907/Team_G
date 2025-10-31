@@ -1,3 +1,5 @@
+//シールド用のカーソル矢印
+
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
