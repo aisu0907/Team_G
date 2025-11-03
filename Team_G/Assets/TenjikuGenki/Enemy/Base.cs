@@ -4,7 +4,7 @@ public class Enemy : MonoBehaviour
 {
     public int type, color;
     public Vector2 vec;
-    protected float speed;
+    public float speed;
     protected int score;
     protected int power;
     public bool on_hitting = false;

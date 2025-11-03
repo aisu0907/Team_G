@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
-            if (!collision.gameObject.GetComponent<g_enemy>().OnHitting)
+            if (!collision.gameObject.GetComponent<Enemy>().on_hitting)
             {
                 // ��e����
                 Player.Instance.Health--;

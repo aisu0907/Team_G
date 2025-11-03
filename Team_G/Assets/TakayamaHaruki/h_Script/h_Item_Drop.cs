@@ -35,7 +35,7 @@ public class Item_Drop : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
             //アイテムがドロップする場合
             if (drop_switch)
-                if (collision.gameObject.GetComponent<g_enemy>().OnHitting == false)
+                if (collision.gameObject.GetComponent<Enemy>().on_hitting == false)
                 {
                     if (randdrop < life_drop && Player.Instance.Health < 3)
                     {

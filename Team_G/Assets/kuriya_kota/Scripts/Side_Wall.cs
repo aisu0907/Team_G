@@ -9,8 +9,8 @@ public class Side_Wall : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             //îΩéÀèàóù
-            Vector2 tmp = new Vector2(-collision.gameObject.GetComponent<g_enemy>().vec.x, collision.gameObject.GetComponent<g_enemy>().vec.y);
-            collision.gameObject.GetComponent<g_enemy>().vec = tmp;
+            Vector2 tmp = new Vector2(-collision.gameObject.GetComponent<Enemy>().vec.x, collision.gameObject.GetComponent<Enemy>().vec.y);
+            collision.gameObject.GetComponent<Enemy>().vec = tmp;
         }
     }
 }

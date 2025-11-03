@@ -5,7 +5,7 @@ public class EReflect : Enemy
 {
     Rigidbody2D rb;
     public List<Sprite> Img;
-    public int timer;
+    int timer;
 
     void Awake()
     {
@@ -32,16 +32,15 @@ public class EReflect : Enemy
                 timer = 0;
             }
         }
+            
     }
 
     void FixedUpdate()
     {
         // Fix Vector
         rb.linearVelocity = vec;
-        if (rb.linearVelocity.magnitude != speed)
-        {
-            rb.linearVelocity = vec.normalized * speed;
-        }
+        if (on_hitting) { if (rb.linearVelocity.magnitude != speed * 2) rb.linearVelocity = vec.normalized * speed * 2; }
+        else if (rb.linearVelocity.magnitude != speed) rb.linearVelocity = vec.normalized * speed;
     }
 
     public void Init(EnemyBase db, Vector2 _vec, int _color)
@@ -61,5 +60,14 @@ public class EReflect : Enemy
         // Decision Vector
         rb = GetComponent<Rigidbody2D>();
         rb.linearVelocity = vec * speed;
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Enemy" && collision.gameObject.GetComponent<Enemy>().on_hitting)
+        {
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+        }
     }
 }

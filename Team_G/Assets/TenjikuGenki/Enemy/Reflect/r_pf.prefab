@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8134109344239686235}
   - component: {fileID: 4817361562044634262}
+  - component: {fileID: 5952646338929868085}
   - component: {fileID: -8079904616705478854}
   - component: {fileID: 2280981832510062104}
-  - component: {fileID: 5952646338929868085}
   m_Layer: 0
   m_Name: r_pf
   m_TagString: Enemy
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,10 +76,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -921988423
+  m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 5733918765317724893, guid: 5301f0a169e3e424db9522ca6e03e0a2, type: 3}
+  m_Sprite: {fileID: -1786884696479516206, guid: a7df23b6b269b8a46aabf63a4eb15647, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -90,6 +90,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5952646338929868085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323917000318406210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8326934ed5784c64590b3e13daf7bcec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  color: 0
+  vec: {x: 0, y: 0}
+  speed: 0
+  on_hitting: 0
+  Img:
+  - {fileID: -1786884696479516206, guid: a7df23b6b269b8a46aabf63a4eb15647, type: 3}
+  - {fileID: 7508395005116419572, guid: 0be7ad386df9002468df94939a5751a6, type: 3}
 --- !u!50 &-8079904616705478854
 Rigidbody2D:
   serializedVersion: 5
@@ -153,23 +173,3 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.135
---- !u!114 &5952646338929868085
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1323917000318406210}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8326934ed5784c64590b3e13daf7bcec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Type: 0
-  Color: 0
-  Vec: {x: 0, y: 0}
-  OnHitting: 0
-  Img:
-  - {fileID: -1786884696479516206, guid: a7df23b6b269b8a46aabf63a4eb15647, type: 3}
-  - {fileID: 7508395005116419572, guid: 0be7ad386df9002468df94939a5751a6, type: 3}
-  timer: 0

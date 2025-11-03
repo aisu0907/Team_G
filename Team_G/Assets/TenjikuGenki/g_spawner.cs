@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class t_Enemy_Spwan : MonoBehaviour
 {
-    public GameObject enemy;    // �����I�u�W�F�N�g
     [SerializeField] Transform pos;                 // �����ʒu
     [SerializeField] Transform pos2;                // �����ʒu
     float minX, maxX, minY, maxY;                   // �����͈�
-    public float Enemy_speed;
+    public List<GameObject> prefab;
+    public List<EnemyBase> enemy;
     public bool spawn_switch = true;
 
     int frame = 0;
@@ -26,29 +26,26 @@ public class t_Enemy_Spwan : MonoBehaviour
 
     void Update()
     {
+        // Add Timer
         ++frame;
 
         if (spawn_switch)
         {
             if (frame > generateFrame)
             {
-                frame = 0;
-
-                // �����_���Ŏ�ނƈʒu�����߂�
+                // Decide Pos
                 float posX = Random.Range(minX, maxX);
                 float posY = Random.Range(minY, maxY);
+                Vector2 pos = new Vector2(posX, posY);
 
-                GameObject Enemy = Instantiate(enemy);
-                g_enemy e = Enemy.GetComponent<g_enemy>();
-                //e.RandCreate(new Vector2(posX, posY), new Vector2(0, -3), 3);
+                // Spawn Enemy
+                int type = Random.Range(0, prefab.Count);
+                int color = Random.Range(0, 2);
+                if (type == 0) { var e = Instantiate(prefab[type],pos,Quaternion.identity).GetComponent<ENormal>(); e.Init(enemy[type], new Vector2(0, -1), color); }
+                if (type == 1) { var e = Instantiate(prefab[type],pos,Quaternion.identity).GetComponent<EReflect>(); e.Init(enemy[type], new Vector2(0, -1), color); }
 
-                // Add Components
-                Debug.Log(posX + "+" + +posY);
-                e.type = Random.Range(0, 2);
-                e.color = Random.Range(0, 2);
-                e.speed = -Enemy_speed;
-                e.pos = new Vector2(posX, posY);
-                e.vec = new Vector2(0, -3);
+                // Reset
+                frame = 0;
             }
         }
     }

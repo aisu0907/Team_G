@@ -14,7 +14,7 @@ public class g_enemy : MonoBehaviour
     public int type = 1;           //���
     [SerializeField] List<Sprite> Img;   //�摜
 
-    public bool OnHitting = false;
+    public bool on_hitting = false;
     int timer = 0;
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -41,7 +41,7 @@ public class g_enemy : MonoBehaviour
         }
 
         // �Փˎ�����
-        if (OnHitting)
+        if (on_hitting)
         {
             transform.Rotate(0, 0, 20);
             //�@���˃E�C���X�Ȃ畜�A���Ă���
@@ -50,7 +50,7 @@ public class g_enemy : MonoBehaviour
                 timer++;
                 if (timer >= 100)
                 {
-                    OnHitting = false;
+                    on_hitting = false;
                     transform.localRotation = default;
                     vec = new Vector2(0, -speed);
                     timer = 0;
@@ -61,7 +61,7 @@ public class g_enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Enemy" && collision.gameObject.GetComponent<g_enemy>().OnHitting)
+        if (collision.gameObject.tag == "Enemy" && collision.gameObject.GetComponent<Enemy>().on_hitting)
         {
             Destroy(gameObject);
             Destroy(collision.gameObject);

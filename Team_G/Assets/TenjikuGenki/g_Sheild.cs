@@ -4,7 +4,7 @@ using UnityEngine;
 public class Sheild : MonoBehaviour
 {
     SpriteRenderer img;
-    public int SheildColor = 0;
+    public int color = 0;
     [SerializeField] List<Sprite> Img;   //�摜
     public static Sheild Instance { get; private set; }
 
@@ -17,7 +17,7 @@ public class Sheild : MonoBehaviour
     void Start()
     {
         img = GetComponent<SpriteRenderer>();
-    }
+    }//timpo
 
     // Update is called once per frame
     void Update()
@@ -26,31 +26,30 @@ public class Sheild : MonoBehaviour
         if (Input.GetKey(KeyCode.Z))
         {
             img.sprite = Img[0];
-            SheildColor = 0;
+            color = 0;
         }
         if (Input.GetKey(KeyCode.X))
         {
             img.sprite = Img[1];
-            SheildColor = 1;
+            color = 1;
         }
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
+        // Definition "collision" 
         GameObject enemy = collision.gameObject;
-            if (!enemy.GetComponent<g_enemy>().OnHitting)
+        if (!enemy.GetComponent<Enemy>().on_hitting)
+        {
+            if (enemy.GetComponent<Enemy>().color == color)
             {
-                if (enemy.GetComponent<g_enemy>().color == SheildColor)
-                    if (enemy.GetComponent<g_enemy>().type != 2)
-                    {
-                        //���ˏ���
-                        Vector2 d = enemy.transform.position - transform.position;
-                        enemy.GetComponent<g_enemy>().vec = d;
-                        enemy.GetComponent<g_enemy>().OnHitting = true;
-                    }
+                // Dicide Vector
+                Vector2 d = (enemy.transform.position - transform.position).normalized;
+                enemy.GetComponent<Enemy>().vec = d;
+                enemy.GetComponent<Enemy>().on_hitting = true;
             }
         }
-        //else if (enemy.tag == "Boss")
-        //    if (enemy.GetComponent<g_boss>().color == SheildColor)
-        //        enemy.GetComponent<g_boss>().reflect = true;
     }
-
+        //else if (enemy.tag == "Boss")
+        //    if (enemy.GetComponent<g_boss>().color == color)
+        //        enemy.GetComponent<g_boss>().reflect = true;
+}

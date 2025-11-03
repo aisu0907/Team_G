@@ -60,8 +60,8 @@ public class Sheild_Item : ItemBase
                 if (item_count[reflect_item] < collision.GetComponent<Item>().max_item_count)
                 {
                     //反射スピードup
-                    enemy_ref.GetComponent<g_enemy>().speed += up_reflect_speed;
-                    Debug.Log(enemy_ref.GetComponent<g_enemy>().speed);
+                    enemy_ref.GetComponent<Enemy>().speed += up_reflect_speed;
+                    Debug.Log(enemy_ref.GetComponent<Enemy>().speed);
                     //累積カウント
                     item_count[reflect_item]++;
                 }

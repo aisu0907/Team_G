@@ -76,7 +76,7 @@ public class g_boss : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Enemy" && collision.gameObject.GetComponent<g_enemy>().OnHitting)
+        if (collision.gameObject.tag == "Enemy" && collision.gameObject.GetComponent<Enemy>().on_hitting)
         {
             --Health;
             Destroy(collision.gameObject);
@@ -165,9 +165,9 @@ public class g_boss : MonoBehaviour
             {
                 // Spawn Enemy
                 GameObject Enemy = Instantiate(enemy, transform.position, Quaternion.identity);
-                g_enemy e = Enemy.GetComponent<g_enemy>();
+                Enemy e = Enemy.GetComponent<Enemy>();
                 Vector2 direction = (Target[j - 3].transform.position - Enemy.transform.position).normalized;
-                e.Create(transform.position, direction, 0, color, 8);
+                // e.Create(transform.position, direction, 0, color, 8);
 
                 // Remove It
                 Destroy(Target[j - 3]);
@@ -217,11 +217,11 @@ public class g_boss : MonoBehaviour
             if (timer % 30 == 0)
             {
                 GameObject Enemy = Instantiate(enemy, transform.position, Quaternion.identity);
-                g_enemy e = Enemy.GetComponent<g_enemy>();
+                Enemy e = Enemy.GetComponent<Enemy>();
                 Vector2 direction = (t.transform.position - Enemy.transform.position).normalized;
-                if (timer == 270) { e.Create(transform.position, direction, 0, colors[0], 16); audioSource.PlayOneShot(sound1); }
-                if (timer == 300) { e.Create(transform.position, direction, 0, colors[1], 16); audioSource.PlayOneShot(sound1); }
-                if (timer == 330) { e.Create(transform.position, direction, 0, colors[2], 16); audioSource.PlayOneShot(sound1); }
+                // if (timer == 270) { e.Create(transform.position, direction, 0, colors[0], 16); audioSource.PlayOneShot(sound1); }
+                // if (timer == 300) { e.Create(transform.position, direction, 0, colors[1], 16); audioSource.PlayOneShot(sound1); }
+                // if (timer == 330) { e.Create(transform.position, direction, 0, colors[2], 16); audioSource.PlayOneShot(sound1); }
                 }
         }
         else if (timer == 360)

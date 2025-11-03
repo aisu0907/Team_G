@@ -51,4 +51,13 @@ public class ENormal : Enemy
         rb = GetComponent<Rigidbody2D>();
         rb.linearVelocity = vec * speed;
     }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Enemy" && collision.gameObject.GetComponent<Enemy>().on_hitting)
+        {
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+        }
+    }
 }
