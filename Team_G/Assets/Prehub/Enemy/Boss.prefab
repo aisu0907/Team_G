@@ -150,16 +150,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65e4a4cf2c8c52e40b8fe51b1e6f03f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 10
-  Speed: 0
   timer: 0
   reflect: 0
-  EnemyColor: 0
+  color: 0
   Img:
   - {fileID: -8784003655823627391, guid: c7a4d6d5f118e2b42bf2dbbf21b060d5, type: 3}
   - {fileID: -8430282202468897226, guid: 93e6c17ad0a136949bbb8ff85a1059e4, type: 3}
   Mark: {fileID: 2500117277771157786, guid: 5384140abcedf0d4db172b38831ac788, type: 3}
-  enemy: {fileID: 3457435008533907693, guid: 35484c594a614a545b8db4efbeaf555c, type: 3}
+  enemy: {fileID: 11400000, guid: 0060511f69e9d2a4fb1e007ad5c1b610, type: 2}
+  prefab: {fileID: 1323917000318406210, guid: 4e7fcc606545e1043bf191ae82e78847, type: 3}
+  Speed: 0
+  Health: 10
   did_vib: 0
   sound1: {fileID: 8300000, guid: 31d03cf682f2e4d489f2b82e334708f5, type: 3}
   sound2: {fileID: 8300000, guid: 31d03cf682f2e4d489f2b82e334708f5, type: 3}

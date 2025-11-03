@@ -33,13 +33,13 @@ public class ENormal : Enemy
         }
     }
 
-    public void Init(EnemyBase db, Vector2 _vec, int _color)
+    public void Init(EnemyBase db, Vector2 _vec, int _color, float _speed)
     {
         // Initialize Status
         type = (int)db.type;
         color = _color;
         vec = _vec;
-        speed = db.speed;
+        speed = _speed;
         score = db.score;
         power = db.power;
 

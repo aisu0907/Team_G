@@ -12,16 +12,15 @@ public class g_boss : MonoBehaviour
     SpriteRenderer img;
     public List<Sprite> Img;
     public GameObject Mark;
-    public GameObject enemy;
+    public EnemyBase enemy;
+    public GameObject prefab;
 
     public float Speed;
     public int Health;
     int _Health;
     bool once = true;
     float n = 0;
-    int j = 0;
     public bool did_vib = false;
-    GameObject[] Target;
     GameObject t;
     int[] colors = new int[3];
 
@@ -59,9 +58,9 @@ public class g_boss : MonoBehaviour
             case 1:
                 rush();
                 break;
-            case 2:
-                tracking();
-                break;
+            // case 2:
+            //     tracking();
+            //     break;
             case 3:
                 rockon();
                 break;
@@ -141,51 +140,51 @@ public class g_boss : MonoBehaviour
         }
     }
 
-    void tracking()
-    {
-        if (once)
-        {
-            timer = 0;
-            once = false;
-            Target = new GameObject[3];
-        }
+    // void tracking()
+    // {
+    //     if (once)
+    //     {
+    //         timer = 0;
+    //         once = false;
+    //         Target = new GameObject[3];
+    //     }
 
-        timer++;
-        if (j < 3)
-        {
-            if (timer % 40 == 0)
-            {
-                Target[j] = Instantiate(Mark, Player.Instance.transform.position, Quaternion.identity);
-                j++;
-            }
-        }
-        else if (timer >= 180)
-        {
-            if (timer % 40 == 0 && j < 6)
-            {
-                // Spawn Enemy
-                GameObject Enemy = Instantiate(enemy, transform.position, Quaternion.identity);
-                Enemy e = Enemy.GetComponent<Enemy>();
-                Vector2 direction = (Target[j - 3].transform.position - Enemy.transform.position).normalized;
-                // e.Create(transform.position, direction, 0, color, 8);
+    //     timer++;
+    //     if (j < 3)
+    //     {
+    //         if (timer % 40 == 0)
+    //         {
+    //             Target[j] = Instantiate(Mark, Player.Instance.transform.position, Quaternion.identity);
+    //             j++;
+    //         }
+    //     }
+    //     else if (timer >= 180)
+    //     {
+    //         if (timer % 40 == 0 && j < 6)
+    //         {
+    //             // Spawn Enemy
+    //             GameObject Enemy = Instantiate(enemy, transform.position, Quaternion.identity);
+    //             Enemy e = Enemy.GetComponent<Enemy>();
+    //             Vector2 direction = (Target[j - 3].transform.position - Enemy.transform.position).normalized;
+    //             // e.Create(transform.position, direction, 0, color, 8);
 
-                // Remove It
-                Destroy(Target[j - 3]);
-                j++;
+    //             // Remove It
+    //             Destroy(Target[j - 3]);
+    //             j++;
 
-            }
+    //         }
 
-            //Reset
-            if (timer == 500)
-            {
-                once = true;
-                mode = 0;
-                timer = 0;
-                Target = null;
-                j = 0;
-            }
-        }
-    }
+    //         //Reset
+    //         if (timer == 500)
+    //         {
+    //             once = true;
+    //             mode = 0;
+    //             timer = 0;
+    //             Target = null;
+    //             j = 0;
+    //         }
+    //     }
+    // }
 
     void rockon()
     {
@@ -216,12 +215,10 @@ public class g_boss : MonoBehaviour
         {
             if (timer % 30 == 0)
             {
-                GameObject Enemy = Instantiate(enemy, transform.position, Quaternion.identity);
-                Enemy e = Enemy.GetComponent<Enemy>();
-                Vector2 direction = (t.transform.position - Enemy.transform.position).normalized;
-                // if (timer == 270) { e.Create(transform.position, direction, 0, colors[0], 16); audioSource.PlayOneShot(sound1); }
-                // if (timer == 300) { e.Create(transform.position, direction, 0, colors[1], 16); audioSource.PlayOneShot(sound1); }
-                // if (timer == 330) { e.Create(transform.position, direction, 0, colors[2], 16); audioSource.PlayOneShot(sound1); }
+                Vector2 d = (t.transform.position - transform.position).normalized;
+                if (timer == 270) { var e = Instantiate(prefab,transform.position,Quaternion.identity).GetComponent<ENormal>(); e.Init(enemy, d, colors[0], 5); }
+                if (timer == 300) { var e = Instantiate(prefab,transform.position,Quaternion.identity).GetComponent<ENormal>(); e.Init(enemy, d, colors[1], 5); }
+                if (timer == 330) { var e = Instantiate(prefab,transform.position,Quaternion.identity).GetComponent<ENormal>(); e.Init(enemy, d, colors[2], 5); }
                 }
         }
         else if (timer == 360)
