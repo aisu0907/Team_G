@@ -44,15 +44,15 @@ public class EReflect : Enemy
         }
     }
 
-    public void Init(EnemyBase db, Vector2 _Vec, int _Color)
+    public void Init(EnemyBase db, Vector2 _vec, int _color)
     {
         // Initialize Status
-        type = (int)db.Type;
-        color = _Color;
-        vec = _Vec;
-        speed = db.Speed;
-        score = db.Score;
-        power = db.Power;
+        type = (int)db.type;
+        color = _color;
+        vec = _vec;
+        speed = db.speed;
+        score = db.score;
+        power = db.power;
 
         // Change Img
         SpriteRenderer img = GetComponent<SpriteRenderer>();
