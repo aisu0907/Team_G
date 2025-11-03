@@ -32,7 +32,6 @@ public class EReflect : Enemy
                 timer = 0;
             }
         }
-            
     }
 
     void FixedUpdate()
@@ -41,6 +40,7 @@ public class EReflect : Enemy
         rb.linearVelocity = vec;
         if (on_hitting) { if (rb.linearVelocity.magnitude != speed * 2) rb.linearVelocity = vec.normalized * speed * 2; }
         else if (rb.linearVelocity.magnitude != speed) rb.linearVelocity = vec.normalized * speed;
+        float r = Vector2.SignedAngle(Vector2.right, vec);
     }
 
     public void Init(EnemyBase db, Vector2 _vec, int _color, float _speed)

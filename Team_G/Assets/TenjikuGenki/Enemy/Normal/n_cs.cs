@@ -27,10 +27,7 @@ public class ENormal : Enemy
     {
         // Fix Vector
         rb.linearVelocity = vec;
-        if (rb.linearVelocity.magnitude != speed)
-        {
-            rb.linearVelocity = vec.normalized * speed;
-        }
+        if (rb.linearVelocity.magnitude != speed) rb.linearVelocity = vec.normalized * speed;
     }
 
     public void Init(EnemyBase db, Vector2 _vec, int _color, float _speed)

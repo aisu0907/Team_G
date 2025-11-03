@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         //プレイヤーの体力が0以下の場合
-        if (Player.Instance.Health <= 0)
+        if (Player.Instance.health <= 0)
         {
             //ゲームオーバーシーンに移行
             SceneManager.LoadScene("Gameover_Scene");

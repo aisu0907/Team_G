@@ -48,8 +48,8 @@ public class Sheild_Item : ItemBase
                 if (item_count[speed_item] < collision.GetComponent<Item>().max_item_count)
                 {
                     //プレイヤーの移動スピードを上げる
-                    Player.Instance.Speed += up_speed;
-                    Debug.Log(Player.Instance.Speed);
+                    Player.Instance.speed += up_speed;
+                    Debug.Log(Player.Instance.speed);
                     //累積カウント
                     item_count[speed_item]++;
                 }
@@ -82,9 +82,9 @@ public class Sheild_Item : ItemBase
             //回復
             if (collision.GetComponent<Item>().item_id == life_item)
                 //プレイヤーの体力が最大じゃない場合
-                if (max_health > Player.Instance.Health)
+                if (max_health > Player.Instance.health)
                     //プレイヤーの体力を増やす
-                    Player.Instance.Health += heal_hp;
+                    Player.Instance.health += heal_hp;
 
             //ボム
             if (collision.GetComponent<Item>().item_id == bomb_item)

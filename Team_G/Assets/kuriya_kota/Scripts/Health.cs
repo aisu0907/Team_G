@@ -27,7 +27,7 @@ public class Health : MonoBehaviour
     {
 
         //Œ»İ‚g‚o‚Ì—Ê‚É‚æ‚Á‚Ä•\¦‚·‚é‰æ‘œ‚ğ·‚µ‘Ö‚¦‚é
-        int hp = Player.Instance.Health;
+        int hp = Player.Instance.health;
 
         switch (hp) {
             case 3:

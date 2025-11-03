@@ -37,7 +37,7 @@ public class Item_Drop : MonoBehaviour
             if (drop_switch)
                 if (collision.gameObject.GetComponent<Enemy>().on_hitting == false)
                 {
-                    if (randdrop < life_drop && Player.Instance.Health < 3)
+                    if (randdrop < life_drop && Player.Instance.health < 3)
                     {
                         //敵の位置に回復アイテムをドロップ
                         Instantiate(Life_item, v, Quaternion.identity);

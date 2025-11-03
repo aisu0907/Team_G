@@ -10,7 +10,7 @@ public class Kill_Death : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         { 
-            player.GetComponent<Player>().Health--;
+            player.GetComponent<Player>().health--;
             Destroy(collision.gameObject);
         }
 

@@ -11,8 +11,8 @@ public class Player : MonoBehaviour
     float axisV = 0.0f; //�c�x�N�g��
     public GameObject sheild;
     public int bom = 0;
-    public int Health = 3;     //�̗�
-    public float Speed = 3.0f;   //�ړ����x
+    public int health = 3;     //�̗�
+    public float speed = 3.0f;   //�ړ����x
 
     public static Player Instance { get; private set; }
 
@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         //�ړ��̓K�p
-        rbody.linearVelocity = new Vector2(axisH * Speed, axisV * Speed);
+        rbody.linearVelocity = new Vector2(axisH * speed, axisV * speed);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -55,12 +55,12 @@ public class Player : MonoBehaviour
             if (!collision.gameObject.GetComponent<Enemy>().on_hitting)
             {
                 // ��e����
-                Player.Instance.Health--;
+                Player.Instance.health--;
                 Destroy(collision.gameObject);
             }
         if (collision.gameObject.tag == "Boss")
         {
-                Player.Instance.Health--;
+                Player.Instance.health--;
         }
     }
 }

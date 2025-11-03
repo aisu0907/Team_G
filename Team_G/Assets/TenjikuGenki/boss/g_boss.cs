@@ -15,9 +15,9 @@ public class g_boss : MonoBehaviour
     public EnemyBase enemy;
     public GameObject prefab;
 
-    public float Speed;
-    public int Health;
-    int _Health;
+    public float speed;
+    public int health;
+    int _health;
     bool once = true;
     float n = 0;
     public bool did_vib = false;
@@ -66,7 +66,7 @@ public class g_boss : MonoBehaviour
                 break;
         }
 
-        if (Health == 0)
+        if (health == 0)
         {
             Destroy(gameObject);
             SceneManager.LoadScene("Result_Scene");
@@ -77,7 +77,7 @@ public class g_boss : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy" && collision.gameObject.GetComponent<Enemy>().on_hitting)
         {
-            --Health;
+            --health;
             Destroy(collision.gameObject);
         }
     }
@@ -86,7 +86,7 @@ public class g_boss : MonoBehaviour
     {
         if (once)
         {
-            _Health = Player.Instance.Health;
+            _health = Player.Instance.health;
             once = false;
                 timer = 0;
         }
@@ -97,8 +97,8 @@ public class g_boss : MonoBehaviour
             n += 0.5f;
             if (!reflect)
             {
-                rb.linearVelocity = new Vector2(0, -Speed - n);
-                if (Player.Instance.Health != _Health) reflect = true;
+                rb.linearVelocity = new Vector2(0, -speed - n);
+                if (Player.Instance.health != _health) reflect = true;
             }
             else
             {
