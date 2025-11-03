@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.UIElements;
 using UnityEngine.Animations;
+using NUnit.Framework.Internal;
 
 public class Player : MonoBehaviour
 {
     Rigidbody2D rbody; 
-    float axisH = 0.0f; //���x�N�g��
-    float axisV = 0.0f; //�c�x�N�g��
+    float axisH, axisV = 0.0f;
     public GameObject sheild;
     public int bom = 0;
     public int health = 3;     //�̗�
@@ -51,16 +51,6 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
-            if (!collision.gameObject.GetComponent<Enemy>().on_hitting)
-            {
-                // ��e����
-                Player.Instance.health--;
-                Destroy(collision.gameObject);
-            }
-        if (collision.gameObject.tag == "Boss")
-        {
-                Player.Instance.health--;
-        }
+        if(collision.gameObject.TryGetComponent<IDamageable>(out var hit)) hit.Damage();
     }
 }

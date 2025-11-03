@@ -20,4 +20,22 @@ public class Enemy : MonoBehaviour
     {
 
     }
+
+    protected void Delete(Collider2D obj)
+    {
+        Destroy(obj.gameObject);
+        Destroy(gameObject);
+    }
+
+    public static bool IsHittingEnemy(GameObject obj)
+    {
+        if (obj.CompareTag("Enemy")) return obj.GetComponent<Enemy>().on_hitting;
+        return false;
+    }
+
+    public void Damage()
+    {
+        Destroy(gameObject);
+        Player.Instance.health--;
+    }
 }

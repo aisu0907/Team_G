@@ -17,7 +17,7 @@ public class Sheild : MonoBehaviour
     void Start()
     {
         img = GetComponent<SpriteRenderer>();
-    }//timpo
+    }
 
     // Update is called once per frame
     void Update()
@@ -37,15 +37,18 @@ public class Sheild : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         // Definition "collision" 
-        GameObject enemy = collision.gameObject;
-        if (!enemy.GetComponent<Enemy>().on_hitting)
+        if(collision.tag == "Enemy")
         {
-            if (enemy.GetComponent<Enemy>().color == color)
+            var enemy = collision.gameObject.GetComponent<Enemy>();
+            if (!enemy.GetComponent<Enemy>().on_hitting)
             {
-                // Dicide Vector
-                Vector2 d = (enemy.transform.position - transform.position).normalized;
-                enemy.GetComponent<Enemy>().vec = d;
-                enemy.GetComponent<Enemy>().on_hitting = true;
+                if (enemy.GetComponent<Enemy>().color == color)
+                {
+                    // Dicide Vector
+                    Vector2 d = (collision.transform.position - transform.position).normalized;
+                    enemy.GetComponent<Enemy>().vec = d;
+                    enemy.GetComponent<Enemy>().on_hitting = true;
+                }
             }
         }
     }
