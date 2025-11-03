@@ -44,8 +44,8 @@ public class t_Enemy_Spwan : MonoBehaviour
 
                 // Add Components
                 Debug.Log(posX + "+" + +posY);
-                e.EnemyType = Random.Range(0, 2);
-                e.EnemyColor = Random.Range(0, 2);
+                e.type = Random.Range(0, 2);
+                e.color = Random.Range(0, 2);
                 e.speed = -Enemy_speed;
                 e.pos = new Vector2(posX, posY);
                 e.vec = new Vector2(0, -3);

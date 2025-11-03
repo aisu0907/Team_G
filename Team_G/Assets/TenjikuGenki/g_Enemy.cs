@@ -10,8 +10,8 @@ public class g_enemy : MonoBehaviour
 
     public Vector2 pos;
     public float speed = 1f;            //�ō����x
-    public int EnemyColor = 1;          //�F
-    public int EnemyType = 1;           //���
+    public int color = 1;          //�F
+    public int type = 1;           //���
     [SerializeField] List<Sprite> Img;   //�摜
 
     public bool OnHitting = false;
@@ -23,7 +23,7 @@ public class g_enemy : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         transform.position = pos;
         SpriteRenderer img = GetComponent<SpriteRenderer>();
-        img.sprite = Img[EnemyType * 2 + EnemyColor];
+        img.sprite = Img[type * 2 + color];
     }
 
     // Update is called once per frame
@@ -45,7 +45,7 @@ public class g_enemy : MonoBehaviour
         {
             transform.Rotate(0, 0, 20);
             //�@���˃E�C���X�Ȃ畜�A���Ă���
-            if (EnemyType == 1)
+            if (type == 1)
             {
                 timer++;
                 if (timer >= 100)
@@ -72,8 +72,8 @@ public class g_enemy : MonoBehaviour
     {
         pos = _pos;
         vec = _vec;
-        EnemyType = _type;
-        EnemyColor = _color;
+        type = _type;
+        color = _color;
         speed = _speed;
     }
 
@@ -82,10 +82,10 @@ public class g_enemy : MonoBehaviour
     // {
     //     pos = _pos;
     //     vec = _vec;
-    //     EnemyType = Random.Range(0, 2);
-    //     EnemyColor = Random.Range(0, 2);
+    //     type = Random.Range(0, 2);
+    //     color = Random.Range(0, 2);
     //     speed = _speed;
     //     SpriteRenderer img = GetComponent<SpriteRenderer>();
-    //     img.sprite = Img[EnemyType * 2 + EnemyColor];
+    //     img.sprite = Img[type * 2 + color];
     // }
 }

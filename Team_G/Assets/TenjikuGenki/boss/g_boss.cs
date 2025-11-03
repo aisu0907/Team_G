@@ -8,7 +8,7 @@ public class g_boss : MonoBehaviour
     public int timer;
     int mode = 0;
     public bool reflect = false;
-    public int EnemyColor = 0;
+    public int color = 0;
     SpriteRenderer img;
     public List<Sprite> Img;
     public GameObject Mark;
@@ -135,8 +135,8 @@ public class g_boss : MonoBehaviour
             timer = 0;
             transform.position = BasePos;
             did_vib = true;
-            EnemyColor = Random.Range(0, 2);
-            img.sprite = Img[EnemyColor];
+            color = Random.Range(0, 2);
+            img.sprite = Img[color];
             Debug.Log("test");
         }
     }
@@ -167,7 +167,7 @@ public class g_boss : MonoBehaviour
                 GameObject Enemy = Instantiate(enemy, transform.position, Quaternion.identity);
                 g_enemy e = Enemy.GetComponent<g_enemy>();
                 Vector2 direction = (Target[j - 3].transform.position - Enemy.transform.position).normalized;
-                e.Create(transform.position, direction, 0, EnemyColor, 8);
+                e.Create(transform.position, direction, 0, color, 8);
 
                 // Remove It
                 Destroy(Target[j - 3]);
@@ -205,8 +205,8 @@ public class g_boss : MonoBehaviour
         {
             if (timer == 180)
             {
-                if (EnemyColor == 0) { colors[0] = 1; img.sprite = Img[colors[0]]; }
-                if (EnemyColor == 1) { colors[0] = 0; img.sprite = Img[colors[0]]; }
+                if (color == 0) { colors[0] = 1; img.sprite = Img[colors[0]]; }
+                if (color == 1) { colors[0] = 0; img.sprite = Img[colors[0]]; }
                 audioSource.PlayOneShot(sound1);
             }
             if (timer == 210) { colors[1] = Random.Range(0, 2); img.sprite = Img[colors[1]]; audioSource.PlayOneShot(sound1); }
