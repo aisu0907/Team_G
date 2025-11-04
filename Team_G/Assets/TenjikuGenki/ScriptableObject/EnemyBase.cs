@@ -8,5 +8,5 @@ public class EnemyBase : ScriptableObject
     public int score;
     public int power;
 
-    public enum types { Normal, Reflect };
+    public enum types { Normal, Reflect, Jammer };
 }

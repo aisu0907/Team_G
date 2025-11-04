@@ -1,10 +1,11 @@
 using System.Collections.Generic;
+using UnityEditor.PackageManager.UI;
 using UnityEngine;
 
 public class EJammer : Enemy
 {
     Rigidbody2D rb;
-    public List<Sprite> Img;
+    public GameObject window;
 
     void Awake()
     {
@@ -26,19 +27,14 @@ public class EJammer : Enemy
         ;
     }
 
-    public void Init(EnemyBase db, Vector2 _vec, int _color, float _speed)
+    public void Init(EnemyBase db, Vector2 _vec, float _speed)
     {
         // Initialize Status
         type = (int)db.type;
-        color = _color;
         vec = _vec;
         speed = _speed;
         score = db.score;
         power = db.power;
-
-        // Change Img
-        SpriteRenderer img = GetComponent<SpriteRenderer>();
-        img.sprite = Img[color];
 
         // Decision Vector
         rb = GetComponent<Rigidbody2D>();
@@ -48,5 +44,11 @@ public class EJammer : Enemy
     void OnTriggerStay2D(Collider2D collision)
     {
         if (IsHitEnemy(collision.gameObject)) Delete(collision);
+    }
+
+    public void PopWindow()
+    {
+        Instantiate(window).GetComponent<Window>();
+        Destroy(gameObject);
     }
 }
