@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ENormal : Enemy, IDamageable
+public class EAnti : Enemy, IDamageable
 {
     Rigidbody2D rb;
     public List<Sprite> Img;
+    int timer;
 
     void Awake()
     {
@@ -18,16 +19,12 @@ public class ENormal : Enemy, IDamageable
 
     void Update()
     {
-        // Spin
-        if (on_hitting)
-            transform.Rotate(0, 0, 20);
+        ;
     }
 
     void FixedUpdate()
     {
-        // Fix Vector
-        rb.linearVelocity = vec;
-        if (rb.linearVelocity.magnitude != speed) rb.linearVelocity = vec.normalized * speed;
+        ;
     }
 
     public void Init(EnemyBase db, Vector2 _vec, int _color, float _speed)
