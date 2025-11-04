@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -8079904616705478854}
   - component: {fileID: 2280981832510062104}
   m_Layer: 0
-  m_Name: a_pf
+  m_Name: j_pf
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,8 +108,7 @@ MonoBehaviour:
   speed: 0
   on_hitting: 0
   Img:
-  - {fileID: -1786884696479516206, guid: a7df23b6b269b8a46aabf63a4eb15647, type: 3}
-  - {fileID: 7508395005116419572, guid: 0be7ad386df9002468df94939a5751a6, type: 3}
+  - {fileID: 9035238072627502858, guid: 91a5e3d54e29c0f4d824b7e3234f7fa3, type: 3}
 --- !u!50 &-8079904616705478854
 Rigidbody2D:
   serializedVersion: 5
