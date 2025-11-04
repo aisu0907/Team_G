@@ -532,8 +532,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: -1045525346173579588, guid: cc8fc34330d578c4ca72c5ef3425e7b0, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -1536,7 +1535,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boss: {fileID: 870741779963481172, guid: 45a3963f61df15f43b0a5ffcba5fed10, type: 3}
   spawner: {fileID: 1308437786}
-  item_drop: {fileID: 3457435008533907693, guid: 35484c594a614a545b8db4efbeaf555c, type: 3}
+  item_drop: {fileID: 3457435008533907693, guid: 732fa085f0665464b86e7cd696d538dd, type: 3}
 --- !u!1001 &1579403596
 PrefabInstance:
   m_ObjectHideFlags: 0
