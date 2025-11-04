@@ -27,7 +27,7 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public static bool IsHittingEnemy(GameObject obj)
+    public bool IsHitEnemy(GameObject obj)
     {
         if (obj.CompareTag("Enemy")) return obj.GetComponent<Enemy>().on_hitting;
         return false;

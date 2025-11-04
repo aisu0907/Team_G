@@ -37,22 +37,21 @@ public class Sheild : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         // Definition "collision" 
-        if(collision.tag == "Enemy")
+        if (collision.TryGetComponent<Enemy>(out var obj))
         {
-            var enemy = collision.gameObject.GetComponent<Enemy>();
-            if (!enemy.GetComponent<Enemy>().on_hitting)
+            if (IsHitFallingEnemy(obj))
             {
-                if (enemy.GetComponent<Enemy>().color == color)
-                {
-                    // Dicide Vector
-                    Vector2 d = (collision.transform.position - transform.position).normalized;
-                    enemy.GetComponent<Enemy>().vec = d;
-                    enemy.GetComponent<Enemy>().on_hitting = true;
-                }
+                // Dicide Vector
+                Vector2 d = (collision.transform.position - transform.position).normalized;
+                obj.vec = d;
+                obj.on_hitting = true;
             }
         }
     }
-        //else if (enemy.tag == "Boss")
-        //    if (enemy.GetComponent<g_boss>().color == color)
-        //        enemy.GetComponent<g_boss>().reflect = true;
+
+    bool IsHitFallingEnemy(Enemy obj)
+    {
+        if (!obj.on_hitting && obj.color == color) return true;
+        return false;
+    }
 }

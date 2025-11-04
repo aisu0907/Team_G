@@ -63,6 +63,6 @@ public class EReflect : Enemy, IDamageable
 
     void OnTriggerStay2D(Collider2D collision)
     {
-        if (IsHittingEnemy(collision.gameObject)) Delete(collision);
+        if (IsHitEnemy(collision.gameObject)) Delete(collision);
     }
 }
