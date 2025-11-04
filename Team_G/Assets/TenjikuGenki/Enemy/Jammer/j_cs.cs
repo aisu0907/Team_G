@@ -1,11 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EAnti : Enemy, IDamageable
+public class EJammer : Enemy
 {
     Rigidbody2D rb;
     public List<Sprite> Img;
-    int timer;
 
     void Awake()
     {

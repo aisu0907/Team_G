@@ -39,10 +39,10 @@ public class t_Enemy_Spwan : MonoBehaviour
                 Vector2 pos = new Vector2(posX, posY);
 
                 // Spawn Enemy
-                int type = Random.Range(0, prefab.Count);
+                int type = Random.Range(0, GameManager.Instance.faze / 2);
                 int color = Random.Range(0, 2);
-                if (type == 0) { var e = Instantiate(prefab[type],pos,Quaternion.identity).GetComponent<ENormal>(); e.Init(enemy[type], new Vector2(0, -1), color, enemy[type].speed); }
-                if (type == 1) { var e = Instantiate(prefab[type],pos,Quaternion.identity).GetComponent<EReflect>(); e.Init(enemy[type], new Vector2(0, -1), color, enemy[type].speed); }
+                if (type == 0) { var e = Instantiate(prefab[type], pos, Quaternion.identity).GetComponent<ENormal>(); e.Init(enemy[type], new Vector2(0, -1), color, enemy[type].speed); }
+                if (type == 1) { var e = Instantiate(prefab[type], pos, Quaternion.identity).GetComponent<EReflect>(); e.Init(enemy[type], new Vector2(0, -1), color, enemy[type].speed); }
 
                 // Reset
                 frame = 0;

@@ -1,18 +1,21 @@
-using UnityEngine;
-using System.Collections.Generic;
-using System.Collections;
-using UnityEngine.UIElements;
-using UnityEngine.Animations;
 using NUnit.Framework.Internal;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Animations;
+using UnityEngine.UIElements;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class Player : MonoBehaviour
 {
-    Rigidbody2D rbody; 
+    Rigidbody2D rbody;
     float axisH, axisV = 0.0f;
     public GameObject sheild;
     public int bom = 0;
     public int health = 3;     //�̗�
     public float speed = 3.0f;   //�ړ����x
+    public int bom_time = 0;
+    private int frame = 0;
 
     public static Player Instance { get; private set; }
 
@@ -39,8 +42,24 @@ public class Player : MonoBehaviour
         if (0.2 <= transform.position.y) axisV = -0.05f;
         if (transform.position.y <= -4.5) axisV = 0.05f;
 
-            // �Ǐ]����
+        // �Ǐ]����
         Sheild.Instance.transform.position = new Vector2(transform.position.x, transform.position.y + 0.8f);
+        if (frame >= bom_time)
+        {
+            if (Input.GetKey(KeyCode.Space) && bom > 0)
+            {
+                frame = 0;
+                // "Block"タグがついたすべてのオブジェクトを取得
+                GameObject[] objects = GameObject.FindGameObjectsWithTag("Enemy");
+
+                // 各オブジェクトを削除
+                foreach (GameObject obj in objects)
+                {
+                    Destroy(obj);
+                }
+                bom--;
+            }
+        }
     }
 
     void FixedUpdate()
@@ -51,6 +70,6 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.TryGetComponent<IDamageable>(out var hit)) hit.Damage();
+        if (collision.gameObject.TryGetComponent<IDamageable>(out var hit)) hit.Damage();
     }
 }

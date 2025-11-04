@@ -9,6 +9,14 @@ public class GameManager : MonoBehaviour
     public GameObject item_drop;//アイテムオブジェクト
 
     private int frame = 0;  //フレーム
+    public int faze = 0;    //フェーズ
+
+    public static GameManager Instance { get; private set; }
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is create
 
@@ -37,6 +45,7 @@ public class GameManager : MonoBehaviour
             spawner.GetComponent<t_Enemy_Spwan>().spawn_switch = false;     //エネミーの出現をOFF
             item_drop.GetComponent<Item_Drop>().drop_switch = false;        //アイテムドロップをOFF
             Instantiate(boss, new Vector2(-2, 3), Quaternion.identity);     //ボスを召喚
+            faze++;
         }
     }
 }
