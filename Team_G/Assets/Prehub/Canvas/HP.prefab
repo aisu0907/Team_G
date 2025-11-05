@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8393807388223923826}
   - component: {fileID: 4219658477345786487}
   - component: {fileID: 6133181211707904630}
+  - component: {fileID: 4928825219824188775}
   m_Layer: 5
   m_Name: HP
   m_TagString: Untagged
@@ -65,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4693150557520481461, guid: 1747a30b39f452548b31e0871a444f66, type: 3}
+  m_Sprite: {fileID: 4693150557520481461, guid: e1eb8e9a4a22bf24482bd14d05f14f1f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -75,3 +76,15 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4928825219824188775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6751451955513752330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c2908c1cb8e3094ea222fa0c1a949d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
