@@ -16,10 +16,10 @@ public class Sheild_Item : ItemBase
     public float up_sheild = 0.5f;       //シールド範囲上昇率
     public float up_reflect_speed = 0.5f;//反射スピード上昇率
 
-    private int max_health = 3;//最大体力  
-    private int[] item_count;                       //アイテム取得回数   
-    private int max_bom = 3;                        //ボム最大所持数
-    private Vector3 sheild_size;                    //シールドサイズ
+    private int max_health = 3; //最大体力  
+    private int[] item_count;   //アイテム取得回数   
+    private int max_bom = 3;    //ボム最大所持数
+    private Vector3 sheild_size;//シールドサイズ
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -37,7 +37,7 @@ public class Sheild_Item : ItemBase
     void OnTriggerEnter2D(Collider2D collision)
     {
         //アイテムに当たった場合
-        if (collision.gameObject.tag == "Item")
+        if (collision.gameObject.CompareTag("Item"))
         {
             //アイテムを削除
             Destroy(collision.gameObject);

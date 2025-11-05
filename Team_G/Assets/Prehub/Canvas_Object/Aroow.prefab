@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2785568870437684193}
   - component: {fileID: 8673913943949230225}
   m_Layer: 5
-  m_Name: aroow
+  m_Name: Aroow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

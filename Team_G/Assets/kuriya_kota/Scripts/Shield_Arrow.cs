@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Shield_Arrow : MonoBehaviour
 {
-    public GameObject arrow;  // 矢印
     public GameObject red;    // 赤のターゲット
     public GameObject green;  // 緑のターゲット
 

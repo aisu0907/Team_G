@@ -49,7 +49,7 @@ public class Player : MonoBehaviour
             if (Input.GetKey(KeyCode.Space) && bom > 0)
             {
                 frame = 0;
-                // "Block"タグがついたすべてのオブジェクトを取得
+                // "Enemy"タグがついたすべてのオブジェクトを取得
                 GameObject[] objects = GameObject.FindGameObjectsWithTag("Enemy");
 
                 // 各オブジェクトを削除

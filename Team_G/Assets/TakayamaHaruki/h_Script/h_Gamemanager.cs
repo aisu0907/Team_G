@@ -33,7 +33,6 @@ public class GameManager : MonoBehaviour
         {
             //ゲームオーバーシーンに移行
             SceneManager.LoadScene("Gameover_Scene");
-            Debug.Log("shinu");
         }
 
         //フレームカウント
