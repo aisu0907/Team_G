@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8134109344239686235}
   - component: {fileID: 4817361562044634262}
-  - component: {fileID: 5952646338929868085}
+  - component: {fileID: -8050032401215244995}
   - component: {fileID: -8079904616705478854}
   - component: {fileID: 2280981832510062104}
   m_Layer: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: -921988423
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1786884696479516206, guid: a7df23b6b269b8a46aabf63a4eb15647, type: 3}
+  m_Sprite: {fileID: 9035238072627502858, guid: 91a5e3d54e29c0f4d824b7e3234f7fa3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -90,7 +90,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5952646338929868085
+--- !u!114 &-8050032401215244995
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1323917000318406210}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8326934ed5784c64590b3e13daf7bcec, type: 3}
+  m_Script: {fileID: 11500000, guid: 1051a51527aeca245b0fe3e7b1b183f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
@@ -107,8 +107,7 @@ MonoBehaviour:
   vec: {x: 0, y: 0}
   speed: 0
   on_hitting: 0
-  Img:
-  - {fileID: 9035238072627502858, guid: 91a5e3d54e29c0f4d824b7e3234f7fa3, type: 3}
+  window: {fileID: 5133228388402802461, guid: 282ce410365575f43b7fdfdeff5860e3, type: 3}
 --- !u!50 &-8079904616705478854
 Rigidbody2D:
   serializedVersion: 5

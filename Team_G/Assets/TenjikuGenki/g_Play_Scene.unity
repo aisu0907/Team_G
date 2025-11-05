@@ -140,6 +140,18 @@ PrefabInstance:
       propertyPath: pos2
       value: 
       objectReference: {fileID: 9790353}
+    - target: {fileID: -4194156144153558061, guid: 13d9d2d191a6aff4ca50ac6e84ca5b8d, type: 3}
+      propertyPath: spawn_switch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4194156144153558061, guid: 13d9d2d191a6aff4ca50ac6e84ca5b8d, type: 3}
+      propertyPath: 'enemy.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 58ab6cbe37866b744ace51bd52f36a28, type: 2}
+    - target: {fileID: -4194156144153558061, guid: 13d9d2d191a6aff4ca50ac6e84ca5b8d, type: 3}
+      propertyPath: 'prefab.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1323917000318406210, guid: eb5917cc4ddf9bd449a67f453b91cefc, type: 3}
     - target: {fileID: 691851686528095591, guid: 13d9d2d191a6aff4ca50ac6e84ca5b8d, type: 3}
       propertyPath: m_Name
       value: Spawner
@@ -1517,6 +1529,7 @@ MonoBehaviour:
   boss: {fileID: 870741779963481172, guid: 45a3963f61df15f43b0a5ffcba5fed10, type: 3}
   spawner: {fileID: 1308437786}
   item_drop: {fileID: 3457435008533907693, guid: 35484c594a614a545b8db4efbeaf555c, type: 3}
+  faze: 0
 --- !u!1001 &1579403596
 PrefabInstance:
   m_ObjectHideFlags: 0

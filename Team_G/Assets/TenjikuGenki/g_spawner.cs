@@ -22,7 +22,10 @@ public class t_Enemy_Spwan : MonoBehaviour
         minY = Mathf.Min(pos.position.y, pos2.position.y);
         maxY = Mathf.Max(pos.position.y, pos2.position.y);
         spawn_switch = true;
-}
+
+        var e = Instantiate(prefab[2],new Vector2(0,3),Quaternion.identity).GetComponent<EJammer>();
+        e.Init(enemy[2], new Vector2(0, -1), enemy[2].speed);
+    }
 
     void Update()
     {
