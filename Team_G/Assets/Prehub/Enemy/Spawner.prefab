@@ -105,10 +105,10 @@ MonoBehaviour:
   prefab:
   - {fileID: 1323917000318406210, guid: 4e7fcc606545e1043bf191ae82e78847, type: 3}
   - {fileID: 1323917000318406210, guid: 153c5c8e6b3195a4ab8f621276dbfb1e, type: 3}
-  - {fileID: 1323917000318406210, guid: 153c5c8e6b3195a4ab8f621276dbfb1e, type: 3}
+  - {fileID: 1323917000318406210, guid: eb5917cc4ddf9bd449a67f453b91cefc, type: 3}
   enemy:
   - {fileID: 11400000, guid: 0060511f69e9d2a4fb1e007ad5c1b610, type: 2}
   - {fileID: 11400000, guid: 09365945412cd0e43a08d33931d03f75, type: 2}
-  - {fileID: 11400000, guid: 09365945412cd0e43a08d33931d03f75, type: 2}
+  - {fileID: 11400000, guid: 58ab6cbe37866b744ace51bd52f36a28, type: 2}
   spawn_switch: 1
   generateFrame: 90
