@@ -26,16 +26,17 @@ public class Item_Drop : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        //敵の位置取得
-        v = new Vector2(collision.gameObject.transform.position.x, collision.gameObject.transform.position.y);
-        //ランダムでアイテムを決める
-        randitem = Random.Range(0, itemList.Count);//ドロップアイテムを決定
-        randdrop = Random.Range(0, 9);             //ライフドロップを決める
-        //エネミーに触れたら
-        if (collision.gameObject.tag == "Enemy")
-            //アイテムがドロップする場合
-            if (drop_switch)
-                if (collision.gameObject.GetComponent<Enemy>().on_hitting == false)
+        if (collision.TryGetComponent<Enemy>(out var e))
+            if (e.on_hitting)
+            {
+                //敵の位置取得
+                v = e.transform.position;
+
+                //ランダムでアイテムを決める
+                randitem = Random.Range(0, itemList.Count);//ドロップアイテムを決定
+                randdrop = Random.Range(0, 9);             //ライフドロップを決める
+
+                if (drop_switch)//アイテムがドロップする場合
                 {
                     if (randdrop < life_drop && Player.Instance.health < 3)
                     {
@@ -48,5 +49,6 @@ public class Item_Drop : MonoBehaviour
                         Instantiate(itemList[randitem], v, Quaternion.identity);
                     }
                 }
+            }
     }
 }

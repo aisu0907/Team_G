@@ -37,15 +37,15 @@ public class Sheild_Item : ItemBase
     void OnTriggerEnter2D(Collider2D collision)
     {
         //アイテムに当たった場合
-        if (collision.gameObject.CompareTag("Item"))
+        if (TryGetComponent<Item>(out var i))
         {
             //アイテムを削除
-            Destroy(collision.gameObject);
+            Destroy(i.gameObject);
 
             //スピード
-            if (collision.GetComponent<Item>().item_id == speed_item)
+            if (i.item_id == speed_item)
                 //累積上限に達していなかった場合
-                if (item_count[speed_item] < collision.GetComponent<Item>().max_item_count)
+                if (item_count[speed_item] < i.max_item_count)
                 {
                     //プレイヤーの移動スピードを上げる
                     Player.Instance.speed += up_speed;
@@ -55,21 +55,20 @@ public class Sheild_Item : ItemBase
                 }
 
             //反射スピード
-            if (collision.GetComponent<Item>().item_id == reflect_item)
+            if (i.item_id == reflect_item)
                 //累積上限に達していなかった場合
-                if (item_count[reflect_item] < collision.GetComponent<Item>().max_item_count)
+                if (item_count[reflect_item] < i.max_item_count)
                 {
                     //反射スピードup
-                    enemy_ref.GetComponent<Enemy>().speed += up_reflect_speed;
-                    Debug.Log(enemy_ref.GetComponent<Enemy>().speed);
+                    if(collision.TryGetComponent<Enemy>(out var e)) e.speed += up_reflect_speed;
                     //累積カウント
                     item_count[reflect_item]++;
                 }
 
             //反射範囲
-            if (collision.GetComponent<Item>().item_id == sheild_item)
+            if (i.item_id == sheild_item)
                 //累積上限に達していなかった場合
-                if (item_count[sheild_item] < collision.GetComponent<Item>().max_item_count)
+                if (item_count[sheild_item] < i.max_item_count)
                 {
                     //シールドを横に大きくする
                     sheild_size.x += up_sheild;
@@ -80,14 +79,14 @@ public class Sheild_Item : ItemBase
                 }
 
             //回復
-            if (collision.GetComponent<Item>().item_id == life_item)
+            if (i.item_id == life_item)
                 //プレイヤーの体力が最大じゃない場合
                 if (max_health > Player.Instance.health)
                     //プレイヤーの体力を増やす
                     Player.Instance.health += heal_hp;
 
             //ボム
-            if (collision.GetComponent<Item>().item_id == bomb_item)
+            if (i.item_id == bomb_item)
                 //ボム所持数が最大じゃない場合
                 if (max_bom > Player.Instance.bom)
                 {
