@@ -16,12 +16,13 @@ public class h_Health : MonoBehaviour
 
     private GameObject image_object;
     private Image image_component;
-    private int hp;
-    private int prevHp = -1;
+    private int hp; //現在hp
+    private int prevHp = -1; //hp確認用
 
     // 初期化関数
     void Start()
     {
+        //hpの画像を設定
         hp3 = Resources.Load("HP3") as Texture2D;
         hp2 = Resources.Load("HP2") as Texture2D;
         hp1 = Resources.Load("HP1") as Texture2D;
@@ -30,30 +31,34 @@ public class h_Health : MonoBehaviour
         // オブジェクトの取得
         image_object = GameObject.Find("HP");
         // コンポーネントの取得
-       image_component = image_object.GetComponent<Image>();
+        image_component = image_object.GetComponent<Image>();
     }
 
 
     void Update()
     {
+        //プレイヤーの現在hpを代入
         hp = Player.Instance.health;
         if (hp == prevHp) return; // HPが変わらなければ何もしない
         prevHp = hp;
 
-        Texture2D currentTex = null;
+        Texture2D hp_img = null;
+
+        //表示するhpを決める
         switch (hp)
         {
-            case 3: currentTex = hp3; break;
-            case 2: currentTex = hp2; break;
-            case 1: currentTex = hp1; break;
-            case 0: currentTex = hp0; break;
+            case 3: hp_img = hp3; break;
+            case 2: hp_img = hp2; break;
+            case 1: hp_img = hp1; break;
+            case 0: hp_img = hp0; break;
         }
-
-        if (currentTex != null)
+        
+        //hp_imgに画像が入っていれば表示
+        if (hp_img != null)
         {
             image_component.sprite = Sprite.Create(
-                currentTex,
-                new Rect(0, 0, currentTex.width, currentTex.height),
+                hp_img,
+                new Rect(0, 0, hp_img.width, hp_img.height),
                 Vector2.zero
             );
         }

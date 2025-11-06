@@ -28,9 +28,9 @@ public class Player : MonoBehaviour
     {
         // RigidBody2D��������擾����
         rbody = this.GetComponent<Rigidbody2D>();
-
         // ���̐���
         Instantiate(sheild);
+        frame = 300;
     }
 
     // Update is called once per frame
@@ -44,6 +44,8 @@ public class Player : MonoBehaviour
 
         // �Ǐ]����
         Sheild.Instance.transform.position = new Vector2(transform.position.x, transform.position.y + 0.8f);
+
+        //ボムの処理
         if (frame >= bom_time)
         {
             if (Input.GetKey(KeyCode.Space) && bom > 0)
@@ -57,6 +59,8 @@ public class Player : MonoBehaviour
                 {
                     Destroy(obj);
                 }
+
+                //bomの数を減らす
                 bom--;
             }
         }
@@ -64,6 +68,7 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
+        frame++;
         //�ړ��̓K�p
         rbody.linearVelocity = new Vector2(axisH * speed, axisV * speed);
     }

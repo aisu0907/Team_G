@@ -6,15 +6,17 @@ using UnityEngine.UI;
 public class h_Bomb_Gage : MonoBehaviour
 {
     public float bomb_gage_up = 0; //時間経過で進むボムゲージ
-    public int bomb_time = 0;    //ボムゲージが進む頻度
-    public Slider bomb_gage;
+    public float bomb_max = 0;     //ボム最大所持数
+    public int bomb_time = 0;      //ボムゲージが進む頻度
+    public Slider bomb_gage;       //スライダーを取得
 
     private int frame = 0;
+    private int max_bom = 2;//ボムの最大所持数
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        bomb_gage.value = 0;
+        bomb_gage.value = 0;　//スライダーの位置をリセット
     }
 
     // Update is called once per frame
@@ -22,15 +24,24 @@ public class h_Bomb_Gage : MonoBehaviour
     {
         frame++;
 
-        if(frame == bomb_time)
+        //1秒間にためるゲージ
+        if(frame >= bomb_time)
         {
+            //frameをリセット
             frame = 0;
-            bomb_gage.value = bomb_gage_up;
+            //ゲージを増やす
+            bomb_gage.value += bomb_gage_up;
         }
 
-        if (bomb_gage.value > 200)
+        //ゲージがmaxの場合
+        if (bomb_gage.value >= bomb_max)
         {
+            //ゲージをリセット
             bomb_gage.value = 0;
+            //プレイヤーのボム所持数が最大じゃない場合
+            if (Player.Instance.bom < max_bom)
+                //ボムを1個増やす
+                Player.Instance.bom++;
         }
         
     }

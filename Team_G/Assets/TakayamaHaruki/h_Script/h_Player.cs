@@ -72,6 +72,7 @@ public class h_Player : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.TryGetComponent<IDamageable>(out var hit)) hit.Damage();
+        if (collision.gameObject.TryGetComponent<IDamageable>(out var hit))
+            if (!collision.GetComponent<Enemy>().on_hitting) hit.Damage();
     }
 }
