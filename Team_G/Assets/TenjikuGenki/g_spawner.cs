@@ -22,6 +22,7 @@ public class t_Enemy_Spwan : MonoBehaviour
         minY = Mathf.Min(pos.position.y, pos2.position.y);
         maxY = Mathf.Max(pos.position.y, pos2.position.y);
         spawn_switch = true;
+        SwitchScene();
 
         var e = Instantiate(prefab[2],new Vector2(0,3),Quaternion.identity).GetComponent<EJammer>();
         e.Init(enemy[2], new Vector2(0, -1), enemy[2].speed);
@@ -51,5 +52,9 @@ public class t_Enemy_Spwan : MonoBehaviour
                 frame = 0;
             }
         }
+    }
+    public void SwitchScene()
+    {
+        FadeManager.Instance.LoadScene("g_Play_Scene", 2.0f);
     }
 }
