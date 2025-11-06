@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -11,6 +12,8 @@ public class g_boss : MonoBehaviour
     public List<enemy_list> list = new List<enemy_list>();
     public SpriteRenderer img;
     public List<Sprite> sprites;
+    public AudioClip sound1;
+    public AudioSource audioSource;
 
     public void ChangeState(IBossState newState)
     {
@@ -28,6 +31,7 @@ public class g_boss : MonoBehaviour
         // Å‰‚Ìó‘Ô‚ğPhase1‚Éİ’è
         ChangeState(new g_BossPhase1());
         img = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void OnTriggerEnter2D(Collider2D collision)

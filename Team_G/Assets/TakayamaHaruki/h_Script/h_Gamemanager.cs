@@ -2,11 +2,12 @@
 
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 public class GameManager : MonoBehaviour
 {
     public GameObject boss;     //ボスオブジェクト
     public GameObject spawner;  //スポナーオブジェクト
-    public GameObject item_drop;//アイテムオブジェクト
+    public List<GameObject> item_drop;//アイテムオブジェクト
 
     private int frame = 0;  //フレーム
     public int faze = 0;    //フェーズ
@@ -23,7 +24,8 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         spawner.GetComponent<t_Enemy_Spwan>().spawn_switch = true;     //エネミーの出現をON
-        item_drop.GetComponent<Item_Drop>().drop_switch = true;        //アイテムドロップをON
+        for(int i = 0; i < item_drop.Count; i++)
+            item_drop[i].GetComponent<Item_Drop>().drop_switch = true;        //アイテムドロップをON
     }
 
     private void Update()
@@ -42,7 +44,8 @@ public class GameManager : MonoBehaviour
         if (frame ==1800)
         {
             spawner.GetComponent<t_Enemy_Spwan>().spawn_switch = false;     //エネミーの出現をOFF
-            item_drop.GetComponent<Item_Drop>().drop_switch = false;        //アイテムドロップをOFF
+            for (int i = 0; i < item_drop.Count; i++)
+                item_drop[i].GetComponent<Item_Drop>().drop_switch = false;        //アイテムドロップをOFF
             Instantiate(boss, new Vector2(-2, 3), Quaternion.identity);     //ボスを召喚
             faze++;
         }

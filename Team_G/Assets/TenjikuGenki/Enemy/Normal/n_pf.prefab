@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6125955131492111885}
   - component: {fileID: -8079904616705478854}
   - component: {fileID: 2280981832510062104}
+  - component: {fileID: 6476429677079179676}
   m_Layer: 0
   m_Name: n_pf
   m_TagString: Enemy
@@ -77,7 +78,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -921988423
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 5733918765317724893, guid: 5301f0a169e3e424db9522ca6e03e0a2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -173,3 +174,22 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.135
+--- !u!114 &6476429677079179676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323917000318406210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bddfc6f2f5cce3a45872dc7491763339, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemList:
+  - {fileID: 7649682198198143427, guid: 1098454608030ad42b3cc46301ef6de8, type: 3}
+  - {fileID: 2421750453974295715, guid: 9d236791badac4e458af18aaf6974148, type: 3}
+  - {fileID: 4738802059314880400, guid: 1ef76d50663a4324c9e74362c6e288ef, type: 3}
+  Life_item: {fileID: 1573918439574613243, guid: 0e984b1775ef31d4a8aaec7b7b537c76, type: 3}
+  drop_switch: 1
+  life_drop: 0
