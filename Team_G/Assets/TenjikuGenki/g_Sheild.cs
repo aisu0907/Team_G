@@ -39,7 +39,7 @@ public class Sheild : MonoBehaviour
         // Definition "collision" 
         if (collision.TryGetComponent<Enemy>(out var obj))
         {
-            if (IsHitFallingEnemy(obj))
+            if (IsHitFallingEnemy(obj) && obj.type != 2)
             {
                 // Dicide Vector
                 Vector2 d = (collision.transform.position - transform.position).normalized;
