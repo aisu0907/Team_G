@@ -77,7 +77,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -921988423
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: -1
   m_Sprite: {fileID: -8784003655823627391, guid: c7a4d6d5f118e2b42bf2dbbf21b060d5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -102,8 +102,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65e4a4cf2c8c52e40b8fe51b1e6f03f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  list: []
+  health: 5
+  list:
+  - db: {fileID: 11400000, guid: 0060511f69e9d2a4fb1e007ad5c1b610, type: 2}
+    pf: {fileID: 1323917000318406210, guid: 4e7fcc606545e1043bf191ae82e78847, type: 3}
+  - db: {fileID: 11400000, guid: 09365945412cd0e43a08d33931d03f75, type: 2}
+    pf: {fileID: 1323917000318406210, guid: 153c5c8e6b3195a4ab8f621276dbfb1e, type: 3}
+  img: {fileID: 0}
+  sprites:
+  - {fileID: -8784003655823627391, guid: c7a4d6d5f118e2b42bf2dbbf21b060d5, type: 3}
+  - {fileID: -8430282202468897226, guid: 93e6c17ad0a136949bbb8ff85a1059e4, type: 3}
+  sound1: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!50 &1829111181030531218
 Rigidbody2D:
   serializedVersion: 5
@@ -168,8 +178,13 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.32499996, y: 0}
-  - {x: 0.32499996, y: 0}
+  - {x: -0.0034972727, y: 0.118874945}
+  - {x: -0.32285267, y: 0.07383115}
+  - {x: -0.25892103, y: -0.09115389}
+  - {x: -0.0054888544, y: -0.16750559}
+  - {x: 0.2458706, y: -0.09365882}
+  - {x: 0.32546964, y: 0.06928127}
+  - {x: -0.0046077967, y: 0.116173215}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0

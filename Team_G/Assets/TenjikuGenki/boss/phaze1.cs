@@ -1,4 +1,6 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 
@@ -39,5 +41,6 @@ public class g_BossPhase1 : MonoBehaviour, IBossState
         boss.img.sprite = boss.sprites[color];
         Vector2 d = (Player.Instance.transform.position - boss.transform.position).normalized;
         var e = Instantiate(boss.list[0].pf, boss.transform.position, Quaternion.identity).GetComponent<ENormal>(); e.Init(boss.list[0].db, d, color, 5);
+        boss.audioSource.PlayOneShot(boss.sound1);
     }
 }
