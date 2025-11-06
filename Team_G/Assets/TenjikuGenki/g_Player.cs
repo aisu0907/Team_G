@@ -75,6 +75,7 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<IDamageable>(out var hit)) hit.Damage();
+        if(TryGetComponent<Enemy>(out var e))
+            if (collision.TryGetComponent<IDamageable>(out var hit) && e.on_hitting) hit.Damage();
     }
 }
