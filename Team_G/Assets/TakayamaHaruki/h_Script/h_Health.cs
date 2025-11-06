@@ -16,8 +16,8 @@ public class h_Health : MonoBehaviour
 
     private GameObject image_object;
     private Image image_component;
-    private int hp;
-    private int prevHp = -1;
+    private int hp; //Œ»İhp
+    private int prevHp = -1; //hpŠm”F—p
 
     // ‰Šú‰»ŠÖ”
     void Start()

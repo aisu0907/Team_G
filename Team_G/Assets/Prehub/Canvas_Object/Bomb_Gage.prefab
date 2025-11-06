@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3517410194387879231}
   - component: {fileID: 2681368614554744671}
+  - component: {fileID: 7234192229792845595}
   m_Layer: 5
   m_Name: Bomb_Gage
   m_TagString: Untagged
@@ -84,12 +85,28 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2758602728198431597}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 10
+  m_MaxValue: 100
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7234192229792845595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2958912998714398459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8914f2206af15f441bc8ead3e094a27e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bomb_gage_up: 20
+  bomb_max: 100
+  bomb_time: 60
+  bomb_gage: {fileID: 0}
 --- !u!1 &4475630656935574763
 GameObject:
   m_ObjectHideFlags: 0

@@ -30,7 +30,7 @@ public class h_Bomb_Gage : MonoBehaviour
             bomb_gage.value += bomb_gage_up;
         }
 
-        if (bomb_gage.value > bomb_max)
+        if (bomb_gage.value >= bomb_max)
         {
             bomb_gage.value = 0;
             if (Player.Instance.bom < max_bom)
