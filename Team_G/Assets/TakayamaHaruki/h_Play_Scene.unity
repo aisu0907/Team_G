@@ -1254,7 +1254,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boss: {fileID: 870741779963481172, guid: 45a3963f61df15f43b0a5ffcba5fed10, type: 3}
   spawner: {fileID: 1308437786}
-  item_drop: {fileID: 3457435008533907693, guid: 732fa085f0665464b86e7cd696d538dd, type: 3}
+  item_drop:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   faze: 0
 --- !u!1 &1535936765 stripped
 GameObject:
@@ -1993,7 +1996,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8914f2206af15f441bc8ead3e094a27e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bomb_gage_up: 5
+  bomb_gage_up: 20
   bomb_max: 100
   bomb_time: 60
   bomb_gage: {fileID: 6804413508424004305}
@@ -2016,6 +2019,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8420605651650006609}
     m_Modifications:
+    - target: {fileID: 2681368614554744671, guid: 6aba5dcbdc1fb0a44bdb46b9124e0ba8, type: 3}
+      propertyPath: m_Value
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2681368614554744671, guid: 6aba5dcbdc1fb0a44bdb46b9124e0ba8, type: 3}
       propertyPath: m_MaxValue
       value: 100
@@ -2111,6 +2118,10 @@ PrefabInstance:
     - target: {fileID: 6023600705506096526, guid: 6aba5dcbdc1fb0a44bdb46b9124e0ba8, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8258745596146516397, guid: 6aba5dcbdc1fb0a44bdb46b9124e0ba8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8258745596146516397, guid: 6aba5dcbdc1fb0a44bdb46b9124e0ba8, type: 3}
       propertyPath: m_AnchorMax.y
