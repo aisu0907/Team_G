@@ -16,6 +16,7 @@ public class k_boss : MonoBehaviour
     public EnemyBase enemy2;
     public GameObject prefab2;
 
+
     public GameObject kill;
 
 
@@ -34,6 +35,8 @@ public class k_boss : MonoBehaviour
     AudioSource audioSource;
 
     public static k_boss Instance { get; private set; }
+
+   
 
     private void Awake()
     {
@@ -60,15 +63,20 @@ public class k_boss : MonoBehaviour
                 timer++;
                 if (timer >= 200)
                 {
-                    mode = Random.Range(1, 3); // 1か2を選ぶ
+                    mode = Random.Range(1, 4); // 1か3を選ぶ
                     timer = 0;
                 }
                 break;
             case 1:
-                spiralShot();
+                beam();
+                //spiralShot();
                 break;
             case 2:
                 //rockon();
+                beam();
+                break;
+            case 3:
+                //summon_jama();
                 beam();
                 break;
         }
@@ -149,15 +157,17 @@ public class k_boss : MonoBehaviour
         //{
             for (int i = 0; i < 3; i++)
             {
-                float angle = (-90f + (i-1) * 70f) * Mathf.Deg2Rad;
+                float angle = (-90f + (i-1) * 50f) * Mathf.Deg2Rad;
                 i++;
                 Vector2 d = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
                 var e = Instantiate(prefab, transform.position, Quaternion.identity).GetComponent<ENormal>();
                 e.Init(enemy, d, Random.Range(0, 2), 2.5f);
-            }    
-            once = true;
-            timer = 0;
-            mode = 0;
+        }
+        while (timer < 300) timer++;
+        once = true;
+        timer = 0;
+        mode = 0;
+
     }
     private void Move()
     {
@@ -176,7 +186,7 @@ public class k_boss : MonoBehaviour
             Instantiate(kill, Player.Instance.transform.position, Quaternion.identity);
 
             // サウンドを鳴らすなら
-            audioSource.PlayOneShot(sound2);
+            audioSource.PlayOneShot(sound1);
         }
 
         timer++;
@@ -190,4 +200,19 @@ public class k_boss : MonoBehaviour
         }
     }
 
+    private void summon_jama()
+    {
+        if (once)
+        {
+            timer = 0;
+            once = false;
+        }
+        var e2 = Instantiate(prefab2, new Vector2(0, Random.Range(3, 5)), Quaternion.identity).GetComponent<EJammer>();
+        e2.Init(enemy2, new Vector2(0, -0.5f), enemy2.speed);
+      
+            once = true;
+            timer = 0;
+            mode = 0;
+        
+    }
 }
