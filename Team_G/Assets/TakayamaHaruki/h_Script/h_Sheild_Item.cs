@@ -37,7 +37,7 @@ public class Sheild_Item : ItemBase
     void OnTriggerEnter2D(Collider2D collision)
     {
         //アイテムに当たった場合
-        if (TryGetComponent<Item>(out var i))
+        if (collision.TryGetComponent<Item>(out var i))
         {
             //アイテムを削除
             Destroy(i.gameObject);

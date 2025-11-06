@@ -63,21 +63,22 @@ public class k_boss : MonoBehaviour
                 timer++;
                 if (timer >= 200)
                 {
-                    mode = Random.Range(1, 4); // 1か3を選ぶ
+                    mode = Random.Range(1, 5); // 1から4を選ぶ
                     timer = 0;
                 }
                 break;
             case 1:
                 beam();
-                //spiralShot();
+                //
                 break;
             case 2:
-                //rockon();
-                beam();
+                rockon();
                 break;
             case 3:
-                //summon_jama();
-                beam();
+                summon_jama();
+                break;
+            case 4:
+                spiralShot();
                 break;
         }
 
@@ -139,11 +140,6 @@ public class k_boss : MonoBehaviour
             Destroy(t);
         }
     }
-    //void movePattern()
-    //{
-    //    float moveX = Mathf.Sin(Time.time) * 0.3f;
-    //    transform.position = new Vector2(moveX, transform.position.y);
-    //}
 
     void spiralShot()
     {
