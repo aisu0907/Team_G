@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Score : MonoBehaviour
 {
-    public GameObject score_object = null; //Textオブジェクト
-
-    private int total_score;
+    public int total_score = 0;
+    private TMP_Text scoreText;
 
     public static Score Instance { get; private set; }
 
@@ -15,19 +14,19 @@ public class Score : MonoBehaviour
     {
         Instance = this;
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    // Start is called before the first frame update
     void Start()
     {
         total_score = 0;
+        scoreText = GetComponent<TMP_Text>();
+        scoreText.text = "SCORE:" + total_score.ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // オブジェクトからTextコンポーネントを取得
-        Text score_text = score_object.GetComponent<Text>();
-
-        score_text.text = "Score :" + total_score;
-        
+        scoreText.text = "SCORE:" + total_score.ToString();
     }
 }
+

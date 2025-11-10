@@ -52,18 +52,19 @@ public class Sheild_Item : ItemBase
                     Debug.Log(Player.Instance.speed);
                     //累積カウント
                     item_count[speed_item]++;
+                    Score.Instance.total_score += 100;
                 }
 
             //反射スピード
             if (i.item_id == reflect_item)
-                //累積上限に達していなかった場合
-                if (item_count[reflect_item] < i.max_item_count)
-                {
-                    //反射スピードup
-                    if(collision.TryGetComponent<Enemy>(out var e)) e.speed += up_reflect_speed;
-                    //累積カウント
-                    item_count[reflect_item]++;
-                }
+                    //累積上限に達していなかった場合
+                    if (item_count[reflect_item] < i.max_item_count)
+                    {
+                        //反射スピードup
+                        if (collision.TryGetComponent<Enemy>(out var e)) e.speed += up_reflect_speed;
+                        //累積カウント
+                        item_count[reflect_item]++;
+                    }
 
             //反射範囲
             if (i.item_id == sheild_item)
