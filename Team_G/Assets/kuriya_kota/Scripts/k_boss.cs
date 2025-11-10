@@ -19,8 +19,6 @@ public class k_boss : MonoBehaviour
 
     public GameObject kill;
 
-
-    public float speed;
     public int health;
     int _health;
     bool once = true;
@@ -28,6 +26,7 @@ public class k_boss : MonoBehaviour
     GameObject t;
     int[] colors = new int[3];
 
+    bool move = true;
 
     //サウンド
     public AudioClip sound1;
@@ -36,10 +35,11 @@ public class k_boss : MonoBehaviour
 
     public static k_boss Instance { get; private set; }
 
-   
+    public ScreenFlash screenFlash;
 
     private void Awake()
     {
+
         Instance = this;
     }
 
@@ -55,43 +55,66 @@ public class k_boss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
+        if(move==true) Move();
+
+
+        if (move == true && health <= 5)
+        {
+            img.color = Color.Lerp(
+            Color.white,
+            Color.red,
+            Mathf.Sin(Time.time * 2f) * 0.5f + 0.5f);
+        }
+
 
         switch (mode)
         {
             case 0:
-                timer++;
-                if (timer >= 200)
+                if (move == true)  timer++;
+                if (timer >= 300)
                 {
                     mode = Random.Range(1, 5); // 1から4を選ぶ
                     timer = 0;
                 }
                 break;
             case 1:
-                beam();
-                //
+              
+                    beam();
+             
                 break;
             case 2:
-                rockon();
+                spiralShot();
+                if(health<=5) beam();
                 break;
             case 3:
-                summon_jama();
+               // summon_jama();
+                if (health <= 5) beam();
                 break;
             case 4:
                 spiralShot();
+                if (health <= 5) beam();
                 break;
         }
 
         if (health <= 0)
         {
-            Destroy(gameObject);
-            SceneManager.LoadScene("Result_Scene");
+            //screenFlash.Flash();
+            //int time = 0;
+            //while(true)
+            //{
+            //    time++;
+            //    if (time == 60) break;
+            //}
+            //Destroy(gameObject);
+            //SceneManager.LoadScene("Result_Scene");
+            StartCoroutine(Die());
         }
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Enemy" && collision.gameObject.GetComponent<Enemy>().on_hitting)
         {
+           
             --health;
             Destroy(collision.gameObject);
         }
@@ -153,11 +176,11 @@ public class k_boss : MonoBehaviour
         //{
             for (int i = 0; i < 3; i++)
             {
-                float angle = (-90f + (i-1) * 50f) * Mathf.Deg2Rad;
+                float angle = (-90f + (i-1) * 70f) * Mathf.Deg2Rad;
                 i++;
                 Vector2 d = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
                 var e = Instantiate(prefab, transform.position, Quaternion.identity).GetComponent<ENormal>();
-                e.Init(enemy, d, Random.Range(0, 2), 2.5f);
+                e.Init(enemy, d, Random.Range(0, 2), 3.5f);
         }
         while (timer < 300) timer++;
         once = true;
@@ -167,7 +190,7 @@ public class k_boss : MonoBehaviour
     }
     private void Move()
     {
-        float moveX = Mathf.Sin(Time.time) * 2f-2f;
+        float moveX = Mathf.Sin(Time.time) * 1f-2f;
         transform.position = new Vector2(moveX, transform.position.y);
     }
 
@@ -180,9 +203,8 @@ public class k_boss : MonoBehaviour
 
             // プレイヤーの座標にプレハブを生成
             Instantiate(kill, Player.Instance.transform.position, Quaternion.identity);
-
             // サウンドを鳴らすなら
-            audioSource.PlayOneShot(sound1);
+      
         }
 
         timer++;
@@ -203,12 +225,44 @@ public class k_boss : MonoBehaviour
             timer = 0;
             once = false;
         }
-        var e2 = Instantiate(prefab2, new Vector2(0, Random.Range(3, 5)), Quaternion.identity).GetComponent<EJammer>();
+        var e2 = Instantiate(prefab2, new Vector2(transform.position.x, transform.position.y), Quaternion.identity).GetComponent<EJammer>();
         e2.Init(enemy2, new Vector2(0, -0.5f), enemy2.speed);
       
             once = true;
             timer = 0;
             mode = 0;
         
+    }
+    private bool isDying = false;
+    private System.Collections.IEnumerator Die()
+    {
+        timer = 0;
+        move = false;
+
+        img.color = Color.white;
+
+        
+
+        Destroy(gameObject.GetComponent<Enemy>());
+        Destroy(gameObject.GetComponent<Gasubura>());
+        Destroy(gameObject.GetComponent<k_target>());
+
+        if (isDying) yield break;
+        isDying = true;
+
+        audioSource.PlayOneShot(sound1);
+        // フラッシュ演出
+        screenFlash.Flash();
+
+        // 2秒待つ（演出時間）
+        yield return new WaitForSeconds(3f);
+
+        screenFlash.Flash();
+
+        // ボス削除
+        Destroy(gameObject);
+
+        // シーン切り替え
+        SceneManager.LoadScene("Result_Scene");
     }
 }

@@ -103,7 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 6767997902915522533, guid: 719e6de6cfa78e245b5af956f1c896a7, type: 3}
   blinkInterval: 0.045
-  lifeTime: 0.5
+  lifeTime: 1
   sound1: {fileID: 8300000, guid: 66e8fd1a0439d9044bc37f824f5f536d, type: 3}
   sound2: {fileID: 0}
 --- !u!82 &-1370553290618358684
