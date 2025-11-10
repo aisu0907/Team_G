@@ -5,7 +5,7 @@ public class Enemy : MonoBehaviour
     public int type, color;
     public Vector2 vec;
     public float speed;
-    protected int score;
+    public int score;
     protected int power;
     public bool on_hitting = false;
 
