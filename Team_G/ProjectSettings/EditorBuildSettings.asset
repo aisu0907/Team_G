@@ -17,5 +17,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MainScenes/Result_Scene.unity
     guid: df0cb020dbdac75478d4dc607d343a44
+  - enabled: 1
+    path: Assets/TenjikuGenki/g_Play_Scene.unity
+    guid: 9a4321dd1a0acb54c9bd97e3634e8131
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
