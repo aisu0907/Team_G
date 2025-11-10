@@ -1,3 +1,5 @@
+//h_Health.cs
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,8 +16,8 @@ public class h_Health : MonoBehaviour
     private Texture2D hp1;
     private Texture2D hp0;
 
-    private GameObject image_object;
-    private Image image_component;
+    private GameObject image_object; //イメージオブジェクト
+    private Image image_component;   //イメージコンポーネント
     private int hp; //現在hp
     private int prevHp = -1; //hp確認用
 
