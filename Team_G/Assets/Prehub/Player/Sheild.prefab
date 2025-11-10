@@ -77,7 +77,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -921988423
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -6556403868631285073, guid: b0642d7a69aa9d64cbc86bcba14e9aea, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f2b41675f5c2ed4ea14cd86126ae42c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SheildColor: 0
+  color: 0
   Img:
   - {fileID: -6556403868631285073, guid: b0642d7a69aa9d64cbc86bcba14e9aea, type: 3}
   - {fileID: -7696752515786996293, guid: 1ce3f8e14ec5b4744a9dbc307a60cd71, type: 3}
@@ -166,7 +166,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy_ref: {fileID: 3457435008533907693, guid: 35484c594a614a545b8db4efbeaf555c, type: 3}
   puls_bom: 1
+  item_score: 0
   heal_hp: 1
   up_speed: 0.5
   up_sheild: 1
   up_reflect_speed: 0.5
+  display: {fileID: 1843163215658175290, guid: 2ae498e857a77cc4daa1516f0c0ef3c8, type: 3}
