@@ -22,29 +22,22 @@ public class Sheild : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // �F�ύX����
-        if (Input.GetKey(KeyCode.Z))
-        {
-            img.sprite = Img[0];
-            color = 0;
-        }
-        if (Input.GetKey(KeyCode.X))
-        {
-            img.sprite = Img[1];
-            color = 1;
-        }
+        // 盾の色を変更
+        if (Input.GetKey(KeyCode.Z)) ChangeSheildColor(0);
+        if (Input.GetKey(KeyCode.X)) ChangeSheildColor(1);
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        // Definition "collision" 
+        // 敵機の情報を取得
         if (collision.TryGetComponent<Enemy>(out var obj))
         {
+            // 接触した敵機と盾の色が同じでかつ、それが妨害ウイルスじゃないなら、
             if (IsHitFallingEnemy(obj) && obj.type != 2)
             {
-                // Dicide Vector
+                // ベクトルを反転
                 Vector2 d = (collision.transform.position - transform.position).normalized;
                 obj.vec = d;
-                obj.on_hitting = true;
+                obj.on_hitting = true;　
             }
         }
     }
@@ -53,5 +46,11 @@ public class Sheild : MonoBehaviour
     {
         if (!obj.on_hitting && obj.color == color) return true;
         return false;
+    }
+
+    void ChangeSheildColor(int n)
+    {
+        img.sprite = Img[n];
+        color = n;
     }
 }
