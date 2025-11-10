@@ -11,10 +11,12 @@ public class Sheild_Item : ItemBase
 
     //アイテム効果の上昇率
     public int puls_bom = 1;             //ボムの取得量
+    public int item_score = 0;           //アイテム取得時のスコア
     public int heal_hp = 1;              //回復量
     public float up_speed = 0.5f;        //スピード上昇率
     public float up_sheild = 0.5f;       //シールド範囲上昇率
     public float up_reflect_speed = 0.5f;//反射スピード上昇率
+
 
     private int max_health = 3; //最大体力  
     private int[] item_count;   //アイテム取得回数   
@@ -53,6 +55,8 @@ public class Sheild_Item : ItemBase
                     //累積カウント
                     item_count[speed_item]++;
                 }
+                else
+                    Score.Instance.total_score += item_score;
 
             //反射スピード
             if (i.item_id == reflect_item)
@@ -60,23 +64,27 @@ public class Sheild_Item : ItemBase
                 if (item_count[reflect_item] < i.max_item_count)
                 {
                     //反射スピードup
-                    if(collision.TryGetComponent<Enemy>(out var e)) e.speed += up_reflect_speed;
+                    if (collision.TryGetComponent<Enemy>(out var e)) e.speed += up_reflect_speed;
                     //累積カウント
                     item_count[reflect_item]++;
                 }
+                else
+                    Score.Instance.total_score += item_score;
 
             //反射範囲
             if (i.item_id == sheild_item)
-                //累積上限に達していなかった場合
-                if (item_count[sheild_item] < i.max_item_count)
-                {
-                    //シールドを横に大きくする
-                    sheild_size.x += up_sheild;
-                    Sheild.Instance.transform.localScale = sheild_size;
-                    Debug.Log(Sheild.Instance.transform.localScale);
-                    //累積カウント
-                    item_count[sheild_item]++;
-                }
+                    //累積上限に達していなかった場合
+                    if (item_count[sheild_item] < i.max_item_count)
+                    {
+                        //シールドを横に大きくする
+                        sheild_size.x += up_sheild;
+                        Sheild.Instance.transform.localScale = sheild_size;
+                        Debug.Log(Sheild.Instance.transform.localScale);
+                        //累積カウント
+                        item_count[sheild_item]++;
+                    }
+                    else
+                        Score.Instance.total_score += item_score;
 
             //回復
             if (i.item_id == life_item)
