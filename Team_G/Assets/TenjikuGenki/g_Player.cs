@@ -64,17 +64,18 @@ public class Player : MonoBehaviour
                 bom--;
             }
         }
+        frame++;
     }
 
     void FixedUpdate()
     {
-        frame++;
-        //�ړ��̓K�p
+        // 移動処理
         rbody.linearVelocity = new Vector2(axisH * speed, axisV * speed);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        // 衝突判定
         if(TryGetComponent<Enemy>(out var e))
             if (collision.TryGetComponent<IDamageable>(out var hit) && e.on_hitting) hit.Damage();
     }
