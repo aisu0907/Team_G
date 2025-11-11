@@ -26,14 +26,7 @@ public class Score_Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-    //    void OnCollisionEnter2D(Collision2D collision)
-    //    {
-    //        Enemy other = collision.gameObject.GetComponent<Enemy>();
-    //        if (other != null)
-    //        {
-    //            Score_Manager.Instance.OnEnemiesCollided(this, other);
-    //        }
-    //    }
+
     }
 
     public void OnEnemiesCollided(Enemy e1, Enemy e2)

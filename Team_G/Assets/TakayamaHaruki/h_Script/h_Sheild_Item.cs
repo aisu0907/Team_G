@@ -57,7 +57,7 @@ public class Sheild_Item : ItemBase
                     d.SummonDisplay(i.GetComponent<SpriteRenderer>().sprite);
                 }
                 else
-                    Score.Instance.total_score += item_score;
+                    Score_Manager.Instance.ItemScore();
 
             //反射スピード
             if (i.item_id == reflect_item)
@@ -70,7 +70,7 @@ public class Sheild_Item : ItemBase
                     item_count[reflect_item]++;
                 }
                 else
-                    Score.Instance.total_score += item_score;
+                    Score_Manager.Instance.ItemScore();
 
             //反射範囲
             if (i.item_id == sheild_item)
@@ -85,7 +85,7 @@ public class Sheild_Item : ItemBase
                         item_count[sheild_item]++;
                     }
                     else
-                        Score.Instance.total_score += item_score;
+                        Score_Manager.Instance.ItemScore();
 
             //回復
             if (i.item_id == life_item)
@@ -101,11 +101,11 @@ public class Sheild_Item : ItemBase
                 {
 
                 }
-        }
 
         //アイテムを削除
         Destroy(i.gameObject);
 
+        }
     }
 }
 

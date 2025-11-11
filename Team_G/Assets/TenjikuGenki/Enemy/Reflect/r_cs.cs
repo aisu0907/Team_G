@@ -61,6 +61,14 @@ public class EReflect : Enemy, IDamageable
         rb.linearVelocity = vec * speed;
     }
 
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        Enemy other = collision.gameObject.GetComponent<Enemy>();
+        if (other != null)
+        {
+            Score_Manager.Instance.OnEnemiesCollided(this, other);
+        }
+    }
     void OnTriggerStay2D(Collider2D collision)
     {
         if (IsHitEnemy(collision.gameObject)) Delete(collision);
