@@ -55,6 +55,7 @@ public class ENormal : Enemy, IDamageable
         if (other != null)
         {
             Score_Manager.Instance.OnEnemiesCollided(this, other);
+            Debug.Log("‚ ‚ ‚ ‚ ‚ ");
         }
     }
 
