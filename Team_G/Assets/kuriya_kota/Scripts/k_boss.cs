@@ -253,11 +253,8 @@ public class k_boss : MonoBehaviour
         audioSource.PlayOneShot(sound1);
         // フラッシュ演出
         screenFlash.Flash();
-
         // 2秒待つ（演出時間）
         yield return new WaitForSeconds(3f);
-
-        screenFlash.Flash();
 
         // ボス削除
         Destroy(gameObject);
