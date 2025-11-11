@@ -20,5 +20,6 @@ public class DisplayItem : MonoBehaviour
     {
         var img = GetComponent<SpriteRenderer>();
         img.sprite = _img;
+        Destroy(gameObject, 3);
     }
 }

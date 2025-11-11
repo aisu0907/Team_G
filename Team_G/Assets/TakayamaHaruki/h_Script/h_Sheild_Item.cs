@@ -52,9 +52,7 @@ public class Sheild_Item : ItemBase
                     //累積カウント
                     item_count[speed_item]++;
 
-                    // アイテムの表示
-                    var d = Instantiate(display).GetComponent<DisplayItem>();
-                    d.SummonDisplay(i.GetComponent<SpriteRenderer>().sprite);
+                    SummonDisplay(i);
                 }
                 else
                     Score_Manager.Instance.ItemScore();
@@ -68,6 +66,8 @@ public class Sheild_Item : ItemBase
                     if (collision.TryGetComponent<Enemy>(out var e)) e.speed += up_reflect_speed;
                     //累積カウント
                     item_count[reflect_item]++;
+
+                    SummonDisplay(i);
                 }
                 else
                     Score_Manager.Instance.ItemScore();
@@ -83,6 +83,8 @@ public class Sheild_Item : ItemBase
                         Debug.Log(Sheild.Instance.transform.localScale);
                         //累積カウント
                         item_count[sheild_item]++;
+
+                        SummonDisplay(i);
                     }
                     else
                         Score_Manager.Instance.ItemScore();
@@ -106,6 +108,13 @@ public class Sheild_Item : ItemBase
         Destroy(i.gameObject);
 
         }
+    }
+
+    void SummonDisplay(Item i)
+    {
+        // アイテムの表示
+        var d = Instantiate(display, transform.position, Quaternion.identity).GetComponent<DisplayItem>();
+        d.SummonDisplay(i.GetComponent<SpriteRenderer>().sprite);
     }
 }
 
