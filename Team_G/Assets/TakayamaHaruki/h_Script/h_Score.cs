@@ -1,3 +1,5 @@
+//h_Score.cs
+
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -5,11 +7,10 @@ using UnityEngine;
 
 public class Score : MonoBehaviour
 {
-    public int total_score = 0;
-    private TMP_Text scoreText;
+    public int total_score = 0; //合計スコア
+    private TMP_Text scoreText; //テキストオブジェクト
 
     public static Score Instance { get; private set; }
-
     private void Awake()
     {
         Instance = this;
@@ -18,15 +19,15 @@ public class Score : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        total_score = 0;
-        scoreText = GetComponent<TMP_Text>();
-        scoreText.text = "SCORE:" + total_score.ToString();
+        total_score = 0; //スコアをリセット
+        scoreText = GetComponent<TMP_Text>(); //コンポーネントを取得
+        scoreText.text = "SCORE:" + total_score.ToString(); //初期スコア表示
     }
 
     // Update is called once per frame
     void Update()
     {
-        scoreText.text = "SCORE:" + total_score.ToString();
+        scoreText.text = "SCORE:" + total_score.ToString(); //最新のスコアを表示
     }
 }
 

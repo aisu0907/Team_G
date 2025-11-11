@@ -10,6 +10,7 @@ public class Sheild : MonoBehaviour
 
     private void Awake()
     {
+        // シングルトンの定義
         Instance = this;
     }
 
@@ -42,12 +43,14 @@ public class Sheild : MonoBehaviour
         }
     }
 
+    // 接触した敵機と盾の色が同じでかつ、それが敵機が降下中でないかどうか判定する
     bool IsHitFallingEnemy(Enemy obj)
     {
         if (!obj.on_hitting && obj.color == color) return true;
         return false;
     }
 
+    // 盾の色を変更する
     void ChangeSheildColor(int n)
     {
         img.sprite = Img[n];

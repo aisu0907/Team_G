@@ -17,11 +17,11 @@ public class Sheild_Item : ItemBase
     public float up_sheild = 0.5f;       //シールド範囲上昇率
     public float up_reflect_speed = 0.5f;//反射スピード上昇率
 
-
     private int max_health = 3; //最大体力  
     private int[] item_count;   //アイテム取得回数   
     private int max_bom = 3;    //ボム最大所持数
     private Vector3 sheild_size;//シールドサイズ
+    public GameObject display;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -41,9 +41,6 @@ public class Sheild_Item : ItemBase
         //アイテムに当たった場合
         if (collision.TryGetComponent<Item>(out var i))
         {
-            //アイテムを削除
-            Destroy(i.gameObject);
-
             //スピード
             if (i.item_id == speed_item)
                 //累積上限に達していなかった場合
@@ -54,6 +51,10 @@ public class Sheild_Item : ItemBase
                     Debug.Log(Player.Instance.speed);
                     //累積カウント
                     item_count[speed_item]++;
+
+                    // アイテムの表示
+                    var d = Instantiate(display).GetComponent<DisplayItem>();
+                    d.SummonDisplay(i.GetComponent<SpriteRenderer>().sprite);
                 }
                 else
                     Score.Instance.total_score += item_score;
@@ -101,6 +102,9 @@ public class Sheild_Item : ItemBase
 
                 }
         }
+
+        //アイテムを削除
+        Destroy(i.gameObject);
 
     }
 }
