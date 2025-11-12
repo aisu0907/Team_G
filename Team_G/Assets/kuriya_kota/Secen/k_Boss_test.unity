@@ -822,7 +822,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashImage: {fileID: 311241343}
-  flashSpeed: 1
+  flashInSpeed: 0.2
+  flashOutSpeed: 1
   maxAlpha: 255
 --- !u!1 &887983874
 GameObject:

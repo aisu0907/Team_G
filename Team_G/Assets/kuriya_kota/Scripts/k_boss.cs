@@ -1,6 +1,8 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class k_boss : MonoBehaviour
 {
@@ -14,7 +16,7 @@ public class k_boss : MonoBehaviour
     public EnemyBase enemy;
     public GameObject prefab;
     public EnemyBase enemy2;
-    public GameObject prefab2;
+    public GameObject prefab2; 
 
 
     public GameObject kill;
@@ -22,6 +24,7 @@ public class k_boss : MonoBehaviour
     public int health;
     int _health;
     bool once = true;
+    bool beam_once = true;
     float n = 0;
     GameObject t;
     int[] colors = new int[3];
@@ -71,23 +74,26 @@ public class k_boss : MonoBehaviour
         {
             case 0:
                 if (move == true)  timer++;
-                if (timer >= 300)
+                if (timer >= 180)
                 {
                     mode = Random.Range(1, 5); // 1から4を選ぶ
                     timer = 0;
                 }
                 break;
             case 1:
-              
-                    beam();
-             
-                break;
+                if (beam_once && health <= 5)
+                {
+                    beam_once = false; // コルーチンを一度だけ実行
+                    StartCoroutine(kill_gasybura());
+                }
+                else beam();
+                    break;
             case 2:
                 spiralShot();
                 if(health<=5) beam();
                 break;
             case 3:
-               // summon_jama();
+                summon_jama();
                 if (health <= 5) beam();
                 break;
             case 4:
@@ -95,6 +101,8 @@ public class k_boss : MonoBehaviour
                 if (health <= 5) beam();
                 break;
         }
+
+        if (timer >= 300) timer = 0;
 
         if (health <= 0)
         {
@@ -120,49 +128,49 @@ public class k_boss : MonoBehaviour
         }
     }
 
-    void rockon()
-    {
-        if (once)
-        {
-            timer = 0;
-            once = false;
-            t = Instantiate(Mark, Player.Instance.transform.position, Quaternion.identity);
-        }
+    //void rockon()
+    //{
+    //    if (once)
+    //    {
+    //        timer = 0;
+    //        once = false;
+    //        t = Instantiate(Mark, Player.Instance.transform.position, Quaternion.identity);
+    //    }
 
-        timer++;
-        if (timer <= 240)
-        {
-            t.transform.position = Player.Instance.transform.position;
-        }
-        if (180 <= timer && timer <= 240)
-        {
-            if (timer == 180)
-            {
-                if (color == 0) { colors[0] = 1; img.sprite = Img[colors[0]]; }
-                if (color == 1) { colors[0] = 0; img.sprite = Img[colors[0]]; }
-                audioSource.PlayOneShot(sound1);
-            }
-            if (timer == 210) { colors[1] = Random.Range(0, 2); img.sprite = Img[colors[1]]; audioSource.PlayOneShot(sound1); }
-            if (timer == 240) { colors[2] = Random.Range(0, 2); img.sprite = Img[colors[2]]; audioSource.PlayOneShot(sound1); }
-        }
-        else if (270 <= timer && timer <= 330)
-        {
-            if (timer % 30 == 0)
-            {
-                Vector2 d = (t.transform.position - transform.position).normalized;
-                if (timer == 270) { var e = Instantiate(prefab,transform.position,Quaternion.identity).GetComponent<ENormal>(); e.Init(enemy, d, colors[0], 5); }
-                if (timer == 300) { var e = Instantiate(prefab,transform.position,Quaternion.identity).GetComponent<ENormal>(); e.Init(enemy, d, colors[1], 5); }
-                if (timer == 330) { var e = Instantiate(prefab,transform.position,Quaternion.identity).GetComponent<ENormal>(); e.Init(enemy, d, colors[2], 5); }
-                }
-        }
-        else if (timer == 360)
-        {
-            once = true;
-            mode = 0;
-            timer = 0;
-            Destroy(t);
-        }
-    }
+    //    timer++;
+    //    if (timer <= 240)
+    //    {
+    //        t.transform.position = Player.Instance.transform.position;
+    //    }
+    //    if (180 <= timer && timer <= 240)
+    //    {
+    //        if (timer == 180)
+    //        {
+    //            if (color == 0) { colors[0] = 1; img.sprite = Img[colors[0]]; }
+    //            if (color == 1) { colors[0] = 0; img.sprite = Img[colors[0]]; }
+    //            audioSource.PlayOneShot(sound1);
+    //        }
+    //        if (timer == 210) { colors[1] = Random.Range(0, 2); img.sprite = Img[colors[1]]; audioSource.PlayOneShot(sound1); }
+    //        if (timer == 240) { colors[2] = Random.Range(0, 2); img.sprite = Img[colors[2]]; audioSource.PlayOneShot(sound1); }
+    //    }
+    //    else if (270 <= timer && timer <= 330)
+    //    {
+    //        if (timer % 30 == 0)
+    //        {
+    //            Vector2 d = (t.transform.position - transform.position).normalized;
+    //            if (timer == 270) { var e = Instantiate(prefab,transform.position,Quaternion.identity).GetComponent<ENormal>(); e.Init(enemy, d, colors[0], 5); }
+    //            if (timer == 300) { var e = Instantiate(prefab,transform.position,Quaternion.identity).GetComponent<ENormal>(); e.Init(enemy, d, colors[1], 5); }
+    //            if (timer == 330) { var e = Instantiate(prefab,transform.position,Quaternion.identity).GetComponent<ENormal>(); e.Init(enemy, d, colors[2], 5); }
+    //            }
+    //    }
+    //    else if (timer == 360)
+    //    {
+    //        once = true;
+    //        mode = 0;
+    //        timer = 0;
+    //        Destroy(t);
+    //    }
+    //}
 
     void spiralShot()
     {
@@ -182,11 +190,9 @@ public class k_boss : MonoBehaviour
                 var e = Instantiate(prefab, transform.position, Quaternion.identity).GetComponent<ENormal>();
                 e.Init(enemy, d, Random.Range(0, 2), 3.5f);
         }
-        while (timer < 300) timer++;
+        //while (timer < 300) timer++;
         once = true;
-        timer = 0;
         mode = 0;
-
     }
     private void Move()
     {
@@ -204,7 +210,7 @@ public class k_boss : MonoBehaviour
             // プレイヤーの座標にプレハブを生成
             Instantiate(kill, Player.Instance.transform.position, Quaternion.identity);
             // サウンドを鳴らすなら
-      
+
         }
 
         timer++;
@@ -217,6 +223,25 @@ public class k_boss : MonoBehaviour
             mode = 0;
         }
     }
+
+
+    //beam用コルーチン
+    private IEnumerator beamCoroutine()
+    {
+        if (!once) yield break;
+        once = false;
+        timer = 0;
+
+        // プレイヤーの座標にビーム生成
+        Instantiate(kill, Player.Instance.transform.position, Quaternion.identity);
+
+        yield return new WaitForSeconds(2f);
+
+        once = true;
+    }
+
+
+
 
     private void summon_jama()
     {
@@ -262,4 +287,30 @@ public class k_boss : MonoBehaviour
         // シーン切り替え
         SceneManager.LoadScene("Result_Scene");
     }
+
+    private IEnumerator kill_gasybura()
+    {
+        timer = 0;
+
+
+        beam_once = true;  
+
+        
+        StartCoroutine(beamCoroutine());
+        yield return new WaitForSeconds(1f); 
+
+       
+        StartCoroutine(beamCoroutine());
+        yield return new WaitForSeconds(1f);
+
+        StartCoroutine(beamCoroutine());
+        yield return new WaitForSeconds(1f);
+
+
+
+        beam_once = true;
+     
+        mode = 0;
+    }
+
 }
