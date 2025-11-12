@@ -9,6 +9,11 @@ public class Top_Wall : MonoBehaviour
         //壁に触れたらエネミーを削除
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            Enemy other = collision.gameObject.GetComponent<Enemy>();
+            if (other != null)
+            {
+                Score_Manager.Instance.Enemy_Score(other);
+            }
             Destroy(collision.gameObject);
         }
     }
