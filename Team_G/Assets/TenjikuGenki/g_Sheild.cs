@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Sheild : MonoBehaviour
 {
+    // 変数
     SpriteRenderer img;
     public int color = 0;
     [SerializeField] List<Sprite> Img;   //�摜
@@ -24,8 +25,8 @@ public class Sheild : MonoBehaviour
     void Update()
     {
         // 盾の色を変更
-        if (Input.GetKey(KeyCode.Z)) ChangeSheildColor(0);
-        if (Input.GetKey(KeyCode.X)) ChangeSheildColor(1);
+        if (Input.GetKey(KeyCode.Z)) ChangeSheildColor(COLOR.RED);
+        if (Input.GetKey(KeyCode.X)) ChangeSheildColor(COLOR.GREEN);
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -33,7 +34,7 @@ public class Sheild : MonoBehaviour
         if (collision.TryGetComponent<Enemy>(out var obj))
         {
             // 接触した敵機と盾の色が同じでかつ、それが妨害ウイルスじゃないなら、
-            if (IsHitFallingEnemy(obj) && obj.type != 2)
+            if (IsHitFallingEnemy(obj) && obj.type != (int)EnemyConst.TYPE.JAMMER)
             {
                 // ベクトルを反転
                 Vector2 d = (collision.transform.position - transform.position).normalized;
@@ -51,9 +52,9 @@ public class Sheild : MonoBehaviour
     }
 
     // 盾の色を変更する
-    void ChangeSheildColor(int n)
+    void ChangeSheildColor(COLOR n)
     {
-        img.sprite = Img[n];
-        color = n;
+        img.sprite = Img[(int)n];
+        color = (int)n;
     }
 }

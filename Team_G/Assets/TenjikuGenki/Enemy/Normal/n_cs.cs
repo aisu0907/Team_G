@@ -20,7 +20,7 @@ public class ENormal : Enemy, IDamageable
     {
         // Spin
         if (on_hitting)
-            transform.Rotate(0, 0, 20);
+            transform.Rotate(0, 0, EnemyConst.ROTATION_ANGLE);
     }
 
     void FixedUpdate()
@@ -55,7 +55,6 @@ public class ENormal : Enemy, IDamageable
         if (other != null)
         {
             Score_Manager.Instance.OnEnemiesCollided(this, other);
-            Debug.Log("‚ ‚ ‚ ‚ ‚ ");
         }
     }
 

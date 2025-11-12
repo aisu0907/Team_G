@@ -37,7 +37,7 @@ public class g_BossPhase1 : MonoBehaviour, IBossState
     {
         Debug.Log("Phase1’e”­ËI");
         // ÀÛ‚É‚Í‚±‚±‚Å’ePrefab‚ğInstantiate‚µ‚½‚èAObjectPool‚ğg‚Á‚½‚è‚µ‚Ü‚·
-        int color = Random.Range(0, 2);
+        int color = Random.Range(0, boss.list.Count);
         boss.img.sprite = boss.sprites[color];
         Vector2 d = (Player.Instance.transform.position - boss.transform.position).normalized;
         var e = Instantiate(boss.list[0].pf, boss.transform.position, Quaternion.identity).GetComponent<ENormal>(); e.Init(boss.list[0].db, d, color, 5);
