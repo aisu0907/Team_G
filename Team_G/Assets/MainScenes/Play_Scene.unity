@@ -1809,7 +1809,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2681368614554744671, guid: 6aba5dcbdc1fb0a44bdb46b9124e0ba8, type: 3}
   m_PrefabInstance: {fileID: 7114137544229999854}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 7114137544229999855}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
@@ -1823,6 +1823,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8420605651650006609}
     m_Modifications:
+    - target: {fileID: -4580380399434782689, guid: 6aba5dcbdc1fb0a44bdb46b9124e0ba8, type: 3}
+      propertyPath: bomb
+      value: 
+      objectReference: {fileID: 2359638694587435628, guid: 08f998f1edf51464ab8e47cea4468094, type: 3}
+    - target: {fileID: -4580380399434782689, guid: 6aba5dcbdc1fb0a44bdb46b9124e0ba8, type: 3}
+      propertyPath: bomb_x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4580380399434782689, guid: 6aba5dcbdc1fb0a44bdb46b9124e0ba8, type: 3}
+      propertyPath: bomb_y
+      value: 0.38
+      objectReference: {fileID: 0}
+    - target: {fileID: -4580380399434782689, guid: 6aba5dcbdc1fb0a44bdb46b9124e0ba8, type: 3}
+      propertyPath: bomb_gage
+      value: 
+      objectReference: {fileID: 7114137544229999855}
+    - target: {fileID: -4580380399434782689, guid: 6aba5dcbdc1fb0a44bdb46b9124e0ba8, type: 3}
+      propertyPath: bomb_space
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2681368614554744671, guid: 6aba5dcbdc1fb0a44bdb46b9124e0ba8, type: 3}
       propertyPath: m_MaxValue
       value: 100
@@ -1830,6 +1850,10 @@ PrefabInstance:
     - target: {fileID: 2958912998714398459, guid: 6aba5dcbdc1fb0a44bdb46b9124e0ba8, type: 3}
       propertyPath: m_Name
       value: Bomb_Gage
+      objectReference: {fileID: 0}
+    - target: {fileID: 2958912998714398459, guid: 6aba5dcbdc1fb0a44bdb46b9124e0ba8, type: 3}
+      propertyPath: m_TagString
+      value: Bomb
       objectReference: {fileID: 0}
     - target: {fileID: 3517410194387879231, guid: 6aba5dcbdc1fb0a44bdb46b9124e0ba8, type: 3}
       propertyPath: m_Pivot.x
@@ -1932,6 +1956,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6aba5dcbdc1fb0a44bdb46b9124e0ba8, type: 3}
+--- !u!1 &7114137544229999855 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2958912998714398459, guid: 6aba5dcbdc1fb0a44bdb46b9124e0ba8, type: 3}
+  m_PrefabInstance: {fileID: 7114137544229999854}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7948971578026393511
 PrefabInstance:
   m_ObjectHideFlags: 0

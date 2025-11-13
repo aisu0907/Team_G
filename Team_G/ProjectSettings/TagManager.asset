@@ -11,6 +11,7 @@ TagManager:
   - Item
   - Sheild
   - Boss
+  - Bomb
   layers:
   - Default
   - TransparentFX
