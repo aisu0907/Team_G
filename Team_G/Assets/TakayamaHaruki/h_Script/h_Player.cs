@@ -74,5 +74,6 @@ public class h_Player : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent<IDamageable>(out var hit))
             if (!collision.GetComponent<Enemy>().on_hitting) hit.Damage();
+
     }
 }

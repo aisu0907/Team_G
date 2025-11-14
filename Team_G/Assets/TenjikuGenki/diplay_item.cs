@@ -3,23 +3,21 @@ using System.Collections.Generic;
 
 public class DisplayItem : MonoBehaviour
 {
-    [SerializeField] List<Sprite> spr;
+    // •Ï”
+    float size = 1;
 
-    private void Awake()
+    void Update()
     {
-        ;
+        // ƒTƒCƒY‚ğ•Ï‚¦‚é
+        if (size <= DisplayItemConst.MAX_SIZE) size += DisplayItemConst.ADD_SIZE;
+        transform.localScale = new Vector2(size, size);
     }
 
-    // Update is called once per frame
-    void Start()
-    {
-        ;
-    }
-
+    // ¢Š«
     public void SummonDisplay(Sprite _img)
     {
         var img = GetComponent<SpriteRenderer>();
         img.sprite = _img;
-        Destroy(gameObject, 3);
+        Destroy(gameObject, 1);
     }
 }

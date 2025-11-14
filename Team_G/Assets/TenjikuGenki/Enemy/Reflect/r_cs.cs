@@ -22,9 +22,9 @@ public class EReflect : Enemy, IDamageable
         // Spin
         if (on_hitting)
         {
-            transform.Rotate(0, 0, 20);
+            transform.Rotate(0, 0, EnemyConst.ROTATION_ANGLE);
             timer++;
-            if (timer >= 100)
+            if (timer >= EnemyConst.TIME_SPENT_IN_RETURN)
             {
                 on_hitting = false;
                 transform.localRotation = default;
@@ -38,7 +38,7 @@ public class EReflect : Enemy, IDamageable
     {
         // Fix Vector
         rb.linearVelocity = vec;
-        if (on_hitting) { if (rb.linearVelocity.magnitude != speed * 2) rb.linearVelocity = vec.normalized * speed * 2; }
+        if (on_hitting) { if (rb.linearVelocity.magnitude != speed * EnemyConst.DOUBLE) rb.linearVelocity = vec.normalized * speed * EnemyConst.DOUBLE; }
         else if (rb.linearVelocity.magnitude != speed) rb.linearVelocity = vec.normalized * speed;
     }
 

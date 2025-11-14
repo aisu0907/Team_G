@@ -11,10 +11,11 @@ public class Player : MonoBehaviour
     Rigidbody2D rbody;
     float axisH, axisV = 0.0f;
     public GameObject sheild;
-    public int bom = 0;
     public int health = 3;     //�̗�
     public float speed = 3.0f;   //�ړ����x
-    public int bom_time = 0;
+    public int bom = 0;     //ボムの所持数
+    public int bom_time = 0;//ボムのクールタイム
+    public int max_bom = 0;
     private int frame = 0;
 
     public static Player Instance { get; private set; }
