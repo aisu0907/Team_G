@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 public class GameManager : MonoBehaviour
 {
+
     public GameObject boss;     //ボスオブジェクト
     public GameObject spawner;  //スポナーオブジェクト
     public List<GameObject> item_drop;//アイテムオブジェクト

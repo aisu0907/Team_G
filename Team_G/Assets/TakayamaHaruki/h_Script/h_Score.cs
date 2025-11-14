@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class Score : MonoBehaviour
 {
+
     public int total_score = 0; //合計スコア
     private TMP_Text scoreText; //テキストオブジェクト
 
