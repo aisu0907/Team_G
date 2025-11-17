@@ -24,7 +24,7 @@ public class g_BossPhase1 : MonoBehaviour, IBossState
             Timer = 0f;
         }
 
-        if (boss.health == 0) SceneManager.LoadScene("Result_Scene");
+        if (boss.health == 0) GameManager.Instance.KillBoss(gameObject);
     }
 
     public void Exit(g_boss boss)

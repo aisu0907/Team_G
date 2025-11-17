@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
@@ -14,22 +15,22 @@ public class g_boss : MonoBehaviour
     public List<Sprite> sprites;
     public AudioClip sound1;
     public AudioSource audioSource;
-
-    public void ChangeState(IBossState newState)
-    {
-        currentState?.Exit(this);
-        currentState = newState;
-        currentState.Enter(this);
-    }
+    float Timer;
 
     private void Update()
     {
-        currentState?.Main(this);
+        Timer += Time.deltaTime;
+
+        // ˆê’èŠÔ‚²‚Æ‚É’e‚ğ”­Ë
+        if (Timer >= 1.0f)
+        {
+            ShootBullet();
+            Timer = 0f;
+        }
     }
     private void Start()
     {
         // Å‰‚Ìó‘Ô‚ğPhase1‚Éİ’è
-        ChangeState(new g_BossPhase1());
         img = GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
     }
@@ -41,6 +42,17 @@ public class g_boss : MonoBehaviour
             {
                 Destroy(collision.gameObject);
                 health--;
+                if (health == 0) GameManager.Instance.KillBoss(gameObject);
             }
+    }
+
+    void ShootBullet()
+    {
+        // ÀÛ‚É‚Í‚±‚±‚Å’ePrefab‚ğInstantiate‚µ‚½‚èAObjectPool‚ğg‚Á‚½‚è‚µ‚Ü‚·
+        int color = Random.Range(0, list.Count);
+        img.sprite = sprites[color];
+        Vector2 d = (Player.Instance.transform.position - transform.position).normalized;
+        var e = Instantiate(list[0].pf, transform.position, Quaternion.identity).GetComponent<ENormal>(); e.Init(list[0].db, d, color, 5);
+        audioSource.PlayOneShot(sound1);
     }
 }

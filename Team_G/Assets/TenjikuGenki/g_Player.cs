@@ -1,10 +1,5 @@
-using NUnit.Framework.Internal;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Animations;
-using UnityEngine.UIElements;
-using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -80,5 +75,15 @@ public class Player : MonoBehaviour
         if (collision.TryGetComponent<IDamageable>(out var hit))
             if (collision.TryGetComponent<Enemy>(out var e) && !e.on_hitting) hit.Damage();
             if (collision.TryGetComponent<Gasubura>(out var b)) b.Damage(); 
+    }
+
+    void Hit()
+    {
+        //プレイヤーの体力が0以下の場合
+        if (Player.Instance.health <= 0)
+        {
+            //ゲームオーバーシーンに移行
+            SceneManager.LoadScene("Gameover_Scene");
+        }
     }
 }
