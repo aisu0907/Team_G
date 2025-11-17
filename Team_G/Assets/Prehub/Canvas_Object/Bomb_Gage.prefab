@@ -104,8 +104,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8914f2206af15f441bc8ead3e094a27e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bomb_gage_max: 100
   bomb_gage_up: 20
-  bomb_max: 100
   bomb_time: 60
   bomb_gage: {fileID: 0}
 --- !u!114 &-4580380399434782689

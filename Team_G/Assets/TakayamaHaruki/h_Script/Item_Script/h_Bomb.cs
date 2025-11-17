@@ -13,6 +13,8 @@ public class h_Bomb : MonoBehaviour
     private int count;
     private int bomb_save;  //保存用
     private GameObject[] obj;
+    public static h_Bomb Instance { get; private set; }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,30 +23,40 @@ public class h_Bomb : MonoBehaviour
         bomb_y = bomb_y + bomb_gage.transform.position.y;
         bomb_x = bomb_x + bomb_gage.transform.position.x;
         v = new Vector2(bomb_x, bomb_y);
+        show_bomb();
+        obj = new GameObject[Player.Instance.max_bom];
     }
 
     // Update is called once per frame
     void Update()
-    {      
+    {
         if (Player.Instance.bom != bomb_save)
         {
-            count = 0;
+            delete_bomb(obj, v);
 
             for (int i = 0; i < Player.Instance.bom; i++)
             {
-               // obj[i] = Instantiate(bomb, v, Quaternion.identity); //ボムの生成
+                obj[i] = Instantiate(bomb, v, Quaternion.identity); //ボムの生成
                 v.x += bomb_space; //ボム同士の間隔を開ける
                 count++;
             }
 
-
-            for (int i = count;   i > Player.Instance.bom; i--)
-            {
-                Destroy(obj[i]);
-            }
             v.x = bomb_x; //位置リセット
         }
 
         bomb_save = Player.Instance.bom; //情報を更新
+    }
+    void show_bomb()
+    {
+        count = 0;
+
+    }
+
+    void delete_bomb(GameObject[] b, Vector2 v)
+    {
+        for (int i = 0; i < b.Length; i++)
+        {
+            Destroy(b[i]);
+        }
     }
 }
