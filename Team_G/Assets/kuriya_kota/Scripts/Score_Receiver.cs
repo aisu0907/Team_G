@@ -7,6 +7,8 @@ public class Score_Receiver : MonoBehaviour
 
     //public static int score = 0;
     public static int score = 0;
+    public static int hp = 0;
+
 
     void Awake()
     {
@@ -17,5 +19,6 @@ public class Score_Receiver : MonoBehaviour
     void Update()
     {
         score=Score.Instance.total_score;
+        hp = Player.Instance.health;
     }
 }
