@@ -31,7 +31,11 @@ public class Result_Manager : MonoBehaviour
         timer++;
         if (timer == 120)
         {
+<<<<<<< HEAD
             Instantiate(score_box, transform.position, Quaternion.identity);
+=======
+           // Instantiate(score_box,, Quaternion.identity);
+>>>>>>> a02a2c664dcad0d96a08ab825c981410deb1d0ab
         }
         if (timer == 150)
         {

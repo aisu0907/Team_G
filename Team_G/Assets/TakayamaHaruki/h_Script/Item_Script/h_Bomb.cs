@@ -1,3 +1,4 @@
+using System.Net;
 using UnityEngine;
 
 public class h_Bomb : MonoBehaviour
@@ -9,7 +10,9 @@ public class h_Bomb : MonoBehaviour
     public float bomb_space; //ボム間隔
 
     private Vector2 v;
+    private int count;
     private int bomb_save;  //保存用
+    private GameObject[] obj;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -22,20 +25,23 @@ public class h_Bomb : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    { 
-        if(Player.Instance.bom != bomb_save)
+    {      
+        if (Player.Instance.bom != bomb_save)
         {
-            for (int i = Player.Instance.max_bom; i > Player.Instance.bom; i++)
-            {
-                GameObject[] objects = GameObject.FindGameObjectsWithTag("Bomb");
+            count = 0;
 
-            }
             for (int i = 0; i < Player.Instance.bom; i++)
             {
-                Instantiate(bomb, v, Quaternion.identity); //ボムの生成
+               // obj[i] = Instantiate(bomb, v, Quaternion.identity); //ボムの生成
                 v.x += bomb_space; //ボム同士の間隔を開ける
+                count++;
             }
 
+
+            for (int i = count;   i > Player.Instance.bom; i--)
+            {
+                Destroy(obj[i]);
+            }
             v.x = bomb_x; //位置リセット
         }
 
