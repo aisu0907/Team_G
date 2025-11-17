@@ -24,49 +24,51 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        spawner.GetComponent<t_Enemy_Spwan>().spawn_switch = true;      //エネミーの出現をOFF
-        for (int i = 0; i < item_drop.Count; i++)
-            item_drop[i].GetComponent<Item_Drop>().drop_switch = true;  //アイテムドロップをOFF
-        SpawnBoss();
+        // アイテムと敵の出現をONにする
+        ModeChange(true);
     }
 
     private void Update()
     {
-        //プレイヤーの体力が0以下の場合
+        // プレイヤーの体力が0以下の場合
         if (Player.Instance.health <= 0)
         {
-            //ゲームオーバーシーンに移行
+            // ゲームオーバーシーンに移行
             SceneManager.LoadScene("Gameover_Scene");
         }
 
         if ((faze + 1) % 2 != 0)
         {
-            //フレームカウント
+            // フレームカウント
             frame++;
 
-            //30秒経つと起動
+            // 指定フレーム経過するとボスを出現させる
             if (frame == boss[faze / 2].timer) SpawnBoss();
         }
     }
 
+    // ボスを呼び出す関数
     void SpawnBoss()
     {
         ModeChange(false);
         Instantiate(boss[faze / 2].prefab, new Vector2(-2, 3), Quaternion.identity);  //ボスを召喚
+        faze++;
     }
 
+    // ボスが倒された際に呼び出される関数
     public void KillBoss(GameObject obj)
     {
         Destroy(obj);
         ModeChange(true);
         frame = 0;
+        faze++;
     }
 
+    // アイテムと敵の出現を切り替える関数
     void ModeChange(bool mode)
     {
         spawner.GetComponent<t_Enemy_Spwan>().spawn_switch = mode;      //エネミーの出現をOFF
         for (int i = 0; i < item_drop.Count; i++)
             item_drop[i].GetComponent<Item_Drop>().drop_switch = mode;  //アイテムドロップをOFF
-        faze++;
     }
 }
