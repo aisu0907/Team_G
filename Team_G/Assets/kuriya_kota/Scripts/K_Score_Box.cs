@@ -20,6 +20,6 @@ public class K_Score_Box : MonoBehaviour
     void Update()
     {
         // Score_Receiver ‚Ì static score ‚ð‚»‚Ì‚Ü‚Ü•\Ž¦‚·‚é
-        scoreText.text = "SCORE: " + Score_Receiver.score.ToString();
+        scoreText.text = "SCORE " + Score_Receiver.score.ToString();
     }
 }

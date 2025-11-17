@@ -20,6 +20,6 @@ public class Hp_Bonus : MonoBehaviour
     void Update()
     {
         // Score_Receiver ‚Ì static score ‚ð‚»‚Ì‚Ü‚Ü•\Ž¦‚·‚é
-        hpText.text = "HP_BONUS: " + Score_Receiver.hp.ToString();
+        hpText.text = "HP_BONUS " + Score_Receiver.hp.ToString();
     }
 }

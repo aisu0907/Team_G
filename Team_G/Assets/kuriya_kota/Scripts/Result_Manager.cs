@@ -1,6 +1,7 @@
 using System.Threading; 
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Result_Manager : MonoBehaviour
 {
@@ -37,7 +38,11 @@ public class Result_Manager : MonoBehaviour
 
     private void Update()
     {
-        score=Score_Receiver.score+(Score_Receiver.hp*10000);
+        if (timer > 240 && Input.GetKey(KeyCode.Z))
+        {
+            SceneManager.LoadScene("Title");
+        }
+        score =Score_Receiver.score+(Score_Receiver.hp*10000);
 
         timer++;
         if (timer == 120)
@@ -50,16 +55,30 @@ public class Result_Manager : MonoBehaviour
         }
         if (timer == 240)
         {
-            if (score >= 0)
+            if (score >= 100000)
             {
                 Instantiate(S, transform.position, Quaternion.identity);
             }
-
-
-
-
+            else if (score >= 90000)
+            {
+                Instantiate(A, transform.position, Quaternion.identity);
+            }
+            else if (score >= 80000)
+            {
+                Instantiate(B, transform.position, Quaternion.identity);
+            }
+            else if (score >= 70000)
+            {
+                Instantiate(C, transform.position, Quaternion.identity);
+            }
+            else if (score >= 60000)
+            {
+                Instantiate(D, transform.position, Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(E, transform.position, Quaternion.identity);
+            }
         }
-
     }
-
 }
