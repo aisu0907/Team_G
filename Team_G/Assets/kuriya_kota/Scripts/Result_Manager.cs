@@ -1,4 +1,4 @@
-using System.Threading; // TextMeshPro‚ğg‚¤‚È‚ç–Y‚ê‚¸‚ÉI
+using System.Threading; 
 using TMPro;
 using UnityEngine;
 
@@ -31,7 +31,7 @@ public class Result_Manager : MonoBehaviour
         timer++;
         if (timer == 120)
         {
-            Instantiate(score_box,, Quaternion.identity);
+            Instantiate(score_box, transform.position, Quaternion.identity);
         }
         if (timer == 150)
         {
