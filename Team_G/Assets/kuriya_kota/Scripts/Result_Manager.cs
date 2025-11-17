@@ -1,10 +1,9 @@
-using System.Threading; // TextMeshProを使うなら忘れずに！
+using System.Threading; 
 using TMPro;
 using UnityEngine;
 
 public class Result_Manager : MonoBehaviour
 {
-    [SerializeField] TMP_Text scoreText; // リザルト画面のテキスト
     public static Result_Manager Instance { get; private set; }
 
     public static int score = 0;
@@ -12,6 +11,16 @@ public class Result_Manager : MonoBehaviour
     public int timer = 0;
 
     public GameObject score_box;
+
+    public GameObject bonus_box;
+
+    public GameObject S;
+    public GameObject A;
+    public GameObject B;
+    public GameObject C;
+    public GameObject D;
+    public GameObject E;
+
 
     void Awake()
     {
@@ -28,17 +37,26 @@ public class Result_Manager : MonoBehaviour
 
     private void Update()
     {
+        score=Score_Receiver.score+(Score_Receiver.hp*10000);
+
         timer++;
         if (timer == 120)
         {
-           // Instantiate(score_box,, Quaternion.identity);
+           score_box.GetComponent<TMP_Text>().enabled = true;
         }
-        if (timer == 150)
+        if (timer == 180)
         {
-
+            bonus_box.GetComponent<TMP_Text>().enabled = true;
         }
         if (timer == 240)
         {
+            if (score >= 0)
+            {
+                Instantiate(S, transform.position, Quaternion.identity);
+            }
+
+
+
 
         }
 
