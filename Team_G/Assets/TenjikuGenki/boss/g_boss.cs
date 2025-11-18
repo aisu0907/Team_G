@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class g_boss : MonoBehaviour
 {
     public int health;
-    IBossState currentState;
     [System.Serializable] public class enemy_list { public EnemyBase db; public GameObject pf; };
     public List<enemy_list> list = new List<enemy_list>();
     public SpriteRenderer img;
