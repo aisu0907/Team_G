@@ -12,7 +12,7 @@
 //    SpriteRenderer img;
 //    public List<Sprite> Img;
 //    public GameObject Mark;
-//    public EnemyBase enemy;
+//    public EnemyData enemy;
 //    public GameObject prefab;
 
 //    public float speed;
