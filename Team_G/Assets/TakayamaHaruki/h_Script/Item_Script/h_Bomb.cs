@@ -23,7 +23,6 @@ public class h_Bomb : MonoBehaviour
         bomb_y = bomb_y + bomb_gage.transform.position.y;
         bomb_x = bomb_x + bomb_gage.transform.position.x;
         v = new Vector2(bomb_x, bomb_y);
-        show_bomb();
         obj = new GameObject[Player.Instance.max_bom];
     }
 
@@ -32,13 +31,14 @@ public class h_Bomb : MonoBehaviour
     {
         if (Player.Instance.bom != bomb_save)
         {
-            delete_bomb(obj, v);
+            //ボム表示リセット
+            Delete_Bomb();
 
+            //所持してる分だけボムを表示
             for (int i = 0; i < Player.Instance.bom; i++)
             {
                 obj[i] = Instantiate(bomb, v, Quaternion.identity); //ボムの生成
                 v.x += bomb_space; //ボム同士の間隔を開ける
-                count++;
             }
 
             v.x = bomb_x; //位置リセット
@@ -46,17 +46,13 @@ public class h_Bomb : MonoBehaviour
 
         bomb_save = Player.Instance.bom; //情報を更新
     }
-    void show_bomb()
-    {
-        count = 0;
 
-    }
-
-    void delete_bomb(GameObject[] b, Vector2 v)
+    //ボムの表示を消す
+    public void Delete_Bomb()
     {
-        for (int i = 0; i < b.Length; i++)
+        for (int i = 0; i < obj.Length; i++)
         {
-            Destroy(b[i]);
+            Destroy(obj[i]);
         }
     }
 }
