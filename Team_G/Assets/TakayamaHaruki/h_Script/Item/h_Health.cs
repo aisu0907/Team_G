@@ -16,8 +16,8 @@ public class h_Health : MonoBehaviour
     private Texture2D hp1;
     private Texture2D hp0;
 
-    private GameObject image_object; //イメージオブジェクト
-    private Image image_component;   //イメージコンポーネント
+    private GameObject image_object; //画像オブジェクト
+    private Image image_component;   //画像コンポーネント
     private int hp; //現在hp
     private int prevHp = -1; //hp確認用
 
@@ -44,6 +44,7 @@ public class h_Health : MonoBehaviour
         if (hp == prevHp) return; // HPが変わらなければ何もしない
         prevHp = hp;
 
+        //画像をリセット
         Texture2D hp_img = null;
 
         //表示するhpを決める
@@ -58,6 +59,7 @@ public class h_Health : MonoBehaviour
         //hp_imgに画像が入っていれば表示
         if (hp_img != null)
         {
+            //画像を生成
             image_component.sprite = Sprite.Create(
                 hp_img,
                 new Rect(0, 0, hp_img.width, hp_img.height),
