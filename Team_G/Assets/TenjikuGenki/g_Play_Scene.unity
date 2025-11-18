@@ -1397,7 +1397,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c13208dc5fb8b1242a4a3f546b0f47ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boss: {fileID: 870741779963481172, guid: 45a3963f61df15f43b0a5ffcba5fed10, type: 3}
+  boss:
+  - {fileID: 11400000, guid: 17838ab36a55bcb429fc4970c4930a7d, type: 2}
   spawner: {fileID: 1308437786}
   item_drop: []
   faze: 0
