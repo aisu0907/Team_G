@@ -100,9 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c13208dc5fb8b1242a4a3f546b0f47ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boss:
-  - {fileID: 11400000, guid: 17838ab36a55bcb429fc4970c4930a7d, type: 2}
+  boss: {fileID: 0}
   spawner: {fileID: 0}
-  item_drop:
-  - {fileID: 0}
+  item_drop: {fileID: 0}
   faze: 0

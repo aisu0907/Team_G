@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
+using System.Threading.Tasks;
+
 public class k_boss : MonoBehaviour
 {
     Rigidbody2D rb;
@@ -242,42 +244,17 @@ public class k_boss : MonoBehaviour
     //    // シーン切り替え
     //    SceneManager.LoadScene("Result_Scene");
     //}
-    public void Die()
+    public async void Die()
     {
         if (!isDying)
         {
-            StartCoroutine(DieRoutine());
+            await Task.Delay(1000);
+
             Debug.Log("null");
+            isDying = true;
+
+
+
         }
     }
-
-    private IEnumerator DieRoutine()
-    {
-        isDying = true;
-        move = false;
-
-        // 1. フラッシュ
-        screenFlash.Flash();
-
-        // 2. 当たり判定の除去
-        Destroy(GetComponent<Enemy>());
-        Destroy(GetComponent<Gasubura>());
-        Destroy(GetComponent<k_target>());
-
-        // 3. 爆発エフェクト
-        Instantiate(explode, transform.position, Quaternion.identity);
-
-        // 4. サウンド
-        audioSource.PlayOneShot(sound1);
-
-        // 3秒待つ（演出）
-        yield return new WaitForSeconds(3f);
-
-        // 5. ボスを削除
-        Destroy(gameObject);
-
-        // 6. シーン遷移
-        SceneManager.LoadScene("Result_Scene");
-    }
-
 }
