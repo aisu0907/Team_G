@@ -9,6 +9,8 @@ public class Enemy : MonoBehaviour
     protected int power;
     public bool on_hitting = false;
 
+    public GameObject explode;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -23,6 +25,8 @@ public class Enemy : MonoBehaviour
 
     protected void Delete(Collider2D obj)
     {
+        //オブジェクトを生成
+        Instantiate(explode, transform.position, Quaternion.identity);
         Destroy(obj.gameObject);
         Destroy(gameObject);
     }

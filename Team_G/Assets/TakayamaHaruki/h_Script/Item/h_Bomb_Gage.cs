@@ -12,8 +12,7 @@ public class h_Bomb_Gage : MonoBehaviour
     public int bomb_time = 0;      //ボムゲージが進む頻度
     public Slider bomb_gage;       //スライダーを取得
 
-    private int frame = 0;
-    private int max_bom = 2;//ボムの最大所持数
+    private int frame = 0;//フレーム
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -45,6 +44,5 @@ public class h_Bomb_Gage : MonoBehaviour
                 //ボムを1個増やす
                 Player.Instance.bom++;
         }
-        
     }
 }
