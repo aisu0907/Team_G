@@ -45,6 +45,5 @@ public class h_Bomb_Gage : MonoBehaviour
                 //ƒ{ƒ€‚ğ1ŒÂ‘‚â‚·
                 Player.Instance.bom++;
         }
-        
     }
 }
