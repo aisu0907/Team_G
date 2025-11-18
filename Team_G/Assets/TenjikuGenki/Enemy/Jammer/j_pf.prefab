@@ -107,7 +107,9 @@ MonoBehaviour:
   color: 0
   vec: {x: 0, y: 0}
   speed: 0
+  score: 0
   on_hitting: 0
+  explode: {fileID: 2661303078993959966, guid: f0f7fc77f27d1e849b18df3a82666c42, type: 3}
   window: {fileID: 5133228388402802461, guid: 282ce410365575f43b7fdfdeff5860e3, type: 3}
 --- !u!50 &-8079904616705478854
 Rigidbody2D:

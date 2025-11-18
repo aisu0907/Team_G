@@ -107,7 +107,9 @@ MonoBehaviour:
   color: 0
   vec: {x: 0, y: 0}
   speed: 0
+  score: 0
   on_hitting: 0
+  explode: {fileID: 2661303078993959966, guid: f0f7fc77f27d1e849b18df3a82666c42, type: 3}
   Img:
   - {fileID: -1786884696479516206, guid: a7df23b6b269b8a46aabf63a4eb15647, type: 3}
   - {fileID: 7508395005116419572, guid: 0be7ad386df9002468df94939a5751a6, type: 3}
