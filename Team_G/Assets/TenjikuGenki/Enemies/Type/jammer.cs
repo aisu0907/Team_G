@@ -27,7 +27,7 @@ public class EJammer : Enemy
         ;
     }
 
-    public void Init(EnemyBase db, Vector2 _vec, float _speed)
+    public void Init(EnemyData db, Vector2 _vec, float _speed)
     {
         // Initialize Status
         type = (int)db.type;

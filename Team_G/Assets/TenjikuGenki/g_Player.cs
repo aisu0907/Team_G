@@ -73,8 +73,10 @@ public class Player : MonoBehaviour
     {
         // 衝突判定
         if (collision.TryGetComponent<IDamageable>(out var hit))
+        {
             if (collision.TryGetComponent<Enemy>(out var e) && !e.on_hitting) hit.Damage();
             if (collision.TryGetComponent<Gasubura>(out var b)) b.Damage(); 
+        }
     }
 
     void Hit()

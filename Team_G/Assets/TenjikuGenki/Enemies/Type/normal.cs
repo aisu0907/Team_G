@@ -30,7 +30,7 @@ public class ENormal : Enemy, IDamageable
         if (rb.linearVelocity.magnitude != speed) rb.linearVelocity = vec.normalized * speed;
     }
 
-    public void Init(EnemyBase db, Vector2 _vec, int _color, float _speed)
+    public void Init(EnemyData db, Vector2 _vec, int _color, float _speed)
     {
         // Initialize Status
         type = (int)db.type;
