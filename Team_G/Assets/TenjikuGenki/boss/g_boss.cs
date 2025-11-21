@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class g_boss : MonoBehaviour
 {
     public int health;
-    [System.Serializable] public class enemy_list { public EnemyBase db; public GameObject pf; };
+    [System.Serializable] public class enemy_list { public EnemyData db; public GameObject pf; };
     public List<enemy_list> list = new List<enemy_list>();
     public SpriteRenderer img;
     public List<Sprite> sprites;

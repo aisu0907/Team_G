@@ -15,9 +15,9 @@ public class k_boss : MonoBehaviour
     SpriteRenderer img;
     public List<Sprite> Img;
     public GameObject Mark;
-    public EnemyBase enemy;
+    public EnemyData enemy;
     public GameObject prefab;
-    public EnemyBase enemy2;
+    public EnemyData enemy2;
     public GameObject prefab2; 
     public GameObject kill;
     public GameObject explode;

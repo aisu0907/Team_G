@@ -7,7 +7,7 @@ public class t_Enemy_Spwan : MonoBehaviour
     [SerializeField] Transform pos2;                // �����ʒu
     float minX, maxX, minY, maxY;                   // �����͈�
     public List<GameObject> prefab;
-    public List<EnemyBase> enemy;
+    public List<EnemyData> enemy;
     public bool spawn_switch = true;
 
     int frame = 0;
