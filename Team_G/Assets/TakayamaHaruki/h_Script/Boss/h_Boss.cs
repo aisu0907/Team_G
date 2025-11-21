@@ -1,19 +1,43 @@
+using System.Threading;
 using UnityEngine;
 
 public class h_Boss : MonoBehaviour
 {
     public int health;
+    public int Attack1;
+    public int Attack2;
+    public int Attack3;
 
+    private int time;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        time = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (time > Attack1)
+        {
+
+        }
+
+        if (time > Attack1)
+        {
+
+        }
+
+        if (time > Attack1)
+        {
+
+        }
+
+    }
+
+    private void FixedUpdate()
+    {
+        time++;
     }
 
     void OnTriggerEnter2D(Collider2D collision)

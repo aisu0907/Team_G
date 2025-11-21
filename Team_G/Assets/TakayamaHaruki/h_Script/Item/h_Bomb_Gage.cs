@@ -34,7 +34,7 @@ public class h_Bomb_Gage : MonoBehaviour
             bomb_gage.value += bomb_gage_up;
         }
 
-        //ゲージがmaxの場合
+        //ゲージがMAXの場合
         if (bomb_gage.value >= bomb_gage_max)
         {
             //ゲージをリセット
