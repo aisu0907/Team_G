@@ -1137,7 +1137,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   spawner: {fileID: 1308437786}
-  item_drop: []
+  item_drop:
+  - {fileID: 1323917000318406210, guid: 4e7fcc606545e1043bf191ae82e78847, type: 3}
+  - {fileID: 1323917000318406210, guid: 153c5c8e6b3195a4ab8f621276dbfb1e, type: 3}
+  - {fileID: 1323917000318406210, guid: eb5917cc4ddf9bd449a67f453b91cefc, type: 3}
   faze: 0
 --- !u!114 &1451417415
 MonoBehaviour:
@@ -2197,12 +2200,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8042612617629897887, guid: 86705eb1a675f05409cf1cc48eaa0f88, type: 3}
       propertyPath: m_fontSize
-      value: 40
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 8042612617629897887, guid: 86705eb1a675f05409cf1cc48eaa0f88, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 486f7e8482682364f8fe4c10533d9a51, type: 2}
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 8042612617629897887, guid: 86705eb1a675f05409cf1cc48eaa0f88, type: 3}
       propertyPath: m_fontStyle
       value: 0
@@ -2225,12 +2228,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8042612617629897887, guid: 86705eb1a675f05409cf1cc48eaa0f88, type: 3}
       propertyPath: m_fontSizeBase
-      value: 40
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 8042612617629897887, guid: 86705eb1a675f05409cf1cc48eaa0f88, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: -579515062959744806, guid: 486f7e8482682364f8fe4c10533d9a51, type: 2}
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 8042612617629897887, guid: 86705eb1a675f05409cf1cc48eaa0f88, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4282188031

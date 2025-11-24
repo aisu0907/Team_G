@@ -37,12 +37,18 @@ public class h_Bomb_Gage : MonoBehaviour
         //ゲージがMAXの場合
         if (bomb_gage.value >= bomb_gage_max)
         {
-            //ゲージをリセット
-            bomb_gage.value = 0;
-            //プレイヤーのボム所持数が最大じゃない場合
-            if (Player.Instance.bom < Player.Instance.max_bom)
-                //ボムを1個増やす
-                Player.Instance.bom++;
+            bomb_add();
         }
+    }
+
+    //ボムを増やす
+    public void bomb_add()
+    {
+        //ゲージをリセット
+        bomb_gage.value = 0;
+        //プレイヤーのボム所持数が最大じゃない場合
+        if (Player.Instance.bom < Player.Instance.max_bom)
+            //ボムを1個増やす
+            Player.Instance.bom++;
     }
 }

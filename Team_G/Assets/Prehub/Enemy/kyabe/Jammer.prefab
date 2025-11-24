@@ -191,5 +191,5 @@ MonoBehaviour:
   - {fileID: 2421750453974295715, guid: 9d236791badac4e458af18aaf6974148, type: 3}
   - {fileID: 4738802059314880400, guid: 1ef76d50663a4324c9e74362c6e288ef, type: 3}
   Life_item: {fileID: 1573918439574613243, guid: 0e984b1775ef31d4a8aaec7b7b537c76, type: 3}
-  drop_switch: 1
-  life_drop: 0
+  drop_switch: 0
+  life_drop: 3

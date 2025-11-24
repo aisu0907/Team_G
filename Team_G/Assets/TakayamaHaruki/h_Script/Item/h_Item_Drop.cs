@@ -36,18 +36,17 @@ public class Item_Drop : MonoBehaviour
                 randitem = Random.Range(0, itemList.Count);//ドロップアイテムを決定
                 randdrop = Random.Range(0, 9);             //ライフドロップを決める
 
-                if (drop_switch)//アイテムがドロップする場合
+                //アイテムをドロップ
+                if (randdrop < life_drop && Player.Instance.health < 3)
                 {
-                    if (randdrop < life_drop && Player.Instance.health < 3)
-                    {
-                        //敵の位置に回復アイテムをドロップ
-                        Instantiate(Life_item, v, Quaternion.identity);
-                    }
-                    else
-                    {
-                        //敵の位置にアイテムを生成
+                    //敵の位置に回復アイテムをドロップ
+                    Instantiate(Life_item, v, Quaternion.identity);
+                }
+                else
+                {
+                    //敵の位置にアイテムを生成
+                    if (drop_switch)
                         Instantiate(itemList[randitem], v, Quaternion.identity);
-                    }
                 }
             }
     }

@@ -20,7 +20,7 @@ public class h_Health : MonoBehaviour
     private Image image_component;   //画像コンポーネント
     private int hp; //現在hp
     private int prevHp = -1; //hp確認用
-
+    private Texture2D hp_img;
     // 初期化関数
     void Start()
     {
@@ -45,17 +45,11 @@ public class h_Health : MonoBehaviour
         prevHp = hp;
 
         //画像をリセット
-        Texture2D hp_img = null;
+        hp_img = null;
 
-        //表示するhpを決める
-        switch (hp)
-        {
-            case 3: hp_img = hp3; break;
-            case 2: hp_img = hp2; break;
-            case 1: hp_img = hp1; break;
-            case 0: hp_img = hp0; break;
-        }
-        
+        //hp表示
+        hp_display();
+
         //hp_imgに画像が入っていれば表示
         if (hp_img != null)
         {
@@ -68,4 +62,16 @@ public class h_Health : MonoBehaviour
         }
     }
 
+    //hp表示
+    public void hp_display()
+    {
+        //表示するhpを決める
+        switch (hp)
+        {
+            case 3: hp_img = hp3; break;
+            case 2: hp_img = hp2; break;
+            case 1: hp_img = hp1; break;
+            case 0: hp_img = hp0; break;
+        }
+    }
 }
