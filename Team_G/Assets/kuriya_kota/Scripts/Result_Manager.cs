@@ -15,12 +15,23 @@ public class Result_Manager : MonoBehaviour
 
     public GameObject bonus_box;
 
+    public GameObject text;
+
     public GameObject S;
     public GameObject A;
     public GameObject B;
     public GameObject C;
     public GameObject D;
     public GameObject E;
+
+
+
+    public AudioClip sound1;
+    public AudioClip sound2;
+    public AudioClip sound3;
+
+    AudioSource audioSource;
+
 
 
     void Awake()
@@ -34,11 +45,17 @@ public class Result_Manager : MonoBehaviour
         score = Score_Receiver.score;
         // デバッグ用
         Debug.Log("受け取ったスコア: " + score);
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
     {
-        if (timer > 240 && Input.GetKey(KeyCode.Z))
+        if (timer == 320)
+        {
+            audioSource.PlayOneShot(sound3);
+            text.GetComponent<TMP_Text>().enabled = true;
+        }
+            if (timer > 320 && Input.GetKey(KeyCode.Z))
         {
             SceneManager.LoadScene("Title");
         }
@@ -47,14 +64,17 @@ public class Result_Manager : MonoBehaviour
         timer++;
         if (timer == 120)
         {
+            audioSource.PlayOneShot(sound1);
            score_box.GetComponent<TMP_Text>().enabled = true;
         }
-        if (timer == 180)
+        if (timer == 150)
         {
+            audioSource.PlayOneShot(sound1);
             bonus_box.GetComponent<TMP_Text>().enabled = true;
         }
         if (timer == 240)
         {
+            audioSource.PlayOneShot(sound2);
             if (score >= 100000)
             {
                 Instantiate(S, transform.position, Quaternion.identity);

@@ -72,9 +72,11 @@ public class Boss_Explode : MonoBehaviour
 
     private IEnumerator DelayedFlash()
     {
-        int waitFrames = 60; // 待ちたいフレーム数
+        int waitFrames1 = 60; // 待ちたいフレーム数
 
-        for (int i = 0; i < waitFrames; i++)
+        int waitFrames2 = 120;
+
+        for (int i = 0; i < waitFrames1; i++)
         {
             yield return null; // 1フレーム待つ
         }
@@ -83,7 +85,7 @@ public class Boss_Explode : MonoBehaviour
         Instantiate(flash, new Vector2(k_boss.Instance.transform.position.x, k_boss.Instance.transform.position.y), Quaternion.identity);
         Destroy(k_boss.Instance.gameObject);
 
-        for (int i = 0; i < waitFrames; i++)
+        for (int i = 0; i < waitFrames2; i++)
         {
             yield return null; // 1フレーム待つ
         }
