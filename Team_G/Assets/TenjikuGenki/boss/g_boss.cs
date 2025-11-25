@@ -14,17 +14,37 @@ public class g_boss : MonoBehaviour
     public List<Sprite> sprites;
     public AudioClip sound1;
     public AudioSource audioSource;
-    float Timer;
+    int Timer;
+    bool once;
+    Vector2 tmp_pos;
+    Rigidbody2D rb;
 
     private void Update()
     {
-        Timer += Time.deltaTime;
+        Timer++;
 
         // àÍíËéûä‘Ç≤Ç∆Ç…íeÇî≠éÀ
-        if (Timer >= 1.0f)
+        if (health > 0)
         {
-            ShootBullet();
-            Timer = 0f;
+            if (Timer >= 60)
+            {
+                ShootBullet();
+                Timer = 0;
+            }
+        }
+        else
+        {
+            if(once)
+            {
+                Timer = 0;
+                once = false;
+            }
+            if((int)Timer % 5 == 0)
+                transform.position = new Vector2(tmp_pos.x + 0.1f, transform.position.y);
+            else
+                transform.position = new Vector2(tmp_pos.x - 0.1f, transform.position.y);
+            rb.linearVelocityY = 1.0f;
+            if(Timer >= 330) if (health == 0) GameManager.Instance.KillBoss(gameObject);
         }
     }
     private void Start()
@@ -32,6 +52,8 @@ public class g_boss : MonoBehaviour
         // ç≈èâÇÃèÛë‘ÇPhase1Ç…ê›íË
         img = GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
+        tmp_pos = transform.position;
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -39,9 +61,8 @@ public class g_boss : MonoBehaviour
         if (collision.TryGetComponent<Enemy>(out var enemy))
             if (enemy.on_hitting)
             {
-                Destroy(collision.gameObject);
+                Destroy(enemy.gameObject);
                 health--;
-                if (health == 0) GameManager.Instance.KillBoss(gameObject);
             }
     }
 

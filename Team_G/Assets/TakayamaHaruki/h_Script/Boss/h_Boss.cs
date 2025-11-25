@@ -23,8 +23,8 @@ public class h_Boss : MonoBehaviour
     {
         //リセット
         attack_time = 0;
-        attack2_x = this.transform.position.y + this.transform.localScale.y;
-        attack2_y = this.transform.position.y + (attack2_num * -attack2_space);
+        attack2_y = transform.position.y + transform.localScale.y;
+        attack2_x = 0 + (attack2_num * -attack2_space);
         v = new Vector2(attack2_x, attack2_y);
     }
 
@@ -80,6 +80,6 @@ public class h_Boss : MonoBehaviour
     {
         int color = Random.Range(0, 1); //弾の色を決める
         var e = Instantiate(bullet, v, Quaternion.identity).GetComponent<ENormal>(); 
-        e.Init(bullet_data, v, color, attack2_speed);
+        e.Init(bullet_data, new Vector2(), color, attack2_speed);
     }
 }

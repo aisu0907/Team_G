@@ -7,6 +7,8 @@ public class Sheild : MonoBehaviour
     SpriteRenderer img;
     public int color = 0;
     [SerializeField] List<Sprite> Img;   //�摜
+    public AudioClip sound1;
+    public AudioSource audioSource;
     public static Sheild Instance { get; private set; }
 
     private void Awake()
@@ -19,14 +21,17 @@ public class Sheild : MonoBehaviour
     void Start()
     {
         img = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
         // 盾の色を変更
-        if (Input.GetKey(KeyCode.Z)) ChangeSheildColor(COLOR.RED);
-        if (Input.GetKey(KeyCode.X)) ChangeSheildColor(COLOR.GREEN);
+        if (Input.GetKey(KeyCode.Z))
+            ChangeSheildColor(COLOR.RED);
+        if (Input.GetKey(KeyCode.X))
+            ChangeSheildColor(COLOR.GREEN);
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -39,7 +44,7 @@ public class Sheild : MonoBehaviour
                 // ベクトルを反転
                 Vector2 d = (collision.transform.position - transform.position).normalized;
                 obj.vec = d;
-                obj.on_hitting = true;　
+                obj.on_hitting = true;
             }
         }
     }
@@ -47,7 +52,8 @@ public class Sheild : MonoBehaviour
     // 接触した敵機と盾の色が同じでかつ、それが敵機が降下中でないかどうか判定する
     bool IsHitFallingEnemy(Enemy obj)
     {
-        if (!obj.on_hitting && obj.color == color) return true;
+        if (!obj.on_hitting && obj.color == color)
+            return true;
         return false;
     }
 
@@ -56,5 +62,6 @@ public class Sheild : MonoBehaviour
     {
         img.sprite = Img[(int)n];
         color = (int)n;
+        audioSource.Play();
     }
 }
