@@ -11,6 +11,8 @@ public class h_Bomb_Gage : MonoBehaviour
     public float bomb_gage_up = 0; //時間経過で進むボムゲージ
     public int bomb_time = 0;      //ボムゲージが進む頻度
     public Slider bomb_gage;       //スライダーを取得
+    public AudioClip bomb_get;
+    AudioSource audioaource;
 
     private int frame = 0;//フレーム
 
@@ -18,6 +20,7 @@ public class h_Bomb_Gage : MonoBehaviour
     void Start()
     {
         bomb_gage.value = 0;　//スライダーの位置をリセット
+        audioaource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -48,7 +51,10 @@ public class h_Bomb_Gage : MonoBehaviour
         bomb_gage.value = 0;
         //プレイヤーのボム所持数が最大じゃない場合
         if (Player.Instance.bom < Player.Instance.max_bom)
-            //ボムを1個増やす
+        //ボムを1個増やす
+        {
+            audioaource.PlayOneShot(bomb_get);
             Player.Instance.bom++;
+        }
     }
 }
