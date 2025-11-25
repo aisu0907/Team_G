@@ -21,6 +21,8 @@ public class k_boss : MonoBehaviour
     public GameObject prefab2; 
     public GameObject kill;
     public GameObject explode;
+    public GameObject boss_explode;
+
 
     private bool isDying = false;
     public int health;
@@ -76,7 +78,7 @@ public class k_boss : MonoBehaviour
         switch (mode)
         {
             case 0:
-                if (move == true)  timer++;
+                if (!isDying)  timer++;
                 if (timer >= 180)
                 {
                     mode = Random.Range(1, 5); // 1から4を選ぶ
@@ -218,43 +220,18 @@ public class k_boss : MonoBehaviour
         mode = 0;
     }
 
-
-
-    //private System.Collections.IEnumerator Die()
-    //{
-    //    timer = 0;
-    //    move = false;
-
-    //    Destroy(gameObject.GetComponent<Enemy>());
-    //    Destroy(gameObject.GetComponent<Gasubura>());
-    //    Destroy(gameObject.GetComponent<k_target>());
-
-    //    if (isDying) yield break;
-    //    isDying = true;
-
-    //    audioSource.PlayOneShot(sound1);
-    //    // フラッシュ演出
-    //    screenFlash.Flash();
-    //    // 2秒待つ（演出時間）
-    //    yield return new WaitForSeconds(3f);
-
-    //    // ボス削除
-    //    Destroy(gameObject);
-
-    //    // シーン切り替え
-    //    SceneManager.LoadScene("Result_Scene");
-    //}
     public async void Die()
     {
+        if (once) {
+            once = false;
+     
         if (!isDying)
         {
-            await Task.Delay(1000);
-
+            Instantiate(boss_explode, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
             Debug.Log("null");
             isDying = true;
-
-
-
+            }
         }
+        once = true;
     }
 }

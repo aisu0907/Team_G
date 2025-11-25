@@ -4,11 +4,13 @@ using UnityEngine.UI;
 public class ScreenFlash : MonoBehaviour
 {
     public Image flashImage;         // 白いImageをここに入れる
-    public float flashInSpeed = 0.2f;  // フラッシュが明るくなる速さ
-    public float flashOutSpeed = 1.0f; // 元に戻る速さ（ゆっくり）
+    public float flashInSpeed = 0.1f;  // フラッシュが明るくなる速さ
+    public float flashOutSpeed = 0.1f; // 元に戻る速さ（ゆっくり）
     public float maxAlpha = 1f;        // 最大の明るさ
 
     private bool isFlashing = false;
+
+    public static ScreenFlash Instance { get; private set; }
 
     public void Flash()
     {
