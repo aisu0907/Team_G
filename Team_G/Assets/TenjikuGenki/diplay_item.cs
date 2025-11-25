@@ -11,6 +11,10 @@ public class DisplayItem : MonoBehaviour
         // ƒTƒCƒY‚ğ•Ï‚¦‚é
         if (size <= DisplayItemConst.MAX_SIZE) size += DisplayItemConst.ADD_SIZE;
         transform.localScale = new Vector2(size, size);
+        if ((int)transform.eulerAngles.z != 0)
+        {
+            transform.Rotate(0, 0, 10);
+        }
     }
 
     // ¢Š«

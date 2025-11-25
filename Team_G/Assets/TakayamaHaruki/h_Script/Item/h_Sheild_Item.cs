@@ -22,6 +22,8 @@ public class Sheild_Item : ItemBase
     private int max_bom = 3;    //ボム最大所持数
     private Vector3 sheild_size;//シールドサイズ
     public GameObject display;
+    public AudioClip sound1;
+    public AudioSource audioSource;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,6 +31,7 @@ public class Sheild_Item : ItemBase
         //変数リセット
         item_count = new int[3];
         sheild_size = new Vector2(3, 3);
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -41,6 +44,7 @@ public class Sheild_Item : ItemBase
         //アイテムに当たった場合
         if (collision.TryGetComponent<Item>(out var i))
         {
+        audioSource.PlayOneShot(sound1);
             //スピード
             if (i.item_id == speed_item)
                 //累積上限に達していなかった場合
@@ -113,7 +117,7 @@ public class Sheild_Item : ItemBase
     void SummonDisplay(Item i)
     {
         // アイテムの表示
-        var d = Instantiate(display, transform.position, Quaternion.identity).GetComponent<DisplayItem>();
+        var d = Instantiate(display, transform.position,Quaternion.Euler(0, 0, 10)).GetComponent<DisplayItem>();
         d.SummonDisplay(i.GetComponent<SpriteRenderer>().sprite);
     }
 }

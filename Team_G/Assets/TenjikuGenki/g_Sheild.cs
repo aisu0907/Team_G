@@ -62,6 +62,6 @@ public class Sheild : MonoBehaviour
     {
         img.sprite = Img[(int)n];
         color = (int)n;
-        audioSource.Play();
+        audioSource.PlayOneShot(sound1);
     }
 }

@@ -153,7 +153,7 @@ MonoBehaviour:
   Img:
   - {fileID: -6556403868631285073, guid: b0642d7a69aa9d64cbc86bcba14e9aea, type: 3}
   - {fileID: -7696752515786996293, guid: 1ce3f8e14ec5b4744a9dbc307a60cd71, type: 3}
-  sound1: {fileID: 0}
+  sound1: {fileID: 8300000, guid: 04c34fb82ee1f6144b74985676b0e0eb, type: 3}
   audioSource: {fileID: 0}
 --- !u!114 &5806836250297397262
 MonoBehaviour:
@@ -175,6 +175,8 @@ MonoBehaviour:
   up_sheild: 1
   up_reflect_speed: 0.5
   display: {fileID: 1843163215658175290, guid: 2ae498e857a77cc4daa1516f0c0ef3c8, type: 3}
+  sound1: {fileID: 8300000, guid: 639bfb9c989de3e4cb352e7df6194ef0, type: 3}
+  audioSource: {fileID: 0}
 --- !u!82 &-1871289350914087552
 AudioSource:
   m_ObjectHideFlags: 0
@@ -186,7 +188,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 04c34fb82ee1f6144b74985676b0e0eb, type: 3}
+  m_Resource: {fileID: 8300000, guid: 639bfb9c989de3e4cb352e7df6194ef0, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
