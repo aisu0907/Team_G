@@ -1,237 +1,209 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
-
-using System.Threading.Tasks;
 
 public class k_boss : MonoBehaviour
 {
     Rigidbody2D rb;
-    public int timer;
-    int mode = 0;
-    public int color = 0;
     SpriteRenderer img;
-    public List<Sprite> Img;
-    public GameObject Mark;
-    public EnemyData enemy;
+
+    public int timer;
+    public int attack=180;
+    int mode = 0;
+    public int health;
+
+    bool move = true;
+    bool isDying = false;
+
+
+    bool spiralOnce = true;
+    bool summonOnce = true;
+    bool beamOnce = true;
+
+
+    Vector2 basePos;
+
     public GameObject prefab;
+    public EnemyData enemy;
+
+    public GameObject prefab2;
     public EnemyData enemy2;
-    public GameObject prefab2; 
+
     public GameObject kill;
     public GameObject explode;
     public GameObject boss_explode;
 
-
-    private bool isDying = false;
-    public int health;
-    int _health;
-    bool once = true;
-    bool beam_once = true;
-    float n = 0;
-    GameObject t;
-    int[] colors = new int[3];
-
-    bool move = true;
-
-    //サウンド
-    public AudioClip sound1;
-    public AudioClip sound2;
     AudioSource audioSource;
-
-    public static k_boss Instance { get; private set; }
-
-    public ScreenFlash screenFlash;
 
     private void Awake()
     {
-
         Instance = this;
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public static k_boss Instance { get; private set; }
+
     void Start()
     {
-        // CharacterBase�p��
         rb = GetComponent<Rigidbody2D>();
         img = GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
+
+        basePos = transform.position; 
     }
 
-    // Update is called once per frame
     void Update()
     {
+        if (move) Move();
+        else Death_Move();
 
-        if(move==true) Move();
-
-
-        if (move == true && health <= 5)
+        if (move && health <= 5)
         {
             img.color = Color.Lerp(
-            Color.white,
-            Color.red,
-            Mathf.Sin(Time.time * 2f) * 0.5f + 0.5f);
+                Color.white,
+                Color.red,
+                Mathf.Sin(Time.time * 2f) * 0.5f + 0.5f);
         }
-
 
         switch (mode)
         {
             case 0:
-                if (!isDying)  timer++;
-                if (timer >= 180)
+                if(!isDying) timer++;
+                if (timer >= attack)
                 {
-                    mode = Random.Range(1, 5); // 1から4を選ぶ
+                    mode = Random.Range(1, 5);
                 }
                 break;
+
             case 1:
-                if (beam_once && health <= 5)
-                {
-                    beam_once = false; 
-                    StartCoroutine(kill_gasybura());//healthが一定以下なら連射
-                }
-                else beam();
-                    break;
+                if (health <= 5)
+                    StartCoroutine(KillRapid());
+                else
+                    Beam();
+                break;
+
             case 2:
-                spiralShot();
-                if(health<=5) beam();
+                SpiralShot();
+                if (health <= 5) Beam();
                 break;
+
             case 3:
-                summon_jama();
-                if (health <= 5) beam();
+                SummonJammer();
+                if (health <= 5) Beam();
                 break;
+
             case 4:
-                spiralShot();
-                if (health <= 5) beam();
+                SpiralShot();
+                if (health <= 5) Beam();
                 break;
         }
 
-        if (health <= 0&&!isDying)
+        if (health <= 0 && !isDying)
         {
-            //StartCoroutine(Die());
             Die();
         }
     }
 
+    void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.gameObject.tag == "Enemy" && collision.gameObject.GetComponent<Enemy>().on_hitting) 
+        { --health;
+            Instantiate(explode, new Vector2(transform.position.x, transform.position.y), Quaternion.identity); 
+            Destroy(collision.gameObject); } 
+    }
+
     private void Move()
     {
-        float moveX = Mathf.Sin(Time.time) * 1f - 2f;
-        transform.position = new Vector2(moveX, transform.position.y);
+            float x = Mathf.Sin(Time.time) * 1f - 2f;
+            transform.position = new Vector2(x, transform.position.y);
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    private void Death_Move()
     {
-        if (collision.gameObject.tag == "Enemy" && collision.gameObject.GetComponent<Enemy>().on_hitting)
-        {
-            --health;
-            Instantiate(explode, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
-            Destroy(collision.gameObject);
-        }
+        float speed = 40f;
+        float amount = 0.1f;
+
+        float offsetX = Mathf.Sin(Time.time * speed) * amount;
+
+        transform.position = basePos + new Vector2(offsetX, 0);
     }
 
-    void spiralShot()
+    private void SpiralShot()
     {
-        if (once)
+        if (!spiralOnce) return;
+        spiralOnce = false;
+
+        timer = 0;
+
+        for (int i = 0; i < 3; i++)
         {
-            timer = 0;
-            once = false;
+
+            float angle = (-90f + (i - 1) * 70f) * Mathf.Deg2Rad;
+            Vector2 d = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
+
+            var e = Instantiate(prefab, transform.position, Quaternion.identity)
+                    .GetComponent<ENormal>();
+            e.Init(enemy, d, Random.Range(0, 2), 3.5f);
         }
 
-        //if (timer % 10 == 0)
-        //{
-            for (int i = 0; i < 3; i++)
-            {
-                float angle = (-90f + (i-1) * 70f) * Mathf.Deg2Rad;
-                i++;
-                Vector2 d = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
-                var e = Instantiate(prefab, transform.position, Quaternion.identity).GetComponent<ENormal>();
-                e.Init(enemy, d, Random.Range(0, 2), 3.5f);
-        }
-        //while (timer < 300) timer++;
-        once = true;
+        spiralOnce = true;
         mode = 0;
     }
 
-    private void beam()
+    private void Beam()
     {
-        if (once)
-        {
-            once = false;
-            timer = 0;
+        if (!beamOnce) return;
+        beamOnce = false;
 
-            // プレイヤーの座標にプレハブを生成
-            Instantiate(kill, Player.Instance.transform.position, Quaternion.identity);
-        }
-
-        // 攻撃後、一定時間待ってモードを戻す
-        if (timer > 120)
-        {
-            once = true;
-            timer = 0;
-            mode = 0;
-        }
-    }
-    private IEnumerator beamCoroutine()
-    {
-        if (!once) yield break;
-        once = false;
         timer = 0;
 
-        // プレイヤーの座標にビーム生成
         Instantiate(kill, Player.Instance.transform.position, Quaternion.identity);
 
+        StartCoroutine(ResetBeam());
+    }
+
+    IEnumerator ResetBeam()
+    {
         yield return new WaitForSeconds(2f);
-
-        once = true;
-    }
-
-    private void summon_jama()
-    {
-        if (once)
-        {
-            timer = 0;
-            once = false;
-        }
-        var e2 = Instantiate(prefab2, new Vector2(transform.position.x, transform.position.y), Quaternion.identity).GetComponent<EJammer>();
-        e2.Init(enemy2, new Vector2(0, -0.5f), enemy2.speed);
-      
-            once = true;
-            timer = 0;
-            mode = 0;   
-    }
-    private IEnumerator kill_gasybura()
-    {
+        beamOnce = true;
         timer = 0;
-
-        if (beam_once) {
-            beam_once = false;
-            StartCoroutine(beamCoroutine());
-            yield return new WaitForSeconds(1f);
-
-
-            StartCoroutine(beamCoroutine());
-            yield return new WaitForSeconds(1f);
-
-            StartCoroutine(beamCoroutine());
-            yield return new WaitForSeconds(1f);
-        }
-        beam_once = true;
-     
         mode = 0;
     }
 
-    public async void Die()
+    private void SummonJammer()
     {
-        if (once) {
-            once = false;
-     
-        if (!isDying)
+        if (!summonOnce) return;
+        summonOnce = false;
+
+        timer = 0;
+
+        var e = Instantiate(prefab2, transform.position, Quaternion.identity)
+                .GetComponent<EJammer>();
+        e.Init(enemy2, new Vector2(0, -0.5f), enemy2.speed);
+
+        summonOnce = true;
+        mode = 0;
+    }
+
+    private IEnumerator KillRapid()
+    {
+        if (!beamOnce) yield break;
+        beamOnce = false;
+
+        for (int i = 0; i < 2; i++)
         {
-            Instantiate(boss_explode, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
-            Debug.Log("null");
-            isDying = true;
-            }
+            Instantiate(kill, Player.Instance.transform.position, Quaternion.identity);
+            yield return new WaitForSeconds(2f);
         }
-        once = true;
+
+        beamOnce = true;
+        mode = 0;
+    }
+
+    public void Die()
+    {
+        if (isDying) return;
+        isDying = true;
+        move = false;
+
+        Instantiate(boss_explode, transform.position, Quaternion.identity);
+
     }
 }

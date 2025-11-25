@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1661927002883175135
+--- !u!1 &3001600071046506143
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,41 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8910571566964016480}
-  - component: {fileID: 6331466028884746016}
-  - component: {fileID: 8762738068015073422}
-  - component: {fileID: 3686056280985669683}
-  - component: {fileID: 5834488169902732858}
-  - component: {fileID: 6170889825334120446}
+  - component: {fileID: 7815501098124896564}
+  - component: {fileID: 3513621030761405551}
+  - component: {fileID: 8695620201983278056}
+  - component: {fileID: 4581537478761153769}
+  - component: {fileID: 7141030994379312310}
   m_Layer: 0
-  m_Name: boss_explode
+  m_Name: test_flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8910571566964016480
+--- !u!4 &7815501098124896564
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1661927002883175135}
+  m_GameObject: {fileID: 3001600071046506143}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.28324, y: 0.5655, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.7289, y: 0.5363, z: 0}
+  m_LocalScale: {x: 30, y: 30, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &6331466028884746016
+--- !u!212 &3513621030761405551
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1661927002883175135}
+  m_GameObject: {fileID: 3001600071046506143}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -77,47 +76,43 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1307761201
-  m_SortingLayer: 2
+  m_SortingLayerID: 1601778333
+  m_SortingLayer: 6
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8762738068015073422
+--- !u!114 &8695620201983278056
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1661927002883175135}
+  m_GameObject: {fileID: 3001600071046506143}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c2c3a928e5948c4281126a3dca4283b, type: 3}
+  m_Script: {fileID: 11500000, guid: ea16f19f47ee4804d8557271f3f843d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 0
-  max_size: 3
-  add_size: 0.5
-  timer: 0
-  sound1: {fileID: 8300000, guid: 66e8fd1a0439d9044bc37f824f5f536d, type: 3}
-  sound2: {fileID: 8300000, guid: 990663530d930844e8c72206e8553652, type: 3}
-  explode: {fileID: 2661303078993959966, guid: f0f7fc77f27d1e849b18df3a82666c42, type: 3}
-  flash: {fileID: 3001600071046506143, guid: 318cf17a939cc084b8253bff2c8a1679, type: 3}
---- !u!82 &3686056280985669683
+  sound1: {fileID: 8300000, guid: 990663530d930844e8c72206e8553652, type: 3}
+  sound2: {fileID: 8300000, guid: 83e7263444cb463489ecb2b37a5041b9, type: 3}
+  flashInTime: 0.05
+  fadeOutTime: 0.4
+--- !u!82 &4581537478761153769
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1661927002883175135}
+  m_GameObject: {fileID: 3001600071046506143}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -208,18 +203,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &5834488169902732858
+--- !u!82 &7141030994379312310
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1661927002883175135}
+  m_GameObject: {fileID: 3001600071046506143}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 66e8fd1a0439d9044bc37f824f5f536d, type: 3}
+  m_Resource: {fileID: 8300000, guid: 83e7263444cb463489ecb2b37a5041b9, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -305,19 +300,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &6170889825334120446
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1661927002883175135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58bc10bbcc52e424bbe091e280f3ea8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flashImage: {fileID: 8323020329839888922, guid: 2b3bfdc695e6ed14b933081ef7693dc4, type: 3}
-  flashInSpeed: 0.2
-  flashOutSpeed: 1
-  maxAlpha: 1

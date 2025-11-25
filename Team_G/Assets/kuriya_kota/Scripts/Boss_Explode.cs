@@ -23,16 +23,15 @@ public class Boss_Explode : MonoBehaviour
     public AudioClip sound2;
 
     public GameObject explode;
+    public GameObject flash;
 
     AudioSource audioSource;
 
-    public ScreenFlash screenFlash;
+
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        if (screenFlash == null)
-            screenFlash = FindObjectOfType<ScreenFlash>();
     }
 
     void Update()
@@ -43,6 +42,7 @@ public class Boss_Explode : MonoBehaviour
 
 
 
+        if (timer == 10) random();
         if (timer == 30)  random();
         if (timer == 40)  random();
         if (timer == 50)  random();
@@ -52,11 +52,11 @@ public class Boss_Explode : MonoBehaviour
         if (timer == 180)
         {
             audioSource.PlayOneShot(sound1);
-            StartCoroutine(DelayedFlash());
         }
+        if(timer ==220) StartCoroutine(DelayedFlash());
 
         //シーン見込み予定
-        if (timer > 300) Destroy(gameObject);
+        if (timer > 400) Destroy(gameObject);
 
 
 
@@ -79,7 +79,14 @@ public class Boss_Explode : MonoBehaviour
             yield return null; // 1フレーム待つ
         }
         audioSource.PlayOneShot(sound2);
+        //screenFlash.Flash();
+        Instantiate(flash, new Vector2(k_boss.Instance.transform.position.x, k_boss.Instance.transform.position.y), Quaternion.identity);
         Destroy(k_boss.Instance.gameObject);
-        screenFlash.Flash();
+
+        for (int i = 0; i < waitFrames; i++)
+        {
+            yield return null; // 1フレーム待つ
+        }
+        SceneManager.LoadScene("K_Result");
     }
 }
