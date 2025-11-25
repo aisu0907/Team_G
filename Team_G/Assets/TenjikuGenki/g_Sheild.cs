@@ -25,8 +25,10 @@ public class Sheild : MonoBehaviour
     void Update()
     {
         // 盾の色を変更
-        if (Input.GetKey(KeyCode.Z)) ChangeSheildColor(COLOR.RED);
-        if (Input.GetKey(KeyCode.X)) ChangeSheildColor(COLOR.GREEN);
+        if (Input.GetKey(KeyCode.Z))
+            ChangeSheildColor(COLOR.RED);
+        if (Input.GetKey(KeyCode.X))
+            ChangeSheildColor(COLOR.GREEN);
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -47,7 +49,8 @@ public class Sheild : MonoBehaviour
     // 接触した敵機と盾の色が同じでかつ、それが敵機が降下中でないかどうか判定する
     bool IsHitFallingEnemy(Enemy obj)
     {
-        if (!obj.on_hitting && obj.color == color) return true;
+        if (!obj.on_hitting && obj.color == color)
+            return true;
         return false;
     }
 
