@@ -15,7 +15,7 @@ public class test_flash : MonoBehaviour
     public float flashInTime = 0.05f;   // ”’‚­‚È‚é‚Ü‚Å
     public float fadeOutTime = 0.9f;    // Á‚¦‚é‚Ü‚Å‚ÌŠÔ
 
-    bool isFlashing = false;
+    public bool isFlashing = false;
 
     void Start()
     {
