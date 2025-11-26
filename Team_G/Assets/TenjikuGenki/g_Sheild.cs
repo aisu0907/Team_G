@@ -28,9 +28,9 @@ public class Sheild : MonoBehaviour
     void Update()
     {
         // 盾の色を変更
-        if (Input.GetKey(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z))
             ChangeSheildColor(COLOR.RED);
-        if (Input.GetKey(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.X))
             ChangeSheildColor(COLOR.GREEN);
     }
     void OnTriggerEnter2D(Collider2D collision)
