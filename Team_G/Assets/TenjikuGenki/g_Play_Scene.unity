@@ -1018,7 +1018,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boss:
-  - {fileID: 11400000, guid: 17838ab36a55bcb429fc4970c4930a7d, type: 2}
+  - {fileID: 11400000, guid: 6bcc23a2a781d3b45bac49122a6efc71, type: 2}
   - {fileID: 11400000, guid: 8361bcc07b98ab54dadf070088d04893, type: 2}
   - {fileID: 0}
   spawner: {fileID: 1308437786}
