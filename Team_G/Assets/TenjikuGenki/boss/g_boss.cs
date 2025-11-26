@@ -44,7 +44,7 @@ public class g_boss : MonoBehaviour
             else
                 transform.position = new Vector2(tmp_pos.x - 0.1f, transform.position.y);
             rb.linearVelocityY = 1.0f;
-            if(Timer >= 330) if (health == 0) GameManager.Instance.KillBoss(gameObject);
+            if(Timer >= 330) if (health <= 0) GameManager.Instance.KillBoss(gameObject);
         }
     }
     private void Start()
