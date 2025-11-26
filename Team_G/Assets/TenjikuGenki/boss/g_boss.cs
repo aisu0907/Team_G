@@ -18,7 +18,8 @@ public class g_boss : MonoBehaviour
     bool once;
     Vector2 tmp_pos;
     Rigidbody2D rb; // ”­ŽËŠÔŠu
-    bool canShoot = true;
+    bool left_move = true;
+    public GameObject explode;
 
     private void Update()
     {
@@ -33,6 +34,7 @@ public class g_boss : MonoBehaviour
                 ShootBullet();
             } 
         }
+        // Ž€–S‰‰o
         else
         {
             if(once)
@@ -47,6 +49,16 @@ public class g_boss : MonoBehaviour
             rb.linearVelocityY = 1.0f;
             if(Timer >= 330) if (health <= 0) GameManager.Instance.KillBoss(gameObject);
         }
+
+        // ¶‰EˆÚ“®
+        if(left_move)
+        {
+            rb.linearVelocityX = 1.0f;
+        }
+        else
+        {
+            rb.linearVelocityX = -1.0f;
+        }
     }
     private void Start()
     {
@@ -55,6 +67,7 @@ public class g_boss : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         tmp_pos = transform.position;
         rb = GetComponent<Rigidbody2D>();
+        transform.position = new Vector2(transform.position.x - 0.5f,transform.position.y);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -64,7 +77,9 @@ public class g_boss : MonoBehaviour
             {
                 Destroy(enemy.gameObject);
                 health--;
+                Instantiate(explode, new Vector2(enemy.transform.position.x, enemy.transform.position.y + 0.5f), Quaternion.identity);
             }
+        if(collision.GetComponent<Side_Wall>()) left_move = !left_move;
     }
 
     void ShootBullet()
