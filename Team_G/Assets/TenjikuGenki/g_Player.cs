@@ -77,15 +77,16 @@ public class Player : MonoBehaviour
         // 衝突判定
         if (collision.TryGetComponent<IDamageable>(out var hit))
         {
-            if (collision.TryGetComponent<Enemy>(out var e) && !e.on_hitting) Damage(1);
+            if (collision.TryGetComponent<Enemy>(out var e) && !e.on_hitting) Damage(1, collision.gameObject);
             //if (collision.TryGetComponent<Gasubura>(out var b)) b.Damage(); 
         }
     }
 
-    public void Damage(int damage)
+    public void Damage(int damage, GameObject obj, bool destroy = true)
     {
         health -= damage;
         audioSource.PlayOneShot(sound1);
+        if (destroy) Destroy(obj);
 
         //プレイヤーの体力が0以下の場合
         if (Player.Instance.health <= 0)

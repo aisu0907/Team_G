@@ -33,11 +33,11 @@ public class Gasubura : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player"&&k_boss.Instance.health>5)
         {
-            Player.Instance.health--;
+            Player.Instance.Damage(1,gameObject,false);
         }
         else if (collision.gameObject.tag == "Player" && k_boss.Instance.health <= 5)
         {
-            Player.Instance.health-=2;
+            Player.Instance.Damage(2,gameObject,false);
         }
     }
 
