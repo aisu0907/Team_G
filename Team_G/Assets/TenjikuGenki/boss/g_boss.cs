@@ -14,24 +14,27 @@ public class g_boss : MonoBehaviour
     public List<Sprite> sprites;
     public AudioClip sound1;
     public AudioSource audioSource;
-    int Timer;
+    [SerializeField] int Timer;
     bool once;
     Vector2 tmp_pos;
-    Rigidbody2D rb;
+    Rigidbody2D rb; // ”­ŽËŠÔŠu
+    bool left_move = true;
+    public GameObject explode;
 
     private void Update()
     {
-        Timer++;
+        Timer += 1;
 
         // ˆê’èŽžŠÔ‚²‚Æ‚É’e‚ð”­ŽË
         if (health > 0)
         {
             if (Timer >= 60)
             {
-                ShootBullet();
                 Timer = 0;
-            }
+                ShootBullet();
+            } 
         }
+        // Ž€–S‰‰o
         else
         {
             if(once)
@@ -46,6 +49,16 @@ public class g_boss : MonoBehaviour
             rb.linearVelocityY = 1.0f;
             if(Timer >= 330) if (health <= 0) GameManager.Instance.KillBoss(gameObject);
         }
+
+        // ¶‰EˆÚ“®
+        if(left_move)
+        {
+            rb.linearVelocityX = 1.0f;
+        }
+        else
+        {
+            rb.linearVelocityX = -1.0f;
+        }
     }
     private void Start()
     {
@@ -54,6 +67,7 @@ public class g_boss : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         tmp_pos = transform.position;
         rb = GetComponent<Rigidbody2D>();
+        transform.position = new Vector2(transform.position.x - 0.5f,transform.position.y);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -63,7 +77,9 @@ public class g_boss : MonoBehaviour
             {
                 Destroy(enemy.gameObject);
                 health--;
+                Instantiate(explode, new Vector2(enemy.transform.position.x, enemy.transform.position.y + 0.5f), Quaternion.identity);
             }
+        if(collision.GetComponent<Side_Wall>()) left_move = !left_move;
     }
 
     void ShootBullet()

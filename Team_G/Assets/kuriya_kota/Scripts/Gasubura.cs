@@ -1,6 +1,7 @@
 using UnityEngine;
 
-public class Gasubura : MonoBehaviour, IDamageable
+public class Gasubura : MonoBehaviour
+//IDamageable
 {
     [Header("Audio Clips")]
     [SerializeField] private AudioClip sound1;
@@ -28,20 +29,17 @@ public class Gasubura : MonoBehaviour, IDamageable
         Destroy(gameObject, 1);
     }
 
-    public void Damage()
-    {        
-        if (Player.Instance != null&&k_boss.Instance.health>5)
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player"&&k_boss.Instance.health>5)
         {
-            Player.Instance.health -= 1;
+            Player.Instance.health--;
         }
-        if (Player.Instance != null && k_boss.Instance.health <= 5)
+        else if (collision.gameObject.tag == "Player" && k_boss.Instance.health <= 5)
         {
-            Player.Instance.health -= 2;
-        }
-
-        else
-        {
-            Debug.LogWarning("Player.Instance ‚ª‘¶Ý‚µ‚Ü‚¹‚ñBDamage()‚ðŽÀs‚Å‚«‚Ü‚¹‚ñB");
+            Player.Instance.health-=2;
         }
     }
+
+
 }

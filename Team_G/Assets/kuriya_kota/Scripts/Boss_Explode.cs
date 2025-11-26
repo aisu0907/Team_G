@@ -1,13 +1,8 @@
 //using UnityEngine;
 //using UnityEngine.UI;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
-
-
 
 public class Boss_Explode : MonoBehaviour
 {
