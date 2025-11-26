@@ -33,7 +33,7 @@ public class TipsManager : MonoBehaviour
         }
         else
         {
-            ChangeNextTips(GameManager.Instance.faze / 2);
+            ChangeNextTips(GameManager.Instance.faze / 2 + 1);
         }
     }
 
