@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     public int bom_time = 0;//ボムのクールタイム
     public int max_bom = 0;
     private int frame = 0;
+    public AudioClip sound1;
+    public AudioSource audioSource;
 
     public static Player Instance { get; private set; }
 
@@ -27,6 +29,7 @@ public class Player : MonoBehaviour
         // ���̐���
         Instantiate(sheild);
         frame = 300;
+        audioSource = this.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -74,13 +77,16 @@ public class Player : MonoBehaviour
         // 衝突判定
         if (collision.TryGetComponent<IDamageable>(out var hit))
         {
-            if (collision.TryGetComponent<Enemy>(out var e) && !e.on_hitting) hit.Damage();
+            if (collision.TryGetComponent<Enemy>(out var e) && !e.on_hitting) Damage(1);
             //if (collision.TryGetComponent<Gasubura>(out var b)) b.Damage(); 
         }
     }
 
-    void Hit()
+    public void Damage(int damage)
     {
+        health -= damage;
+        audioSource.PlayOneShot(sound1);
+
         //プレイヤーの体力が0以下の場合
         if (Player.Instance.health <= 0)
         {
