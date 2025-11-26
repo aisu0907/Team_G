@@ -14,23 +14,24 @@ public class g_boss : MonoBehaviour
     public List<Sprite> sprites;
     public AudioClip sound1;
     public AudioSource audioSource;
-    int Timer;
+    [SerializeField] int Timer;
     bool once;
     Vector2 tmp_pos;
-    Rigidbody2D rb;
+    Rigidbody2D rb; // ”­ŽËŠÔŠu
+    bool canShoot = true;
 
     private void Update()
     {
-        Timer++;
+        Timer += 1;
 
         // ˆê’èŽžŠÔ‚²‚Æ‚É’e‚ð”­ŽË
         if (health > 0)
         {
             if (Timer >= 60)
             {
-                ShootBullet();
                 Timer = 0;
-            }
+                ShootBullet();
+            } 
         }
         else
         {
