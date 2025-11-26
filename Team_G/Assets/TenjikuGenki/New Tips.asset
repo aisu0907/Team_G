@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85a8deb5f0f1f6249b42c36efb42ed26, type: 3}
   m_Name: New Tips
   m_EditorClassIdentifier: 
-  text: []
+  text:
+  - 
+  - 
