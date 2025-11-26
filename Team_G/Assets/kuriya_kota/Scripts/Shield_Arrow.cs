@@ -9,12 +9,6 @@ public class Shield_Arrow : MonoBehaviour
     public GameObject green;  // 緑のターゲット
 
     public Vector2 vec;
-   
-
-    void Start()
-    {
-       
-    }
 
     void Update()
     {

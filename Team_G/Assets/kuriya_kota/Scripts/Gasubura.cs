@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Gasubura : MonoBehaviour
@@ -29,23 +28,6 @@ public class Gasubura : MonoBehaviour
         // 1•bŒã‚ÉŽ©“®”j‰ó
         Destroy(gameObject, 1);
     }
-
-    //public void Damage()
-    //{        
-    //    if (Player.Instance != null&&k_boss.Instance.health>5)
-    //    {
-    //        Player.Instance.health -= 1;
-    //    }
-    //    if (Player.Instance != null && k_boss.Instance.health <= 5)
-    //    {
-    //        Player.Instance.health -= 2;
-    //    }
-
-    //    else
-    //    {
-    //        Debug.LogWarning("Player.Instance ‚ª‘¶Ý‚µ‚Ü‚¹‚ñBDamage()‚ðŽÀs‚Å‚«‚Ü‚¹‚ñB");
-    //    }
-    //}
 
     void OnTriggerEnter2D(Collider2D collision)
     {
