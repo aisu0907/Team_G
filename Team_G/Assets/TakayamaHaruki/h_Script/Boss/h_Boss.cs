@@ -22,6 +22,7 @@ public class h_Boss : MonoBehaviour
     private int attack2_count;//攻撃2カウント用
     private int attack_time;  //攻撃間隔
     private float next_attack_time;
+    private bool a;
     void Start()
     {
         //リセット
