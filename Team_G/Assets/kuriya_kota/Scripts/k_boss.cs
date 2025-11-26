@@ -202,6 +202,7 @@ public class k_boss : MonoBehaviour
         if (isDying) return;
         isDying = true;
         move = false;
+        Stage_BGM.Instance.bgm_stop = true;
 
         Instantiate(boss_explode, transform.position, Quaternion.identity);
 

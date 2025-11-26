@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public GameObject spawner;  //スポナーオブジェクト
     public List<GameObject> item_drop;//アイテムオブジェクト
 
+
     private int frame = 0;  //フレーム
     public int faze = 0;    //フェーズ
 
@@ -29,7 +30,7 @@ public class GameManager : MonoBehaviour
     }
 
     private void Update()
-    {
+    { 
         // プレイヤーの体力が0以下の場合
         if (Player.Instance.health <= 0)
         {
