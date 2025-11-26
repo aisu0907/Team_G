@@ -106,7 +106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: 0
   attack: 120
-  health: 20
+  health: 15
   prefab: {fileID: 1323917000318406210, guid: 4e7fcc606545e1043bf191ae82e78847, type: 3}
   enemy: {fileID: 11400000, guid: 0060511f69e9d2a4fb1e007ad5c1b610, type: 2}
   prefab2: {fileID: 1323917000318406210, guid: eb5917cc4ddf9bd449a67f453b91cefc, type: 3}
