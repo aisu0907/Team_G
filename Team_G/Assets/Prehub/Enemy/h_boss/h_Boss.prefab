@@ -186,7 +186,7 @@ MonoBehaviour:
   bullet_data: {fileID: 11400000, guid: 0060511f69e9d2a4fb1e007ad5c1b610, type: 2}
   bullet: {fileID: 1323917000318406210, guid: 4e7fcc606545e1043bf191ae82e78847, type: 3}
   warnig: {fileID: 2028448528721712660, guid: e47145f969b65f14d81fcc403f055aae, type: 3}
-  health: 10
+  health: 15
   range_attack: 480
   warnig_x: -2.5
   warnig_y_top: -0.177

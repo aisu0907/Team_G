@@ -13,6 +13,7 @@ public class h_Boss_Attack : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        //ダメージ間隔をリセット
         damage_time = damage_interval;
     }
 
@@ -23,8 +24,9 @@ public class h_Boss_Attack : MonoBehaviour
         damage_time++;
         Display_time++;
 
+        //表示時間が終了した場合
         if (Display_time >= Display_end)
-            Destroy(gameObject);
+            Destroy(gameObject); //範囲攻撃を削除
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

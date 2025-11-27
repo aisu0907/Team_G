@@ -12,6 +12,7 @@ TagManager:
   - Sheild
   - Boss
   - Bomb
+  - Warnig
   layers:
   - Default
   - TransparentFX
