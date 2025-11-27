@@ -7,60 +7,80 @@ public class h_Boss : MonoBehaviour
 {
     public EnemyData bullet_data; //’e‚Ìî•ñ
     public GameObject bullet; //’e
+    public Rigidbody2D rb;
     public int health;  //‘Ì—Í
+    public float speed; //ˆÚ“®‘¬“x
     public int attack1; //UŒ‚1
-    public int attack2; //UŒ‚2
+    public float attack1_x; //UŒ‚1‚ÌxˆÊ’u
+    public float attack1_y1;//UŒ‚1‚ÌyˆÊ’u1
+    public float attack1_y2;//UŒ‚1‚ÌyˆÊ’u2
     public int attack3; //UŒ‚3
-    public float attack2_cooldown;//UŒ‚2‚Ì’e‚ÌƒN[ƒ‹ƒ^ƒCƒ€
-    public float attack2_space;   //UŒ‚2‚Ì’e‚ÌŠÔŠu
-    public int attack2_speed;     //UŒ‚2‚Ì’e‚Ì‘¬“x
-    public int attack2_max;       //UŒ‚2‚Ì’e‚Ì‰ñ”
+    public int stairs_attack; //ŠK’iUŒ‚
+    public float stairs_attack_cooldown;//ŠK’iUŒ‚‚Ì’e‚ÌƒN[ƒ‹ƒ^ƒCƒ€
+    public float stairs_attack_space;   //ŠK’iUŒ‚‚Ì’e‚ÌŠÔŠu
+    public int stairs_attack_speed;     //ŠK’iUŒ‚‚Ì’e‚Ì‘¬“x
+    public int stairs_attack_max;       //ŠK’iUŒ‚‚Ì’e‚Ì‰ñ”
 
-    private Vector2 v;        //ˆÊ’u•Û‘¶—p
-    private float attack2_x;  //UŒ‚2‚ÌxˆÊ’u
-    private float attack2_y;  //UŒ‚2‚ÌyˆÊ’u
-    private int attack2_count;//UŒ‚2ƒJƒEƒ“ƒg—p
-    private int attack_time;  //UŒ‚ŠÔŠu
-    private float next_attack_time;
-    private bool a;
+    private Vector2 v1; //ˆÊ’u•Û‘¶—p
+    private Vector2 v2; //
+    private Vector2 attack1_v1;
+    private Vector2 attack1_v2;
+    private float stairs_attack_x;  //ŠK’iUŒ‚‚ÌxˆÊ’u
+    private float stairs_attack_y;  //ŠK’iUŒ‚‚ÌyˆÊ’u
+    private int stairs_attack_count;//ŠK’iUŒ‚ƒJƒEƒ“ƒg—p
+    private int attack1_time; //attack1‚ÌUŒ‚ŠÔŠu
+    private int stairs_attack_time; //ŠK’iUŒ‚‚ÌUŒ‚ŠÔŠu
+    private float next_stairs_attack_time; //ŠK’iUŒ‚‚Ì’e‚ÌƒN[ƒ‹ƒ^ƒCƒ€”äŠr—p
+    private bool move = true;
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();//Rigidbody2Dæ“¾
+
         //ƒŠƒZƒbƒg
-        next_attack_time = 0;
-        attack_time = 0;
-        attack2_count = 0;
-        attack2_y = transform.position.y - (transform.localScale.y % 2);
-        attack2_x = transform.position.x + (-attack2_space * (attack2_max - 2));
-        v = new Vector2(attack2_x, attack2_y);
+        next_stairs_attack_time = 0;
+        stairs_attack_time = 0;
+        stairs_attack_count = 0;
+        stairs_attack_y = transform.position.y - (transform.localScale.y % 2);
+        stairs_attack_x = transform.position.x + (-stairs_attack_space * (stairs_attack_max - 2));
+        v1 = new Vector2(stairs_attack_x, stairs_attack_y);
+        v2 = new Vector2(0, -1);
+        attack1_v1 = new Vector2(attack1_x, attack1_y1);
+        attack1_v2 = new Vector2(attack1_x, attack1_y2);
     }
 
     public void Update()
     {
-        if (attack_time > attack1)
-        {
+        //if (move) 
+        //    rb.linearVelocityX = speed;
+        //else 
+        //    rb.linearVelocityX = -speed;
 
-        }
+        //if (attack1_time >= attack1)
+        //{
+        //}
 
         //ŠK’iUŒ‚
-        if (attack_time >= attack2)
+        if (stairs_attack_time >= stairs_attack)
         {
-            if (Time.time >= next_attack_time)
+            if (Time.time >= next_stairs_attack_time)
             {
-                Shot(v); //’e‚ğ¶¬
-                next_attack_time = Time.time + attack2_cooldown; //UŒ‚‚ÌƒN[ƒ‹ƒ^ƒCƒ€
-                v.x += attack2_space; //’e‚ÌˆÊ’u‚ğ‚¸‚ç‚·
-                attack2_count++;
+                Shot(v1, v2); //’e‚ğ¶¬
+                next_stairs_attack_time = Time.time + stairs_attack_cooldown; //UŒ‚‚ÌƒN[ƒ‹ƒ^ƒCƒ€
+                v1.x += stairs_attack_space; //’e‚ÌˆÊ’u‚ğ‚¸‚ç‚·
+                stairs_attack_count++; //UŒ‚‚ğƒJƒEƒ“ƒg
             }
 
-            if (attack2_count >= attack2_max)
+            //
+            if (stairs_attack_count >= stairs_attack_max)
             {
-                attack2_count = 0;
-                attack_time = 0; //UŒ‚ƒpƒ^[ƒ“‚ğƒŠƒZƒbƒg
-                v.x = attack2_x;
+                stairs_attack_count = 0;//UŒ‚ƒJƒEƒ“ƒg‚ğƒŠƒZƒbƒg
+                stairs_attack_time = 0;  //UŒ‚ƒpƒ^[ƒ“‚ğƒŠƒZƒbƒg
+                v1.x = stairs_attack_x;  //’e‚ÌˆÊ’u‚ğƒŠƒZƒbƒg
             }
+
         }
 
-        if (attack_time > attack3)
+        if (stairs_attack_time > attack3)
         {
 
         }
@@ -69,9 +89,13 @@ public class h_Boss : MonoBehaviour
 
     private void FixedUpdate()
     {
-        attack_time++;
+        //UŒ‚‚Ìƒ^ƒCƒ€ƒJƒEƒ“ƒg
+        stairs_attack_time++;
+        attack1_time++;
     }
 
+
+    //ƒ_ƒ[ƒW”»’è
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent<Enemy>(out var enemy))
@@ -79,14 +103,23 @@ public class h_Boss : MonoBehaviour
             {
                 Destroy(collision.gameObject);
                 health--;
-                if (health == 0) GameManager.Instance.KillBoss(gameObject);
+                if (health <= 0) GameManager.Instance.KillBoss(gameObject);
             }
+        if (collision.GetComponent<Side_Wall>()) move = !move;
     }
 
-    private void Shot(Vector2 _v)
+    //ŠK’iUŒ‚
+    private void Shot(Vector2 _v1, Vector2 _v2)
     {
         int color = Random.Range(0, 2); //’e‚ÌF‚ğŒˆ‚ß‚é
-        var e = Instantiate(bullet, _v, Quaternion.identity).GetComponent<ENormal>(); //’e‚ğ¶¬
-        e.Init(bullet_data, new Vector2(0 , -1), color, attack2_speed); //’e‚Ìî•ñ‚ğw’è
+        var e = Instantiate(bullet, _v1, Quaternion.identity).GetComponent<ENormal>(); //’e‚ğ¶¬
+        e.Init(bullet_data, _v2, color, stairs_attack_speed); //’e‚Ìî•ñ‚ğw’è
+    }
+
+    //attack1
+    
+    private void range_attack(Vector2 _v)
+    {
+
     }
 }
