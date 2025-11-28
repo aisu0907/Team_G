@@ -2224,7 +2224,7 @@ PrefabInstance:
       objectReference: {fileID: 6804413508424004305}
     - target: {fileID: 7234192229792845595, guid: 6aba5dcbdc1fb0a44bdb46b9124e0ba8, type: 3}
       propertyPath: bomb_gage_up
-      value: 20
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8258745596146516397, guid: 6aba5dcbdc1fb0a44bdb46b9124e0ba8, type: 3}
       propertyPath: m_AnchorMax.y
