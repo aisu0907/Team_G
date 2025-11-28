@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public List<GameObject> item_drop;//アイテムオブジェクト
 
 
-    private int frame = 0;  //フレーム
+    public int frame = 0;  //フレーム
     public int faze = 0;    //フェーズ
 
     public static GameManager Instance { get; private set; }
@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         // アイテムと敵の出現をONにする
-        if(!(DataHolder.game_phaze < 0))
+        if(!(DataHolder.game_phaze <= 0))
         {
             faze = DataHolder.game_phaze;
             ModeChange(DataHolder.game_phaze % 2 == 0 ? true : false);

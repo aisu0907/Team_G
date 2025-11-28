@@ -48,5 +48,15 @@ public class t_Enemy_Spwan : MonoBehaviour
                 frame = 0;
             }
         }
+
+        if(GameManager.Instance.frame % 400 == 1 && GameManager.Instance.frame >= 400)
+        {
+            float posX = Random.Range(minX, maxX);
+            float posY = Random.Range(minY, maxY);
+            Vector2 pos = new Vector2(posX, posY);
+
+            var e = Instantiate(prefab[2], pos, Quaternion.identity).GetComponent<EJammer>();
+            e.Init(enemy[2], new Vector2(0, -1),enemy[2].speed);
+        }
     }
 }

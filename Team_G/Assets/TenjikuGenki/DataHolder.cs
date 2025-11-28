@@ -26,4 +26,11 @@ public class DataHolder : MonoBehaviour
         // フェーズの数値を取得
         game_phaze = GameManager.Instance.faze;
     }
+
+    static public void DataReset()
+    {
+        // リセット
+        player_took_item = new int[3]{0,0,0};
+        game_phaze = 0;
+    }
 }
