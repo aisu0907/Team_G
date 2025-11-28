@@ -29,7 +29,7 @@ public class h_Boss_Attack : MonoBehaviour
             Destroy(gameObject); //”ÍˆÍUŒ‚‚ğíœ
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         //ƒvƒŒƒCƒ„[‚ÉG‚ê‚½ê‡
         if(collision.CompareTag("Player") && damage_interval <= damage_time)

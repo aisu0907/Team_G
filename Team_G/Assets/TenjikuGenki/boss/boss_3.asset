@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 684c33cebaa681246aeb03116216ae96, type: 3}
-  m_Name: boss_2
+  m_Name: boss_3
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1916767665180494222, guid: b37f733e3fe241a49951af01938288a1, type: 3}
+  prefab: {fileID: 2671645667419631279, guid: c0be94422ecfec64386208be3748abcd, type: 3}
   timer: 1800
