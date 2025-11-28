@@ -89,9 +89,10 @@ public class Player : MonoBehaviour
         if (destroy) Destroy(obj);
 
         //プレイヤーの体力が0以下の場合
-        if (Player.Instance.health <= 0)
+        if (health <= 0)
         {
             //ゲームオーバーシーンに移行
+            DataHolder.GetGameData();
             SceneManager.LoadScene("Gameover_Scene");
         }
     }

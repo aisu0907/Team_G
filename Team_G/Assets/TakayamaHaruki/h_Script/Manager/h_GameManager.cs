@@ -26,7 +26,14 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         // アイテムと敵の出現をONにする
-        ModeChange(true);
+        if(!(DataHolder.game_phaze < 0))
+        {
+            faze = DataHolder.game_phaze;
+            ModeChange(DataHolder.game_phaze % 2 == 0 ? true : false);
+            if(DataHolder.game_phaze % 2 != 0) Instantiate(boss[faze / 2].prefab, new Vector2(-2, 3), Quaternion.identity);
+        }
+        else
+            ModeChange(true);
     }
 
     private void Update()
