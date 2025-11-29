@@ -16,6 +16,8 @@ public class h_Bomb_Gage : MonoBehaviour
     private AudioSource audioaource;
     private int frame = 0;//フレーム
 
+    public static h_Bomb_Gage Instance { get; private set; }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -34,7 +36,8 @@ public class h_Bomb_Gage : MonoBehaviour
             //frameをリセット
             frame = 0;
             //ゲージを増やす
-            bomb_gage.value += bomb_gage_up;
+            if (Player.Instance.bom < Player.Instance.max_bom)
+                bomb_gage.value += bomb_gage_up;
         }
 
         //ゲージがMAXの場合

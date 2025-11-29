@@ -41,10 +41,13 @@ public class Sheild : MonoBehaviour
             // 接触した敵機と盾の色が同じでかつ、それが妨害ウイルスじゃないなら、
             if (IsHitFallingEnemy(obj) && obj.type != (int)EnemyConst.TYPE.JAMMER)
             {
+                obj.on_hitting = true;
+
                 // ベクトルを反転
                 Vector2 d = (collision.transform.position - transform.position).normalized;
                 obj.vec = d;
-                obj.on_hitting = true;
+                if(TryGetComponent<IReflectable>(out var iref)) iref.ref_speed = GetComponent<Sheild_Item>().item_count[1] * GetComponent<Sheild_Item>().up_reflect_speed / 5;
+                Debug.Log(GetComponent<Sheild_Item>().item_count[1] * GetComponent<Sheild_Item>().up_reflect_speed / 5);
             }
         }
     }

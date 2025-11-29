@@ -35,6 +35,7 @@ public class Result_Manager : MonoBehaviour
 
     void Start()
     {
+        DataHolder.DataReset();
         score = Score_Receiver.score;
 
         AudioSource[] sources = GetComponents<AudioSource>();

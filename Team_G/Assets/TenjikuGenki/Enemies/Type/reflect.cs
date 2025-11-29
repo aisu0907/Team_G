@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class EReflect : Enemy, IDamageable
 {
-    Rigidbody2D rb;
     public List<Sprite> Img;
     int timer;
+    public float ref_speed { get; set; } = 0;
 
     void Awake()
     {
@@ -38,8 +38,11 @@ public class EReflect : Enemy, IDamageable
     {
         // Fix Vector
         rb.linearVelocity = vec;
-        if (on_hitting) { if (rb.linearVelocity.magnitude != speed * EnemyConst.DOUBLE) rb.linearVelocity = vec.normalized * speed * EnemyConst.DOUBLE; }
-        else if (rb.linearVelocity.magnitude != speed) rb.linearVelocity = vec.normalized * speed;
+        if (rb.linearVelocity.magnitude != speed)
+            if(on_hitting)
+                rb.linearVelocity = vec.normalized * speed;
+            else
+                rb.linearVelocity = vec.normalized * (speed + ref_speed);
     }
 
     public void Init(EnemyData db, Vector2 _vec, int _color, float _speed)

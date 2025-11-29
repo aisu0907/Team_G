@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ENormal : Enemy, IDamageable
+public class ENormal : Enemy, IDamageable, IReflectable
 {
-    Rigidbody2D rb;
     public List<Sprite> Img;
+    public float ref_speed { get; set; } = 0;
 
     void Awake()
     {
@@ -27,7 +27,11 @@ public class ENormal : Enemy, IDamageable
     {
         // Fix Vector
         rb.linearVelocity = vec;
-        if (rb.linearVelocity.magnitude != speed) rb.linearVelocity = vec.normalized * speed;
+        if (rb.linearVelocity.magnitude != speed)
+            if(on_hitting)
+                rb.linearVelocity = vec.normalized * speed;
+            else
+                rb.linearVelocity = vec.normalized * (speed + ref_speed);
     }
 
     public void Init(EnemyData db, Vector2 _vec, int _color, float _speed)

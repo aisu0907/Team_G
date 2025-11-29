@@ -8,7 +8,7 @@ public class h_waring : MonoBehaviour
     public int waring2; //Œxƒ^ƒCƒ~ƒ“ƒO2
     public int max_warnig; //Å‘åŒx‰ñ”
 
-    private int waring_time; //ŒxŠÔ
+    private int waring_time;  //ŒxŠÔ
     private int waring_count; //Œx‰ñ”
     private Color save_color; //F‚ğ•Û‘¶
     private Color null_color; //“§–¾F
@@ -21,6 +21,7 @@ public class h_waring : MonoBehaviour
         waring_count = 0; 
         save_color = img.color;
         null_color = new Color(img.color.g, img.color.b, img.color.r, 0);
+        //null_color = new Color(135, 3, 3,img.color.a);
     }
 
     // Update is called once per frame

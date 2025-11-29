@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: reflect
   m_EditorClassIdentifier: 
   type: 1
-  speed: 2.5
+  speed: 3
   score: 1200
   power: 0
