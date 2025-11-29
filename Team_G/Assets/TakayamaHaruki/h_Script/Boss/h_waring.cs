@@ -42,7 +42,7 @@ public class h_waring : MonoBehaviour
         if(waring_count >= max_warnig)
         {
             Instantiate(range_attack, transform.position, Quaternion.identity); //”ÍˆÍUŒ‚¶¬
-            Destroy(gameObject); //©•ª‚ğíœ
+            Destroy(gameObject); //Œx‚ğíœ
         }
     }
 }
