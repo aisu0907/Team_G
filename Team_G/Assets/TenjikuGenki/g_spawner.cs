@@ -49,7 +49,7 @@ public class t_Enemy_Spwan : MonoBehaviour
             }
         }
 
-        if(GameManager.Instance.frame % 400 == 1 && GameManager.Instance.frame >= 400)
+        if(GameManager.Instance.faze == 4 && GameManager.Instance.frame % 400 == 1 && GameManager.Instance.frame >= 400)
         {
             float posX = Random.Range(minX, maxX);
             float posY = Random.Range(minY, maxY);
