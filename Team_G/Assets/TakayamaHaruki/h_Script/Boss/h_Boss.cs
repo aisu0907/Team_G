@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class h_Boss : MonoBehaviour
@@ -9,8 +10,10 @@ public class h_Boss : MonoBehaviour
     public EnemyData bullet_data; //弾の情報
     public GameObject bullet; //弾
     public GameObject warnig; //警告
+    public GameObject explode; //
     //ボスステータス
     public int health;  //体力
+    public int timer; //
     //範囲攻撃系
     public int range_attack;//範囲攻撃
     public float warnig_x;     //警告のx位置
@@ -37,11 +40,15 @@ public class h_Boss : MonoBehaviour
     private float next_stairs_attack_time; //階段攻撃の弾のクールタイム比較用
     //範囲攻撃系
     private int range_attack_time; //範囲攻撃の攻撃間隔
-
+    //
+    private bool dead;
+    private Rigidbody2D rb; //
     public static h_Boss Instance { get; private set; }
 
     void Start()
     {
+        //リセット
+        rb = GetComponent<Rigidbody2D>();
         //タイム関係リセット
         next_stairs_attack_time = 0;
         stairs_attack_time = 0;
@@ -58,37 +65,54 @@ public class h_Boss : MonoBehaviour
 
     public void Update()
     {
-        //攻撃のタイムカウント
-        stairs_attack_time++;
-        range_attack_time++;
-
-        //階段攻撃
-        if (stairs_attack_time >= stairs_attack)
+        if (health >= 0)
         {
-            //クールタイムが終わっていた場合
-            if (Time.time >= next_stairs_attack_time)
+            //攻撃のタイムカウント
+            stairs_attack_time++;
+            range_attack_time++;
+
+            //階段攻撃
+            if (stairs_attack_time >= stairs_attack)
             {
-                Shot(v1, v2); //弾を生成
-                next_stairs_attack_time = Time.time + stairs_attack_cooldown; //攻撃のクールタイム
-                v1.x += stairs_attack_space; //弾の位置をずらす
-                stairs_attack_count++; //攻撃をカウント
+                //クールタイムが終わっていた場合
+                if (Time.time >= next_stairs_attack_time)
+                {
+                    Shot(v1, v2); //弾を生成
+                    next_stairs_attack_time = Time.time + stairs_attack_cooldown; //攻撃のクールタイム
+                    v1.x += stairs_attack_space; //弾の位置をずらす
+                    stairs_attack_count++; //攻撃をカウント
+                }
+
+                //最大まで攻撃した場合
+                if (stairs_attack_count >= stairs_attack_max)
+                {
+                    stairs_attack_count = 0;//攻撃カウントをリセット
+                    stairs_attack_time = 0;  //攻撃パターンをリセット
+                    v1.x = stairs_attack_x;  //弾の位置をリセット
+                }
+
             }
 
-            //最大まで攻撃した場合
-            if (stairs_attack_count >= stairs_attack_max)
+            //範囲攻撃
+            if (range_attack_time >= range_attack)
             {
-                stairs_attack_count = 0;//攻撃カウントをリセット
-                stairs_attack_time = 0;  //攻撃パターンをリセット
-                v1.x = stairs_attack_x;  //弾の位置をリセット
+                range_attack_time = 0;
+                warnig_spwn();
             }
-
         }
-
-        //範囲攻撃
-        if (range_attack_time >= range_attack)
+        else
         {
-            range_attack_time = 0;
-            warnig_spwn();
+            if (dead)
+            {
+                timer = 0;
+                dead = false;
+            }
+            if (timer % 5 == 0)
+                transform.position = new Vector2(transform.position.x + 0.1f, transform.position.y);
+            else
+                transform.position = new Vector2(transform.position.x - 0.1f, transform.position.y);
+            rb.linearVelocityY = 1.0f;
+            if (timer >= 330) if (health <= 0) GameManager.Instance.KillBoss(gameObject);
         }
     }
 
@@ -100,7 +124,7 @@ public class h_Boss : MonoBehaviour
             {
                 Destroy(collision.gameObject);
                 health--;
-                if (health <= 0) GameManager.Instance.KillBoss(gameObject);
+                Instantiate(explode, new Vector2(enemy.transform.position.x, enemy.transform.position.y + 0.5f), Quaternion.identity);
             }
     }
 
@@ -115,13 +139,13 @@ public class h_Boss : MonoBehaviour
     //警告
     private void warnig_spwn()
     {
-        int save = Random.Range(0, 2); //ランダムで数値を取得
+        int save = Random.Range(0, 3); //ランダムで数値を取得
 
         //警告の座標設定
         if (save < 1)
-            warnig_save = warnig_down;
+        warnig_save = warnig_down;
         else 
-            warnig_save = warnig_top;
+        warnig_save = warnig_top;
 
         //警告を生成
         Instantiate(warnig, warnig_save, Quaternion.identity);
