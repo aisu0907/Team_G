@@ -8,9 +8,9 @@ public class h_Boss : MonoBehaviour
 {
     //ゲームオブジェクト
     public EnemyData bullet_data; //弾の情報
-    public GameObject bullet; //弾
-    public GameObject warnig; //警告
-    public GameObject explode; //
+    public GameObject bullet;  //弾
+    public GameObject warnig;  //警告
+    public GameObject explode; //爆発演出
     //ボスステータス
     public int health;  //体力
     public int timer; //
@@ -32,6 +32,7 @@ public class h_Boss : MonoBehaviour
     private Vector2 warnig_save;
     private Vector2 warnig_top;
     private Vector2 warnig_down;
+    private Vector2 boss_start; //ボスの初期位置
     //階段攻撃系
     private float stairs_attack_x;  //階段攻撃のx位置
     private float stairs_attack_y;  //階段攻撃のy位置
@@ -55,6 +56,7 @@ public class h_Boss : MonoBehaviour
         //カウントリセット
         stairs_attack_count = 0;
         //座標作成
+        boss_start = transform.position;
         stairs_attack_y = transform.position.y - (transform.localScale.y % 2);
         stairs_attack_x = transform.position.x + (-stairs_attack_space * (stairs_attack_max - 2));
         v1 = new Vector2(stairs_attack_x, stairs_attack_y);
@@ -65,12 +67,12 @@ public class h_Boss : MonoBehaviour
 
     public void Update()
     {
+        //攻撃のタイムカウント
+        stairs_attack_time++;
+        range_attack_time++;
+
         if (health >= 0)
         {
-            //攻撃のタイムカウント
-            stairs_attack_time++;
-            range_attack_time++;
-
             //階段攻撃
             if (stairs_attack_time >= stairs_attack)
             {
@@ -104,15 +106,16 @@ public class h_Boss : MonoBehaviour
         {
             if (dead)
             {
-                timer = 0;
+                stairs_attack_time = 0;
                 dead = false;
             }
-            if (timer % 5 == 0)
-                transform.position = new Vector2(transform.position.x + 0.1f, transform.position.y);
+            if (stairs_attack_time % 5 == 0)
+                transform.position = new Vector2(boss_start.x + 0.1f, transform.position.y);
             else
-                transform.position = new Vector2(transform.position.x - 0.1f, transform.position.y);
+                transform.position = new Vector2(boss_start.x - 0.1f, transform.position.y);
+
             rb.linearVelocityY = 1.0f;
-            if (timer >= 330) if (health <= 0) GameManager.Instance.KillBoss(gameObject);
+            if (stairs_attack_time >= 330) if (health <= 0) GameManager.Instance.KillBoss(gameObject);
         }
     }
 

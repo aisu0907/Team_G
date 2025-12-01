@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     private int frame = 0;
     public AudioClip sound1;
     public AudioSource audioSource;
+    public GameObject explode;
 
     public static Player Instance { get; private set; }
 
@@ -57,6 +58,7 @@ public class Player : MonoBehaviour
                 foreach (GameObject obj in objects)
                 {
                     Destroy(obj);
+                    Instantiate(explode, obj.transform.position, Quaternion.identity);
                 }
 
                 //bomの数を減らす

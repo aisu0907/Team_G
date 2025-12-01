@@ -11,7 +11,7 @@ public class h_Bomb_Gage : MonoBehaviour
     public float bomb_gage_up = 0; //時間経過で進むボムゲージ
     public int bomb_time = 0;      //ボムゲージが進む頻度
     public Slider bomb_gage;       //スライダーを取得
-    public AudioClip bomb_get;     //ボム取得時の
+    public AudioClip bomb_get;     //ボム取得時の音
 
     private AudioSource audioaource;
     private int frame = 0;//フレーム
