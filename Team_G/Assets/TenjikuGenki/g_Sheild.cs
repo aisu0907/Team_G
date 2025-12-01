@@ -8,6 +8,7 @@ public class Sheild : MonoBehaviour
     public int color = 0;
     [SerializeField] List<Sprite> Img;   //�摜
     public AudioClip sound1;
+    public AudioClip sound2;
     public AudioSource audioSource;
     public static Sheild Instance { get; private set; }
 
@@ -45,6 +46,7 @@ public class Sheild : MonoBehaviour
                 Vector2 d = (collision.transform.position - transform.position).normalized;
                 obj.vec = d;
                 obj.on_hitting = true;
+                audioSource.PlayOneShot(sound2);
             }
         }
     }
