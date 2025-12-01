@@ -176,7 +176,7 @@ public class k_boss : MonoBehaviour
 
         var e = Instantiate(prefab2, transform.position, Quaternion.identity)
                 .GetComponent<EJammer>();
-        e.Init(enemy2, new Vector2(0, -0.5f), enemy2.speed);
+        e.Init(enemy2, new Vector2(0, -2f), enemy2.speed);
 
         summonOnce = true;
         mode = 0;

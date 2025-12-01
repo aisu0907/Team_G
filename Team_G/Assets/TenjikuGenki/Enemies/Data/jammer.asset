@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: jammer
   m_EditorClassIdentifier: 
   type: 2
-  speed: 1
+  speed: 2
   score: 1500
   power: 5

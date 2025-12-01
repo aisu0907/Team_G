@@ -75,8 +75,8 @@ public class GameManager : MonoBehaviour
     // アイテムと敵の出現を切り替える関数
     void ModeChange(bool mode)
     {
-        spawner.GetComponent<t_Enemy_Spwan>().spawn_switch = mode;      //エネミーの出現をOFF
         for (int i = 0; i < item_drop.Count; i++)
             item_drop[i].GetComponent<Item_Drop>().drop_switch = mode;  //アイテムドロップをOFF
+        spawner.GetComponent<t_Enemy_Spwan>().spawn_switch = mode;      //エネミーの出現をOFF
     }
 }

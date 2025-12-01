@@ -8,8 +8,8 @@ public class Kill_Death : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy")) Player.Instance.Damage(1, collision.gameObject);
-        if (collision.TryGetComponent<EJammer>(out var jammer)) jammer.PopWindow(); 
+        if (collision.TryGetComponent<EJammer>(out var jammer)) jammer.PopWindow();
+        else if (collision.CompareTag("Enemy")) Player.Instance.Damage(1, collision.gameObject);
 
         if (collision.gameObject.tag == "Item")
         {
