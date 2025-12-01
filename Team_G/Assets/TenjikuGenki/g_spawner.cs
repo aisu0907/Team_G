@@ -31,7 +31,7 @@ public class t_Enemy_Spwan : MonoBehaviour
 
         if (spawn_switch)
         {
-            if (frame > generateFrame)
+            if (frame > generateFrame - GameManager.Instance.faze / 2 * 10)
             {
                 // Decide Pos
                 float posX = Random.Range(minX, maxX);
