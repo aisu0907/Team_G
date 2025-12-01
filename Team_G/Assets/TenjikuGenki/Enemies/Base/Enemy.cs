@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class Enemy : MonoBehaviour
     public bool on_hitting = false;
 
     public GameObject explode;
+    public Slider bomb_gage;
+    public Rigidbody2D rb;
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

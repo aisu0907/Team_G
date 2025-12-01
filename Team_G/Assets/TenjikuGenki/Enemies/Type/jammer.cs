@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class EJammer : Enemy
 {
-    Rigidbody2D rb;
     public GameObject window;
 
     void Awake()

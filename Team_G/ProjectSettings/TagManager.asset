@@ -12,6 +12,7 @@ TagManager:
   - Sheild
   - Boss
   - Bomb
+  - Warnig
   layers:
   - Default
   - TransparentFX
@@ -51,6 +52,9 @@ TagManager:
     locked: 0
   - name: back
     uniqueID: 3430401083
+    locked: 0
+  - name: boss_attack
+    uniqueID: 2119638405
     locked: 0
   - name: UI
     uniqueID: 2987206095

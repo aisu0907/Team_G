@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     private int frame = 0;
     public AudioClip sound1;
     public AudioSource audioSource;
+    public GameObject explode;
 
     public static Player Instance { get; private set; }
 
@@ -57,6 +58,7 @@ public class Player : MonoBehaviour
                 foreach (GameObject obj in objects)
                 {
                     Destroy(obj);
+                    Instantiate(explode, obj.transform.position, Quaternion.identity);
                 }
 
                 //bomの数を減らす
@@ -89,9 +91,10 @@ public class Player : MonoBehaviour
         if (destroy) Destroy(obj);
 
         //プレイヤーの体力が0以下の場合
-        if (Player.Instance.health <= 0)
+        if (health <= 0)
         {
             //ゲームオーバーシーンに移行
+            DataHolder.GetGameData();
             SceneManager.LoadScene("Gameover_Scene");
         }
     }

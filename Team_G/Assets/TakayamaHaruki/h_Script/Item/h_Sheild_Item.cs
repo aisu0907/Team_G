@@ -18,12 +18,13 @@ public class Sheild_Item : ItemBase
     public float up_reflect_speed = 0.5f;//反射スピード上昇率
 
     private int max_health = 3; //最大体力  
-    private int[] item_count;   //アイテム取得回数   
+    public int[] item_count;   //アイテム取得回数   
     private int max_bom = 3;    //ボム最大所持数
     private Vector3 sheild_size;//シールドサイズ
     public GameObject display;
     public AudioClip sound1;
     public AudioSource audioSource;
+    public Player player;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -32,6 +33,21 @@ public class Sheild_Item : ItemBase
         item_count = new int[3];
         sheild_size = new Vector2(3, 3);
         audioSource = GetComponent<AudioSource>();
+        player = Player.Instance;
+
+        // データがあったら引き継ぐ
+        if(!(DataHolder.game_phaze < 0))
+        {
+            // 速度
+            player.speed += up_speed * DataHolder.player_took_item[0];
+
+            // 盾の大きさ
+            sheild_size.x += up_sheild * DataHolder.player_took_item[2];
+            Sheild.Instance.transform.localScale = sheild_size;
+
+            // 回数の同期
+            for(int i = 0; i < 3; i++) item_count[i] = DataHolder.player_took_item[i];
+        }
     }
 
     // Update is called once per frame
@@ -51,7 +67,7 @@ public class Sheild_Item : ItemBase
                 if (item_count[speed_item] < i.max_item_count)
                 {
                     //プレイヤーの移動スピードを上げる
-                    Player.Instance.speed += up_speed;
+                    player.speed += up_speed;
                     Debug.Log(Player.Instance.speed);
                     //累積カウント
                     item_count[speed_item]++;
@@ -67,7 +83,7 @@ public class Sheild_Item : ItemBase
                 if (item_count[reflect_item] < i.max_item_count)
                 {
                     //反射スピードup
-                    if (collision.TryGetComponent<Enemy>(out var e)) e.speed += up_reflect_speed;
+                    //if (collision.TryGetComponent<Enemy>(out var e)) e.speed += up_reflect_speed;
                     //累積カウント
                     item_count[reflect_item]++;
 
@@ -96,14 +112,14 @@ public class Sheild_Item : ItemBase
             //回復
             if (i.item_id == life_item)
                 //プレイヤーの体力が最大じゃない場合
-                if (max_health > Player.Instance.health)
+                if (max_health > player.health)
                     //プレイヤーの体力を増やす
-                    Player.Instance.health += heal_hp;
+                    player.health += heal_hp;
 
             //ボム
             if (i.item_id == bomb_item)
                 //ボム所持数が最大じゃない場合
-                if (max_bom > Player.Instance.bom)
+                if (max_bom > player.bom)
                 {
 
                 }

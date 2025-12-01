@@ -6,8 +6,14 @@ public class Return : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Zキー入力でタイトル
-        if(Input.GetKey(KeyCode.Z))
+        // Zならコンテニュー
+        if(Input.GetKeyUp(KeyCode.Z))
+        {
+            SceneManager.LoadScene("Play_Scene");
+        }
+
+        // Xならタイトルに戻る
+        if(Input.GetKeyUp(KeyCode.X))
         {
             SceneManager.LoadScene("Title");
         }

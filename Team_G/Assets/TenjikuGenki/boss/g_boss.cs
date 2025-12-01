@@ -28,9 +28,9 @@ public class g_boss : MonoBehaviour
         // ˆê’èŽžŠÔ‚²‚Æ‚É’e‚ð”­ŽË
         if (health > 0)
         {
-            if (Timer >= 60)
+            if (Timer >= 120)
             {
-                Timer = 0;
+                Timer = 60;
                 ShootBullet();
             } 
         }
@@ -42,7 +42,7 @@ public class g_boss : MonoBehaviour
                 Timer = 0;
                 once = false;
             }
-            if((int)Timer % 5 == 0)
+            if(Timer % 5 == 0)
                 transform.position = new Vector2(tmp_pos.x + 0.1f, transform.position.y);
             else
                 transform.position = new Vector2(tmp_pos.x - 0.1f, transform.position.y);
