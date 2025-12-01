@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -7967408628048707128}
   - component: {fileID: -6639668193073629452}
   m_Layer: 0
-  m_Name: h_range_warnig
+  m_Name: h_Range_Warnig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
