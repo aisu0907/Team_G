@@ -7,7 +7,6 @@ using UnityEngine.Rendering;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
-
     [SerializeField] List<AudioClip> audio_list;
     Dictionary<string, AudioClip> audio_dic = new Dictionary<string, AudioClip>();
     AudioSource se; 
