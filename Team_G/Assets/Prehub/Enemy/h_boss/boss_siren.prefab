@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 697706079043217743}
   - component: {fileID: 761929045711364692}
   m_Layer: 0
-  m_Name: boss_siren
+  m_Name: Boss_Siren
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
