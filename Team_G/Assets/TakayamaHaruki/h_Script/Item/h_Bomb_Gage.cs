@@ -1,28 +1,31 @@
 //h_Bomb_Gage.cs
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class h_Bomb_Gage : MonoBehaviour
 {
-    public float bomb_gage_max = 0;//ボムゲージ最大値
-    public float bomb_gage_up = 0; //時間経過で進むボムゲージ
-    public int bomb_time = 0;      //ボムゲージが進む頻度
-    public Slider bomb_gage;       //スライダーを取得
-    public AudioClip bomb_get;     //ボム取得時の音
+    public float bomb_gage_max;//ボムゲージ最大値
+    public float bomb_gage_up; //時間経過で進むボムゲージ
+    public int bomb_time;      //ボムゲージが進む頻度
+    public Slider bomb_gage;  //スライダーを取得
+    public AudioClip bomb_get;//ボム取得時の音
 
-    private AudioSource audioaource;
+    private AudioSource audioaource; //オーディオ取得
     private int frame = 0;//フレーム
 
     public static h_Bomb_Gage Instance { get; private set; }
 
+    private void Awake()
+    {
+        Instance = this;
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        //リセット
         bomb_gage.value = 0;　//スライダーの位置をリセット
-        audioaource = GetComponent<AudioSource>();
+        audioaource = GetComponent<AudioSource>(); //コンポーネントを取得
     }
 
     // Update is called once per frame
@@ -31,7 +34,7 @@ public class h_Bomb_Gage : MonoBehaviour
         frame++;
 
         //1秒間にためるゲージ
-        if(frame >= bomb_time)
+        if (frame >= bomb_time)
         {
             //frameをリセット
             frame = 0;

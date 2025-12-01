@@ -11,7 +11,6 @@ public class Enemy : MonoBehaviour
     public bool on_hitting = false;
 
     public GameObject explode;
-    public Slider bomb_gage;
     public Rigidbody2D rb;
     
 
@@ -33,6 +32,8 @@ public class Enemy : MonoBehaviour
         Instantiate(explode, transform.position, Quaternion.identity);
         Destroy(obj.gameObject);
         Destroy(gameObject);
+        if (Player.Instance.bom < Player.Instance.max_bom)
+            h_Bomb_Gage.Instance.bomb_gage.value += power;
     }
 
     public bool IsHitEnemy(GameObject obj)

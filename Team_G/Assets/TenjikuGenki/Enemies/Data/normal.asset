@@ -15,4 +15,4 @@ MonoBehaviour:
   type: 0
   speed: 4
   score: 1000
-  power: 0
+  power: 5
