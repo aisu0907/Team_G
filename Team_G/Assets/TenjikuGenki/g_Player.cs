@@ -12,8 +12,6 @@ public class Player : MonoBehaviour
     public int bom_time = 0;//ボムのクールタイム
     public int max_bom = 0;
     private int frame = 0;
-    public AudioClip sound1;
-    public AudioSource audioSource;
     public GameObject explode;
 
     public static Player Instance { get; private set; }
@@ -30,7 +28,6 @@ public class Player : MonoBehaviour
         // ���̐���
         Instantiate(sheild);
         frame = 300;
-        audioSource = this.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -87,7 +84,7 @@ public class Player : MonoBehaviour
     public void Damage(int damage, GameObject obj, bool destroy = true)
     {
         health -= damage;
-        audioSource.PlayOneShot(sound1);
+        AudioManager.instance.PlaySound("PlayerDamage");
         if (destroy) Destroy(obj);
 
         //プレイヤーの体力が0以下の場合

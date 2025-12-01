@@ -1,20 +1,31 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.Rendering;
 
 public class AudioManager : MonoBehaviour
 {
-    static AudioManager instance;
-    private Dictionary<string, AudioClip> bgmDict;
+    public static AudioManager instance;
+
+    [SerializeField] List<AudioClip> audio_list;
+    Dictionary<string, AudioClip> audio_dic = new Dictionary<string, AudioClip>();
+    AudioSource se; 
 
     void Awake()
     {
         instance = this;
+
+        se = GetComponent<AudioSource>();
+        foreach (var clip in audio_list)
+        {
+            audio_dic[clip.name] = clip;
+        }
     }
 
-    public void PlaySound(GameObject obj, string sound)
+    public void PlaySound(string sound, float volume = 1.0f)
     {
-        AudioSource AS = obj.AddComponent<AudioSource>();
-        //AS.clip = clip;
+        se.PlayOneShot(audio_dic[sound],volume);
     }
 
 }
