@@ -12,8 +12,6 @@ public class g_boss : MonoBehaviour
     public List<enemy_list> list = new List<enemy_list>();
     public SpriteRenderer img;
     public List<Sprite> sprites;
-    public AudioClip sound1;
-    public AudioSource audioSource;
     [SerializeField] int Timer;
     bool once;
     Vector2 tmp_pos;
@@ -47,6 +45,7 @@ public class g_boss : MonoBehaviour
             else
                 transform.position = new Vector2(tmp_pos.x - 0.1f, transform.position.y);
             rb.linearVelocityY = 1.0f;
+            if (Timer % 60 == 0) AudioManager.instance.PlaySound("gogogo");
             if(Timer >= 330) if (health <= 0) GameManager.Instance.KillBoss(gameObject);
         }
 
@@ -64,7 +63,6 @@ public class g_boss : MonoBehaviour
     {
         // Å‰‚Ìó‘Ô‚ðPhase1‚ÉÝ’è
         img = GetComponent<SpriteRenderer>();
-        audioSource = GetComponent<AudioSource>();
         tmp_pos = transform.position;
         rb = GetComponent<Rigidbody2D>();
         transform.position = new Vector2(transform.position.x - 0.5f,transform.position.y);
@@ -89,6 +87,6 @@ public class g_boss : MonoBehaviour
         img.sprite = sprites[color];
         Vector2 d = (Player.Instance.transform.position - transform.position).normalized;
         var e = Instantiate(list[0].pf, transform.position, Quaternion.identity).GetComponent<ENormal>(); e.Init(list[0].db, d, color, 5);
-        audioSource.PlayOneShot(sound1);
+        AudioManager.instance.PlaySound("Shoot");
     }
 }
