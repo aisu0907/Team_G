@@ -1,6 +1,4 @@
-using UnityEditor.Build;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class h_Boss_Attack : MonoBehaviour
 {
