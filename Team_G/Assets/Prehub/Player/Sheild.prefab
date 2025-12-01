@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1050848629110424088}
   - component: {fileID: 489013248214253143}
-  - component: {fileID: 8223017186961346377}
-  - component: {fileID: 1745352153182978386}
+  - component: {fileID: -1092089730999334728}
   - component: {fileID: 5806836250297397262}
+  - component: {fileID: 8223017186961346377}
   - component: {fileID: -1871289350914087552}
   m_Layer: 0
   m_Name: Sheild
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -921988423
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -6556403868631285073, guid: b0642d7a69aa9d64cbc86bcba14e9aea, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -91,6 +91,49 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-1092089730999334728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5988915149965031515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2b41675f5c2ed4ea14cd86126ae42c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 0
+  Img:
+  - {fileID: -6556403868631285073, guid: b0642d7a69aa9d64cbc86bcba14e9aea, type: 3}
+  - {fileID: -7696752515786996293, guid: 1ce3f8e14ec5b4744a9dbc307a60cd71, type: 3}
+  sound1: {fileID: 0}
+  sound2: {fileID: 0}
+  audioSource: {fileID: 0}
+--- !u!114 &5806836250297397262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5988915149965031515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e48d95038713842439224d282b280b91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy_ref: {fileID: 3457435008533907693, guid: 35484c594a614a545b8db4efbeaf555c, type: 3}
+  puls_bom: 1
+  item_score: 0
+  heal_hp: 1
+  up_speed: 0.5
+  up_sheild: 1
+  up_reflect_speed: 0.5
+  item_count: 
+  display: {fileID: 1843163215658175290, guid: 2ae498e857a77cc4daa1516f0c0ef3c8, type: 3}
+  sound1: {fileID: 8300000, guid: a7f42b42f53c8cd4db3c6a85c9387d06, type: 3}
+  audioSource: {fileID: 0}
+  player: {fileID: 0}
 --- !u!61 &8223017186961346377
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -137,47 +180,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.17, y: 0.06}
   m_EdgeRadius: 0
---- !u!114 &1745352153182978386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5988915149965031515}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f2b41675f5c2ed4ea14cd86126ae42c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  color: 0
-  Img:
-  - {fileID: -6556403868631285073, guid: b0642d7a69aa9d64cbc86bcba14e9aea, type: 3}
-  - {fileID: -7696752515786996293, guid: 1ce3f8e14ec5b4744a9dbc307a60cd71, type: 3}
-  sound1: {fileID: 8300000, guid: a9f05973e36a9de42b424153d2785918, type: 3}
-  sound2: {fileID: 8300000, guid: e2130deb8491c234885cb48aadd5ef36, type: 3}
-  audioSource: {fileID: 0}
---- !u!114 &5806836250297397262
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5988915149965031515}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e48d95038713842439224d282b280b91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemy_ref: {fileID: 3457435008533907693, guid: 35484c594a614a545b8db4efbeaf555c, type: 3}
-  puls_bom: 1
-  item_score: 0
-  heal_hp: 1
-  up_speed: 0.5
-  up_sheild: 1
-  up_reflect_speed: 0.5
-  display: {fileID: 1843163215658175290, guid: 2ae498e857a77cc4daa1516f0c0ef3c8, type: 3}
-  sound1: {fileID: 8300000, guid: a7f42b42f53c8cd4db3c6a85c9387d06, type: 3}
-  audioSource: {fileID: 0}
 --- !u!82 &-1871289350914087552
 AudioSource:
   m_ObjectHideFlags: 0

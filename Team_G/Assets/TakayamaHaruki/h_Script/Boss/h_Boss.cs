@@ -9,16 +9,15 @@ public class h_Boss : MonoBehaviour
     //ƒQ[ƒ€ƒIƒuƒWƒFƒNƒg
     public EnemyData bullet_data; //’e‚Ìî•ñ
     public GameObject bullet;  //’e
-    public GameObject warnig;  //Œx
+    public GameObject warning;  //Œx
     public GameObject explode; //”š”­‰‰o
     //ƒ{ƒXƒXƒe[ƒ^ƒX
     public int health;  //‘Ì—Í
-    public int timer; //
     //”ÍˆÍUŒ‚Œn
     public int range_attack;//”ÍˆÍUŒ‚
     public float warnig_x;     //Œx‚ÌxˆÊ’u
-    public float warnig_y_top; //Œx‚ÌyˆÊ’u1
-    public float warnig_y_down;//Œx‚ÌyˆÊ’u2
+    public float warning_y_top; //Œx‚ÌyˆÊ’u1
+    public float warning_y_down;//Œx‚ÌyˆÊ’u2
     //ŠK’iUŒ‚Œn
     public int stairs_attack;           //ŠK’iUŒ‚
     public float stairs_attack_cooldown;//ŠK’iUŒ‚‚Ì’e‚ÌƒN[ƒ‹ƒ^ƒCƒ€
@@ -29,9 +28,9 @@ public class h_Boss : MonoBehaviour
     //À•WŒW
     private Vector2 v1; //ˆÊ’u•Û‘¶—p
     private Vector2 v2; //ˆê“I
-    private Vector2 warnig_save;
-    private Vector2 warnig_top;
-    private Vector2 warnig_down;
+    private Vector2 warning_save;
+    private Vector2 warning_top;
+    private Vector2 warning_down;
     private Vector2 boss_start; //ƒ{ƒX‚Ì‰ŠúˆÊ’u
     //ŠK’iUŒ‚Œn
     private float stairs_attack_x;  //ŠK’iUŒ‚‚ÌxˆÊ’u
@@ -61,8 +60,8 @@ public class h_Boss : MonoBehaviour
         stairs_attack_x = transform.position.x + (-stairs_attack_space * (stairs_attack_max - 2));
         v1 = new Vector2(stairs_attack_x, stairs_attack_y);
         v2 = new Vector2(0, -1);
-        warnig_top = new Vector2(warnig_x, warnig_y_top);
-        warnig_down = new Vector2(warnig_x, warnig_y_down);
+        warning_top = new Vector2(warnig_x, warning_y_top);
+        warning_down = new Vector2(warnig_x, warning_y_down);
     }
 
     public void Update()
@@ -146,11 +145,11 @@ public class h_Boss : MonoBehaviour
 
         //Œx‚ÌÀ•Wİ’è
         if (save < 1)
-        warnig_save = warnig_down;
+        warning_save = warning_down;
         else 
-        warnig_save = warnig_top;
+        warning_save = warning_top;
 
         //Œx‚ğ¶¬
-        Instantiate(warnig, warnig_save, Quaternion.identity);
+        Instantiate(warning, warning_save, Quaternion.identity);
     }
 }
