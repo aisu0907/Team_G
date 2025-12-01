@@ -45,6 +45,11 @@ public class h_Boss : MonoBehaviour
     private Rigidbody2D rb; //
     public static h_Boss Instance { get; private set; }
 
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     void Start()
     {
         //ƒŠƒZƒbƒg

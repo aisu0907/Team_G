@@ -25,6 +25,11 @@ public class h_Boss_Attack : MonoBehaviour
         //•\¦ŠÔ‚ªI—¹‚µ‚½ê‡
         if (Display_time >= Display_end)
             Destroy(gameObject); //”ÍˆÍUŒ‚‚ğíœ
+        
+        if(h_Boss.Instance.health <= 0)
+        {
+            Destroy(gameObject); //”ÍˆÍUŒ‚‚ğíœ
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
