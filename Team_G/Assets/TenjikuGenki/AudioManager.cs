@@ -1,10 +1,20 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    public static void PlaySound()
+    static AudioManager instance;
+    private Dictionary<string, AudioClip> bgmDict;
+
+    void Awake()
     {
-        //AudioSource AS = AddComponent<AudioSource>();
+        instance = this;
+    }
+
+    public void PlaySound(GameObject obj, string sound)
+    {
+        AudioSource AS = obj.AddComponent<AudioSource>();
+        AS.clip = clip
     }
 
 }
