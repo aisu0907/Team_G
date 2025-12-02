@@ -148,5 +148,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  damage_interval: 120
-  Display_end: 180
+  damage_interval: 90
+  Display_end: 120

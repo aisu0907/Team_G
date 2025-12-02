@@ -41,6 +41,7 @@ public class h_Boss : MonoBehaviour
     //”ÍˆÍUŒ‚Œn
     private int range_attack_time; //”ÍˆÍUŒ‚‚ÌUŒ‚ŠÔŠu
     //
+    private int save;
     private bool dead;
     private Rigidbody2D rb; //
     public static h_Boss Instance { get; private set; }
@@ -54,6 +55,7 @@ public class h_Boss : MonoBehaviour
     {
         //ƒŠƒZƒbƒg
         rb = GetComponent<Rigidbody2D>();
+        save = 0;
         //ƒ^ƒCƒ€ŠÖŒWƒŠƒZƒbƒg
         next_stairs_attack_time = 0;
         stairs_attack_time = 0;
@@ -146,13 +148,17 @@ public class h_Boss : MonoBehaviour
     //Œx
     private void warnig_spwn()
     {
-        int save = Random.Range(0, 3); //ƒ‰ƒ“ƒ_ƒ€‚Å”’l‚ğæ“¾
-
         //Œx‚ÌÀ•Wİ’è
-        if (save < 2)
-        warning_save = warning_down;
-        else 
-        warning_save = warning_top;
+        if (save == 0)
+        {
+            warning_save = warning_top;
+            save++;
+        }
+        else
+        {
+            warning_save = warning_down;
+            save--;
+        }
 
         //Œx‚ğ¶¬
         Instantiate(warning, warning_save, Quaternion.identity);
