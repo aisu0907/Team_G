@@ -56,6 +56,9 @@ TagManager:
   - name: boss_attack
     uniqueID: 2119638405
     locked: 0
+  - name: player
+    uniqueID: 3247394351
+    locked: 0
   - name: UI
     uniqueID: 2987206095
     locked: 0

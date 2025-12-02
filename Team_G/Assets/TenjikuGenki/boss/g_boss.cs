@@ -45,8 +45,13 @@ public class g_boss : MonoBehaviour
             else
                 transform.position = new Vector2(tmp_pos.x - 0.1f, transform.position.y);
             rb.linearVelocityY = 1.0f;
-            if (Timer % 60 == 0) AudioManager.instance.PlaySound("gogogo");
-            if(Timer >= 330) if (health <= 0) GameManager.Instance.KillBoss(gameObject);
+            if (Timer % 60 == 0)
+            {
+                AudioManager.instance.PlaySound("gogogo");
+                Instantiate(explode, new Vector2(transform.position.x + Random.Range(0, 1.5f), transform.position.y + Random.Range(0, 1.5f)),Quaternion.identity);
+            }
+            if (Timer >= 330)
+                if (health <= 0) GameManager.Instance.KillBoss(gameObject);
         }
 
         // ¶‰EˆÚ“®
