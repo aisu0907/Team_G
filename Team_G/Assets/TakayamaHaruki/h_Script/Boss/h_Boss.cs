@@ -149,7 +149,7 @@ public class h_Boss : MonoBehaviour
         int save = Random.Range(0, 3); //ƒ‰ƒ“ƒ_ƒ€‚Å”’l‚ğæ“¾
 
         //Œx‚ÌÀ•Wİ’è
-        if (save < 1)
+        if (save < 2)
         warning_save = warning_down;
         else 
         warning_save = warning_top;
