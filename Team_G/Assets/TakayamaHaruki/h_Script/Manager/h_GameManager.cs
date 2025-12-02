@@ -9,7 +9,9 @@ public class GameManager : MonoBehaviour
     public List<BossSpawnTable> boss;
     public GameObject spawner;  //スポナーオブジェクト
     public List<GameObject> item_drop;//アイテムオブジェクト
-
+    public GameObject uiPrefab;
+    public GameObject text;
+    public GameObject dark;
 
     public int frame = 0;  //フレーム
     public int faze = 0;    //フェーズ
@@ -67,13 +69,12 @@ public class GameManager : MonoBehaviour
     public void KillBoss(GameObject obj)
     {
         Destroy(obj);
-        ModeChange(true);
-        frame = 0;
-        faze++;
+        Instantiate(dark, uiPrefab.transform);
+        Instantiate(text, uiPrefab.transform);
     }
 
     // アイテムと敵の出現を切り替える関数
-    void ModeChange(bool mode)
+    public void ModeChange(bool mode)
     {
         for (int i = 0; i < item_drop.Count; i++)
             item_drop[i].GetComponent<Item_Drop>().drop_switch = mode;  //アイテムドロップをOFF

@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class ResultText : MonoBehaviour
 {
+
     TextMeshProUGUI tips;
     RectTransform rect;
-
+    public GameObject uiPrefab;
+    GameObject obj;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         tips = GetComponent<TextMeshProUGUI>();
         rect = GetComponent<RectTransform>();
+        transform.SetAsLastSibling();
     }
 
     // Update is called once per frame
@@ -23,7 +26,15 @@ public class ResultText : MonoBehaviour
         }
         else
         {
-            tips.text = "ボスを倒した！\n\n" + "タイム:";
+            tips.text = "ボスを倒した！\n\nタイム:" + "";
+            if(Input.GetKeyDown(KeyCode.Z))
+            {
+                Destroy(dark.Instance.gameObject);
+                Destroy(gameObject);
+                GameManager.Instance.ModeChange(true);
+                GameManager.Instance.frame = 0;
+                GameManager.Instance.faze++;
+            }
         }
     }
 }
