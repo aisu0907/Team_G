@@ -1,4 +1,4 @@
 public interface IReflectable
 {
-    float ref_speed{ get; set; }
+    float ref_speed { get; set; }
 }
