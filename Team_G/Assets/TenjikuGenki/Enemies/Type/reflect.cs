@@ -22,6 +22,10 @@ public class EReflect : Enemy, IDamageable
         // Spin
         if (on_hitting)
         {
+            if (vec.y < 0)
+            {
+                vec.y = -vec.y;
+            }
             transform.Rotate(0, 0, EnemyConst.ROTATION_ANGLE);
             timer++;
             if (timer >= EnemyConst.TIME_SPENT_IN_RETURN)

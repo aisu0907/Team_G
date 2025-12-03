@@ -20,7 +20,13 @@ public class ENormal : Enemy, IDamageable, IReflectable
     {
         // Spin
         if (on_hitting)
+        {
+            if (vec.y < 0)
+            {
+                vec.y = -vec.y;
+            }
             transform.Rotate(0, 0, EnemyConst.ROTATION_ANGLE);
+        }
     }
 
     void FixedUpdate()
