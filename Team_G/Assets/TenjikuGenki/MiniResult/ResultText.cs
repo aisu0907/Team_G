@@ -9,6 +9,7 @@ public class ResultText : MonoBehaviour
     RectTransform rect;
     public GameObject uiPrefab;
     GameObject obj;
+    float timer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -26,8 +27,8 @@ public class ResultText : MonoBehaviour
         }
         else
         {
-            tips.text = "ボスを倒した！\n\nタイム:" + "";
-            if(Input.GetKeyDown(KeyCode.Z))
+            tips.text = "ボスを倒した！\n\nタイム:" + timer.ToString("N1");
+            if (Input.GetKeyDown(KeyCode.Z))
             {
                 Destroy(dark.Instance.gameObject);
                 Destroy(gameObject);
@@ -36,5 +37,10 @@ public class ResultText : MonoBehaviour
                 GameManager.Instance.faze++;
             }
         }
+    }
+
+    public void init(float _timer)
+    {
+        timer = _timer;
     }
 }

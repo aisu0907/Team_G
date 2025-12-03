@@ -7,7 +7,7 @@ public class t_Enemy_Spwan : MonoBehaviour
     [SerializeField] Transform pos2;                // �����ʒu
     float minX, maxX, minY, maxY;                   // �����͈�
     public List<GameObject> prefab;
-    public List<EnemyData> enemy;
+    [SerializeField] List<PopEnemyList> enemy_list;
     public bool spawn_switch = true;
 
     int frame = 0;
@@ -30,7 +30,7 @@ public class t_Enemy_Spwan : MonoBehaviour
 
         if (spawn_switch)
         {
-            if (frame > generateFrame - GameManager.Instance.faze / 2 * 10)
+            if (frame > enemy_list[GameManager.Instance.faze / 2].spawn_timer)
             {
                 // Decide Pos
                 float posX = Random.Range(minX, maxX);
@@ -38,10 +38,10 @@ public class t_Enemy_Spwan : MonoBehaviour
                 Vector2 pos = new Vector2(posX, posY);
 
                 // Spawn Enemy
-                int type = Random.Range(0, GameManager.Instance.faze == 0 ? 1 : 2);
+                int type = GameManager.Instance.faze == 0 ? 0 : Random.Range(0, 2);
                 int color = Random.Range(0, 2);
-                if (type == 0) { var e = Instantiate(prefab[type], pos, Quaternion.identity).GetComponent<ENormal>(); e.Init(enemy[type], new Vector2(0, -1), color, enemy[type].speed); }
-                if (type == 1) { var e = Instantiate(prefab[type], pos, Quaternion.identity).GetComponent<EReflect>(); e.Init(enemy[type], new Vector2(0, -1), color, enemy[type].speed); }
+                if (type == 0) { var e = Instantiate(prefab[type], pos, Quaternion.identity).GetComponent<ENormal>(); e.Init(enemy_list[GameManager.Instance.faze / 2].list[type], new Vector2(0, -1), color, enemy_list[GameManager.Instance.faze / 2].list[type].speed); }
+                if (type == 1) { var e = Instantiate(prefab[type], pos, Quaternion.identity).GetComponent<EReflect>(); e.Init(enemy_list[GameManager.Instance.faze / 2].list[type], new Vector2(0, -1), color, enemy_list[GameManager.Instance.faze / 2].list[type].speed); }
 
                 // Reset
                 frame = 0;
@@ -55,7 +55,7 @@ public class t_Enemy_Spwan : MonoBehaviour
             Vector2 pos = new Vector2(posX, posY);
 
             var e = Instantiate(prefab[2], pos, Quaternion.identity).GetComponent<EJammer>();
-            e.Init(enemy[2], new Vector2(0, -1),enemy[2].speed);
+            e.Init(enemy_list[2].list[2], new Vector2(0, -1), enemy_list[2].list[2].speed);
         }
     }
 }

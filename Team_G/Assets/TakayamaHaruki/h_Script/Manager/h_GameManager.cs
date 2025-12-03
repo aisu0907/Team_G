@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
 
     public int frame = 0;  //フレーム
     public int faze = 0;    //フェーズ
+    float boss_timer = 0;
 
     public static GameManager Instance { get; private set; }
 
@@ -55,6 +56,11 @@ public class GameManager : MonoBehaviour
             // 指定フレーム経過するとボスを出現させる
             if (frame == boss[faze / 2].timer) SpawnBoss();
         }
+
+        if((faze + 1) % 2 == 0)
+        {
+            boss_timer += Time.deltaTime;
+        }
     }
 
     // ボスを呼び出す関数
@@ -70,7 +76,8 @@ public class GameManager : MonoBehaviour
     {
         Destroy(obj);
         Instantiate(dark, uiPrefab.transform);
-        Instantiate(text, uiPrefab.transform);
+        var ui = Instantiate(text, uiPrefab.transform).GetComponent<ResultText>();
+        ui.init(boss_timer);
     }
 
     // アイテムと敵の出現を切り替える関数
