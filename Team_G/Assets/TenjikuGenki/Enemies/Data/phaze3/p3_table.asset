@@ -15,3 +15,5 @@ MonoBehaviour:
   list:
   - {fileID: 11400000, guid: 0060511f69e9d2a4fb1e007ad5c1b610, type: 2}
   - {fileID: 11400000, guid: 09365945412cd0e43a08d33931d03f75, type: 2}
+  - {fileID: 11400000, guid: 58ab6cbe37866b744ace51bd52f36a28, type: 2}
+  spawn_timer: 80

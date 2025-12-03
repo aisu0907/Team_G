@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   list:
   - {fileID: 11400000, guid: ef5f2acd4b109044e863c47862d04f49, type: 2}
+  spawn_timer: 90

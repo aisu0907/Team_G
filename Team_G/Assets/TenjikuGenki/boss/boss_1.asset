@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: boss_1
   m_EditorClassIdentifier: 
   prefab: {fileID: 870741779963481172, guid: 45a3963f61df15f43b0a5ffcba5fed10, type: 3}
-  timer: 1
+  timer: 1800
