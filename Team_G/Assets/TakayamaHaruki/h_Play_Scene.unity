@@ -818,8 +818,13 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  spawner: {fileID: 0}
   item_drop: []
+  spawner: {fileID: 0}
+  uiPrefab: {fileID: 0}
+  text: {fileID: 0}
+  dark: {fileID: 0}
+  boss_position_x: 0
+  boss_position_y: 0
   frame: 0
   faze: 0
 --- !u!114 &1451417415
@@ -1988,7 +1993,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7146196205513559042, guid: b37f733e3fe241a49951af01938288a1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.3
+      value: -2.6
       objectReference: {fileID: 0}
     - target: {fileID: 7146196205513559042, guid: b37f733e3fe241a49951af01938288a1, type: 3}
       propertyPath: m_LocalPosition.y

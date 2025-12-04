@@ -11,7 +11,7 @@ public class h_Bomb_Gage : MonoBehaviour
     public Slider bomb_gage;  //スライダーを取得
     public AudioClip bomb_get;//ボム取得時の音
 
-    private AudioSource audioaource; //オーディオ取得
+    private AudioSource audio_source; //オーディオ取得
     private int frame = 0;//フレーム
 
     public static h_Bomb_Gage Instance { get; private set; }
@@ -25,7 +25,7 @@ public class h_Bomb_Gage : MonoBehaviour
     {
         //リセット
         bomb_gage.value = 0;　//スライダーの位置をリセット
-        audioaource = GetComponent<AudioSource>(); //コンポーネントを取得
+        audio_source = GetComponent<AudioSource>(); //コンポーネントを取得
     }
 
     // Update is called once per frame
@@ -59,7 +59,7 @@ public class h_Bomb_Gage : MonoBehaviour
         if (Player.Instance.bom < Player.Instance.max_bom)
         //ボムを1個増やす
         {
-            audioaource.PlayOneShot(bomb_get);
+            audio_source.PlayOneShot(bomb_get);
             Player.Instance.bom++;
         }
     }

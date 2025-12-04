@@ -149,6 +149,10 @@ PrefabInstance:
       value: -3
       objectReference: {fileID: 0}
     - target: {fileID: -4194156144153558061, guid: 13d9d2d191a6aff4ca50ac6e84ca5b8d, type: 3}
+      propertyPath: jammer_spawn
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: -4194156144153558061, guid: 13d9d2d191a6aff4ca50ac6e84ca5b8d, type: 3}
       propertyPath: generateFrame
       value: 80
       objectReference: {fileID: 0}
@@ -1077,16 +1081,18 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 17838ab36a55bcb429fc4970c4930a7d, type: 2}
   - {fileID: 11400000, guid: 8361bcc07b98ab54dadf070088d04893, type: 2}
   - {fileID: 11400000, guid: 5a31ca2acb5901745b0be90004bdbde5, type: 2}
-  spawner: {fileID: 1308437786}
   item_drop:
   - {fileID: 1323917000318406210, guid: 4e7fcc606545e1043bf191ae82e78847, type: 3}
   - {fileID: 1323917000318406210, guid: 153c5c8e6b3195a4ab8f621276dbfb1e, type: 3}
   - {fileID: 1323917000318406210, guid: eb5917cc4ddf9bd449a67f453b91cefc, type: 3}
+  spawner: {fileID: 1308437786}
   uiPrefab: {fileID: 1197736991271366334}
   text: {fileID: 8731943311653199152, guid: 29b2213af102eb042acd5e09a9d86478, type: 3}
   dark: {fileID: 5190081689524932153, guid: d2a7753abe7e5554caf674eb152c44cc, type: 3}
+  boss_position_x: -2.6
+  boss_position_y: 3
+  faze: 4
   frame: 0
-  faze: 0
 --- !u!114 &1451417415
 MonoBehaviour:
   m_ObjectHideFlags: 0
