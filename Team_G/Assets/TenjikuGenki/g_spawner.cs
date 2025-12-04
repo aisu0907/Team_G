@@ -9,12 +9,12 @@ public class t_Enemy_Spwan : MonoBehaviour
     [SerializeField] int generateFrame;             //生成速度
     float minX, maxX, minY, maxY;                   //生成位置
     public List<GameObject> prefab;
+    public int jammer_spawn; //邪魔ウイルス生成速度
     public bool spawn_switch = true;
-    public int jammer_spawn;
 
     List<Sprite> Img = new List<Sprite>();
-    private int frame;
-    private int jammer_timer;
+    private int frame; //ウイルス生成タイマー
+    private int jammer_timer; //邪魔ウイルスタイマー
 
     void Start()
     {
