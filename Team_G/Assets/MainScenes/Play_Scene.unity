@@ -152,6 +152,22 @@ PrefabInstance:
       propertyPath: generateFrame
       value: 80
       objectReference: {fileID: 0}
+    - target: {fileID: -4194156144153558061, guid: 13d9d2d191a6aff4ca50ac6e84ca5b8d, type: 3}
+      propertyPath: enemy_list.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -4194156144153558061, guid: 13d9d2d191a6aff4ca50ac6e84ca5b8d, type: 3}
+      propertyPath: 'enemy_list.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: a268fd04ab42dec498070a83163c5d27, type: 2}
+    - target: {fileID: -4194156144153558061, guid: 13d9d2d191a6aff4ca50ac6e84ca5b8d, type: 3}
+      propertyPath: 'enemy_list.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 0701ee83ae418ba46b2e6bbe662962eb, type: 2}
+    - target: {fileID: -4194156144153558061, guid: 13d9d2d191a6aff4ca50ac6e84ca5b8d, type: 3}
+      propertyPath: 'enemy_list.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: d5c7c6c840af46d40ac10a4ba74caf53, type: 2}
     - target: {fileID: 691851686528095591, guid: 13d9d2d191a6aff4ca50ac6e84ca5b8d, type: 3}
       propertyPath: m_Name
       value: Spawner
@@ -407,11 +423,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 242384919302430525, guid: ece49d0188f35714ea82e5bc99c9d451, type: 3}
       propertyPath: m_SortingLayer
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 242384919302430525, guid: ece49d0188f35714ea82e5bc99c9d451, type: 3}
       propertyPath: m_SortingLayerID
-      value: -921988423
+      value: -1047572945
       objectReference: {fileID: 0}
     - target: {fileID: 1319925360401247615, guid: ece49d0188f35714ea82e5bc99c9d451, type: 3}
       propertyPath: m_LocalPosition.x
