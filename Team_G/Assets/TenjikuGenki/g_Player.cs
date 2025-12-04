@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
@@ -10,9 +11,16 @@ public class Player : MonoBehaviour
     public float speed = 3.0f;   //�ړ����x
     public int bom = 0;     //ボムの所持数
     public int bom_time = 0;//ボムのクールタイム
-    public int max_bom = 0;
-    private int frame = 0;
+    public int max_bom = 0; //ボム最大所持数
     public GameObject explode;
+    public SpriteRenderer img; //画像
+
+    private bool damage_hit;
+    private Color save_color; //
+    private Color null_color; //
+    private int color_timer;  //
+    private int color_count;
+    private int frame = 0;
 
     public static Player Instance { get; private set; }
 
@@ -23,11 +31,18 @@ public class Player : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        //リセット
         // RigidBody2D��������擾����
         rbody = this.GetComponent<Rigidbody2D>();
         // ���̐���
         Instantiate(sheild);
         frame = 300;
+        damage_hit = true;
+        //色関係
+        color_count = 0;
+        color_timer = 0;
+        save_color = img.color;
+        null_color = new Color(img.color.r, img.color.g, img.color.b, 0);
     }
 
     // Update is called once per frame
@@ -62,7 +77,32 @@ public class Player : MonoBehaviour
                 bom--;
             }
         }
+
         frame++;
+
+        if (!damage_hit)
+        {
+            color_timer++;
+
+            if (color_timer == 1)
+            {
+                img.color = null_color;
+                color_count++;
+            }
+
+            if (color_timer >= 30)
+            {
+                img.color = save_color;
+                color_count++;
+                color_timer = 0;
+            }
+
+
+            if (color_count >= 6)
+            {
+                damage_hit = true;
+            }
+        }
     }
 
     void FixedUpdate()
@@ -77,14 +117,19 @@ public class Player : MonoBehaviour
         if (collision.TryGetComponent<IDamageable>(out var hit))
         {
             if (collision.TryGetComponent<Enemy>(out var e) && !e.on_hitting) Damage(1, collision.gameObject);
+            
             //if (collision.TryGetComponent<Gasubura>(out var b)) b.Damage(); 
         }
     }
 
     public void Damage(int damage, GameObject obj, bool destroy = true)
     {
-        health -= damage;
-        AudioManager.instance.PlaySound("PlayerDamage");
+        if (damage_hit)
+        {
+            health -= damage;
+            AudioManager.instance.PlaySound("PlayerDamage");
+            damage_hit = false;
+        }
         if (destroy) Destroy(obj);
 
         //プレイヤーの体力が0以下の場合
