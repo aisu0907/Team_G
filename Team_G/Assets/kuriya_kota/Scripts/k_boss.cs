@@ -9,6 +9,7 @@ public class k_boss : MonoBehaviour
     public int timer;
     public int attack=180;
     int mode = 0;
+    int jama = 0;
     public int health;
 
     bool move = true;
@@ -17,6 +18,7 @@ public class k_boss : MonoBehaviour
 
     bool spiralOnce = true;
     bool summonOnce = true;
+    bool targetOnce=true;
     bool beamOnce = true;
 
 
@@ -27,6 +29,7 @@ public class k_boss : MonoBehaviour
 
     public GameObject prefab2;
     public EnemyData enemy2;
+
 
     public GameObject kill;
     public GameObject explode;
@@ -70,6 +73,8 @@ public class k_boss : MonoBehaviour
                 if (timer >= attack)
                 {
                     mode = Random.Range(1, 5);
+                    jama = Random.Range(1, 5);
+                    if(jama >= 4) SummonJammer();
                 }
                 break;
 
@@ -81,12 +86,12 @@ public class k_boss : MonoBehaviour
                 break;
 
             case 2:
-                SpiralShot();
+                Gumishot();
                 if (health <= 5) Beam();
                 break;
 
             case 3:
-                SummonJammer();
+                SpiralShot();
                 if (health <= 5) Beam();
                 break;
 
@@ -147,6 +152,21 @@ public class k_boss : MonoBehaviour
         mode = 0;
     }
 
+    private void Gumishot()
+    {
+        if (!targetOnce) return;
+        targetOnce = false;
+        timer = 0;
+
+        Vector2 d = (Player.Instance.transform.position - transform.position).normalized;
+        var e = Instantiate(prefab, transform.position, Quaternion.identity).GetComponent<ENormal>(); e.Init(enemy, d, Random.Range(0, 2), 5);
+        AudioManager.instance.PlaySound("Shoot");
+        
+        targetOnce = true;
+        mode = 0;
+    }
+
+
     private void Beam()
     {
         if (!beamOnce) return;
@@ -172,14 +192,11 @@ public class k_boss : MonoBehaviour
         if (!summonOnce) return;
         summonOnce = false;
 
-        timer = 0;
-
         var e = Instantiate(prefab2, transform.position, Quaternion.identity)
                 .GetComponent<EJammer>();
-        e.Init(enemy2, new Vector2(0, -2f), enemy2.speed);
+        e.Init(enemy2, new Vector2(0, -0.2f), enemy2.speed);
 
         summonOnce = true;
-        mode = 0;
     }
 
     private IEnumerator KillRapid()
@@ -205,6 +222,5 @@ public class k_boss : MonoBehaviour
         Stage_BGM.Instance.bgm_stop = true;
 
         Instantiate(boss_explode, transform.position, Quaternion.identity);
-
     }
 }
