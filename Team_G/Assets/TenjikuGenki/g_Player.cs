@@ -12,6 +12,10 @@ public class Player : MonoBehaviour
     public int bom = 0;     //ボムの所持数
     public int bom_time = 0;//ボムのクールタイム
     public int max_bom = 0; //ボム最大所持数
+    public int blinks_max; //点滅する回数
+    public int null_time;  //消滅タイミング
+    public int save_time;  //表示タイム
+
     public GameObject explode;
     public SpriteRenderer img; //画像
 
@@ -42,7 +46,7 @@ public class Player : MonoBehaviour
         color_count = 0;
         color_timer = 0;
         save_color = img.color;
-        null_color = new Color(img.color.r, img.color.g, img.color.b, 0);
+        null_color = new Color(save_color.r, save_color.g, save_color.b, 0.5f);
     }
 
     // Update is called once per frame
@@ -84,22 +88,25 @@ public class Player : MonoBehaviour
         {
             color_timer++;
 
-            if (color_timer == 1)
+            if (color_timer == save_time)
             {
-                img.color = null_color;
+                img.color = save_color;
                 color_count++;
             }
 
-            if (color_timer >= 30)
+            if (color_timer >= null_time)
             {
-                img.color = save_color;
+                img.color = null_color;
                 color_count++;
                 color_timer = 0;
             }
 
 
-            if (color_count >= 6)
+
+            if (color_count >= blinks_max)
             {
+                color_timer = 0;
+                color_count = 0;
                 damage_hit = true;
             }
         }
@@ -126,6 +133,7 @@ public class Player : MonoBehaviour
     {
         if (damage_hit)
         {
+            img.color = null_color;
             health -= damage;
             AudioManager.instance.PlaySound("PlayerDamage");
             damage_hit = false;
