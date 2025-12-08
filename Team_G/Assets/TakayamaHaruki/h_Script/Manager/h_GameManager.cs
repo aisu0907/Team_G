@@ -6,16 +6,25 @@ using System.Collections.Generic;
 public class GameManager : MonoBehaviour
 {
 
-    public List<BossSpawnTable> boss;
-    public GameObject spawner;  //スポナーオブジェクト
+    //ゲームオブジェクト
+    public List<BossSpawnTable> boss; //ボスリスト
     public List<GameObject> item_drop;//アイテムオブジェクト
-    public GameObject uiPrefab;
-    public GameObject text;
-    public GameObject dark;
+    public GameObject spawner;  //スポナーオブジェクト
+    //リザルト関係
+    public GameObject uiPrefab; //簡易リザルト
+    public GameObject text;     //簡易リザルトテキスト
+    public GameObject dark;     //フェードアウト
+    //座標
+    public float boss_position_x; //ボス位置X
+    public float boss_position_y; //ボス位置Y
 
-    public int frame = 0;  //フレーム
     public int faze = 0;    //フェーズ
-    float boss_timer = 0;
+
+    //タイマー
+    private float boss_timer = 0;
+    public  int frame = 0;  //フレーム
+    //座標
+    private Vector2 boss_position;
 
     public static GameManager Instance { get; private set; }
 
@@ -33,10 +42,13 @@ public class GameManager : MonoBehaviour
         {
             faze = DataHolder.game_phaze;
             ModeChange(DataHolder.game_phaze % 2 == 0 ? true : false);
-            if(DataHolder.game_phaze % 2 != 0) Instantiate(boss[faze / 2].prefab, new Vector2(-2, 3), Quaternion.identity);
+            if(DataHolder.game_phaze % 2 != 0) Instantiate(boss[faze / 2].prefab, boss_position , Quaternion.identity);
         }
         else
             ModeChange(true);
+        
+        //ボスの初期位置設定
+        boss_position = new Vector2 (boss_position_x, boss_position_y);
     }
 
     private void Update()
@@ -67,7 +79,7 @@ public class GameManager : MonoBehaviour
     void SpawnBoss()
     {
         ModeChange(false);
-        Instantiate(boss[faze / 2].prefab, new Vector2(-2, 3), Quaternion.identity);  //ボスを召喚
+        Instantiate(boss[faze / 2].prefab, boss_position, Quaternion.identity);  //ボスを召喚
         faze++;
     }
 

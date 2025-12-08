@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EReflect : Enemy, IDamageable
+public class EReflect : Enemy, IDamageable, IReflectable
 {
     public List<Sprite> Img;
     int timer;

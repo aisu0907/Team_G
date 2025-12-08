@@ -3,20 +3,26 @@ using UnityEngine;
 
 public class t_Enemy_Spwan : MonoBehaviour
 {
-    [SerializeField] Transform pos;                 // �����ʒu
-    [SerializeField] Transform pos2;                // �����ʒu
-    float minX, maxX, minY, maxY;                   // �����͈�
+    [SerializeField] Transform pos;                 //スポナー位置
+    [SerializeField] Transform pos2;                //スポナー位置
+    [SerializeField] List<PopEnemyList> enemy_list; //スポーンする敵
+    [SerializeField] int generateFrame;             //生成速度
+    float minX, maxX, minY, maxY;                   //生成位置
     public List<GameObject> prefab;
-    [SerializeField] List<PopEnemyList> enemy_list;
+    public int jammer_spawn; //邪魔ウイルス生成速度
     public bool spawn_switch = true;
 
-    int frame = 0;
     List<Sprite> Img = new List<Sprite>();
-    [SerializeField] int generateFrame = 30;        // ��������Ԋu
+    private int frame; //ウイルス生成タイマー
+    private int jammer_timer; //邪魔ウイルスタイマー
 
     void Start()
     {
-        //�X�|�[���ʒu�ݒ�
+        //リセット
+        //タイマー
+        frame = 0;
+        jammer_timer = 0;
+        //座標
         minX = Mathf.Min(pos.position.x, pos2.position.x);
         maxX = Mathf.Max(pos.position.x, pos2.position.x);
         minY = Mathf.Min(pos.position.y, pos2.position.y);
@@ -48,14 +54,19 @@ public class t_Enemy_Spwan : MonoBehaviour
             }
         }
 
-        if(GameManager.Instance.faze == 4 && GameManager.Instance.frame % 400 == 1 && GameManager.Instance.frame >= 400)
+        if (GameManager.Instance.faze == 4)
         {
-            float posX = Random.Range(minX, maxX);
-            float posY = Random.Range(minY, maxY);
-            Vector2 pos = new Vector2(posX, posY);
+            jammer_timer++;
+            if (jammer_timer >= jammer_spawn)
+            {
+                float posX = Random.Range(minX, maxX);
+                float posY = Random.Range(minY, maxY);
+                Vector2 pos = new Vector2(posX, posY);
 
-            var e = Instantiate(prefab[2], pos, Quaternion.identity).GetComponent<EJammer>();
-            e.Init(enemy_list[2].list[2], new Vector2(0, -1), enemy_list[2].list[2].speed);
+                var e = Instantiate(prefab[2], pos, Quaternion.identity).GetComponent<EJammer>();
+                e.Init(enemy_list[2].list[2], new Vector2(0, -1), enemy_list[2].list[2].speed);
+                jammer_timer = 0;
+            }
         }
     }
 }
