@@ -439,7 +439,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2021564740943638649, guid: ece49d0188f35714ea82e5bc99c9d451, type: 3}
       propertyPath: health
-      value: 3
+      value: 999
       objectReference: {fileID: 0}
     - target: {fileID: 2149414446791707951, guid: ece49d0188f35714ea82e5bc99c9d451, type: 3}
       propertyPath: m_Name
@@ -1023,9 +1023,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1637508818350216243, guid: c0be94422ecfec64386208be3748abcd, type: 3}
+      propertyPath: enemy3
+      value: 
+      objectReference: {fileID: 11400000, guid: 09365945412cd0e43a08d33931d03f75, type: 2}
+    - target: {fileID: 1637508818350216243, guid: c0be94422ecfec64386208be3748abcd, type: 3}
       propertyPath: health
-      value: 1
+      value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 1637508818350216243, guid: c0be94422ecfec64386208be3748abcd, type: 3}
+      propertyPath: prefab3
+      value: 
+      objectReference: {fileID: 1323917000318406210, guid: 153c5c8e6b3195a4ab8f621276dbfb1e, type: 3}
     - target: {fileID: 2671645667419631279, guid: c0be94422ecfec64386208be3748abcd, type: 3}
       propertyPath: m_Name
       value: Last_Boss
