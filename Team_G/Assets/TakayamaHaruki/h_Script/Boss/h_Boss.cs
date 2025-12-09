@@ -4,18 +4,15 @@ using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class h_Boss : MonoBehaviour
+public class h_Boss : BossBase
 {
     //ÉQÅ[ÉÄÉIÉuÉWÉFÉNÉg
     public EnemyData bullet_data; //íeÇÃèÓïÒ
     public GameObject bullet;  //íe
     public GameObject warning;  //åxçê
-    public GameObject explode; //îöî≠ââèo
-    //É{ÉXÉXÉeÅ[É^ÉX
-    public int health;  //ëÃóÕ
     //îÕàÕçUåÇån
     public int range_attack;//îÕàÕçUåÇ
-    public float warnig_x;     //åxçêÇÃxà íu
+    public float warning_x;     //åxçêÇÃxà íu
     public float warning_y_top; //åxçêÇÃyà íu1
     public float warning_y_down;//åxçêÇÃyà íu2
     //äKíiçUåÇån
@@ -67,8 +64,8 @@ public class h_Boss : MonoBehaviour
         stairs_attack_x = transform.position.x + (-stairs_attack_space * (stairs_attack_max - 2));
         v1 = new Vector2(stairs_attack_x, stairs_attack_y);
         v2 = new Vector2(0, -1);
-        warning_top = new Vector2(warnig_x, warning_y_top);
-        warning_down = new Vector2(warnig_x, warning_y_down);
+        warning_top = new Vector2(warning_x, warning_y_top);
+        warning_down = new Vector2(warning_x, warning_y_down);
     }
 
     public void Update()
@@ -105,7 +102,7 @@ public class h_Boss : MonoBehaviour
             if (range_attack_time >= range_attack)
             {
                 range_attack_time = 0;
-                warnig_spwn();
+                warning_spawn();
             }
         }
         else
@@ -114,27 +111,16 @@ public class h_Boss : MonoBehaviour
             {
                 stairs_attack_time = 0;
                 dead = false;
-            }
-            if (stairs_attack_time % 5 == 0)
-                transform.position = new Vector2(boss_start.x + 0.1f, transform.position.y);
-            else
-                transform.position = new Vector2(boss_start.x - 0.1f, transform.position.y);
 
-            rb.linearVelocityY = 1.0f;
-            if (stairs_attack_time >= 330) if (health <= 0) GameManager.Instance.KillBoss(gameObject);
+                Instantiate(boss_explode, transform.position, Quaternion.identity);
+            }
         }
     }
 
     //É_ÉÅÅ[ÉWîªíË
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<Enemy>(out var enemy))
-            if (enemy.on_hitting)
-            {
-                Destroy(collision.gameObject);
-                health--;
-                Instantiate(explode, new Vector2(enemy.transform.position.x, enemy.transform.position.y + 0.5f), Quaternion.identity);
-            }
+        boss_damage(gameObject, collision);
     }
 
     //äKíiçUåÇ
@@ -146,7 +132,7 @@ public class h_Boss : MonoBehaviour
     }
 
     //åxçê
-    private void warnig_spwn()
+    private void warning_spawn()
     {
         //åxçêÇÃç¿ïWê›íË
         if (save == 0)
