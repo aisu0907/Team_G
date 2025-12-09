@@ -90,8 +90,9 @@ public class g_boss : MonoBehaviour
         // é¿ç€Ç…ÇÕÇ±Ç±Ç≈íePrefabÇInstantiateÇµÇΩÇËÅAObjectPoolÇégÇ¡ÇΩÇËÇµÇ‹Ç∑
         int color = Random.Range(0, list.Count);
         img.sprite = sprites[color];
-        Vector2 d = (Player.Instance.transform.position - transform.position).normalized;
-        var e = Instantiate(list[0].pf, transform.position, Quaternion.identity).GetComponent<ENormal>(); e.Init(list[0].db, d, color, 5);
+        //Vector2 d = (Player.Instance.transform.position - transform.position).normalized;
+        //var e = Instantiate(list[0].pf, transform.position, Quaternion.identity).GetComponent<ENormal>(); e.Init(list[0].db, d, color, 5);
+        var e = Instantiate(list[0].pf, transform.position, Quaternion.identity).GetComponent<ENormal>(); e.Init(list[0].db, new Vector2(0,-3), color, 5);
         AudioManager.instance.PlaySound("Shoot");
     }
 }
