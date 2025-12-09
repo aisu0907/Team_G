@@ -20,20 +20,23 @@ public class TipsManager : MonoBehaviour
 
     void Update()
     {
-        timer++;
-        if(GameManager.Instance.faze == 0)
+        if (Player.Instance.health > 0)
         {
-            if(timer == 300)
+            timer++;
+            if (GameManager.Instance.faze == 0)
             {
-                if (ch) ChangeNextTips(0);
-                if (!ch) ChangeNextTips(1);
-                timer = 0;
-                ch = !ch;
+                if (timer == 300)
+                {
+                    if (ch) ChangeNextTips(0);
+                    if (!ch) ChangeNextTips(1);
+                    timer = 0;
+                    ch = !ch;
+                }
             }
-        }
-        else
-        {
-            ChangeNextTips(GameManager.Instance.faze + 1);
+            else
+            {
+                ChangeNextTips(GameManager.Instance.faze + 1);
+            }
         }
     }
 

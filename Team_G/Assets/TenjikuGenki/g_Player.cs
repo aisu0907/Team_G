@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
+using System.Collections;
+
 
 public class Player : MonoBehaviour
 {
@@ -25,6 +27,7 @@ public class Player : MonoBehaviour
     private int color_timer;  //
     private int color_count;
     private int frame = 0;
+    public int timer = 0;
 
     public static Player Instance { get; private set; }
 
@@ -52,62 +55,74 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // �L�[�擾
-        axisH = Input.GetAxisRaw("Horizontal");
-        axisV = Input.GetAxisRaw("Vertical");
-        if (0.2 <= transform.position.y) axisV = -0.05f;
-        if (transform.position.y <= -4.5) axisV = 0.05f;
-
-        // �Ǐ]����
-        Sheild.Instance.transform.position = new Vector2(transform.position.x, transform.position.y + 0.8f);
-
-        //ボムの処理
-        if (frame >= bom_time)
+        if (health > 0)
         {
-            if (Input.GetKey(KeyCode.Space) && bom > 0)
-            {
-                frame = 0;
-                // "Enemy"タグがついたすべてのオブジェクトを取得
-                GameObject[] objects = GameObject.FindGameObjectsWithTag("Enemy");
+            // �L�[�擾
+            axisH = Input.GetAxisRaw("Horizontal");
+            axisV = Input.GetAxisRaw("Vertical");
+            if (0.2 <= transform.position.y) axisV = -0.05f;
+            if (transform.position.y <= -4.5) axisV = 0.05f;
 
-                // 各オブジェクトを削除
-                foreach (GameObject obj in objects)
+            // �Ǐ]����
+            Sheild.Instance.transform.position = new Vector2(transform.position.x, transform.position.y + 0.8f);
+
+            //ボムの処理
+            if (frame >= bom_time)
+            {
+                if (Input.GetKey(KeyCode.Space) && bom > 0)
                 {
-                    Destroy(obj);
-                    Instantiate(explode, obj.transform.position, Quaternion.identity);
+                    frame = 0;
+                    // "Enemy"タグがついたすべてのオブジェクトを取得
+                    GameObject[] objects = GameObject.FindGameObjectsWithTag("Enemy");
+
+                    // 各オブジェクトを削除
+                    foreach (GameObject obj in objects)
+                    {
+                        Destroy(obj);
+                        Instantiate(explode, obj.transform.position, Quaternion.identity);
+                    }
+
+                    //bomの数を減らす
+                    bom--;
+                }
+            }
+
+            frame++;
+
+            if (!damage_hit)
+            {
+                color_timer++;
+
+                if (color_timer == save_time)
+                {
+                    img.color = save_color;
+                    color_count++;
                 }
 
-                //bomの数を減らす
-                bom--;
+                if (color_timer >= null_time)
+                {
+                    img.color = null_color;
+                    color_count++;
+                    color_timer = 0;
+                }
+
+
+
+                if (color_count >= blinks_max)
+                {
+                    color_timer = 0;
+                    color_count = 0;
+                    damage_hit = true;
+                }
             }
         }
-
-        frame++;
-
-        if (!damage_hit)
+        else
         {
-            color_timer++;
-
-            if (color_timer == save_time)
+            timer++;
+            if (timer >= 120)
             {
-                img.color = save_color;
-                color_count++;
-            }
-
-            if (color_timer >= null_time)
-            {
-                img.color = null_color;
-                color_count++;
-                color_timer = 0;
-            }
-
-
-
-            if (color_count >= blinks_max)
-            {
-                color_timer = 0;
-                color_count = 0;
-                damage_hit = true;
+                SceneManager.LoadScene("Gameover_Scene");
+                DataHolder.GetGameData();
             }
         }
     }
@@ -124,7 +139,7 @@ public class Player : MonoBehaviour
         if (collision.TryGetComponent<IDamageable>(out var hit))
         {
             if (collision.TryGetComponent<Enemy>(out var e) && !e.on_hitting) Damage(1, collision.gameObject);
-            
+
             //if (collision.TryGetComponent<Gasubura>(out var b)) b.Damage(); 
         }
     }
@@ -144,8 +159,8 @@ public class Player : MonoBehaviour
         if (health <= 0)
         {
             //ゲームオーバーシーンに移行
-            DataHolder.GetGameData();
-            SceneManager.LoadScene("Gameover_Scene");
+            Time.timeScale = 0.0f;
+            rbody.linearVelocity = Vector2.zero;
         }
     }
 }

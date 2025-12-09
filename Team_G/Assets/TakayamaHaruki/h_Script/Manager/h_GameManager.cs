@@ -52,26 +52,29 @@ public class GameManager : MonoBehaviour
     }
 
     private void Update()
-    { 
-        // プレイヤーの体力が0以下の場合
-        if (Player.Instance.health <= 0)
+    {
+        if (Player.Instance.health > 0)
         {
-            // ゲームオーバーシーンに移行
-            SceneManager.LoadScene("Gameover_Scene");
-        }
+            // プレイヤーの体力が0以下の場合
+            //if (Player.Instance.health <= 0)
+            //{
+            //    // ゲームオーバーシーンに移行
+            //    SceneManager.LoadScene("Gameover_Scene");
+            //}
 
-        if ((faze + 1) % 2 != 0)
-        {
-            // フレームカウント
-            frame++;
+            if ((faze + 1) % 2 != 0)
+            {
+                // フレームカウント
+                frame++;
 
-            // 指定フレーム経過するとボスを出現させる
-            if (frame == boss[faze / 2].timer) SpawnBoss();
-        }
+                // 指定フレーム経過するとボスを出現させる
+                if (frame == boss[faze / 2].timer) SpawnBoss();
+            }
 
-        if((faze + 1) % 2 == 0)
-        {
-            boss_timer += Time.deltaTime;
+            if ((faze + 1) % 2 == 0)
+            {
+                boss_timer += Time.deltaTime;
+            }
         }
     }
 

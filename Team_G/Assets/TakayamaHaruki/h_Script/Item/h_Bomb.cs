@@ -28,22 +28,25 @@ public class h_Bomb : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Player.Instance.bom != bomb_save)
+        if (Player.Instance.health > 0)
         {
-            //ボム表示リセット
-            Delete_Bomb();
-
-            //所持してる分だけボムを表示
-            for (int i = 0; i < Player.Instance.bom; i++)
+            if (Player.Instance.bom != bomb_save)
             {
-                bomb_num[i] = Instantiate(bomb, v, Quaternion.identity); //ボムの生成
-                v.x += bomb_space; //ボム同士の間隔を開ける
+                //ボム表示リセット
+                Delete_Bomb();
+
+                //所持してる分だけボムを表示
+                for (int i = 0; i < Player.Instance.bom; i++)
+                {
+                    bomb_num[i] = Instantiate(bomb, v, Quaternion.identity); //ボムの生成
+                    v.x += bomb_space; //ボム同士の間隔を開ける
+                }
+
+                v.x = bomb_x; //位置リセット
             }
 
-            v.x = bomb_x; //位置リセット
+            bomb_save = Player.Instance.bom; //情報を更新
         }
-
-        bomb_save = Player.Instance.bom; //情報を更新
     }
 
     //ボムの表示を消す
