@@ -1123,7 +1123,7 @@ MonoBehaviour:
   dark: {fileID: 5190081689524932153, guid: d2a7753abe7e5554caf674eb152c44cc, type: 3}
   boss_position_x: -2.6
   boss_position_y: 3
-  faze: 0
+  faze: 2
   frame: 0
 --- !u!114 &1451417415
 MonoBehaviour:
