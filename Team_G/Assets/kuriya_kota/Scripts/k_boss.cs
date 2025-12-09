@@ -73,7 +73,7 @@ public class k_boss : MonoBehaviour
                 if (timer >= attack)
                 {
                     mode = Random.Range(1, 5);
-                    jama = Random.Range(1, 5);
+                    if(mode!=1) jama = Random.Range(1, 5);
                     if(jama >= 4) SummonJammer();
                 }
                 break;
@@ -86,7 +86,7 @@ public class k_boss : MonoBehaviour
                 break;
 
             case 2:
-                Gumishot();
+                StartCoroutine(Gumishot());
                 if (health <= 5) Beam();
                 break;
 
@@ -147,24 +147,25 @@ public class k_boss : MonoBehaviour
                     .GetComponent<ENormal>();
             e.Init(enemy, d, Random.Range(0, 2), 3.5f);
         }
+        AudioManager.instance.PlaySound("Shoot");
 
         spiralOnce = true;
         mode = 0;
     }
 
-    private void Gumishot()
-    {
-        if (!targetOnce) return;
-        targetOnce = false;
-        timer = 0;
+    //private void Gumishot()
+    //{
+    //    if (!targetOnce) return;
+    //    targetOnce = false;
 
-        Vector2 d = (Player.Instance.transform.position - transform.position).normalized;
-        var e = Instantiate(prefab, transform.position, Quaternion.identity).GetComponent<ENormal>(); e.Init(enemy, d, Random.Range(0, 2), 5);
-        AudioManager.instance.PlaySound("Shoot");
-        
-        targetOnce = true;
-        mode = 0;
-    }
+    //    timer = 0;
+
+    //            Vector2 d = (Player.Instance.transform.position - transform.position).normalized;
+    //            var e = Instantiate(prefab, transform.position, Quaternion.identity).GetComponent<ENormal>(); e.Init(enemy, d, Random.Range(0, 2), 5);
+    //            AudioManager.instance.PlaySound("Shoot");
+    //    targetOnce = true;
+    //    mode = 0;
+    //}
 
 
     private void Beam()
@@ -213,6 +214,26 @@ public class k_boss : MonoBehaviour
         beamOnce = true;
         mode = 0;
     }
+
+    private IEnumerator Gumishot()
+    {
+        if (!targetOnce) yield break;
+        targetOnce = false;
+
+        for (int i = 0; i < 5; i++)
+        {
+
+            Vector2 d = (Player.Instance.transform.position - transform.position).normalized;
+            var e = Instantiate(prefab, transform.position, Quaternion.identity).GetComponent<ENormal>(); e.Init(enemy, d, Random.Range(0, 2), 3);
+            AudioManager.instance.PlaySound("Shoot");
+            yield return new WaitForSeconds(0.6f);
+        }
+
+        targetOnce = true;
+        timer = 0;
+        mode = 0;
+    }
+
 
     public void Die()
     {
