@@ -109,10 +109,7 @@ public class h_Boss : BossBase
         {
             if (dead)
             {
-                stairs_attack_time = 0;
-                dead = false;
-
-                Instantiate(boss_explode, transform.position, Quaternion.identity);
+                gameObject.GetComponent<Boss_Damage_Effect>().alive = false;
             }
         }
     }
@@ -121,6 +118,7 @@ public class h_Boss : BossBase
     void OnTriggerEnter2D(Collider2D collision)
     {
         boss_damage(gameObject, collision);
+        gameObject.GetComponent<Boss_Damage_Effect>().damage_hit = false;
     }
 
     //äKíiçUåÇ

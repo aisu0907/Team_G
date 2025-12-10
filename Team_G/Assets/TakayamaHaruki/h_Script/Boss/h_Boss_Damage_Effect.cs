@@ -1,29 +1,70 @@
-using System.Drawing;
-using Unity.VisualScripting;
-using UnityEngine.Audio;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
-public class h_Boss_Damage_Effect : MonoBehaviour
+public class Boss_Damage_Effect : MonoBehaviour
 {
     //ゲームオブジェクト
     public GameObject flash;        //フラッシュ
     public GameObject explode;      //爆発演出
     public GameObject boss_explode; //死亡演出
 
+    public SpriteRenderer img; //画像
+ 
     public float size = 0.0f;    //サイズ
-    public float max_size = 0.8f;//最大サイズ
-    public float add_size = 0.1f;//追加するサイズ
+    public float max_size = 3.0f;//最大サイズ
+    public float add_size = 0.5f;//追加するサイズ
+    public bool alive;
     //オーディオ関係
     public AudioClip sound1;//サウンド
     public AudioClip sound2;//サウンド
 
-    public bool alive;
+    //ダメージエフェクト
+    public bool damage_hit;
+    public int blinks_max; //点滅する回数
+    public int damage_time;  //消滅タイミング
+    public int save_time;  //表示タイム
+    private Color save_color;   //通常の色
+    private Color damage_color; //ダメージ時の色
+    private int color_timer;    //色切り替えタイマー
+    private int color_count;    //色切り替え回数
 
     private int timer = 0;
     private AudioSource audioSource;
+
+    private void Start()
+    {
+        save_color = img.color;
+        damage_color = new Color(200, 40, 40, 1);
+    }
     void Update()
     {
+        if (!damage_hit)
+        {
+            color_timer++;
+
+            if (color_timer == damage_time)
+            {
+                img.color = damage_color;//ダメージ時の色に変更
+                color_count++;
+            }
+
+            if (color_timer >= save_time)
+            {
+                img.color = save_color;//通常の色に変更
+                color_count++;
+                color_timer = 0;//タイマーリセット
+            }
+
+            //色切り替え回数が最大回数に達したら
+            if (color_count >= blinks_max)
+            {
+                //リセット
+                color_timer = 0;
+                color_count = 0;
+                damage_hit = true;
+            }
+        }
+
         if (!alive)
         {
             timer++;
@@ -71,8 +112,8 @@ public class h_Boss_Damage_Effect : MonoBehaviour
         }
         audioSource.PlayOneShot(sound2);
         //screenFlash.Flash();
-        Instantiate(flash, new Vector2(k_boss.Instance.transform.position.x, k_boss.Instance.transform.position.y), Quaternion.identity);
-        Destroy(k_boss.Instance.gameObject);
+        Instantiate(flash, new Vector2(transform.position.x,transform.position.y), Quaternion.identity);
+        Destroy(gameObject);
 
         for (int i = 0; i < waitFrames2; i++)
         {

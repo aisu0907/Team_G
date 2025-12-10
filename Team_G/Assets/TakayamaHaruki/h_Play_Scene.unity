@@ -2182,6 +2182,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7205743345275765037, guid: b37f733e3fe241a49951af01938288a1, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7205743345275765037, guid: b37f733e3fe241a49951af01938288a1, type: 3}
       propertyPath: m_Color.b
       value: 0.15686275
       objectReference: {fileID: 0}
@@ -2196,8 +2200,42 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1916767665180494222, guid: b37f733e3fe241a49951af01938288a1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8927263979602242010}
   m_SourcePrefab: {fileID: 100100000, guid: b37f733e3fe241a49951af01938288a1, type: 3}
+--- !u!1 &8927263979602242009 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1916767665180494222, guid: b37f733e3fe241a49951af01938288a1, type: 3}
+  m_PrefabInstance: {fileID: 8927263979602242008}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8927263979602242010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8927263979602242009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c1c70316a4294e4ab39755534610c79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flash: {fileID: 0}
+  explode: {fileID: 0}
+  boss_explode: {fileID: 0}
+  img: {fileID: 0}
+  size: 0
+  max_size: 3
+  add_size: 0.5
+  alive: 0
+  sound1: {fileID: 0}
+  sound2: {fileID: 0}
+  damage_hit: 0
+  blinks_max: 0
+  damage_time: 0
+  save_time: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
