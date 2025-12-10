@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 8762738068015073422}
   - component: {fileID: 3686056280985669683}
   - component: {fileID: 5834488169902732858}
-  - component: {fileID: 6170889825334120446}
   m_Layer: 0
   m_Name: boss_explode
   m_TagString: Untagged
@@ -78,7 +77,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1307761201
-  m_SortingLayer: 2
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -305,19 +304,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &6170889825334120446
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1661927002883175135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58bc10bbcc52e424bbe091e280f3ea8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flashImage: {fileID: 8323020329839888922, guid: 2b3bfdc695e6ed14b933081ef7693dc4, type: 3}
-  flashInSpeed: 0.2
-  flashOutSpeed: 1
-  maxAlpha: 1
