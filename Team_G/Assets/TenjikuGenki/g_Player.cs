@@ -62,6 +62,7 @@ public class Player : MonoBehaviour
         color_timer = 0;
         save_color = img.color;
         damage_color = new Color(save_color.r, save_color.g, save_color.b, 0.5f);
+        start_anime = true;
     }
 
     // Update is called once per frame
@@ -78,8 +79,6 @@ public class Player : MonoBehaviour
                 start_anime = false;
             }
         }
-
-
 
 
         if (health > 0&&!start_anime)
