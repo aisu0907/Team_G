@@ -529,6 +529,10 @@ PrefabInstance:
       propertyPath: blinks_max
       value: 13
       objectReference: {fileID: 0}
+    - target: {fileID: 2021564740943638649, guid: ece49d0188f35714ea82e5bc99c9d451, type: 3}
+      propertyPath: damage_time
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2149414446791707951, guid: ece49d0188f35714ea82e5bc99c9d451, type: 3}
       propertyPath: m_Name
       value: Player

@@ -11,22 +11,25 @@ public class Boss_Damage_Effect : MonoBehaviour
     //オーディオ関係
     public AudioClip sound1;//サウンド
     public AudioClip sound2;//サウンド
-    //
-    public float size = 0.0f;    //サイズ
-    public float max_size = 3.0f;//最大サイズ
-    public float add_size = 0.5f;//追加するサイズ
     //ダメージエフェクト
-    public int blinks_max; //点滅する回数
-    public int damage_time;//消滅タイミング
-    public int save_time;  //表示タイム
+    public int blinks_max  = 4; //点滅する回数
+    public int damage_time = 10;//ダメージエフェクトタイミング
+    public int save_time   = 20;//表示タイム
     //フラグ
     public bool alive; //生存判定
     public bool damage_hit;//ダメージ判定
-
+    //死亡時エフェクト関係
+    private Vector2 size;    //サイズ
+    private float max_size_x;//最大サイズX
+    private float max_size_y;//最大サイズY
+    private float add_size_x;//追加するサイズX
+    private float add_size_y;//追加するサイズY
+    //ダメージエフェクト
     private Color save_color;   //通常の色
     private Color damage_color; //ダメージ時の色
     private int color_timer;    //色切り替えタイマー
     private int color_count;    //色切り替え回数
+
     private int timer = 0;
     private AudioSource audio_source;
 
@@ -34,6 +37,12 @@ public class Boss_Damage_Effect : MonoBehaviour
     {
         save_color = img.color;
         damage_color = new Color(200, 40, 40, 1);
+        max_size_x = transform.localScale.x;
+        max_size_y = transform.localScale.y;
+        add_size_x = (transform.localScale.x / 30);
+        add_size_y = (transform.localScale.y / 30);
+        size = new Vector2(0, 0);
+
     }
     void Update()
     {
@@ -69,8 +78,13 @@ public class Boss_Damage_Effect : MonoBehaviour
         if (alive)
         {
             timer++;
-            if (size <= max_size) size += add_size;
-            transform.localScale = new Vector2(size, size);
+            //if (size.x <= max_size_x && size.y <= max_size_y)
+            //{
+            //    size.x += add_size_x;
+            //    size.y += add_size_y;
+            //    transform.localScale = size;
+            //}
+
             //爆発エフェクトを生成
             if (timer == 10) random();
             if (timer == 30) random();
@@ -88,7 +102,7 @@ public class Boss_Damage_Effect : MonoBehaviour
             //シーン見込み予定
             if (timer > 400)
             {
-                Destroy(gameObject);
+                alive = false;
             }
         }
     }
