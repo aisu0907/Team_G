@@ -17,17 +17,17 @@ public class Player : MonoBehaviour
     public int blinks_max; //点滅する回数
     public int damage_time;  //消滅タイミング
     public int save_time;  //表示タイム
+    public int timer = 0;
 
     public GameObject explode;
     public SpriteRenderer img; //画像
 
-    private bool damage_hit;
-    private Color save_color; //
-    private Color damage_color; //
-    private int color_timer;  //
-    private int color_count;
+    private bool damage_hit;    //ダメージ判定
+    private Color save_color;   //通常の色
+    private Color damage_color; //ダメージ時の色
+    private int color_timer;    //色切り替えタイマー
+    private int color_count;    //色切り替え回数
     private int frame = 0;
-    public int timer = 0;
 
     public static Player Instance { get; private set; }
 
@@ -92,25 +92,24 @@ public class Player : MonoBehaviour
             if (!damage_hit)
             {
                 color_timer++;
-
+                
                 if (color_timer == save_time)
                 {
-                    img.color = save_color;
+                    img.color = save_color;//通常の色に変更
                     color_count++;
                 }
 
                 if (color_timer >= damage_time)
                 {
-                    img.color = damage_color;
+                    img.color = damage_color;//ダメージ時の色に変更
                     color_count++;
-                    color_timer = 0;
+                    color_timer = 0;//タイマーリセット
                 }
-
-
-
+                //色切り替え回数が最大回数に達したら
                 if (color_count >= blinks_max)
                 {
-                    color_timer = 0;
+                    //リセット
+                    color_timer = 0; 
                     color_count = 0;
                     damage_hit = true;
                 }
