@@ -13,6 +13,7 @@ public class Result_Manager : MonoBehaviour
     public GameObject score_box;
     public GameObject bonus_box;
     public GameObject text;
+    public GameObject game;
 
     public GameObject S;
     public GameObject A;
@@ -83,6 +84,7 @@ public class Result_Manager : MonoBehaviour
         if (timer == 340)
         {
             text.GetComponent<TMP_Text>().enabled = true;
+            game.GetComponent<TMP_Text>().enabled = true;
             if (!bgmSource.isPlaying) bgmSource.Play();
         }
 
