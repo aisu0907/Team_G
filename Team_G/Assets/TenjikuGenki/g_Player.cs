@@ -1,7 +1,8 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
-using System.Collections;
+using static UnityEngine.GraphicsBuffer;
 
 
 public class Player : MonoBehaviour
@@ -18,6 +19,14 @@ public class Player : MonoBehaviour
     public int damage_time;  //消滅タイミング
     public int save_time;  //表示タイム
     public int timer = 0;
+
+    public int start_x = -2;
+    public int start_y = -6;
+
+
+    //演出用
+    public float targetY = -3.0f;
+    public bool start_anime = true;
 
     public GameObject explode;
     public SpriteRenderer img; //画像
@@ -38,6 +47,9 @@ public class Player : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        transform.position = new Vector3(start_x,start_y,0);
+
+
         //リセット
         // RigidBody2D��������擾����
         rbody = this.GetComponent<Rigidbody2D>();
@@ -55,7 +67,22 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (health > 0)
+        if (start_anime)
+        {
+            if (transform.position.y < targetY)
+            {
+                transform.position += new Vector3(0, speed * Time.deltaTime, 0);
+            }
+            else
+            {
+                start_anime = false;
+            }
+        }
+
+
+
+
+        if (health > 0&&!start_anime)
         {
             // �L�[�擾
             axisH = Input.GetAxisRaw("Horizontal");
