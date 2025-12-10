@@ -109,7 +109,7 @@ public class h_Boss : BossBase
         {
             if (dead)
             {
-                gameObject.GetComponent<Boss_Damage_Effect>().alive = false;
+                gameObject.GetComponent<Boss_Damage_Effect>().alive = true;
             }
         }
     }
@@ -118,7 +118,6 @@ public class h_Boss : BossBase
     void OnTriggerEnter2D(Collider2D collision)
     {
         boss_damage(gameObject, collision);
-        gameObject.GetComponent<Boss_Damage_Effect>().damage_hit = false;
     }
 
     //äKíiçUåÇ

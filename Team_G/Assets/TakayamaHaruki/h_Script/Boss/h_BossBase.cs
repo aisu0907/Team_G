@@ -1,9 +1,4 @@
-using System.Drawing;
-using Unity.VisualScripting;
-using UnityEngine.Audio;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using System.Collections;
 
 public class BossBase : MonoBehaviour
 {
@@ -20,6 +15,7 @@ public class BossBase : MonoBehaviour
         if (collision.TryGetComponent<Enemy>(out var enemy))
             if (enemy.on_hitting)
             {
+                boss.GetComponent<Boss_Damage_Effect>().damage_hit = true;
                 Destroy(collision.gameObject);　//触れたウイルスを削除
                 boss.GetComponent<BossBase>().health--; //ボスのHPを減らす
                 Instantiate(explode, transform.position, Quaternion.identity); //ダメージ演出表示

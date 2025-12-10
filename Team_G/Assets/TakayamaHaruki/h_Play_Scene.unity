@@ -2137,6 +2137,10 @@ PrefabInstance:
       propertyPath: health
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 3500184970161009842, guid: b37f733e3fe241a49951af01938288a1, type: 3}
+      propertyPath: warning_x
+      value: 2.4
+      objectReference: {fileID: 0}
     - target: {fileID: 3975438102710402373, guid: b37f733e3fe241a49951af01938288a1, type: 3}
       propertyPath: m_Constraints
       value: 4
@@ -2187,15 +2191,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7205743345275765037, guid: b37f733e3fe241a49951af01938288a1, type: 3}
       propertyPath: m_Color.b
-      value: 0.15686275
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7205743345275765037, guid: b37f733e3fe241a49951af01938288a1, type: 3}
       propertyPath: m_Color.g
-      value: 0.15686275
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7205743345275765037, guid: b37f733e3fe241a49951af01938288a1, type: 3}
       propertyPath: m_Color.r
-      value: 0.78431374
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2222,20 +2226,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c1c70316a4294e4ab39755534610c79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flash: {fileID: 0}
-  explode: {fileID: 0}
-  boss_explode: {fileID: 0}
-  img: {fileID: 0}
+  flash: {fileID: 3001600071046506143, guid: 318cf17a939cc084b8253bff2c8a1679, type: 3}
+  explode: {fileID: 2661303078993959966, guid: f0f7fc77f27d1e849b18df3a82666c42, type: 3}
+  img: {fileID: 1547611076}
+  sound1: {fileID: 8300000, guid: 66e8fd1a0439d9044bc37f824f5f536d, type: 3}
+  sound2: {fileID: 8300000, guid: 990663530d930844e8c72206e8553652, type: 3}
   size: 0
   max_size: 3
   add_size: 0.5
+  blinks_max: 4
+  damage_time: 10
+  save_time: 20
   alive: 0
-  sound1: {fileID: 0}
-  sound2: {fileID: 0}
   damage_hit: 0
-  blinks_max: 0
-  damage_time: 0
-  save_time: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
