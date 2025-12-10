@@ -111,7 +111,9 @@ public class k_boss : MonoBehaviour
         if (collision.gameObject.tag == "Enemy" && collision.gameObject.GetComponent<Enemy>().on_hitting) 
         { --health;
             Instantiate(explode, new Vector2(transform.position.x, transform.position.y), Quaternion.identity); 
-            Destroy(collision.gameObject); } 
+            Destroy(collision.gameObject); 
+            
+        }
     }
 
     private void Move()
