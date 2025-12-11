@@ -5,9 +5,8 @@ using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class g_boss : MonoBehaviour
+public class g_boss : BossBase
 {
-    public int health;
     [System.Serializable] public class enemy_list { public EnemyData db; public GameObject pf; };
     public List<enemy_list> list = new List<enemy_list>();
     public SpriteRenderer img;
@@ -17,8 +16,6 @@ public class g_boss : MonoBehaviour
     Vector2 tmp_pos;
     Rigidbody2D rb; // î≠éÀä‘äu
     bool left_move = true;
-    public GameObject explode;
-
     private void Update()
     {
         Timer += 1;
@@ -35,23 +32,8 @@ public class g_boss : MonoBehaviour
         // éÄñSââèo
         else
         {
-            if(once)
-            {
-                Timer = 0;
-                once = false;
-            }
-            if(Timer % 5 == 0)
-                transform.position = new Vector2(tmp_pos.x + 0.1f, transform.position.y);
-            else
-                transform.position = new Vector2(tmp_pos.x - 0.1f, transform.position.y);
-            rb.linearVelocityY = 1.0f;
-            if (Timer % 60 == 0)
-            {
-                AudioManager.instance.PlaySound("gogogo");
-                Instantiate(explode, new Vector2(transform.position.x + Random.Range(0, 1.5f), transform.position.y + Random.Range(0, 1.5f)),Quaternion.identity);
-            }
-            if (Timer >= 330)
-                if (health <= 0) GameManager.Instance.KillBoss(gameObject);
+            if (gameObject.GetComponent<Boss_Damage_Effect>().alive == false)
+                gameObject.GetComponent<Boss_Damage_Effect>().alive = true;
         }
 
         // ç∂âEà⁄ìÆ
@@ -75,14 +57,9 @@ public class g_boss : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<Enemy>(out var enemy))
-            if (enemy.on_hitting)
-            {
-                Destroy(enemy.gameObject);
-                health--;
-                Instantiate(explode, new Vector2(enemy.transform.position.x, enemy.transform.position.y + 0.5f), Quaternion.identity);
-            }
-        if(collision.GetComponent<Side_Wall>()) left_move = !left_move;
+        if (health > 0)
+            boss_damage(gameObject, collision);
+        if (collision.GetComponent<Side_Wall>()) left_move = !left_move;
     }
 
     void ShootBullet()
