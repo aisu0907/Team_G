@@ -42,6 +42,7 @@ public class Boss_Damage_Effect : MonoBehaviour
         add_size_x = (transform.localScale.x / 30);
         add_size_y = (transform.localScale.y / 30);
         size = new Vector2(0, 0);
+        audio_source = gameObject.GetComponent<AudioSource>();
 
     }
     void Update()
@@ -78,6 +79,7 @@ public class Boss_Damage_Effect : MonoBehaviour
         if (alive)
         {
             timer++;
+
             //if (size.x <= max_size_x && size.y <= max_size_y)
             //{
             //    size.x += add_size_x;
