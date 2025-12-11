@@ -38,6 +38,12 @@ public class Player : MonoBehaviour
     private int color_count;    //色切り替え回数
     private int frame = 0;
 
+    [Header("< Gameover >")]
+    public GameObject error;
+    public GameObject ui;
+    public GameObject white;
+
+
     public static Player Instance { get; private set; }
 
     private void Awake()
@@ -146,8 +152,8 @@ public class Player : MonoBehaviour
             timer++;
             if (timer >= 120)
             {
-                SceneManager.LoadScene("Gameover_Scene");
                 DataHolder.GetGameData();
+                SceneManager.LoadScene("Gameover_Scene");
             }
         }
     }
@@ -186,6 +192,9 @@ public class Player : MonoBehaviour
             //ゲームオーバーシーンに移行
             Time.timeScale = 0.0f;
             rbody.linearVelocity = Vector2.zero;
+            GameObject newImage = Instantiate(white);
+            newImage.transform.SetParent(ui.transform, false);
+            Instantiate(error, new Vector2(0, 0), Quaternion.identity);
         }
     }
 }

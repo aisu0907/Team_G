@@ -494,6 +494,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2021564740943638649, guid: ece49d0188f35714ea82e5bc99c9d451, type: 3}
+      propertyPath: ui
+      value: 
+      objectReference: {fileID: 1197736991271366334}
+    - target: {fileID: 2021564740943638649, guid: ece49d0188f35714ea82e5bc99c9d451, type: 3}
       propertyPath: bom
       value: 2
       objectReference: {fileID: 0}
@@ -501,6 +505,14 @@ PrefabInstance:
       propertyPath: img
       value: 
       objectReference: {fileID: 652196329}
+    - target: {fileID: 2021564740943638649, guid: ece49d0188f35714ea82e5bc99c9d451, type: 3}
+      propertyPath: error
+      value: 
+      objectReference: {fileID: 4507864264245097953, guid: 404b54dc4139e514aa339b4cd7e754ac, type: 3}
+    - target: {fileID: 2021564740943638649, guid: ece49d0188f35714ea82e5bc99c9d451, type: 3}
+      propertyPath: white
+      value: 
+      objectReference: {fileID: 8949682691573965162, guid: 3fab587ec9c776b4b9521d2fb3352860, type: 3}
     - target: {fileID: 2021564740943638649, guid: ece49d0188f35714ea82e5bc99c9d451, type: 3}
       propertyPath: sound1
       value: 
