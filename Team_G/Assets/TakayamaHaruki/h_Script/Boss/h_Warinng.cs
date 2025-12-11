@@ -45,9 +45,13 @@ public class h_waring : MonoBehaviour
                 img.color = save_color; //Œ³‚ÌF‚É–ß‚·
             }
         }
+        else
+        {
+            Destroy(gameObject);
+        }
 
         //Å‘åŒx‚Ü‚Ås‚Á‚½ê‡
-        if(warning_count >= max_warning)
+        if (warning_count >= max_warning)
         {
             Instantiate(range_attack, transform.position, Quaternion.identity); //”ÍˆÍUŒ‚¶¬
             Destroy(gameObject); //Œx‚ğíœ
