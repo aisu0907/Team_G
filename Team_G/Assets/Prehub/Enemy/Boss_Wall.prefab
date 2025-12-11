@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 967427152424685842}
   - component: {fileID: 3607687680638847786}
   - component: {fileID: 2549210940391524199}
-  - component: {fileID: 3863672818655205687}
   m_Layer: 0
   m_Name: Boss_Wall
   m_TagString: Untagged
@@ -163,18 +162,3 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &3863672818655205687
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6777289873080417788}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d66bd28e231fa3b4b85b58c87be4596d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boss_health: 5
-  nextSceneName: 
-  player: {fileID: 2149414446791707951, guid: ece49d0188f35714ea82e5bc99c9d451, type: 3}

@@ -2139,7 +2139,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3500184970161009842, guid: b37f733e3fe241a49951af01938288a1, type: 3}
       propertyPath: warning_x
-      value: -2.6
+      value: -2.5
       objectReference: {fileID: 0}
     - target: {fileID: 3975438102710402373, guid: b37f733e3fe241a49951af01938288a1, type: 3}
       propertyPath: m_Constraints
