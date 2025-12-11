@@ -193,7 +193,7 @@ MonoBehaviour:
   bullet: {fileID: 1323917000318406210, guid: 4e7fcc606545e1043bf191ae82e78847, type: 3}
   warning: {fileID: 2028448528721712660, guid: e47145f969b65f14d81fcc403f055aae, type: 3}
   range_attack: 480
-  warning_x: -2.6
+  warning_x: -2.5
   warning_y_top: -0.177
   warning_y_down: -3.725
   stairs_attack: 240
