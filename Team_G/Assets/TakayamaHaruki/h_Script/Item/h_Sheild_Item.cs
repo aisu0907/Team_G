@@ -24,6 +24,8 @@ public class Sheild_Item : ItemBase
     public GameObject display;
     public Player player;
 
+    public List<GameObject> item_name;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -132,6 +134,14 @@ public class Sheild_Item : ItemBase
         // アイテムの表示
         var d = Instantiate(display, transform.position,Quaternion.Euler(0, 0, 10)).GetComponent<DisplayItem>();
         d.SummonDisplay(i.GetComponent<SpriteRenderer>().sprite);
+    }
+
+    void air_ride(Item i)
+    {
+
+
+
+
     }
 }
 
