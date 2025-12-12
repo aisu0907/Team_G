@@ -99,11 +99,9 @@ public class Boss_Damage_Effect : MonoBehaviour
             {
                 audio_source.PlayOneShot(sound1);//SE‚ðÄ¶
             }
-            if (timer == 220) StartCoroutine(DelayedFlash());
-
-            //ƒV[ƒ“Œ©ž‚Ý—\’è
-            if (timer > 400)
+            if (timer == 220)
             {
+                StartCoroutine(DelayedFlash());
                 alive = false;
             }
         }
