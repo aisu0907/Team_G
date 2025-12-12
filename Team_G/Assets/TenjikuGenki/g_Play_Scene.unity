@@ -1257,7 +1257,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   error: {fileID: 4507864264245097953, guid: 404b54dc4139e514aa339b4cd7e754ac, type: 3}
   ui: {fileID: 1197736991271366334}
-  white: {fileID: 8949682691573965162, guid: 3fab587ec9c776b4b9521d2fb3352860, type: 3}
+  white: {fileID: 7258980492761351895, guid: fda12bc3b781320469ac8e27984e33e8, type: 3}
 --- !u!1001 &185608768813364578
 PrefabInstance:
   m_ObjectHideFlags: 0
