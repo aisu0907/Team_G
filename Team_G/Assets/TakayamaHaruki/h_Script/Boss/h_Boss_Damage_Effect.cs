@@ -6,7 +6,6 @@ public class Boss_Damage_Effect : MonoBehaviour
     //ゲームオブジェクト
     public GameObject flash;   //フラッシュ
     public GameObject explode; //爆発演出
-    public SpriteRenderer img; //画像
     //オーディオ関係
     public AudioClip sound1;//サウンド
     public AudioClip sound2;//サウンド
@@ -31,6 +30,7 @@ public class Boss_Damage_Effect : MonoBehaviour
 
     private int timer = 0;
     private AudioSource audio_source;
+    private SpriteRenderer img; //画像
 
     private void Start()
     {
@@ -42,7 +42,7 @@ public class Boss_Damage_Effect : MonoBehaviour
         add_size_y = (transform.localScale.y / 30);
         size = new Vector2(0, 0);
         audio_source = gameObject.GetComponent<AudioSource>();
-
+        img = gameObject.AddComponent<SpriteRenderer>();
     }
     void Update()
     {
