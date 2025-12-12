@@ -13,9 +13,8 @@ GameObject:
   - component: {fileID: 517570966151876131}
   - component: {fileID: 1637508818350216243}
   - component: {fileID: 1987593275706827861}
-  - component: {fileID: 7951912297074015214}
   - component: {fileID: 6467272795923177078}
-  - component: {fileID: 8799719434152329685}
+  - component: {fileID: 7951912297074015214}
   m_Layer: 0
   m_Name: Last_Boss
   m_TagString: Boss
@@ -110,9 +109,6 @@ MonoBehaviour:
   img: {fileID: 5440156818045479259}
   sound1: {fileID: 8300000, guid: 66e8fd1a0439d9044bc37f824f5f536d, type: 3}
   sound2: {fileID: 8300000, guid: 990663530d930844e8c72206e8553652, type: 3}
-  size: 0
-  max_size: 3
-  add_size: 0.5
   blinks_max: 4
   damage_time: 10
   save_time: 20
@@ -131,9 +127,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
-  speed: 0
+  speed: 1
+  death_pos_x: -2.6
+  death_pos_y: 3
   explode: {fileID: 2661303078993959966, guid: f0f7fc77f27d1e849b18df3a82666c42, type: 3}
-  boss_explode: {fileID: 1661927002883175135, guid: c4d7ed4678da80546a41099aeb751957, type: 3}
   timer: 0
   attack: 120
   prefab: {fileID: 1323917000318406210, guid: 4e7fcc606545e1043bf191ae82e78847, type: 3}
@@ -141,8 +138,6 @@ MonoBehaviour:
   prefab2: {fileID: 1323917000318406210, guid: eb5917cc4ddf9bd449a67f453b91cefc, type: 3}
   enemy2: {fileID: 11400000, guid: 58ab6cbe37866b744ace51bd52f36a28, type: 2}
   kill: {fileID: 7582930186525683671, guid: 73f3352dff0f57b46a4d540704b666e3, type: 3}
-  explode: {fileID: 2661303078993959966, guid: f0f7fc77f27d1e849b18df3a82666c42, type: 3}
-  boss_explode: {fileID: 1661927002883175135, guid: c4d7ed4678da80546a41099aeb751957, type: 3}
 --- !u!50 &1987593275706827861
 Rigidbody2D:
   serializedVersion: 5
@@ -170,103 +165,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!82 &7951912297074015214
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2671645667419631279}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 66e8fd1a0439d9044bc37f824f5f536d, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1.55
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!58 &6467272795923177078
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -303,7 +201,7 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: -0.016133953, y: 0}
   m_Radius: 0.15781066
---- !u!82 &8799719434152329685
+--- !u!82 &7951912297074015214
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -314,10 +212,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 79cfb3efbfdd92549b15468a9ddd6855, type: 3}
+  m_Resource: {fileID: 8300000, guid: 66e8fd1a0439d9044bc37f824f5f536d, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: -0.86
+  m_Pitch: 1.55
   Loop: 0
   Mute: 0
   Spatialize: 0

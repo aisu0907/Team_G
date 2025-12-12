@@ -39,11 +39,11 @@ public class g_boss : BossBase
         // ¶‰EˆÚ“®
         if(left_move)
         {
-            rb.linearVelocityX = 1.0f;
+            rb.linearVelocityX = speed;
         }
         else
         {
-            rb.linearVelocityX = -1.0f;
+            rb.linearVelocityX = -speed;
         }
     }
     private void Start()

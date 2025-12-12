@@ -29,11 +29,7 @@ public class k_boss : BossBase
 
     public GameObject prefab2;
     public EnemyData enemy2;
-
-
     public GameObject kill;
-    public GameObject explode;
-    public GameObject boss_explode;
 
     AudioSource audioSource;
 
@@ -108,19 +104,13 @@ public class k_boss : BossBase
     }
 
     void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.gameObject.tag == "Enemy" && collision.gameObject.GetComponent<Enemy>().on_hitting)
-        {
-            --health;
-            Instantiate(explode, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
-            Destroy(collision.gameObject);
-
-        }
-        //boss_damage(gameObject, collision);
+        if (health > 0)
+            boss_damage(gameObject, collision);
     }
 
     private void Move()
     {
-            float x = Mathf.Sin(Time.time) * 1f - 2f;
+            float x = Mathf.Sin(Time.time) * speed - 2f;
             transform.position = new Vector2(x, transform.position.y);
     }
 
@@ -246,6 +236,7 @@ public class k_boss : BossBase
         move = false;
         Stage_BGM.Instance.bgm_stop = true;
 
-        Instantiate(boss_explode, transform.position, Quaternion.identity);
+        if (gameObject.GetComponent<Boss_Damage_Effect>().alive == false)
+            gameObject.GetComponent<Boss_Damage_Effect>().alive = true;
     }
 }
