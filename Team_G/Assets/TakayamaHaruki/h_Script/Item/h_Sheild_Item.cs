@@ -25,6 +25,7 @@ public class Sheild_Item : ItemBase
     public GameObject display;
     public GameObject item_text;
     public Player player;
+    [SerializeField] GameObject ui;
 
     public string item_name="null";
 
@@ -141,14 +142,20 @@ public class Sheild_Item : ItemBase
     void SummonDisplay(Item i)
     {
        
-        //// アイテムの表示
+        // アイテムの表示
         var d = Instantiate(display, transform.position, Quaternion.Euler(0, 0, 10)).GetComponent<DisplayItem>();
         d.SummonDisplay(i.GetComponent<SpriteRenderer>().sprite);
 
-        //if (i.item_id == speed_item) item_name="スピードアップ！";
-        //if (i.item_id == reflect_item) item_name =  "反射スピード上昇！";
-        //if (i.item_id == sheild_item) item_name = "シールド拡大！";
-        //if (i.item_id == life_item) item_name = "HP回復！";
+        // 文字列決める
+        if (i.item_id == speed_item) item_name = "スピードアップ！";
+        if (i.item_id == reflect_item) item_name = "反射スピード上昇！";
+        if (i.item_id == sheild_item) item_name = "シールド拡大！";
+        if (i.item_id == life_item) item_name = "HP回復！";
+
+        // テキスト出す
+        var text = Instantiate(item_text);
+        text.transform.SetParent(ui.transform, false);
+        //text.GetComponent<TextMeshProUGUI>().text = "test";
 
         //Instantiate(item_text, transform.position, Quaternion.identity);
         //Get_Item.Instance.SetText(item_name);

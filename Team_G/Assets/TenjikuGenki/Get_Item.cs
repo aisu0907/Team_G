@@ -15,12 +15,12 @@ public class Get_Item : MonoBehaviour
         Instance = this;
     }
 
-    public void SetText(string text)
+    public void SetText(TextMeshPro go ,string text)
     {
-        transform.position = new Vector3(Player.Instance.transform.position.x, Player.Instance.transform.position.y, 0);
-        itemText.text = text;
-        delete_swich = true;
+        //itemText.text = text;
+        //delete_swich = true;
     }
+
     private void Update()
     {
         if(delete_swich)timer++;
