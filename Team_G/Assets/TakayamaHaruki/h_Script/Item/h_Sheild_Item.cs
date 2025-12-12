@@ -3,6 +3,7 @@
 using JetBrains.Annotations;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -22,14 +23,12 @@ public class Sheild_Item : ItemBase
     public int[] item_count;   //アイテム取得回数   
     private int max_bom = 3;    //ボム最大所持数
     private Vector3 sheild_size;//シールドサイズ
-    public GameObject display;
-    public GameObject item_text;
     public Player player;
-    [SerializeField] GameObject ui;
-
-    public string item_name="null";
 
     public static Sheild_Item Instance { get; private set; }
+
+    [Header("test")]
+    public GameObject display;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -131,18 +130,24 @@ public class Sheild_Item : ItemBase
 
         }
     }
+
     void SummonDisplay(Item i)
     {
+        // 文字列決める
+        // string item_name = "";
+        // if (i.item_id == speed_item) item_name = "スピードアップ！";
+        // if (i.item_id == reflect_item) item_name = "反射スピード上昇！";
+        // if (i.item_id == sheild_item) item_name = "シールド拡大！";
+        // if (i.item_id == life_item) item_name = "HP回復！";
 
         // アイテムの表示
-        var d = Instantiate(display, transform.position, Quaternion.Euler(0, 0, 10)).GetComponent<DisplayItem>();
-        d.SummonDisplay(i.GetComponent<SpriteRenderer>().sprite);
+        Get_Item ui = i.GetComponent<Get_Item>();
 
-        //// 文字列決める
-        //if (i.item_id == speed_item) item_name = "スピードアップ！";
-        //if (i.item_id == reflect_item) item_name = "反射スピード上昇！";
-        //if (i.item_id == sheild_item) item_name = "シールド拡大！";
-        //if (i.item_id == life_item) item_name = "HP回復！";
+        // 「このアイテムの位置にテキストを出す」
+        //ui.CreateTextAt(transform.position, item_name);
+        
+        var d = Instantiate(display,gameObject.transform.position,Quaternion.Euler(0,0,10)).GetComponent<DisplayItem>();
+        d.SummonDisplay(i.GetComponent<SpriteRenderer>().sprite);
 
         //// テキスト出す
         //var text = Instantiate(item_text);

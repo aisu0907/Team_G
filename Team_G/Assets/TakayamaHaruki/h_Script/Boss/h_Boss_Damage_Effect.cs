@@ -79,6 +79,18 @@ public class Boss_Damage_Effect : MonoBehaviour
         //死亡演出
         if (alive)
         {
+            if(timer == 0)
+            {
+        
+                // "Enemy"タグがついたすべてのオブジェクトを取得
+                GameObject[] objects = GameObject.FindGameObjectsWithTag("Enemy");
+                // 各オブジェクトを削除
+                foreach (GameObject obj in objects)
+                {
+                    Destroy(obj);
+                    Instantiate(explode, obj.transform.position, Quaternion.identity);
+                }
+            }
             timer++;
 
             //if (size.x <= max_size_x && size.y <= max_size_y)

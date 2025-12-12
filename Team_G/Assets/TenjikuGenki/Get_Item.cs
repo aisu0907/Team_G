@@ -3,32 +3,36 @@ using UnityEngine;
 
 public class Get_Item : MonoBehaviour
 {
-    public TMP_Text itemText; // Inspectorでセット
+    [SerializeField] GameObject textPrefab; // Textプレハブ
+    Transform ui;                           // Canvas
+    RectTransform uiRect;                   // Canvas の RectTransform
 
-    public bool delete_swich=false;
-
-    int timer = 0;
-
-    public static Get_Item Instance { get; private set; }
-    void Awake()
+    void Start()
     {
-        Instance = this;
+        // Canvas を自動取得
+        var canvasObj = GameObject.Find("Canvas");
+        ui = canvasObj.transform;
+        uiRect = canvasObj.GetComponent<RectTransform>();
     }
 
-    public void SetText(TextMeshPro go ,string text)
+    public void CreateTextAt(Vector3 worldPos, string text)
     {
-        //itemText.text = text;
-        //delete_swich = true;
-    }
+        // ワールド座標 → スクリーン座標
+        Vector2 screenPos = Camera.main.WorldToScreenPoint(worldPos);
 
-    private void Update()
-    {
-        if(delete_swich)timer++;
-        if(timer>60)
-        {
-            delete_swich = false;
-            timer = 0;
-            Destroy(gameObject);
-        }
+        // スクリーン座標 → Canvasローカル座標
+        Vector2 uiPos;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            uiRect, screenPos, Camera.main, out uiPos
+        );
+
+        // Text UI 生成
+        var obj = Instantiate(textPrefab, ui, false);
+
+        // 位置をセット
+        obj.GetComponent<RectTransform>().anchoredPosition = uiPos;
+
+        // テキスト内容をセット
+        obj.GetComponent<TextMeshProUGUI>().text = text;
     }
 }
