@@ -5,9 +5,10 @@ public class BossBase : MonoBehaviour
     //ボスステータス
     public int health;
     public float speed;
+    public float death_pos_x;
+    public float death_pos_y;
     //ゲームオブジェクト
     public GameObject explode;      //爆発演出
-    public GameObject boss_explode; //死亡演出
 
     //ダメージ判定関数
     public void boss_damage(GameObject boss, Collider2D collision)
@@ -19,6 +20,11 @@ public class BossBase : MonoBehaviour
                 Destroy(collision.gameObject);　//触れたウイルスを削除
                 boss.GetComponent<BossBase>().health--; //ボスのHPを減らす
                 Instantiate(explode, transform.position, Quaternion.identity); //ダメージ演出表示
+                if(boss.GetComponent<BossBase>().health <= 0)
+                {
+                    gameObject.GetComponent<BossBase>().speed = 0;
+                    gameObject.transform.position = new Vector2(death_pos_x, death_pos_y);
+                }
             }
     }
 }

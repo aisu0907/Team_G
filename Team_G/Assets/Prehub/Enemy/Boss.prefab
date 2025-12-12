@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4370864392167164691}
   - component: {fileID: 7479855824105266108}
   - component: {fileID: 8710821080754064005}
+  - component: {fileID: 2190680439373376589}
   - component: {fileID: 1829111181030531218}
   - component: {fileID: 7122411864785075718}
-  - component: {fileID: 2190680439373376589}
   - component: {fileID: 8506636307490597226}
   m_Layer: 0
   m_Name: Boss
@@ -105,6 +105,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
+  speed: 1
+  death_pos_x: -2.6
+  death_pos_y: 3
+  explode: {fileID: 2661303078993959966, guid: f0f7fc77f27d1e849b18df3a82666c42, type: 3}
   list:
   - db: {fileID: 11400000, guid: 0060511f69e9d2a4fb1e007ad5c1b610, type: 2}
     pf: {fileID: 1323917000318406210, guid: 4e7fcc606545e1043bf191ae82e78847, type: 3}
@@ -115,7 +119,28 @@ MonoBehaviour:
   - {fileID: -8784003655823627391, guid: c7a4d6d5f118e2b42bf2dbbf21b060d5, type: 3}
   - {fileID: -8430282202468897226, guid: 93e6c17ad0a136949bbb8ff85a1059e4, type: 3}
   Timer: 0
+--- !u!114 &2190680439373376589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 870741779963481172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c1c70316a4294e4ab39755534610c79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flash: {fileID: 3001600071046506143, guid: 318cf17a939cc084b8253bff2c8a1679, type: 3}
   explode: {fileID: 2661303078993959966, guid: f0f7fc77f27d1e849b18df3a82666c42, type: 3}
+  img: {fileID: 7479855824105266108}
+  sound1: {fileID: 8300000, guid: 66e8fd1a0439d9044bc37f824f5f536d, type: 3}
+  sound2: {fileID: 8300000, guid: 990663530d930844e8c72206e8553652, type: 3}
+  blinks_max: 4
+  damage_time: 10
+  save_time: 20
+  alive: 0
+  damage_hit: 0
 --- !u!50 &1829111181030531218
 Rigidbody2D:
   serializedVersion: 5
@@ -191,28 +216,6 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
---- !u!114 &2190680439373376589
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 870741779963481172}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c1c70316a4294e4ab39755534610c79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flash: {fileID: 3001600071046506143, guid: 318cf17a939cc084b8253bff2c8a1679, type: 3}
-  explode: {fileID: 2661303078993959966, guid: f0f7fc77f27d1e849b18df3a82666c42, type: 3}
-  img: {fileID: 7479855824105266108}
-  sound1: {fileID: 8300000, guid: 66e8fd1a0439d9044bc37f824f5f536d, type: 3}
-  sound2: {fileID: 8300000, guid: 990663530d930844e8c72206e8553652, type: 3}
-  blinks_max: 4
-  damage_time: 10
-  save_time: 20
-  alive: 0
-  damage_hit: 0
 --- !u!82 &8506636307490597226
 AudioSource:
   m_ObjectHideFlags: 0

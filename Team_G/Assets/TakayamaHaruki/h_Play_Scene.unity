@@ -1004,6 +1004,22 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 887983876}
+    - target: {fileID: 501296231575515958, guid: 8a90ac878bdd23a46b8afa6b35d40183, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 501296231575515958, guid: 8a90ac878bdd23a46b8afa6b35d40183, type: 3}
+      propertyPath: m_Color.b
+      value: 0.2596302
+      objectReference: {fileID: 0}
+    - target: {fileID: 501296231575515958, guid: 8a90ac878bdd23a46b8afa6b35d40183, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 501296231575515958, guid: 8a90ac878bdd23a46b8afa6b35d40183, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1374719308449709315, guid: 8a90ac878bdd23a46b8afa6b35d40183, type: 3}
       propertyPath: resetPositionY
       value: -10
@@ -2140,6 +2156,14 @@ PrefabInstance:
     - target: {fileID: 3500184970161009842, guid: b37f733e3fe241a49951af01938288a1, type: 3}
       propertyPath: warning_x
       value: -2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3500184970161009842, guid: b37f733e3fe241a49951af01938288a1, type: 3}
+      propertyPath: death_pos_x
+      value: -2.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3500184970161009842, guid: b37f733e3fe241a49951af01938288a1, type: 3}
+      propertyPath: death_pos_y
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3975438102710402373, guid: b37f733e3fe241a49951af01938288a1, type: 3}
       propertyPath: m_Constraints

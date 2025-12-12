@@ -4,9 +4,8 @@ using System.Collections;
 public class Boss_Damage_Effect : MonoBehaviour
 {
     //ゲームオブジェクト
-    public GameObject flash;        //フラッシュ
-    public GameObject explode;      //爆発演出
-
+    public GameObject flash;   //フラッシュ
+    public GameObject explode; //爆発演出
     public SpriteRenderer img; //画像
     //オーディオ関係
     public AudioClip sound1;//サウンド
@@ -128,15 +127,13 @@ public class Boss_Damage_Effect : MonoBehaviour
         audio_source.PlayOneShot(sound2);
         //screenFlash.Flash();
         Instantiate(flash, new Vector2(transform.position.x,transform.position.y), Quaternion.identity);
+        //最後のボスを倒したらリザルトに移行
+        GameManager.Instance.KillBoss();
         Destroy(gameObject);
 
         for (int i = 0; i < waitFrames2; i++)
         {
             yield return null; // 1フレーム待つ
         }
-
-        //最後のボスを倒したらリザルトに移行
-        if (GameManager.Instance.faze >= 5)
-            SceneManager.LoadScene("K_Result");
     }
 }

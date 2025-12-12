@@ -87,12 +87,16 @@ public class GameManager : MonoBehaviour
     }
 
     // ボスが倒された際に呼び出される関数
-    public void KillBoss(GameObject obj)
+    public void KillBoss()
     {
-        Destroy(obj);
-        Instantiate(dark, uiPrefab.transform);
-        var ui = Instantiate(text, uiPrefab.transform).GetComponent<ResultText>();
-        ui.init(boss_timer);
+        if (faze >= 5)
+            SceneManager.LoadScene("K_Result");
+        else
+        {    //Destroy(obj);
+            Instantiate(dark, uiPrefab.transform);
+            var ui = Instantiate(text, uiPrefab.transform).GetComponent<ResultText>();
+            ui.init(boss_timer);
+        }
     }
 
     // アイテムと敵の出現を切り替える関数
