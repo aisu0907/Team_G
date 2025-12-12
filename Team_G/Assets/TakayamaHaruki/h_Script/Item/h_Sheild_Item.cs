@@ -24,7 +24,7 @@ public class Sheild_Item : ItemBase
     public GameObject display;
     public Player player;
 
-    List<GameObject> item_name;
+    public List<GameObject> item_name;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
