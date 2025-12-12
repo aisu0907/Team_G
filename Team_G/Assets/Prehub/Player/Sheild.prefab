@@ -126,11 +126,9 @@ MonoBehaviour:
   up_sheild: 1
   up_reflect_speed: 0.5
   item_count: 
-  display: {fileID: 1843163215658175290, guid: 2ae498e857a77cc4daa1516f0c0ef3c8, type: 3}
-  item_text: {fileID: 7929519447015071108, guid: 056804f174ae22244a97210b687cf916, type: 3}
   player: {fileID: 0}
-  ui: {fileID: 2534170387833257352, guid: ea5eaac365ca38b4e9ee505e212ad080, type: 3}
-  item_name: null
+  item_text: {fileID: 0}
+  display: {fileID: 1843163215658175290, guid: 2ae498e857a77cc4daa1516f0c0ef3c8, type: 3}
 --- !u!61 &8223017186961346377
 BoxCollider2D:
   m_ObjectHideFlags: 0

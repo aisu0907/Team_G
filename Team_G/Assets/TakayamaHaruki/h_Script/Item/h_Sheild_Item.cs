@@ -3,7 +3,6 @@
 using JetBrains.Annotations;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -134,11 +133,11 @@ public class Sheild_Item : ItemBase
     void SummonDisplay(Item i)
     {
         // 文字列決める
-        // string item_name = "";
-        // if (i.item_id == speed_item) item_name = "スピードアップ！";
-        // if (i.item_id == reflect_item) item_name = "反射スピード上昇！";
-        // if (i.item_id == sheild_item) item_name = "シールド拡大！";
-        // if (i.item_id == life_item) item_name = "HP回復！";
+        //string item_name = "";
+        //if (i.item_id == speed_item) item_name = "スピードアップ！";
+        //if (i.item_id == reflect_item) item_name = "反射スピード上昇！";
+        //if (i.item_id == sheild_item) item_name = "シールド拡大！";
+        //if (i.item_id == life_item) item_name = "HP回復！";
 
         // アイテムの表示
         Get_Item ui = i.GetComponent<Get_Item>();
@@ -148,6 +147,9 @@ public class Sheild_Item : ItemBase
         
         var d = Instantiate(display,gameObject.transform.position,Quaternion.Euler(0,0,10)).GetComponent<DisplayItem>();
         d.SummonDisplay(i.GetComponent<SpriteRenderer>().sprite);
+
+
+        h_Item_Text.Instance.Item_Up_Text(i);
 
         //// テキスト出す
         //var text = Instantiate(item_text);
