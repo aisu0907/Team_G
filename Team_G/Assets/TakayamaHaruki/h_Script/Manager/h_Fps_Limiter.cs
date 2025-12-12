@@ -11,6 +11,7 @@ public class Fps : MonoBehaviour
     {
         //FPSê›íË
         Application.targetFrameRate = fps;
+        Time.timeScale = 1.0f;
     }
 
     // Update is called once per frame

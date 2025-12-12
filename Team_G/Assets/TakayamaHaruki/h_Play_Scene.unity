@@ -2135,11 +2135,11 @@ PrefabInstance:
       objectReference: {fileID: 1547611076}
     - target: {fileID: 3500184970161009842, guid: b37f733e3fe241a49951af01938288a1, type: 3}
       propertyPath: health
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3500184970161009842, guid: b37f733e3fe241a49951af01938288a1, type: 3}
       propertyPath: warning_x
-      value: 2.4
+      value: -2.5
       objectReference: {fileID: 0}
     - target: {fileID: 3975438102710402373, guid: b37f733e3fe241a49951af01938288a1, type: 3}
       propertyPath: m_Constraints
@@ -2204,41 +2204,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1916767665180494222, guid: b37f733e3fe241a49951af01938288a1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8927263979602242010}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b37f733e3fe241a49951af01938288a1, type: 3}
---- !u!1 &8927263979602242009 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1916767665180494222, guid: b37f733e3fe241a49951af01938288a1, type: 3}
-  m_PrefabInstance: {fileID: 8927263979602242008}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8927263979602242010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8927263979602242009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c1c70316a4294e4ab39755534610c79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flash: {fileID: 3001600071046506143, guid: 318cf17a939cc084b8253bff2c8a1679, type: 3}
-  explode: {fileID: 2661303078993959966, guid: f0f7fc77f27d1e849b18df3a82666c42, type: 3}
-  img: {fileID: 1547611076}
-  sound1: {fileID: 8300000, guid: 66e8fd1a0439d9044bc37f824f5f536d, type: 3}
-  sound2: {fileID: 8300000, guid: 990663530d930844e8c72206e8553652, type: 3}
-  size: 0
-  max_size: 3
-  add_size: 0.5
-  blinks_max: 4
-  damage_time: 10
-  save_time: 20
-  alive: 0
-  damage_hit: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

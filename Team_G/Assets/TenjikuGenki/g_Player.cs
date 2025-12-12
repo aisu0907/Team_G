@@ -38,6 +38,12 @@ public class Player : MonoBehaviour
     private int color_count;    //色切り替え回数
     private int frame = 0;
 
+    [Header("< Gameover >")]
+    public GameObject error;
+    public GameObject ui;
+    public GameObject white;
+
+
     public static Player Instance { get; private set; }
 
     private void Awake()
@@ -64,6 +70,7 @@ public class Player : MonoBehaviour
         color_timer = 0;
         save_color = img.color;
         damage_color = new Color(save_color.r, save_color.g, save_color.b, 0.5f);
+        start_anime = true;
     }
 
     // Update is called once per frame
@@ -82,6 +89,10 @@ public class Player : MonoBehaviour
             }
         }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2fe162017a7f95efc51ba603e48842f220c4a8f8
         if (health > 0&&!start_anime)
         {
             // �L�[�擾
@@ -147,8 +158,8 @@ public class Player : MonoBehaviour
             timer++;
             if (timer >= 120)
             {
-                SceneManager.LoadScene("Gameover_Scene");
                 DataHolder.GetGameData();
+                SceneManager.LoadScene("Gameover_Scene");
             }
         }
     }
@@ -187,6 +198,9 @@ public class Player : MonoBehaviour
             //ゲームオーバーシーンに移行
             Time.timeScale = 0.0f;
             rbody.linearVelocity = Vector2.zero;
+            GameObject newImage = Instantiate(white);
+            newImage.transform.SetParent(ui.transform, false);
+            Instantiate(error, new Vector2(0, 0), Quaternion.identity);
         }
     }
 }

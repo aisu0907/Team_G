@@ -21,7 +21,6 @@ public class h_Boss : BossBase
     public float stairs_attack_space;   //ŠK’iUŒ‚‚Ì’e‚ÌŠÔŠu
     public int stairs_attack_speed;     //ŠK’iUŒ‚‚Ì’e‚Ì‘¬“x
     public int stairs_attack_max;       //ŠK’iUŒ‚‚Ì’e‚Ì‰ñ”
-
     //À•WŒW
     private Vector2 v1; //ˆÊ’u•Û‘¶—p
     private Vector2 v2; //ˆêŽž“I
@@ -74,7 +73,7 @@ public class h_Boss : BossBase
         stairs_attack_time++;
         range_attack_time++;
 
-        if (health >= 0)
+        if (health > 0)
         {
             //ŠK’iUŒ‚
             if (stairs_attack_time >= stairs_attack)
@@ -107,16 +106,15 @@ public class h_Boss : BossBase
         }
         else
         {
-            if (dead)
-            {
+            if(gameObject.GetComponent<Boss_Damage_Effect>().alive == false)
                 gameObject.GetComponent<Boss_Damage_Effect>().alive = true;
-            }
         }
     }
 
     //ƒ_ƒ[ƒW”»’è
     void OnTriggerEnter2D(Collider2D collision)
     {
+        if(health > 0)
         boss_damage(gameObject, collision);
     }
 
