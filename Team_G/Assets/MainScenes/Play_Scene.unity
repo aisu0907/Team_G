@@ -493,6 +493,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1539577837808149577, guid: ece49d0188f35714ea82e5bc99c9d451, type: 3}
+      propertyPath: ui
+      value: 
+      objectReference: {fileID: 1197736991271366334}
+    - target: {fileID: 1539577837808149577, guid: ece49d0188f35714ea82e5bc99c9d451, type: 3}
+      propertyPath: error
+      value: 
+      objectReference: {fileID: 4507864264245097953, guid: 404b54dc4139e514aa339b4cd7e754ac, type: 3}
+    - target: {fileID: 1539577837808149577, guid: ece49d0188f35714ea82e5bc99c9d451, type: 3}
+      propertyPath: white
+      value: 
+      objectReference: {fileID: 7258980492761351895, guid: fda12bc3b781320469ac8e27984e33e8, type: 3}
     - target: {fileID: 2021564740943638649, guid: ece49d0188f35714ea82e5bc99c9d451, type: 3}
       propertyPath: ui
       value: 
@@ -1148,6 +1160,7 @@ MonoBehaviour:
   boss_position_x: -2.6
   boss_position_y: 3
   faze: 0
+  boss_die: 0
   frame: 0
 --- !u!114 &1451417415
 MonoBehaviour:
@@ -1378,7 +1391,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6029505787226459109, guid: 8a90ac878bdd23a46b8afa6b35d40183, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 605
+      value: 610
       objectReference: {fileID: 0}
     - target: {fileID: 6029505787226459109, guid: 8a90ac878bdd23a46b8afa6b35d40183, type: 3}
       propertyPath: m_AnchoredPosition.y

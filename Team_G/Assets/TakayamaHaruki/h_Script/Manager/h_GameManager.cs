@@ -18,11 +18,12 @@ public class GameManager : MonoBehaviour
     public float boss_position_x; //ボス位置X
     public float boss_position_y; //ボス位置Y
 
-    public int faze = 0;    //フェーズ
-    public bool boss_die;
+    public int faze = 0; //フェーズ
+    public bool boss_die;//ボス死亡判定
 
     //タイマー
-    private float boss_timer = 0;
+    private float boss_timer;
+    private float result_timer;
     public  int frame = 0;  //フレーム
     //座標
     private Vector2 boss_position;
@@ -38,6 +39,13 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        //リセット
+        //ボスの初期位置設定
+        boss_position = new Vector2 (boss_position_x, boss_position_y);
+        boss_die = true;
+        boss_timer = 0;
+        result_timer = 0;
+
         // アイテムと敵の出現をONにする
         if(!(DataHolder.game_phaze <= 0))
         {
@@ -46,10 +54,7 @@ public class GameManager : MonoBehaviour
             if(DataHolder.game_phaze % 2 != 0) Instantiate(boss[faze / 2].prefab, boss_position , Quaternion.identity);
         }
         else
-            ModeChange(true);
-        
-        //ボスの初期位置設定
-        boss_position = new Vector2 (boss_position_x, boss_position_y);
+            ModeChange(true);   
     }
 
     private void Update()
@@ -76,6 +81,16 @@ public class GameManager : MonoBehaviour
             {
                 boss_timer += Time.deltaTime;
             }
+            
+            if(!boss_die)
+            {
+                result_timer++;
+                if(result_timer >= 60)
+                {
+                    KillBoss();
+                    boss_die = true;
+                }
+            }
         }
     }
 
@@ -93,7 +108,7 @@ public class GameManager : MonoBehaviour
         if (faze >= 5)
             SceneManager.LoadScene("K_Result");
         else
-        {    //Destroy(obj);
+        {   
             Instantiate(dark, uiPrefab.transform);
             var ui = Instantiate(text, uiPrefab.transform).GetComponent<ResultText>();
             ui.init(boss_timer);

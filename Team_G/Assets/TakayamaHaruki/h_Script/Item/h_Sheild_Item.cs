@@ -126,14 +126,6 @@ public class Sheild_Item : ItemBase
                     //プレイヤーの体力を増やす
                     player.health += heal_hp;
 
-            ////ボム
-            //if (i.item_id == bomb_item)
-            //    //ボム所持数が最大じゃない場合
-            //    if (max_bom > player.bom)
-            //    {
-
-            //    }
-
         //アイテムを削除
         Destroy(i.gameObject);
 
@@ -141,20 +133,20 @@ public class Sheild_Item : ItemBase
     }
     void SummonDisplay(Item i)
     {
-       
+
         // アイテムの表示
         var d = Instantiate(display, transform.position, Quaternion.Euler(0, 0, 10)).GetComponent<DisplayItem>();
         d.SummonDisplay(i.GetComponent<SpriteRenderer>().sprite);
 
-        // 文字列決める
-        if (i.item_id == speed_item) item_name = "スピードアップ！";
-        if (i.item_id == reflect_item) item_name = "反射スピード上昇！";
-        if (i.item_id == sheild_item) item_name = "シールド拡大！";
-        if (i.item_id == life_item) item_name = "HP回復！";
+        //// 文字列決める
+        //if (i.item_id == speed_item) item_name = "スピードアップ！";
+        //if (i.item_id == reflect_item) item_name = "反射スピード上昇！";
+        //if (i.item_id == sheild_item) item_name = "シールド拡大！";
+        //if (i.item_id == life_item) item_name = "HP回復！";
 
-        // テキスト出す
-        var text = Instantiate(item_text);
-        text.transform.SetParent(ui.transform, false);
+        //// テキスト出す
+        //var text = Instantiate(item_text);
+        //text.transform.SetParent(ui.transform, false);
         //text.GetComponent<TextMeshProUGUI>().text = "test";
 
         //Instantiate(item_text, transform.position, Quaternion.identity);
