@@ -177,7 +177,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74cdae03f47eb9f409ba2d2c47d0767c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explode: {fileID: 0}
   sheild: {fileID: 5988915149965031515, guid: b36ce76bff42ffc429c359ef883cf6a9, type: 3}
+  rbody: {fileID: 0}
+  img: {fileID: 0}
   health: 3
   speed: 3
   bom: 2
@@ -187,15 +190,10 @@ MonoBehaviour:
   damage_time: 10
   save_time: 5
   timer: 0
-  start_x: -2
+  start_x: -2.7
   start_y: -6
   targetY: -3
   start_anime: 1
-  explode: {fileID: 0}
-  img: {fileID: 0}
-  error: {fileID: 0}
-  ui: {fileID: 0}
-  white: {fileID: 0}
 --- !u!95 &-5964972176224715530
 Animator:
   serializedVersion: 7

@@ -7,30 +7,32 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Player : MonoBehaviour
 {
-    public Rigidbody2D rbody;
-    float axisH, axisV = 0.0f;
+    //ゲームオブジェクト
+    public GameObject explode;
     public GameObject sheild;
+    public Rigidbody2D rbody;
+    public SpriteRenderer img; //画像
+    //プレイヤーステータス
     public int health = 3;     //�̗�
     public float speed = 3.0f;   //�ړ����x
+    //ボム関連
     public int bom = 0;     //ボムの所持数
     public int bom_time = 0;//ボムのクールタイム
     public int max_bom = 0; //ボム最大所持数
+    //ダメージエフェクト
     public int blinks_max; //点滅する回数
     public int damage_time;  //消滅タイミング
     public int save_time;  //表示タイム
     public int timer = 0;
-
-    public int start_x = -2;
-    public int start_y = -6;
-
-
+    //初期位置
+    public float start_x = -2;
+    public float start_y = -6;
     //演出用
     public float targetY = -3.0f;
     public bool start_anime = true;
 
-    public GameObject explode;
-    public SpriteRenderer img; //画像
 
+    float axisH, axisV = 0.0f;
     private bool damage_hit;    //ダメージ判定
     private Color save_color;   //通常の色
     private Color damage_color; //ダメージ時の色
