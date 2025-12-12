@@ -7,7 +7,7 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Player : MonoBehaviour
 {
-    Rigidbody2D rbody;
+    public Rigidbody2D rbody;
     float axisH, axisV = 0.0f;
     public GameObject sheild;
     public int health = 3;     //�̗�
@@ -37,11 +37,6 @@ public class Player : MonoBehaviour
     private int color_timer;    //色切り替えタイマー
     private int color_count;    //色切り替え回数
     private int frame = 0;
-
-    [Header("< Gameover >")]
-    public GameObject error;
-    public GameObject ui;
-    public GameObject white;
 
 
     public static Player Instance { get; private set; }
@@ -89,10 +84,6 @@ public class Player : MonoBehaviour
             }
         }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 2fe162017a7f95efc51ba603e48842f220c4a8f8
         if (health > 0&&!start_anime)
         {
             // �L�[�擾
@@ -191,16 +182,5 @@ public class Player : MonoBehaviour
             damage_hit = false;
         }
         if (destroy) Destroy(obj);
-
-        //プレイヤーの体力が0以下の場合
-        if (health <= 0)
-        {
-            //ゲームオーバーシーンに移行
-            Time.timeScale = 0.0f;
-            rbody.linearVelocity = Vector2.zero;
-            GameObject newImage = Instantiate(white);
-            newImage.transform.SetParent(ui.transform, false);
-            Instantiate(error, new Vector2(0, 0), Quaternion.identity);
-        }
     }
 }

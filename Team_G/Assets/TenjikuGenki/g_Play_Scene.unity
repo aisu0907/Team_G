@@ -169,6 +169,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: d5c7c6c840af46d40ac10a4ba74caf53, type: 2}
     - target: {fileID: -4194156144153558061, guid: 13d9d2d191a6aff4ca50ac6e84ca5b8d, type: 3}
+      propertyPath: 'enemy_list.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: d5c7c6c840af46d40ac10a4ba74caf53, type: 2}
+    - target: {fileID: -4194156144153558061, guid: 13d9d2d191a6aff4ca50ac6e84ca5b8d, type: 3}
+      propertyPath: 'enemy_list.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: d5c7c6c840af46d40ac10a4ba74caf53, type: 2}
+    - target: {fileID: -4194156144153558061, guid: 13d9d2d191a6aff4ca50ac6e84ca5b8d, type: 3}
       propertyPath: enemy_list.Array.data[0].enemy.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -717,7 +725,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2149414446791707951, guid: ece49d0188f35714ea82e5bc99c9d451, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1806080578}
   m_SourcePrefab: {fileID: 100100000, guid: ece49d0188f35714ea82e5bc99c9d451, type: 3}
 --- !u!212 &1038341501 stripped
 SpriteRenderer:
@@ -1227,6 +1238,26 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 900877614}
   m_SourcePrefab: {fileID: 100100000, guid: cc8fc34330d578c4ca72c5ef3425e7b0, type: 3}
+--- !u!1 &1806080577 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2149414446791707951, guid: ece49d0188f35714ea82e5bc99c9d451, type: 3}
+  m_PrefabInstance: {fileID: 1038341500}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1806080578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1806080577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4655e597823ceb5438214ff7c284feb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  error: {fileID: 4507864264245097953, guid: 404b54dc4139e514aa339b4cd7e754ac, type: 3}
+  ui: {fileID: 1197736991271366334}
+  white: {fileID: 8949682691573965162, guid: 3fab587ec9c776b4b9521d2fb3352860, type: 3}
 --- !u!1001 &185608768813364578
 PrefabInstance:
   m_ObjectHideFlags: 0
