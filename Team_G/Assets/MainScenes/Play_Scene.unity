@@ -455,11 +455,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1319925360401247615, guid: ece49d0188f35714ea82e5bc99c9d451, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.04
+      value: -2.328
       objectReference: {fileID: 0}
     - target: {fileID: 1319925360401247615, guid: ece49d0188f35714ea82e5bc99c9d451, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.983555
+      value: -2.958
       objectReference: {fileID: 0}
     - target: {fileID: 1319925360401247615, guid: ece49d0188f35714ea82e5bc99c9d451, type: 3}
       propertyPath: m_LocalPosition.z
@@ -524,6 +524,10 @@ PrefabInstance:
     - target: {fileID: 2021564740943638649, guid: ece49d0188f35714ea82e5bc99c9d451, type: 3}
       propertyPath: max_bom
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2021564740943638649, guid: ece49d0188f35714ea82e5bc99c9d451, type: 3}
+      propertyPath: start_x
+      value: -2.328
       objectReference: {fileID: 0}
     - target: {fileID: 2021564740943638649, guid: ece49d0188f35714ea82e5bc99c9d451, type: 3}
       propertyPath: bom_time
@@ -1143,7 +1147,7 @@ MonoBehaviour:
   dark: {fileID: 5190081689524932153, guid: d2a7753abe7e5554caf674eb152c44cc, type: 3}
   boss_position_x: -2.6
   boss_position_y: 3
-  faze: 0
+  faze: 4
   frame: 0
 --- !u!114 &1451417415
 MonoBehaviour:
