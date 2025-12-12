@@ -47,6 +47,8 @@ public class Player : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+
+        //開始位置
         transform.position = new Vector3(start_x,start_y,0);
 
 
@@ -67,6 +69,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //画面下から出現
         if (start_anime)
         {
             if (transform.position.y < targetY)
@@ -78,9 +81,6 @@ public class Player : MonoBehaviour
                 start_anime = false;
             }
         }
-
-
-
 
         if (health > 0&&!start_anime)
         {

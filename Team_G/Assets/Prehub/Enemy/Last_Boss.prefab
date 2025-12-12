@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8290128625930983219}
   - component: {fileID: 5440156818045479259}
+  - component: {fileID: 517570966151876131}
   - component: {fileID: 1637508818350216243}
   - component: {fileID: 1987593275706827861}
   - component: {fileID: 7951912297074015214}
@@ -79,7 +80,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -921988423
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 8745519586657704159, guid: 1a78b7d7b28c254499b83ac34b744513, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -92,6 +93,31 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &517570966151876131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2671645667419631279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c1c70316a4294e4ab39755534610c79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flash: {fileID: 3001600071046506143, guid: 318cf17a939cc084b8253bff2c8a1679, type: 3}
+  explode: {fileID: 2661303078993959966, guid: f0f7fc77f27d1e849b18df3a82666c42, type: 3}
+  img: {fileID: 5440156818045479259}
+  sound1: {fileID: 8300000, guid: 66e8fd1a0439d9044bc37f824f5f536d, type: 3}
+  sound2: {fileID: 8300000, guid: 990663530d930844e8c72206e8553652, type: 3}
+  size: 0
+  max_size: 3
+  add_size: 0.5
+  blinks_max: 4
+  damage_time: 10
+  save_time: 20
+  alive: 0
+  damage_hit: 0
 --- !u!114 &1637508818350216243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,9 +130,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eb9367d0bc6c6b439fa4384690e16c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 10
+  speed: 0
+  explode: {fileID: 2661303078993959966, guid: f0f7fc77f27d1e849b18df3a82666c42, type: 3}
+  boss_explode: {fileID: 1661927002883175135, guid: c4d7ed4678da80546a41099aeb751957, type: 3}
   timer: 0
   attack: 120
-  health: 10
   prefab: {fileID: 1323917000318406210, guid: 4e7fcc606545e1043bf191ae82e78847, type: 3}
   enemy: {fileID: 11400000, guid: 0060511f69e9d2a4fb1e007ad5c1b610, type: 2}
   prefab2: {fileID: 1323917000318406210, guid: eb5917cc4ddf9bd449a67f453b91cefc, type: 3}

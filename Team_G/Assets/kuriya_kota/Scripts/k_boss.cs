@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class k_boss : MonoBehaviour
+public class k_boss : BossBase 
 {
     Rigidbody2D rb;
     SpriteRenderer img;
@@ -10,7 +10,7 @@ public class k_boss : MonoBehaviour
     public int attack=180;
     int mode = 0;
     int jama = 0;
-    public int health;
+    //public int health;
 
     bool move = true;
     bool isDying = false;
@@ -108,12 +108,14 @@ public class k_boss : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.gameObject.tag == "Enemy" && collision.gameObject.GetComponent<Enemy>().on_hitting) 
-        { --health;
-            Instantiate(explode, new Vector2(transform.position.x, transform.position.y), Quaternion.identity); 
-            Destroy(collision.gameObject); 
-            
+        if (collision.gameObject.tag == "Enemy" && collision.gameObject.GetComponent<Enemy>().on_hitting)
+        {
+            --health;
+            Instantiate(explode, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
+            Destroy(collision.gameObject);
+
         }
+        //boss_damage(gameObject, collision);
     }
 
     private void Move()
