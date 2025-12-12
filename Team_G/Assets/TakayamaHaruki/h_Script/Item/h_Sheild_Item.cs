@@ -1,9 +1,10 @@
 //h_Sheild_Item.cs
 
 using JetBrains.Annotations;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
-using System.Collections.Generic;
 
 public class Sheild_Item : ItemBase
 {
@@ -22,11 +23,20 @@ public class Sheild_Item : ItemBase
     private int max_bom = 3;    //ボム最大所持数
     private Vector3 sheild_size;//シールドサイズ
     public GameObject display;
+    public GameObject item_text;
     public Player player;
 
-    public List<GameObject> item_name;
+    public string item_name="null";
+
+    public static Sheild_Item Instance { get; private set; }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Awake()
+    {
+        Instance = this;
+    }
+
+
     void Start()
     {
         //変数リセット
@@ -115,33 +125,33 @@ public class Sheild_Item : ItemBase
                     //プレイヤーの体力を増やす
                     player.health += heal_hp;
 
-            //ボム
-            if (i.item_id == bomb_item)
-                //ボム所持数が最大じゃない場合
-                if (max_bom > player.bom)
-                {
+            ////ボム
+            //if (i.item_id == bomb_item)
+            //    //ボム所持数が最大じゃない場合
+            //    if (max_bom > player.bom)
+            //    {
 
-                }
+            //    }
 
         //アイテムを削除
         Destroy(i.gameObject);
 
         }
     }
-
     void SummonDisplay(Item i)
     {
-        // アイテムの表示
-        var d = Instantiate(display, transform.position,Quaternion.Euler(0, 0, 10)).GetComponent<DisplayItem>();
+       
+        //// アイテムの表示
+        var d = Instantiate(display, transform.position, Quaternion.Euler(0, 0, 10)).GetComponent<DisplayItem>();
         d.SummonDisplay(i.GetComponent<SpriteRenderer>().sprite);
-    }
 
-    void air_ride(Item i)
-    {
+        //if (i.item_id == speed_item) item_name="スピードアップ！";
+        //if (i.item_id == reflect_item) item_name =  "反射スピード上昇！";
+        //if (i.item_id == sheild_item) item_name = "シールド拡大！";
+        //if (i.item_id == life_item) item_name = "HP回復！";
 
-
-
-
+        //Instantiate(item_text, transform.position, Quaternion.identity);
+        //Get_Item.Instance.SetText(item_name);
     }
 }
 
