@@ -1,29 +1,43 @@
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class PlayerGameover : MonoBehaviour
 {
     [Header("< Gameover >")]
-    public GameObject error;
-    public GameObject ui;
-    public GameObject white;
+    [SerializeField] GameObject error;
+    [SerializeField] GameObject ui;
+    [SerializeField] CanvasGroup white;
+
+    // 変数
     bool isGameover = false;
 
     // Update is called once per frame
     void Update()
     {
-        if (isGameover) return;
-
         //プレイヤーの体力が0以下の場合
         if (TryGetComponent<Player>(out var player))
+        {
+            // 色を段々と変える
+            if(isGameover)
+            {
+                if(white.alpha < 120.0f / 256.0f)
+                    white.alpha += 0.015f;
+                return;
+            }
+
+            // 一度だけの処理
             if (player.health == 0)
             {
-                //ゲームオーバーシーンに移行
+                // 白画面とウィンドウ出す
+                white = Instantiate(white);
+                white.transform.SetParent(ui.transform, false);
+                Instantiate(error, new Vector2(0, 0), Quaternion.identity);
+
+                // 諸々
                 isGameover = true;
                 Time.timeScale = 0.0f;
                 player.rbody.linearVelocity = Vector2.zero;
-                GameObject newImage = Instantiate(white);
-                newImage.transform.SetParent(ui.transform, false);
-                Instantiate(error, new Vector2(0, 0), Quaternion.identity);
+            }
         }
     }
 }
