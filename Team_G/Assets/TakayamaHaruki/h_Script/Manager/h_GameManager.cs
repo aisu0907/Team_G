@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public float boss_position_y; //ボス位置Y
 
     public int faze = 0;    //フェーズ
+    public bool boss_die;
 
     //タイマー
     private float boss_timer = 0;

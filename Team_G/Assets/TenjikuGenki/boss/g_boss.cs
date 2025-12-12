@@ -58,7 +58,7 @@ public class g_boss : BossBase
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (health > 0)
-            boss_damage(gameObject, collision);
+            boss_damage(collision);
         if (collision.GetComponent<Side_Wall>()) left_move = !left_move;
     }
 
