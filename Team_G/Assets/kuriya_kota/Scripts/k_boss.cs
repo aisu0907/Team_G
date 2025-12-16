@@ -105,7 +105,7 @@ public class k_boss : BossBase
 
     void OnTriggerEnter2D(Collider2D collision) {
         if (health > 0)
-            boss_damage(gameObject, collision);
+            boss_damage(collision);
     }
 
     private void Move()

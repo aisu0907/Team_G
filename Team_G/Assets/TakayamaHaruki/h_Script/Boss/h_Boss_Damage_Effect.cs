@@ -6,6 +6,7 @@ public class Boss_Damage_Effect : MonoBehaviour
     //ゲームオブジェクト
     public GameObject flash;   //フラッシュ
     public GameObject explode; //爆発演出
+    public SpriteRenderer img; //画像
     //オーディオ関係
     public AudioClip sound1;//サウンド
     public AudioClip sound2;//サウンド
@@ -30,19 +31,20 @@ public class Boss_Damage_Effect : MonoBehaviour
 
     private int timer = 0;
     private AudioSource audio_source;
-    private SpriteRenderer img; //画像
 
     private void Start()
     {
+        damage_hit = false;
+        alive = false;
         save_color = img.color;
         damage_color = new Color(200, 40, 40, 1);
-        max_size_x = transform.localScale.x;
-        max_size_y = transform.localScale.y;
-        add_size_x = (transform.localScale.x / 30);
-        add_size_y = (transform.localScale.y / 30);
-        size = new Vector2(0, 0);
         audio_source = gameObject.GetComponent<AudioSource>();
-        img = gameObject.AddComponent<SpriteRenderer>();
+        //サイズ関係
+        //max_size_x = transform.localScale.x;
+        //max_size_y = transform.localScale.y;
+        //add_size_x = (transform.localScale.x / 30);
+        //add_size_y = (transform.localScale.y / 30);
+        //size = new Vector2(0, 0);
     }
     void Update()
     {
@@ -77,6 +79,18 @@ public class Boss_Damage_Effect : MonoBehaviour
         //死亡演出
         if (alive)
         {
+            if(timer == 0)
+            {
+        
+                // "Enemy"タグがついたすべてのオブジェクトを取得
+                GameObject[] objects = GameObject.FindGameObjectsWithTag("Enemy");
+                // 各オブジェクトを削除
+                foreach (GameObject obj in objects)
+                {
+                    Destroy(obj);
+                    Instantiate(explode, obj.transform.position, Quaternion.identity);
+                }
+            }
             timer++;
 
             //if (size.x <= max_size_x && size.y <= max_size_y)
@@ -118,22 +132,13 @@ public class Boss_Damage_Effect : MonoBehaviour
     {
         int waitFrames1 = 60; // 待ちたいフレーム数
 
-        int waitFrames2 = 120;
-
         for (int i = 0; i < waitFrames1; i++)
         {
             yield return null; // 1フレーム待つ
         }
         audio_source.PlayOneShot(sound2);
-        //screenFlash.Flash();
         Instantiate(flash, new Vector2(transform.position.x,transform.position.y), Quaternion.identity);
-        //最後のボスを倒したらリザルトに移行
-        GameManager.Instance.KillBoss();
+        GameManager.Instance.boss_die = false;
         Destroy(gameObject);
-
-        for (int i = 0; i < waitFrames2; i++)
-        {
-            yield return null; // 1フレーム待つ
-        }
     }
 }

@@ -22,13 +22,12 @@ public class Sheild_Item : ItemBase
     public int[] item_count;   //アイテム取得回数   
     private int max_bom = 3;    //ボム最大所持数
     private Vector3 sheild_size;//シールドサイズ
-    public GameObject display;
-    public GameObject item_text;
     public Player player;
 
-    public string item_name="null";
-
     public static Sheild_Item Instance { get; private set; }
+
+    [Header("test")]
+    public GameObject display;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -125,30 +124,37 @@ public class Sheild_Item : ItemBase
                     //プレイヤーの体力を増やす
                     player.health += heal_hp;
 
-            ////ボム
-            //if (i.item_id == bomb_item)
-            //    //ボム所持数が最大じゃない場合
-            //    if (max_bom > player.bom)
-            //    {
-
-            //    }
-
         //アイテムを削除
         Destroy(i.gameObject);
 
         }
     }
+
     void SummonDisplay(Item i)
     {
-       
-        //// アイテムの表示
-        var d = Instantiate(display, transform.position, Quaternion.Euler(0, 0, 10)).GetComponent<DisplayItem>();
-        d.SummonDisplay(i.GetComponent<SpriteRenderer>().sprite);
-
-        //if (i.item_id == speed_item) item_name="スピードアップ！";
-        //if (i.item_id == reflect_item) item_name =  "反射スピード上昇！";
+        // 文字列決める
+        //string item_name = "";
+        //if (i.item_id == speed_item) item_name = "スピードアップ！";
+        //if (i.item_id == reflect_item) item_name = "反射スピード上昇！";
         //if (i.item_id == sheild_item) item_name = "シールド拡大！";
         //if (i.item_id == life_item) item_name = "HP回復！";
+
+        // アイテムの表示
+        Get_Item ui = i.GetComponent<Get_Item>();
+
+        // 「このアイテムの位置にテキストを出す」
+        //ui.CreateTextAt(transform.position, item_name);
+        
+        var d = Instantiate(display,gameObject.transform.position,Quaternion.Euler(0,0,10)).GetComponent<DisplayItem>();
+        d.SummonDisplay(i.GetComponent<SpriteRenderer>().sprite);
+
+
+        h_Item_Text.Instance.Item_Up_Text(i);
+
+        //// テキスト出す
+        //var text = Instantiate(item_text);
+        //text.transform.SetParent(ui.transform, false);
+        //text.GetComponent<TextMeshProUGUI>().text = "test";
 
         //Instantiate(item_text, transform.position, Quaternion.identity);
         //Get_Item.Instance.SetText(item_name);
