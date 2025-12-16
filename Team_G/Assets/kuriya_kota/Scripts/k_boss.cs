@@ -7,7 +7,7 @@ public class k_boss : BossBase
     SpriteRenderer img;
 
     public int timer;
-    public int attack=180;
+    public int attack=240;
     int mode = 0;
     int jama = 0;
     //public int health;
@@ -69,8 +69,8 @@ public class k_boss : BossBase
                 if (timer >= attack)
                 {
                     mode = Random.Range(1, 5);
-                    if(mode!=1) jama = Random.Range(1, 5);
-                    if(jama >= 4) SummonJammer();
+                    if(mode!=1) jama = Random.Range(1, 10);
+                    if(jama >= 8) SummonJammer();
                 }
                 break;
 
