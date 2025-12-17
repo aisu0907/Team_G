@@ -522,7 +522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boss:
-  - {fileID: 11400000, guid: 6bcc23a2a781d3b45bac49122a6efc71, type: 2}
+  - {fileID: 11400000, guid: 17838ab36a55bcb429fc4970c4930a7d, type: 2}
   - {fileID: 11400000, guid: 8361bcc07b98ab54dadf070088d04893, type: 2}
   - {fileID: 11400000, guid: 5a31ca2acb5901745b0be90004bdbde5, type: 2}
   item_drop:
@@ -536,6 +536,7 @@ MonoBehaviour:
   boss_position_x: -2.6
   boss_position_y: 3
   faze: 0
+  boss_die: 0
   frame: 0
 --- !u!1001 &1020907205
 PrefabInstance:

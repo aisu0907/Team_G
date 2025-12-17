@@ -146,15 +146,15 @@ public class Sheild_Item : ItemBase
         var d = Instantiate(display, transform.position, Quaternion.Euler(0, 0, 10)).GetComponent<DisplayItem>();
         d.SummonDisplay(i.GetComponent<SpriteRenderer>().sprite);
 
-        // 文字列決める
-        if (i.item_id == speed_item) item_name = "スピードアップ！";
-        if (i.item_id == reflect_item) item_name = "反射スピード上昇！";
-        if (i.item_id == sheild_item) item_name = "シールド拡大！";
-        if (i.item_id == life_item) item_name = "HP回復！";
+        //// 文字列決める
+        //if (i.item_id == speed_item) item_name = "スピードアップ！";
+        //if (i.item_id == reflect_item) item_name = "反射スピード上昇！";
+        //if (i.item_id == sheild_item) item_name = "シールド拡大！";
+        //if (i.item_id == life_item) item_name = "HP回復！";
 
-        // テキスト出す
-        var text = Instantiate(item_text);
-        text.transform.SetParent(ui.transform, false);
+        //// テキスト出す
+        //var text = Instantiate(item_text);
+        //text.transform.SetParent(ui.transform, false);
         //text.GetComponent<TextMeshProUGUI>().text = "test";
 
         //Instantiate(item_text, transform.position, Quaternion.identity);
