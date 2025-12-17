@@ -114,6 +114,7 @@ public class Boss_Damage_Effect : MonoBehaviour
             }
             if (timer == 220)
             {
+                Score_Manager.Instance.score_switch = true;
                 StartCoroutine(DelayedFlash());
                 alive = false;
             }
