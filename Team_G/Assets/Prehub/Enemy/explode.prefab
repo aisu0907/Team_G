@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 0
-  max_size: 0.6
+  max_size: 0.45
   add_size: 0.05
   timer: 0
   sound: {fileID: 8300000, guid: 990663530d930844e8c72206e8553652, type: 3}
