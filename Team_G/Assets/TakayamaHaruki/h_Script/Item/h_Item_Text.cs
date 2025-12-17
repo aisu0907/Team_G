@@ -60,8 +60,8 @@ public class h_Item_Text : ItemBase
     {
         //対応したアイテムのテキストを代入
         if (i.item_id == speed_item)   text =  "スピードアップ！";
-        if (i.item_id == reflect_item) text = "反射スピード上昇！";
-        if (i.item_id == sheild_item)  text = "シールド拡大！";
+        if (i.item_id == reflect_item) text = "ハンシャスピードアップ!";
+        if (i.item_id == sheild_item)  text = "シールドカクダイ！";
         if (i.item_id == life_item)    text = "HP回復！";
 
         display_time = 0;

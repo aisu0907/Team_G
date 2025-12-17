@@ -433,10 +433,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item_Text_display
       objectReference: {fileID: 0}
+    - target: {fileID: 1334811195182119571, guid: 794ba9dacc8641a4dbd0d320128f8b18, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -138
+      objectReference: {fileID: 0}
+    - target: {fileID: 1334811195182119571, guid: 794ba9dacc8641a4dbd0d320128f8b18, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -178
+      objectReference: {fileID: 0}
+    - target: {fileID: 2318962282099483292, guid: 794ba9dacc8641a4dbd0d320128f8b18, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2318962282099483292, guid: 794ba9dacc8641a4dbd0d320128f8b18, type: 3}
+      propertyPath: m_fontSize
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 2318962282099483292, guid: 794ba9dacc8641a4dbd0d320128f8b18, type: 3}
       propertyPath: m_fontAsset
       value: 
       objectReference: {fileID: 11400000, guid: 3264fff079aa596478f3d60685b0f480, type: 2}
+    - target: {fileID: 2318962282099483292, guid: 794ba9dacc8641a4dbd0d320128f8b18, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 2318962282099483292, guid: 794ba9dacc8641a4dbd0d320128f8b18, type: 3}
       propertyPath: m_sharedMaterial
       value: 
