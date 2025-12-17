@@ -242,6 +242,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4655e597823ceb5438214ff7c284feb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  error: {fileID: 0}
+  error: {fileID: 4507864264245097953, guid: 404b54dc4139e514aa339b4cd7e754ac, type: 3}
   ui: {fileID: 0}
-  white: {fileID: 0}
+  white: {fileID: 7258980492761351895, guid: fda12bc3b781320469ac8e27984e33e8, type: 3}
