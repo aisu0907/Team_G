@@ -13,8 +13,8 @@ public class Player : MonoBehaviour
     public Rigidbody2D rbody;
     public SpriteRenderer img; //画像
     //プレイヤーステータス
-    public int health = 3;     //体力
-    public float speed = 3.0f; //スピード
+    public int health = 3;     //�̗�
+    public float speed = 3.0f;   //�ړ����x
     //ボム関連
     public int bom = 0;     //ボムの所持数
     public int bom_time = 0;//ボムのクールタイム
@@ -25,12 +25,12 @@ public class Player : MonoBehaviour
     public int save_time;  //表示タイム
     public int timer = 0;
     //初期位置
-    public float start_x;
-    public float start_y;
+    public float start_x = -2;
+    public float start_y = -6;
     //演出用
     public float targetY = -3.0f;
-    public bool start_anime;
-    //
+    public bool start_anime = true;
+
 
     float axisH, axisV = 0.0f;
     private bool damage_hit;    //ダメージ判定
@@ -47,7 +47,6 @@ public class Player : MonoBehaviour
     {
         Instance = this;
     }
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -62,11 +61,11 @@ public class Player : MonoBehaviour
         // ���̐���
         Instantiate(sheild);
         frame = 300;
+        damage_hit = true;
         //色関係
         color_count = 0;
         color_timer = 0;
         save_color = img.color;
-        damage_hit = true;
         damage_color = new Color(save_color.r, save_color.g, save_color.b, 0.5f);
         start_anime = true;
     }
@@ -93,7 +92,7 @@ public class Player : MonoBehaviour
             axisH = Input.GetAxisRaw("Horizontal");
             axisV = Input.GetAxisRaw("Vertical");
             if (0.2 <= transform.position.y) axisV = -0.05f;
-            if (transform.position.y <= -4.5) axisV = 0.05f;
+            if (transform.position.y <= -5.5) axisV = 0.05f;
 
             // �Ǐ]����
             Sheild.Instance.transform.position = new Vector2(transform.position.x, transform.position.y + 0.8f);
@@ -147,11 +146,9 @@ public class Player : MonoBehaviour
                 }
             }
         }
-        else if(!start_anime)
+        else
         {
             timer++;
-            Stage_BGM.Instance.bgm_stop = true;
-
             if (timer >= 120)
             {
                 DataHolder.GetGameData();

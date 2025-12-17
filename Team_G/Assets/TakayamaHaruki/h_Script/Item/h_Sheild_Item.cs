@@ -81,6 +81,7 @@ public class Sheild_Item : ItemBase
                     item_count[speed_item]++;
 
                     SummonDisplay(i);
+                    SummonText(i);
                 }
                 else
                     Score_Manager.Instance.ItemScore();
@@ -96,68 +97,61 @@ public class Sheild_Item : ItemBase
                     item_count[reflect_item]++;
 
                     SummonDisplay(i);
+                    SummonText(i);
+
                 }
                 else
                     Score_Manager.Instance.ItemScore();
 
             //反射範囲
             if (i.item_id == sheild_item)
-                    //累積上限に達していなかった場合
-                    if (item_count[sheild_item] < i.max_item_count)
-                    {
-                        //シールドを横に大きくする
-                        sheild_size.x += up_sheild;
-                        Sheild.Instance.transform.localScale = sheild_size;
-                        Debug.Log(Sheild.Instance.transform.localScale);
-                        //累積カウント
-                        item_count[sheild_item]++;
+                //累積上限に達していなかった場合
+                if (item_count[sheild_item] < i.max_item_count)
+                {
+                    //シールドを横に大きくする
+                    sheild_size.x += up_sheild;
+                    Sheild.Instance.transform.localScale = sheild_size;
+                    Debug.Log(Sheild.Instance.transform.localScale);
+                    //累積カウント
+                    item_count[sheild_item]++;
 
-                        SummonDisplay(i);
-                    }
-                    else
-                        Score_Manager.Instance.ItemScore();
+                    SummonDisplay(i);
+                    SummonText(i);
+
+                }
+                else
+                    Score_Manager.Instance.ItemScore();
 
             //回復
             if (i.item_id == life_item)
                 //プレイヤーの体力が最大じゃない場合
                 if (max_health > player.health)
+                {
                     //プレイヤーの体力を増やす
                     player.health += heal_hp;
+                    SummonText(i);
+                }
 
-        //アイテムを削除
-        Destroy(i.gameObject);
+
+            //アイテムを削除
+            Destroy(i.gameObject);
 
         }
     }
 
     void SummonDisplay(Item i)
     {
-        // 文字列決める
-        //string item_name = "";
-        //if (i.item_id == speed_item) item_name = "スピードアップ！";
-        //if (i.item_id == reflect_item) item_name = "反射スピード上昇！";
-        //if (i.item_id == sheild_item) item_name = "シールド拡大！";
-        //if (i.item_id == life_item) item_name = "HP回復！";
-
         // アイテムの表示
         Get_Item ui = i.GetComponent<Get_Item>();
-
-        // 「このアイテムの位置にテキストを出す」
-        //ui.CreateTextAt(transform.position, item_name);
         
         var d = Instantiate(display,gameObject.transform.position,Quaternion.Euler(0,0,10)).GetComponent<DisplayItem>();
         d.SummonDisplay(i.GetComponent<SpriteRenderer>().sprite);
+    }
 
-
+    //アイテム文字表示
+    void SummonText( Item i)
+    {
         h_Item_Text.Instance.Item_Up_Text(i);
-
-        //// テキスト出す
-        //var text = Instantiate(item_text);
-        //text.transform.SetParent(ui.transform, false);
-        //text.GetComponent<TextMeshProUGUI>().text = "test";
-
-        //Instantiate(item_text, transform.position, Quaternion.identity);
-        //Get_Item.Instance.SetText(item_name);
     }
 }
 
