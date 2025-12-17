@@ -39,6 +39,7 @@ public class Score_Manager : MonoBehaviour
         {
             recentCollisions.Add(key); //ペアを追加
             enemy_score = (float)((e1.score + e2.score) * score_rate); //スコア倍率を乗せる
+            
             Score.Instance.total_score += (int)enemy_score; //スコアを追加
         }
     }

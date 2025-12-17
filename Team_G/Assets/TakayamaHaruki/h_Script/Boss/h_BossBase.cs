@@ -7,6 +7,7 @@ public class BossBase : MonoBehaviour
     public float speed;
     public float death_pos_x;
     public float death_pos_y;
+
     //ゲームオブジェクト
     public GameObject explode; //爆発演出
 
