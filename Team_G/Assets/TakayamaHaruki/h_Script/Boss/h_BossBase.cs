@@ -8,7 +8,7 @@ public class BossBase : MonoBehaviour
     public float death_pos_x;
     public float death_pos_y;
     //ゲームオブジェクト
-    public GameObject explode;      //爆発演出
+    public GameObject explode; //爆発演出
 
     //ダメージ判定関数
     public void boss_damage(Collider2D collision)

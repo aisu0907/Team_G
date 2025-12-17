@@ -27,7 +27,7 @@ public class ResultText : MonoBehaviour
         }
         else
         {
-            tips.text = "ボスを倒した！\n\nタイム:" + timer.ToString("N1");
+            tips.text = "ボスを倒した！\n\nタイム:" + timer.ToString("N1") + "\n\n\nPress Z Key";
             if (Input.GetKeyDown(KeyCode.Z))
             {
                 Destroy(dark.Instance.gameObject);
