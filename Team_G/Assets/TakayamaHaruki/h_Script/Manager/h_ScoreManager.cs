@@ -8,6 +8,7 @@ public class Score_Manager : MonoBehaviour
 {
     public float score_rate = 0; //エネミー同士がぶつかったときのスコア倍率
     public int item_score = 0;   //アイテムスコア
+    public bool score_switch;
 
     private float enemy_score = 0; //エネミースコアを保存用
 
@@ -35,12 +36,13 @@ public class Score_Manager : MonoBehaviour
         //ぶつかったエネミー同士のIDを取得してペアを作る
         var key = (e1.GetInstanceID() ^ e2.GetInstanceID()).ToString();
         //ぶつかったエネミー同士のペアが存在しない場合
-        if(!recentCollisions.Contains(key))
+        if (!recentCollisions.Contains(key))
         {
             recentCollisions.Add(key); //ペアを追加
             enemy_score = (float)((e1.score + e2.score) * score_rate); //スコア倍率を乗せる
             
-            Score.Instance.total_score += (int)enemy_score; //スコアを追加
+            if(score_switch)
+                Score.Instance.total_score += (int)enemy_score; //スコアを追加
         }
     }
 
@@ -53,7 +55,8 @@ public class Score_Manager : MonoBehaviour
     //エネミースコア関数
     public void Enemy_Score(Enemy e)
     {
-        Score.Instance.total_score += e.score; //スコア追加
+        if (score_switch)
+            Score.Instance.total_score += e.score; //スコア追加
     }
 
     private HashSet<string> recentCollisions = new HashSet<string>();
