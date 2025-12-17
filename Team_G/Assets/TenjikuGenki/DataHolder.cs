@@ -7,6 +7,7 @@ public class DataHolder : MonoBehaviour
     // 変数の定義
     static public int[] player_took_item = new int[3];
     static public int game_phaze;
+    static public int save_score;
 
     void Awake()
     {
@@ -25,6 +26,8 @@ public class DataHolder : MonoBehaviour
 
         // フェーズの数値を取得
         game_phaze = GameManager.Instance.faze;
+
+        //スコアを
     }
 
     static public void DataReset()
@@ -32,5 +35,6 @@ public class DataHolder : MonoBehaviour
         // リセット
         player_took_item = new int[3]{0,0,0};
         game_phaze = 0;
+        save_score = 0;
     }
 }
