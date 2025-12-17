@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class k_boss : BossBase 
@@ -7,9 +8,16 @@ public class k_boss : BossBase
     SpriteRenderer img;
 
     public int timer;
+    public int jamamer_timer;
     public int attack=240;
     int mode = 0;
     int jama = 0;
+
+    public float start_x= -1.83f;
+    public float start_y=5.0f;
+    public float target_y = 3.0f;
+    public bool start_anime;
+
     //public int health;
 
     bool move = true;
@@ -42,6 +50,8 @@ public class k_boss : BossBase
 
     void Start()
     {
+        transform.position = new Vector3(start_x, start_y, 0);
+
         rb = GetComponent<Rigidbody2D>();
         img = GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
@@ -51,8 +61,30 @@ public class k_boss : BossBase
 
     void Update()
     {
-        if (move) Move();
+        if (start_anime)
+        {
+            if (transform.position.y > targetY)
+            {
+                transform.position -= new Vector3(0, speed * Time.deltaTime, 0);
+            }
+            else
+            {
+                start_anime = false;
+            }
+        }
+
+
+        jamamer_timer++;
+
+
+        if (move,!start_anime) Move();
         else Death_Move();
+
+        if (jamamer_timer >= attack*2)
+        {
+            jamamer_timer = 0;
+            SummonJammer();
+        }
 
         if (move && health <= 5)
         {
@@ -66,12 +98,12 @@ public class k_boss : BossBase
         {
             case 0:
                 if(!isDying) timer++;
-                if (timer >= attack)
-                {
-                    mode = Random.Range(1, 5);
-                    if(mode!=1) jama = Random.Range(1, 10);
-                    if(jama >= 8) SummonJammer();
-                }
+                //if (timer >= attack)
+                //{
+                //    mode = Random.Range(1, 5);
+                //    if(mode!=1) jama = Random.Range(1, 10);
+                //    if(jama >= 8) SummonJammer();
+                //}
                 break;
 
             case 1:

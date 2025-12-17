@@ -148,9 +148,31 @@ public class Sheild_Item : ItemBase
         d.SummonDisplay(i.GetComponent<SpriteRenderer>().sprite);
     }
 
+<<<<<<< HEAD
     void SummonText( Item i)
     {
         h_Item_Text.Instance.Item_Up_Text(i);
+=======
+<<<<<<< HEAD
+        //// 文字列決める
+        //if (i.item_id == speed_item) item_name = "スピードアップ！";
+        //if (i.item_id == reflect_item) item_name = "反射スピード上昇！";
+        //if (i.item_id == sheild_item) item_name = "シールド拡大！";
+        //if (i.item_id == life_item) item_name = "HP回復！";
+
+=======
+
+        h_Item_Text.Instance.Item_Up_Text(i);
+
+>>>>>>> 625c69578c6df75fe03f80b680b07ede0fb3b853
+        //// テキスト出す
+        //var text = Instantiate(item_text);
+        //text.transform.SetParent(ui.transform, false);
+        //text.GetComponent<TextMeshProUGUI>().text = "test";
+
+        //Instantiate(item_text, transform.position, Quaternion.identity);
+        //Get_Item.Instance.SetText(item_name);
+>>>>>>> eeabc2643d046846adc99c0f84bbeafae0ce073b
     }
 }
 
