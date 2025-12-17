@@ -32,6 +32,8 @@ public class k_boss : BossBase
     public EnemyData enemy2;
     public GameObject kill;
 
+    public GameObject flash;
+
     AudioSource audioSource;
 
     private void Awake()
@@ -43,6 +45,7 @@ public class k_boss : BossBase
 
     void Start()
     {
+        Instantiate(flash, transform.position, Quaternion.identity);
         rb = GetComponent<Rigidbody2D>();
         img = GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
@@ -57,7 +60,7 @@ public class k_boss : BossBase
         if (move) Move();
         else Death_Move();
 
-        if (jamamer_timer >= attack*2)
+        if (jamamer_timer >= attack*4)
         {
             jamamer_timer = 0;
             SummonJammer();
