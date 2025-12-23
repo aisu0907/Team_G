@@ -10,7 +10,7 @@ public class k_boss : BossBase
 
     public int timer;
     public int jamamer_timer;
-    public int attack=240;
+    public int attack=0;
     int mode = 0;
     int jama = 0;
 
@@ -45,7 +45,6 @@ public class k_boss : BossBase
 
     void Start()
     {
-        Instantiate(flash, transform.position, Quaternion.identity);
         rb = GetComponent<Rigidbody2D>();
         img = GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
@@ -184,7 +183,7 @@ public class k_boss : BossBase
 
         var e = Instantiate(prefab2, transform.position, Quaternion.identity)
                 .GetComponent<EJammer>();
-        e.Init(enemy2, new Vector2(0, -0.2f), enemy2.speed);
+        e.Init(enemy2, new Vector2(0, -1.5f), enemy2.speed);
 
         summonOnce = true;
     }
@@ -215,7 +214,7 @@ public class k_boss : BossBase
             Vector2 d = (Player.Instance.transform.position - transform.position).normalized;
             var e = Instantiate(prefab, transform.position, Quaternion.identity).GetComponent<ENormal>(); e.Init(enemy, d, Random.Range(0, 2), 3);
             AudioManager.instance.PlaySound("Shoot");
-            yield return new WaitForSeconds(0.6f);
+            yield return new WaitForSeconds(1.0f);
         }
 
         targetOnce = true;
