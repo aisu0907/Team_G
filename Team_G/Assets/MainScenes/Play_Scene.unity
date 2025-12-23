@@ -1317,6 +1317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score_rate: 1.2
   item_score: 500
+  score_switch: 0
 --- !u!114 &1451417420
 MonoBehaviour:
   m_ObjectHideFlags: 0

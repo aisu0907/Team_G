@@ -28,6 +28,7 @@ public class DataHolder : MonoBehaviour
         game_phaze = GameManager.Instance.faze;
 
         //スコアを
+        //save_score = ((float)Score.Instance.total_score * 0.8);
     }
 
     static public void DataReset()
