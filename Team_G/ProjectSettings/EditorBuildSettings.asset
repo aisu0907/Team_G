@@ -6,16 +6,16 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Image/UI/MainScenes/Title.unity
+    path: Assets/MainScenes/Title.unity
     guid: 2fc37907f8f94b142a347f5b290abe23
   - enabled: 1
-    path: Assets/Image/UI/MainScenes/Play_Scene.unity
+    path: Assets/MainScenes/Play_Scene.unity
     guid: 1cd8321fa9e9db34cbd90516e4bca2b1
   - enabled: 1
-    path: Assets/Image/UI/MainScenes/Gameover_Scene.unity
+    path: Assets/MainScenes/Gameover_Scene.unity
     guid: e669854b1b622e24bb4b8c754a6d1148
   - enabled: 1
-    path: Assets/Image/UI/MainScenes/Result_Scene.unity
+    path: Assets/MainScenes/Result_Scene.unity
     guid: df0cb020dbdac75478d4dc607d343a44
   - enabled: 1
     path: Assets/kuriya_kota/Secen/K_Result.unity

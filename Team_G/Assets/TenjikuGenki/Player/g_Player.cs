@@ -91,8 +91,10 @@ public class Player : MonoBehaviour
             // �L�[�擾
             axisH = Input.GetAxisRaw("Horizontal");
             axisV = Input.GetAxisRaw("Vertical");
-            if (0.2 <= transform.position.y) axisV = -0.05f;
-            if (transform.position.y <= -5.5) axisV = 0.05f;
+            if (0.2 <= transform.position.y) 
+                if(axisV > 0.0f) axisV = 0.00f;
+            if (transform.position.y <= -5.5)
+                if(axisV < 0.0f) axisV = 0.00f;
 
             // �Ǐ]����
             Sheild.Instance.transform.position = new Vector2(transform.position.x, transform.position.y + 0.8f);
