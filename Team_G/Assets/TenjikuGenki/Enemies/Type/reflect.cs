@@ -28,12 +28,15 @@ public class EReflect : Enemy, IDamageable, IReflectable
             }
             transform.Rotate(0, 0, EnemyConst.ROTATION_ANGLE);
             timer++;
-            if (timer >= EnemyConst.TIME_SPENT_IN_RETURN)
+            if(t_Enemy_Spwan.Instance.counter != 0)
             {
-                on_hitting = false;
-                transform.localRotation = default;
-                vec = new Vector2(0, -speed);
-                timer = 0;
+                if (timer >= EnemyConst.TIME_SPENT_IN_RETURN)
+                {
+                    on_hitting = false;
+                    transform.localRotation = default;
+                    vec = new Vector2(0, -speed);
+                    timer = 0;
+                }
             }
         }
     }
