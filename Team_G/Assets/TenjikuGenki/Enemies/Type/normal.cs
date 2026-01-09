@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class ENormal : Enemy, IDamageable, IReflectable
 {
+    int timer = 0;
     public List<Sprite> Img;
     public float ref_speed { get; set; } = 0;
 
@@ -26,6 +27,14 @@ public class ENormal : Enemy, IDamageable, IReflectable
                 vec.y = -vec.y;
             }
             transform.Rotate(0, 0, EnemyConst.ROTATION_ANGLE);
+            timer++;
+            if(timer > 180)
+            {
+                Instantiate(explode, transform.position, Quaternion.identity);
+                Destroy(gameObject);
+                if (Player.Instance.bom < Player.Instance.max_bom)
+                h_Bomb_Gage.Instance.bomb_gage.value += power;
+            }
         }
     }
 

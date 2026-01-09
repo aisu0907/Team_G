@@ -28,7 +28,7 @@ public class EReflect : Enemy, IDamageable, IReflectable
             }
             transform.Rotate(0, 0, EnemyConst.ROTATION_ANGLE);
             timer++;
-            if(t_Enemy_Spwan.Instance.counter != 0)
+            if(GameManager.Instance.frame < GameManager.Instance.boss[GameManager.Instance.faze / 2].timer)
             {
                 if (timer >= EnemyConst.TIME_SPENT_IN_RETURN)
                 {
@@ -37,6 +37,13 @@ public class EReflect : Enemy, IDamageable, IReflectable
                     vec = new Vector2(0, -speed);
                     timer = 0;
                 }
+            }
+            if(timer > 180)
+            {
+                Instantiate(explode, transform.position, Quaternion.identity);
+                Destroy(gameObject);
+                if (Player.Instance.bom < Player.Instance.max_bom)
+                h_Bomb_Gage.Instance.bomb_gage.value += power;
             }
         }
     }
