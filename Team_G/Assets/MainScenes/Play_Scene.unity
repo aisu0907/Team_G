@@ -1430,7 +1430,7 @@ MonoBehaviour:
   dark: {fileID: 5190081689524932153, guid: d2a7753abe7e5554caf674eb152c44cc, type: 3}
   boss_position_x: -2.6
   boss_position_y: 3
-  faze: 0
+  faze: 4
   boss_die: 0
   frame: 0
 --- !u!114 &1451417415
@@ -1646,6 +1646,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5170890118246740581, guid: ea5eaac365ca38b4e9ee505e212ad080, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 4693150557520481461, guid: 1fff9cc9d1de24e4cb045c7e216a8dae, type: 3}
     - target: {fileID: 7535395637411594314, guid: ea5eaac365ca38b4e9ee505e212ad080, type: 3}
       propertyPath: m_fontColor.a
       value: 1

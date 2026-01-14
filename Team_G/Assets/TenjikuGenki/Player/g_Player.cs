@@ -153,7 +153,6 @@ public class Player : MonoBehaviour
             timer++;
             if (timer >= 120)
             {
-                DataHolder.GetGameData();
                 SceneManager.LoadScene("Gameover_Scene");
             }
         }
