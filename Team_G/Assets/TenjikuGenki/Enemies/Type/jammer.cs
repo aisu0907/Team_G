@@ -12,7 +12,7 @@ public class EJammer : Enemy
 
     void Start()
     {
-        ;
+        t_Enemy_Spwan.Instance.counter++;
     }
 
     void Update()

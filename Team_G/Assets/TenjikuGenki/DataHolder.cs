@@ -36,6 +36,6 @@ public class DataHolder : MonoBehaviour
         // リセット
         player_took_item = new int[3]{0,0,0};
         game_phaze = 0;
-        Score.Instance.total_score = save_score;
+        save_score = 0;
     }
 }

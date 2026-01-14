@@ -16,6 +16,7 @@ public class Return : MonoBehaviour
         if(Input.GetKeyUp(KeyCode.X))
         {
             SceneManager.LoadScene("Title");
+            DataHolder.DataReset();
         }
     }
 }

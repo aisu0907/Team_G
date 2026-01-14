@@ -77,7 +77,11 @@ public class GameManager : MonoBehaviour
                 if (frame >= boss[faze / 2].timer) 
                 {
                     ModeChange(false);
-                    if(t_Enemy_Spwan.Instance.counter == 0) SpawnBoss();
+                    if (t_Enemy_Spwan.Instance.counter == 0)
+                    {
+                        SpawnBoss();
+                        frame = 0;
+                    }
                 }
             }
 

@@ -59,7 +59,7 @@ public class t_Enemy_Spwan : MonoBehaviour
 
                 // Reset
                 frame = 0;
-                counter++;
+                //counter++;
             }
         }
 
@@ -75,7 +75,7 @@ public class t_Enemy_Spwan : MonoBehaviour
                 var e = Instantiate(prefab[2], pos, Quaternion.identity).GetComponent<EJammer>();
                 e.Init(enemy_list[2].list[2], new Vector2(0, -1), enemy_list[2].list[2].speed);
                 jammer_timer = 0;
-                counter++;
+                //counter++;
             }
         }
     }

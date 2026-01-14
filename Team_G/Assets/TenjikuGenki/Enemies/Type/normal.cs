@@ -14,7 +14,7 @@ public class ENormal : Enemy, IDamageable, IReflectable
 
     void Start()
     {
-        ;
+        t_Enemy_Spwan.Instance.counter++;
     }
 
     void Update()
