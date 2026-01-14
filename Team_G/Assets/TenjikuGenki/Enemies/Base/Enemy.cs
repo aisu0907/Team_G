@@ -47,4 +47,9 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
         Player.Instance.health--;
     }
+
+    void OnDestroy()
+    {
+        t_Enemy_Spwan.Instance.counter--;
+    }
 }

@@ -74,7 +74,11 @@ public class GameManager : MonoBehaviour
                 frame++;
 
                 // 指定フレーム経過するとボスを出現させる
-                if (frame == boss[faze / 2].timer) SpawnBoss();
+                if (frame >= boss[faze / 2].timer) 
+                {
+                    ModeChange(false);
+                    if(t_Enemy_Spwan.Instance.counter == 0) SpawnBoss();
+                }
             }
 
             if ((faze + 1) % 2 == 0)

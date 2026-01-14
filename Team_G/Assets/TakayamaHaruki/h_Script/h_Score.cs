@@ -21,6 +21,10 @@ public class Score : MonoBehaviour
     void Start()
     {
         total_score = 0; //スコアをリセット
+
+        if (!(DataHolder.game_phaze < 0))
+            total_score = DataHolder.save_score;
+
         scoreText = GetComponent<TMP_Text>(); //コンポーネントを取得
         scoreText.text = "SCORE:" + total_score.ToString(); //初期スコア表示
     }

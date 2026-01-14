@@ -28,12 +28,22 @@ public class EReflect : Enemy, IDamageable, IReflectable
             }
             transform.Rotate(0, 0, EnemyConst.ROTATION_ANGLE);
             timer++;
-            if (timer >= EnemyConst.TIME_SPENT_IN_RETURN)
+            if(GameManager.Instance.frame < GameManager.Instance.boss[GameManager.Instance.faze / 2].timer)
             {
-                on_hitting = false;
-                transform.localRotation = default;
-                vec = new Vector2(0, -speed);
-                timer = 0;
+                if (timer >= EnemyConst.TIME_SPENT_IN_RETURN)
+                {
+                    on_hitting = false;
+                    transform.localRotation = default;
+                    vec = new Vector2(0, -speed);
+                    timer = 0;
+                }
+            }
+            if(timer > 180)
+            {
+                Instantiate(explode, transform.position, Quaternion.identity);
+                Destroy(gameObject);
+                if (Player.Instance.bom < Player.Instance.max_bom)
+                h_Bomb_Gage.Instance.bomb_gage.value += power;
             }
         }
     }

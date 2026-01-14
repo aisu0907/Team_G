@@ -1,22 +1,20 @@
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
-using UnityEngine.Audio;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class g_boss : BossBase
 {
     [System.Serializable] public class enemy_list { public EnemyData db; public GameObject pf; };
+    [Header("Å•Generator")]
     public List<enemy_list> list = new List<enemy_list>();
+    [Header("Å•Images")]
     public SpriteRenderer img;
     public List<Sprite> sprites;
     [SerializeField] int Timer;
-    bool once;
     Vector2 tmp_pos;
     Rigidbody2D rb; // î≠éÀä‘äu
     bool left_move = true;
-    private void Update()
+    
+    void Update()
     {
         Timer += 1;
 

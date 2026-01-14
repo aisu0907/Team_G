@@ -3,8 +3,10 @@ using UnityEngine;
 public class BossBase : MonoBehaviour
 {
     //ボスステータス
+    [Header("▼Base Status")]
     public int health;
     public float speed;
+    [Header("▼Death Animation")]
     public float death_pos_x;
     public float death_pos_y;
 
