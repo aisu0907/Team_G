@@ -35,6 +35,7 @@ public class ResultText : MonoBehaviour
                 GameManager.Instance.ModeChange(true);
                 GameManager.Instance.frame = 0;
                 GameManager.Instance.faze++;
+                DataHolder.GetGameData();
             }
         }
     }

@@ -108,6 +108,7 @@ public class GameManager : MonoBehaviour
         ModeChange(false);
         Instantiate(boss[faze / 2].prefab, boss_position, Quaternion.identity);  //ボスを召喚
         faze++;
+        DataHolder.GetGameData();
     }
 
     // ボスが倒された際に呼び出される関数
