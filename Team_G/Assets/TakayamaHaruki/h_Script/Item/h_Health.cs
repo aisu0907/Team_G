@@ -11,10 +11,10 @@ public class h_Health : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     //HPグラフィック
-    private Texture2D hp3;
-    private Texture2D hp2;
-    private Texture2D hp1;
-    private Texture2D hp0;
+    private Sprite hp3;
+    private Sprite hp2;
+    private Sprite hp1;
+    private Sprite hp0;
 
     private GameObject image_object; //画像オブジェクト
     private Image image_component;   //画像コンポーネント
@@ -25,10 +25,10 @@ public class h_Health : MonoBehaviour
     void Start()
     {
         //hpの画像を設定
-        hp3 = Resources.Load("HP3") as Texture2D;
-        hp2 = Resources.Load("HP2") as Texture2D;
-        hp1 = Resources.Load("HP1") as Texture2D;
-        hp0 = Resources.Load("HP0") as Texture2D;
+        hp3 = Resources.Load<Sprite>("HP3");
+        hp2 = Resources.Load<Sprite>("HP2");
+        hp1 = Resources.Load<Sprite>("HP1");
+        hp0 = Resources.Load<Sprite>("HP0");
 
         // オブジェクトの取得
         image_object = GameObject.Find("HP");
@@ -50,14 +50,24 @@ public class h_Health : MonoBehaviour
         //hp表示
         hp_display();
 
+        //表示するhpを決める
+        switch (hp)
+        {
+            case 3: image_component.sprite = hp3; break;
+            case 2: image_component.sprite = hp2; break;
+            case 1: image_component.sprite = hp1; break;
+            case 0: image_component.sprite = hp0; break;
+        }
+
         //hp_imgに画像が入っていれば表示
         if (hp_img != null)
         {
             //画像を生成
             image_component.sprite = Sprite.Create(
                 hp_img,
-                new Rect(0, 0, hp_img.width, hp_img.height),
-                Vector2.zero
+                new Rect(0.0f, 0.0f, hp_img.width, hp_img.height),
+                new Vector2(0.5f, 0.5f),
+                1.0f
             );
         }
     }
@@ -65,13 +75,6 @@ public class h_Health : MonoBehaviour
     //hp表示
     public void hp_display()
     {
-        //表示するhpを決める
-        switch (hp)
-        {
-            case 3: hp_img = hp3; break;
-            case 2: hp_img = hp2; break;
-            case 1: hp_img = hp1; break;
-            case 0: hp_img = hp0; break;
-        }
+      
     }
 }
