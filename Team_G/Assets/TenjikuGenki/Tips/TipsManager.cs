@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class TipsManager : MonoBehaviour
 {
+    [Header("‰E‰ºTips")]
     [SerializeField] Tips text;
     [SerializeField] int timer;
     bool ch = false;
@@ -40,6 +41,10 @@ public class TipsManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Tips‚ğn”Ô–Ú‚É•ÏX
+    /// </summary>
+    /// <param name="n"></param>
     void ChangeNextTips(int n)
     {
         tips.text = text.text[n];

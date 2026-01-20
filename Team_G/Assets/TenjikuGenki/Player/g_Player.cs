@@ -7,38 +7,45 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Player : MonoBehaviour
 {
-    //ゲームオブジェクト
+    [Header("▼ GameObject")]
     public GameObject explode;
     public GameObject sheild;
-    public Rigidbody2D rbody;
     public SpriteRenderer img; //画像
-    //プレイヤーステータス
-    public int health = 3;     //�̗�
-    public float speed = 3.0f;   //�ړ����x
-    //ボム関連
+    public Rigidbody2D rbody;
+
+    [Header("▼ PlayerStatus")]
+    public int health = 3;      //体力
+    public float speed = 3.0f;  //移動速度
+    float axisH, axisV = 0.0f;  //移動ベクトル
+
+    [Header("▼ Bom")]
     public int bom = 0;     //ボムの所持数
     public int bom_time = 0;//ボムのクールタイム
     public int max_bom = 0; //ボム最大所持数
-    //ダメージエフェクト
-    public int blinks_max; //点滅する回数
-    public int damage_time;  //消滅タイミング
-    public int save_time;  //表示タイム
-    public int timer = 0;
-    //初期位置
-    public float start_x = -2;
-    public float start_y = -6;
-    //演出用
-    public float targetY = -3.0f;
-    public bool start_anime = true;
+    int frame = 0;
 
+    [Header("▼ DamageEffect")]
+    public GameObject shake;
+    public int blinks_max;  //点滅する回数
+    public int damage_time; //消滅タイミング
+    public int save_time;   //表示タイム
+    public int timer = 0;   //タイマー
+    bool damage_hit;        //ダメージ判定
+    Color save_color;       //通常の色
+    Color damage_color;     //ダメージ時の色
+    int color_timer;        //色切り替えタイマー
+    int color_count;        //色切り替え回数
+    float tmp_pos;
+    bool right = true;
+    bool y = true;
 
-    float axisH, axisV = 0.0f;
-    private bool damage_hit;    //ダメージ判定
-    private Color save_color;   //通常の色
-    private Color damage_color; //ダメージ時の色
-    private int color_timer;    //色切り替えタイマー
-    private int color_count;    //色切り替え回数
-    private int frame = 0;
+    [Header("▼ StartPosition")]
+    public float start_x = -2;  //X座標
+    public float start_y = -6;  //Y座標
+    
+    [Header("▼ Direction")]
+    public float targetY = -3.0f;   //出現位置
+    public bool start_anime = true; //アニメーション切り替え
 
 
     public static Player Instance { get; private set; }
@@ -125,7 +132,11 @@ public class Player : MonoBehaviour
             if (!damage_hit)
             {
                 color_timer++;
-                
+
+                tmp_pos = shake.transform.position.x;
+                shake.transform.position = new Vector3(right == true ? tmp_pos + 0.2f : tmp_pos - 0.2f, 0, -10);
+                right = !right;
+
                 if (color_timer == save_time)
                 {
                     img.color = save_color;//通常の色に変更
@@ -169,12 +180,21 @@ public class Player : MonoBehaviour
         // 衝突判定
         if (collision.TryGetComponent<IDamageable>(out var hit))
         {
-            if (collision.TryGetComponent<Enemy>(out var e) && !e.on_hitting) Damage(1, collision.gameObject);
+            if (collision.TryGetComponent<Enemy>(out var e) && !e.on_hitting)
+            {
+                Damage(1, collision.gameObject);
+            }
 
             //if (collision.TryGetComponent<Gasubura>(out var b)) b.Damage(); 
         }
     }
 
+    /// <summary>
+    /// プレイヤーにダメージを与える処理
+    /// </summary>
+    /// <param name="damage"></param>
+    /// <param name="obj"></param>
+    /// <param name="destroy"></param>
     public void Damage(int damage, GameObject obj, bool destroy = true)
     {
         if (damage_hit)
