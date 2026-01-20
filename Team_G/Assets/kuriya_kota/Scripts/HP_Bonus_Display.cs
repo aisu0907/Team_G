@@ -1,17 +1,17 @@
 using TMPro;
 using UnityEngine;
 
-public class K_Score_Box : MonoBehaviour
+public class HP_Bonus_Display : MonoBehaviour
 {
-    private TMP_Text scoreText;
+    private TMP_Text hpText;
 
     void Start()
     {
-        GetComponent<TMP_Text>().enabled=false;
+        GetComponent<TMP_Text>().enabled = false;
         // TextMeshPro のコンポーネント取得
-        scoreText = GetComponent<TMP_Text>();
+        hpText = GetComponent<TMP_Text>();
 
-        if (scoreText == null)
+        if (hpText == null)
         {
             Debug.LogError("TMP_Text が取得できません。K_Score_Box は TextMeshPro オブジェクトにアタッチしてください。");
         }
@@ -20,6 +20,6 @@ public class K_Score_Box : MonoBehaviour
     void Update()
     {
         // Score_Receiver の static score をそのまま表示する
-        scoreText.text = "SCORE " + Score_Receiver.score.ToString();
+        hpText.text = "HP_BONUS " + Score_Receiver.hp.ToString();
     }
 }

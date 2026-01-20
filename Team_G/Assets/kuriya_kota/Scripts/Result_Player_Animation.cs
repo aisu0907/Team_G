@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Result_Player : MonoBehaviour
+public class Result_Player_Animation : MonoBehaviour
 {
     public float targetX = -3.2f;   // 到達したい位置
     public float speed = 5f;         // 右方向の移動速度

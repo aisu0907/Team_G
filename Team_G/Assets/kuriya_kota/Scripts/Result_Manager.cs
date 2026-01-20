@@ -47,7 +47,7 @@ public class Result_Manager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("AudioSourceが2つ必要です！");
+            Debug.LogError("AudioSourceが2つ必要です");
         }
 
        
@@ -94,7 +94,9 @@ public class Result_Manager : MonoBehaviour
         }
         score = Score_Receiver.score + (Score_Receiver.hp * 10000);
     }
-
+    /// <summary>
+    /// 受け取った値を参照してランクを表示する
+    /// </summary>
     void ShowRank()
     {
         GameObject rankObj = null;

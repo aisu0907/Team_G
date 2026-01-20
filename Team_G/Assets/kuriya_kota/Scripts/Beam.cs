@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Gasubura : MonoBehaviour
+public class Beam : MonoBehaviour
 //IDamageable
 {
     [Header("Audio Clips")]

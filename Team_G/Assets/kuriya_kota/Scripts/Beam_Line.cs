@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class k_target : MonoBehaviour
+public class Beam_Line : MonoBehaviour
 {
     public GameObject prefab;   // 呼び出すオブジェクト
     public float blinkInterval = 0.05f; // 点滅間隔
@@ -19,7 +19,7 @@ public class k_target : MonoBehaviour
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
-        StartCoroutine(BlinkAndSpawn()); //
+        StartCoroutine(BlinkAndSpawn()); 
         audioSource = GetComponent<AudioSource>();
         audioSource.PlayOneShot(sound1);
     }

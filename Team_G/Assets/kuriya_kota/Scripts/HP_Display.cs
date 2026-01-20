@@ -3,7 +3,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Health : MonoBehaviour
+public class HP_Display : MonoBehaviour
 {
 
     //HPのグラフィック設定
