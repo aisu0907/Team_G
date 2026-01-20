@@ -22,6 +22,9 @@ public class h_Item_Text : ItemBase
     {
         Instance = this;
     }
+/// <summary>
+/// 
+/// </summary>
     void Start()
     {
         //ƒŠƒZƒbƒg

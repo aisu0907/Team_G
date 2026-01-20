@@ -11,7 +11,7 @@ public class Sheild_Item : ItemBase
     public GameObject enemy_ref;
 
     //アイテム効果の上昇率
-    public int puls_bom = 1;             //ボムの取得量
+    public int plus_bom = 1;             //ボムの取得量
     public int item_score = 0;           //アイテム取得時のスコア
     public int heal_hp = 1;              //回復量
     public float up_speed = 0.5f;        //スピード上昇率
