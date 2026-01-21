@@ -2,7 +2,7 @@
 
 using UnityEngine;
 
-public class Top_Wall : MonoBehaviour
+public class TopWall : MonoBehaviour
 {
     void OnTriggerEnter2D(Collider2D collision)
     {

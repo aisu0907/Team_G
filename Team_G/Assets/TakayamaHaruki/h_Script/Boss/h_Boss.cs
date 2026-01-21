@@ -13,11 +13,11 @@ public class h_Boss : BossBase
     public GameObject warning;   //警告
     //範囲攻撃
     [Header("▼RangeAttack")]
-    public int range_attack_active;//範囲攻撃
-    private int range_attack_time; //範囲攻撃の攻撃間隔
+    public int range_attack_interval;//範囲攻撃
+    private int range_attack_time;   //範囲攻撃の攻撃間隔
     //階段攻撃
     [Header("▼StairsAttack")]
-    public int stairs_attack_active;      //階段攻撃
+    public int stairs_attack_interval;      //階段攻撃
     public float stairs_attack_cooldown;  //階段攻撃の弾のクールタイム
     public float stairs_attack_space;     //階段攻撃の弾の間隔
     public int stairs_attack_speed;       //階段攻撃の弾の速度
@@ -75,7 +75,7 @@ public class h_Boss : BossBase
         if (health > 0)
         {
             //階段攻撃のクールタイムが終わっている場合
-            if (stairs_attack_time >= stairs_attack_active)
+            if (stairs_attack_time >= stairs_attack_interval)
             {
                 //クールタイムが終わっていた場合
                 if (Time.time >= next_stairs_attack_time)
@@ -83,21 +83,21 @@ public class h_Boss : BossBase
                     Shot(stairs_attack_pos, bullet_vec); //弾を生成
                     next_stairs_attack_time = Time.time + stairs_attack_cooldown; //攻撃のクールタイム
                     stairs_attack_pos.x += stairs_attack_space; //弾の位置をずらす
-                    stairs_attack_count++;       //攻撃をカウント
+                    stairs_attack_count++; //攻撃をカウント
                 }
 
                 //最大まで攻撃した場合
                 if (stairs_attack_count >= stairs_attack_max)
                 {
-                    stairs_attack_count = 0;//攻撃カウントをリセット
-                    stairs_attack_time = 0; //攻撃パターンをリセット
+                    stairs_attack_count = 0; //攻撃カウントをリセット
+                    stairs_attack_time = 0;  //攻撃パターンをリセット
                     stairs_attack_pos.x = stairs_attack_x; //弾の位置をリセット
                 }
 
             }
 
             //範囲攻撃のクールタイムが終わっている場合
-            if (range_attack_time >= range_attack_active)
+            if (range_attack_time >= range_attack_interval)
             {
                 range_attack_time = 0;
                 WarningSpawn();
@@ -137,16 +137,15 @@ public class h_Boss : BossBase
         //警告の座標設定
         if (warning_switch)
         {
-            warning_save = warning_top_pos;
-            warning_switch = !warning_switch;
+            warning_save = warning_top_pos; //警告の座標を上に設定
+            warning_switch = !warning_switch; 
         }
         else
         {
-            warning_save = warning_down_pos;
+            warning_save = warning_down_pos; //警告の座標を下に設定
             warning_switch = !warning_switch;
         }
-
-        //警告を生成
-        Instantiate(warning, warning_save, Quaternion.identity);
+        
+        Instantiate(warning, warning_save, Quaternion.identity); //警告を生成
     }
 }

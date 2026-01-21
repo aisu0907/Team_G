@@ -1,4 +1,4 @@
-//h_Sheild_Item.cs
+//h_Shield_Item.cs
 
 using JetBrains.Annotations;
 using System.Collections.Generic;
@@ -104,16 +104,16 @@ public class Sheild_Item : ItemBase
                     Score_Manager.Instance.ItemScore();
 
             //反射範囲
-            if (i.item_id == sheild_item)
+            if (i.item_id == shield_item)
                 //累積上限に達していなかった場合
-                if (item_count[sheild_item] < i.max_item_count)
+                if (item_count[shield_item] < i.max_item_count)
                 {
                     //シールドを横に大きくする
                     sheild_size.x += up_sheild;
                     Sheild.Instance.transform.localScale = sheild_size;
                     Debug.Log(Sheild.Instance.transform.localScale);
                     //累積カウント
-                    item_count[sheild_item]++;
+                    item_count[shield_item]++;
 
                     SummonDisplay(i);
                     SummonText(i);

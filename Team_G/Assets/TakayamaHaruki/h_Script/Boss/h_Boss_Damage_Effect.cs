@@ -4,66 +4,65 @@ using System.Collections;
 public class Boss_Damage_Effect : MonoBehaviour
 {
     //ゲームオブジェクト
-    public GameObject flash;   //フラッシュ
-    public GameObject explode; //爆発演出
-    public SpriteRenderer img; //画像
+    [Header("▼EffectObjectData")]
+    public GameObject flash;  //フラッシュ
+    public GameObject explode;//爆発演出
+    public SpriteRenderer img;//画像
     //オーディオ関係
+    [Header("▼SoundEffect")]
     public AudioClip sound1;//サウンド
     public AudioClip sound2;//サウンド
+    private AudioSource audio_source;//オーディオソース
     //ダメージエフェクト
+    [Header("▼DamageEffect")]
     public int blinks_max  = 4; //点滅する回数
     public int damage_time = 10;//ダメージエフェクトタイミング
     public int save_time   = 20;//表示タイム
     //フラグ
-    public bool alive; //生存判定
+    public bool alive;//生存判定
     public bool damage_hit;//ダメージ判定
-    //死亡時エフェクト関係
-    private Vector2 size;    //サイズ
-    private float max_size_x;//最大サイズX
-    private float max_size_y;//最大サイズY
-    private float add_size_x;//追加するサイズX
-    private float add_size_y;//追加するサイズY
     //ダメージエフェクト
-    private Color save_color;   //通常の色
+    private Color default_color;//通常の色
     private Color damage_color; //ダメージ時の色
     private int color_timer;    //色切り替えタイマー
     private int color_count;    //色切り替え回数
-
-    private int timer = 0;
-    private AudioSource audio_source;
+   
+    private int timer = 0;//演出用タイマー
 
     private void Start()
     {
+        //リセット
+        //フラグリセット
         damage_hit = false;
         alive = false;
-        save_color = img.color;
+        //カラーリセット
+        default_color = img.color;
         damage_color = new Color(200, 40, 40, 1);
+        //オーディオソースをアタッチ
         audio_source = gameObject.GetComponent<AudioSource>();
-        //サイズ関係
-        //max_size_x = transform.localScale.x;
-        //max_size_y = transform.localScale.y;
-        //add_size_x = (transform.localScale.x / 30);
-        //add_size_y = (transform.localScale.y / 30);
-        //size = new Vector2(0, 0);
     }
     void Update()
     {
-        //ダメージ演出
+        //ダメージを受けた時
         if (damage_hit)
         {
+            //タイムカウント
             color_timer++;
 
-            if (color_timer == damage_time)
+            //0.2秒毎にボスの色を変える
             {
-                img.color = damage_color;//ダメージ時の色に変更
-                color_count++;
-            }
+                if (color_timer == damage_time)
+                {
+                    img.color = damage_color; //ダメージ時の色に変更
+                    color_count++; //色切り替えカウント
+                }
 
-            if (color_timer >= save_time)
-            {
-                img.color = save_color;//通常の色に変更
-                color_count++;
-                color_timer = 0;//タイマーリセット
+                if (color_timer >= save_time)
+                {
+                    img.color = default_color; //通常の色に変更
+                    color_count++;   //色切り替えカウント
+                    color_timer = 0; //タイマーリセット
+                }
             }
 
             //色切り替え回数が最大回数に達したら
@@ -76,59 +75,61 @@ public class Boss_Damage_Effect : MonoBehaviour
             }
         }
 
-        //死亡演出
+        //ボスが死んでいたら
         if (alive)
         {
+            //残っているボスの攻撃を削除
             if(timer == 0)
             {
         
-                // "Enemy"タグがついたすべてのオブジェクトを取得
+                //"Enemy"タグがついたすべてのオブジェクトを取得
                 GameObject[] objects = GameObject.FindGameObjectsWithTag("Enemy");
-                // 各オブジェクトを削除
+                //各エネミーを削除
                 foreach (GameObject obj in objects)
                 {
                     Destroy(obj);
-                    Instantiate(explode, obj.transform.position, Quaternion.identity);
+                    Instantiate(explode, obj.transform.position, Quaternion.identity); //削除したエネミーの位置に死亡エフェクトを生成
                 }
             }
+
             timer++;
 
-            //if (size.x <= max_size_x && size.y <= max_size_y)
-            //{
-            //    size.x += add_size_x;
-            //    size.y += add_size_y;
-            //    transform.localScale = size;
-            //}
-
             //爆発エフェクトを生成
-            if (timer == 10) random();
-            if (timer == 30) random();
-            if (timer == 40) random();
-            if (timer == 50) random();
-            if (timer == 80) random();
-            if (timer == 110) random();
-            if (timer == 120) random();
+            if (timer == 10) RandomPos();
+            if (timer == 30) RandomPos();
+            if (timer == 40) RandomPos();
+            if (timer == 50) RandomPos();
+            if (timer == 80) RandomPos();
+            if (timer == 110) RandomPos();
+            if (timer == 120) RandomPos();
             if (timer == 180)
             {
-                audio_source.PlayOneShot(sound1);//SEを再生
+                audio_source.PlayOneShot(sound1); //SEを再生
             }
             if (timer == 220)
             {
-                Score_Manager.Instance.score_switch = true;
+                Score_Manager.Instance.score_switch = true; //スコアが入るようにする
                 StartCoroutine(DelayedFlash());
-                alive = false;
+                alive = false; //
             }
         }
     }
 
-    private void random()
+    /// <summary>
+    /// 爆発エフェクトを生成するメソッド
+    /// </summary>
+    private void RandomPos()
     {
-        int x = Random.Range(-3, 4);
-        int y = Random.Range(-3, 4);
-        Instantiate(explode, new Vector2(transform.position.x + x,transform.position.y + y), Quaternion.identity);
+        int x = Random.Range(-3, 4); //x位置をランダムに決める
+        int y = Random.Range(-3, 4); //y位置をランダムに決める
+        Instantiate(explode, new Vector2(transform.position.x + x,transform.position.y + y), Quaternion.identity); //爆発エフェクトを生成
     }
 
 
+    /// <summary>
+    /// ボス死亡後の演出用メソッド。 
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator DelayedFlash()
     {
         int waitFrames1 = 60; // 待ちたいフレーム数
@@ -139,7 +140,7 @@ public class Boss_Damage_Effect : MonoBehaviour
         }
         audio_source.PlayOneShot(sound2);
         Instantiate(flash, new Vector2(transform.position.x,transform.position.y), Quaternion.identity);
-        GameManager.Instance.boss_die = false;
+        GameManager.Instance.boss_die = false; 
         Destroy(gameObject);
     }
 }

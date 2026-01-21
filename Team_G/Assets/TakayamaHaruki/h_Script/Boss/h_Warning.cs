@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class h_waring : MonoBehaviour
 {
+    //ゲームオブジェクト
     public GameObject range_attack; //範囲攻撃
     public SpriteRenderer img; //画像
     public AudioClip warning_sound;  //警告音
-
+    //
     public int warning1; //警告タイミング1
     public int warning2; //警告タイミング2
     public int max_warning; //最大警告回数

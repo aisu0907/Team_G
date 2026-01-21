@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class h_Boss_Attack : MonoBehaviour
 {
-    public int damage; //ダメージ
-    public int damage_interval; //ダメージ間隔
-    public int Display_end;  //表示終了
+    public int damage;//ダメージ
+    public int damage_interval;//ダメージ間隔
+    public int Display_end;//表示終了
 
-    private int Display_time; //表示時間
+    private int Display_time;//表示時間　　　　　　　　　　　　　　　　　　　　　　　　　　　
     private int damage_time; //ダメージタイム
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,6 +26,7 @@ public class h_Boss_Attack : MonoBehaviour
         if (Display_time >= Display_end)
             Destroy(gameObject); //範囲攻撃を削除
         
+        //ボスが死んでいた場合
         if(h_Boss.Instance.health <= 0)
         {
             Destroy(gameObject); //範囲攻撃を削除
