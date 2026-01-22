@@ -1,18 +1,18 @@
 using UnityEngine;
 
-public class h_waring : MonoBehaviour
+public class Warning : MonoBehaviour
 {
     //ゲームオブジェクト
     [Header("▼WarningObjectData")]
     public GameObject range_attack;//範囲攻撃
     public AudioClip warning_sound;//警告音
     public SpriteRenderer img;     //画像
-    private AudioSource audio_source; 
+    private AudioSource audio_source;//サウンド
     //警告表示
     [Header("▼WarningSetting")]
     public int warning_timing1;//警告タイミング1
     public int warning_timing2;//警告タイミング2
-    public int max_warning; //最大警告回数
+    public int max_warning;    //最大警告回数
     private int warning_count;//警告回数
     private int warning_time; //警告時間
     //色

@@ -24,7 +24,7 @@ public class BossBase : MonoBehaviour
             {
                 Destroy(collision.gameObject);　//触れたウイルスを削除
                 gameObject.GetComponent<BossBase>().health--; //ボスのHPを減らす
-                gameObject.GetComponent<Boss_Damage_Effect>().damage_hit = true; //ダメージを受ける
+                gameObject.GetComponent<BossDamageEffect>().damage_hit = true; //ダメージを受ける
                 Instantiate(explode, transform.position, Quaternion.identity);   //ダメージ演出表示
                 
                 //ボスの体力が0以下なら

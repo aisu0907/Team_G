@@ -1560,7 +1560,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1356498362545404966, guid: ea5eaac365ca38b4e9ee505e212ad080, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2266906530996990810, guid: ea5eaac365ca38b4e9ee505e212ad080, type: 3}
       propertyPath: m_Pivot.x
@@ -1661,6 +1661,18 @@ PrefabInstance:
     - target: {fileID: 7535395637411594314, guid: ea5eaac365ca38b4e9ee505e212ad080, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4060086271
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427640944053794644, guid: ea5eaac365ca38b4e9ee505e212ad080, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1197736991271366334}
+    - target: {fileID: 8427640944053794644, guid: ea5eaac365ca38b4e9ee505e212ad080, type: 3}
+      propertyPath: bomb_pos_x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427640944053794644, guid: ea5eaac365ca38b4e9ee505e212ad080, type: 3}
+      propertyPath: bomb_pos_y
+      value: 0.38
       objectReference: {fileID: 0}
     - target: {fileID: 9024407234389198130, guid: ea5eaac365ca38b4e9ee505e212ad080, type: 3}
       propertyPath: m_Name

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
-public class Boss_Damage_Effect : MonoBehaviour
+public class BossDamageEffect : MonoBehaviour
 {
     //ゲームオブジェクト
     [Header("▼EffectObjectData")]

@@ -105,8 +105,8 @@ public class h_Boss : BossBase
         }
         else
         {
-            if(gameObject.GetComponent<Boss_Damage_Effect>().alive == true)
-                gameObject.GetComponent<Boss_Damage_Effect>().alive = false;
+            if(gameObject.GetComponent<BossDamageEffect>().alive == true)
+                gameObject.GetComponent<BossDamageEffect>().alive = false;
         }
     }
 

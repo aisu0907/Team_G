@@ -5,11 +5,15 @@ using UnityEngine.UI;
 
 public class h_Bomb_Gage : MonoBehaviour
 {
+    //ゲームオブジェクト
+    [Header("▼BombGageObjectData")]
+    public Slider bomb_gage;  //スライダーを取得
+    public AudioClip bomb_get;//ボム取得時の音
+    //ボム
+    [Header("▼BombGageSetting")]
     public float bomb_gage_max;//ボムゲージ最大値
     public float bomb_gage_up; //時間経過で進むボムゲージ
     public int bomb_time;      //ボムゲージが進む頻度
-    public Slider bomb_gage;  //スライダーを取得
-    public AudioClip bomb_get;//ボム取得時の音
 
     private AudioSource audio_source; //オーディオ取得
     private int frame = 0;//フレーム

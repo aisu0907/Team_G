@@ -230,7 +230,7 @@ public class k_boss : BossBase
         move = false;
         Stage_BGM.Instance.bgm_stop = true;
 
-        if (gameObject.GetComponent<Boss_Damage_Effect>().alive == true)
-            gameObject.GetComponent<Boss_Damage_Effect>().alive = false;
+        if (gameObject.GetComponent<BossDamageEffect>().alive == true)
+            gameObject.GetComponent<BossDamageEffect>().alive = false;
     }
 }
