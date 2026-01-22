@@ -1,7 +1,8 @@
 using UnityEngine;
 
-public class h_Boss_Attack : MonoBehaviour
+public class h_BossAttack : MonoBehaviour
 {
+    [Header("▼Range Attack Setting")]
     public int damage;//ダメージ
     public int damage_interval;//ダメージ間隔
     public int Display_end;//表示終了

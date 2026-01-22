@@ -21,7 +21,7 @@ public class Boss_Damage_Effect : MonoBehaviour
     //フラグ
     public bool alive;//生存判定
     public bool damage_hit;//ダメージ判定
-    //ダメージエフェクト
+    //ダメージエフェクトカラー
     private Color default_color;//通常の色
     private Color damage_color; //ダメージ時の色
     private int color_timer;    //色切り替えタイマー

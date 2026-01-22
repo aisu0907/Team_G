@@ -3,14 +3,16 @@ using UnityEngine;
 
 public class h_Bomb : MonoBehaviour
 {
-    public GameObject bomb_gage; //ボムゲージ
+    [Header("▼BombObjectData")]
+    public GameObject bomb_gage;//ボムゲージ
     public GameObject bomb; //ボム
-    public float bomb_x;  //初期位置
-    public float bomb_y;  //初期位置
-    public float bomb_space; //ボム間隔
+    [Header("▼BombSetting")]
+    public float bomb_space;//ボム間隔
+    public float bomb_x;    //初期位置x
+    public float bomb_y;    //初期位置y
 
-    private Vector2 v;  //ボム座標
-    private int bomb_save;  //ボム数保存用
+    private Vector2 v;    //ボム座標
+    private int bomb_save;//ボム数保存用
     private GameObject[] bomb_num; //ボムカウント用
     public static h_Bomb Instance { get; private set; }
 

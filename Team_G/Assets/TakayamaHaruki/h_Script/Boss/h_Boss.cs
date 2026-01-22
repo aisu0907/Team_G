@@ -7,16 +7,16 @@ using UnityEngine;
 public class h_Boss : BossBase
 {
     //ƒQ[ƒ€ƒIƒuƒWƒFƒNƒg
-    [Header("¥ObjectData")]
+    [Header("¥Object Data")]
     public EnemyData bullet_data;//’e‚Ìî•ñ
     public GameObject bullet;    //’e
     public GameObject warning;   //Œx
     //”ÍˆÍUŒ‚
-    [Header("¥RangeAttack")]
+    [Header("¥Range Attack")]
     public int range_attack_interval;//”ÍˆÍUŒ‚
     private int range_attack_time;   //”ÍˆÍUŒ‚‚ÌUŒ‚ŠÔŠu
     //ŠK’iUŒ‚
-    [Header("¥StairsAttack")]
+    [Header("¥Stairs Attack")]
     public int stairs_attack_interval;      //ŠK’iUŒ‚
     public float stairs_attack_cooldown;  //ŠK’iUŒ‚‚Ì’e‚ÌƒN[ƒ‹ƒ^ƒCƒ€
     public float stairs_attack_space;     //ŠK’iUŒ‚‚Ì’e‚ÌŠÔŠu
@@ -29,7 +29,7 @@ public class h_Boss : BossBase
     private float next_stairs_attack_time;//ŠK’iUŒ‚‚Ì’e‚ÌƒN[ƒ‹ƒ^ƒCƒ€”äŠr—p
     //Œx•\¦
     [Header("¥Warning")]
-    private bool warning_switch;
+    private bool warning_switch;    //•\¦ˆÊ’uØ‚è‘Ö‚¦—p
     public float warning_x_pos;     //Œx•\¦‚ÌxˆÊ’u
     public float warning_y_top_pos; //Œx•\¦‚ÌyˆÊ’u
     public float warning_y_down_pos;//Œx•\¦‚ÌyˆÊ’u2

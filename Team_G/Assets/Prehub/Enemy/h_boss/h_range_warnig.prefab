@@ -77,7 +77,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1649744011
-  m_SortingLayer: 4
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.5283019, g: 0.012459949, b: 0.012459949, a: 0.5882353}
@@ -151,8 +151,8 @@ MonoBehaviour:
   range_attack: {fileID: 4072128513020978605, guid: 2d0e79b7229061c4ba983c56fb64da43, type: 3}
   img: {fileID: 2558590954707189048}
   warning_sound: {fileID: 8300000, guid: a3e4d06c34b2c9f4bb39db22a85e1437, type: 3}
-  warning1: 30
-  warning2: 60
+  warning_timing1: 30
+  warning_timing2: 60
   max_warning: 3
 --- !u!82 &-6639668193073629452
 AudioSource:
