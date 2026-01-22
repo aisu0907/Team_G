@@ -22,9 +22,6 @@ public class h_Item_Text : ItemBase
     {
         Instance = this;
     }
-/// <summary>
-/// 
-/// </summary>
     void Start()
     {
         //リセット
@@ -64,7 +61,7 @@ public class h_Item_Text : ItemBase
         //対応したアイテムのテキストを代入
         if (i.item_id == speed_item)   text =  "スピードアップ！";
         if (i.item_id == reflect_item) text = "ハンシャスピードアップ!";
-        if (i.item_id == sheild_item)  text = "シールドカクダイ！";
+        if (i.item_id == shield_item)  text = "シールドカクダイ！";
         if (i.item_id == life_item)    text = "HP回復！";
 
         display_time = 0;

@@ -34,7 +34,7 @@ public class Boss_Damage_Effect : MonoBehaviour
         //リセット
         //フラグリセット
         damage_hit = false;
-        alive = false;
+        alive = true;
         //カラーリセット
         default_color = img.color;
         damage_color = new Color(200, 40, 40, 1);
@@ -76,7 +76,7 @@ public class Boss_Damage_Effect : MonoBehaviour
         }
 
         //ボスが死んでいたら
-        if (alive)
+        if (!alive)
         {
             //残っているボスの攻撃を削除
             if(timer == 0)
@@ -110,13 +110,13 @@ public class Boss_Damage_Effect : MonoBehaviour
             {
                 Score_Manager.Instance.score_switch = true; //スコアが入るようにする
                 StartCoroutine(DelayedFlash());
-                alive = false; //
+                alive = true; //
             }
         }
     }
 
     /// <summary>
-    /// 爆発エフェクトを生成するメソッド
+    /// 爆発エフェクトを生成するメソッド。 爆発エフェクトの生成する位置をランダムに決めて生成します。
     /// </summary>
     private void RandomPos()
     {
@@ -127,7 +127,7 @@ public class Boss_Damage_Effect : MonoBehaviour
 
 
     /// <summary>
-    /// ボス死亡後の演出用メソッド。 
+    /// ボス死亡後の演出用メソッド。 ボス死亡時にコルーチンを使用して演出を生成します。
     /// </summary>
     /// <returns></returns>
     private IEnumerator DelayedFlash()
@@ -138,9 +138,9 @@ public class Boss_Damage_Effect : MonoBehaviour
         {
             yield return null; // 1フレーム待つ
         }
-        audio_source.PlayOneShot(sound2);
-        Instantiate(flash, new Vector2(transform.position.x,transform.position.y), Quaternion.identity);
-        GameManager.Instance.boss_die = false; 
+        audio_source.PlayOneShot(sound2); //SEをを再生
+        Instantiate(flash, new Vector2(transform.position.x,transform.position.y), Quaternion.identity); //画面全体にフラッシュを生成
+        GameManager.Instance.boss_die = false;  
         Destroy(gameObject);
     }
 }
