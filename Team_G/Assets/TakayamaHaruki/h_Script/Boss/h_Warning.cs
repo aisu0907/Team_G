@@ -1,3 +1,5 @@
+//Warning.cs
+
 using UnityEngine;
 
 public class Warning : MonoBehaviour
@@ -53,7 +55,7 @@ public class Warning : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);//ボスが死んだ場合警告表示を消す
+            Destroy(gameObject); //ボスが死んだ場合警告表示を消す
         }
 
         //最大警告まで行った場合

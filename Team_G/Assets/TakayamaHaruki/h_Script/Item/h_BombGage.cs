@@ -1,9 +1,9 @@
-//h_Bomb_Gage.cs
+//Bomb_Gage.cs
 
 using UnityEngine;
 using UnityEngine.UI;
 
-public class h_Bomb_Gage : MonoBehaviour
+public class BombGage : MonoBehaviour
 {
     //ゲームオブジェクト
     [Header("▼BombGageObjectData")]
@@ -15,10 +15,10 @@ public class h_Bomb_Gage : MonoBehaviour
     public float bomb_gage_up; //時間経過で進むボムゲージ
     public int bomb_time;      //ボムゲージが進む頻度
 
-    private AudioSource audio_source; //オーディオ取得
+    private AudioSource audio_source;//オーディオ取得
     private int frame = 0;//フレーム
 
-    public static h_Bomb_Gage Instance { get; private set; }
+    public static BombGage Instance { get; private set; }
 
     private void Awake()
     {
@@ -35,6 +35,7 @@ public class h_Bomb_Gage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //タイムカウント
         frame++;
 
         //1秒間にためるゲージ
@@ -50,21 +51,23 @@ public class h_Bomb_Gage : MonoBehaviour
         //ゲージがMAXの場合
         if (bomb_gage.value >= bomb_gage_max)
         {
-            bomb_add();
+            BombAdd();
         }
     }
 
-    //ボムを増やす
-    public void bomb_add()
+    /// <summary>
+    /// ボムを増やす用メソッド
+    /// </summary>
+    public void BombAdd()
     {
         //ゲージをリセット
         bomb_gage.value = 0;
+
         //プレイヤーのボム所持数が最大じゃない場合
         if (Player.Instance.bom < Player.Instance.max_bom)
-        //ボムを1個増やす
         {
-            audio_source.PlayOneShot(bomb_get);
-            Player.Instance.bom++;
+            audio_source.PlayOneShot(bomb_get); //SEを鳴らす
+            Player.Instance.bom++; //ボムを1個増やす
         }
     }
 }

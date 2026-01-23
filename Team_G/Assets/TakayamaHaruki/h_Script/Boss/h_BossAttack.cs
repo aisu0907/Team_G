@@ -1,6 +1,8 @@
+//BossAttack.cs
+
 using UnityEngine;
 
-public class h_BossAttack : MonoBehaviour
+public class BossAttack : MonoBehaviour
 {
     [Header("¥Range Attack Setting")]
     public int damage;//ƒ_ƒ[ƒW

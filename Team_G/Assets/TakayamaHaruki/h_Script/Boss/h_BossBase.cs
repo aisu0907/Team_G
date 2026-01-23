@@ -1,3 +1,5 @@
+//BossBase.cs
+
 using UnityEngine;
 
 public class BossBase : MonoBehaviour

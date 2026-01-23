@@ -1,6 +1,8 @@
+//BossDamageEffect.cs
+
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using System.Collections;
+
 public class BossDamageEffect : MonoBehaviour
 {
     //ゲームオブジェクト

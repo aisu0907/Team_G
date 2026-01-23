@@ -1,4 +1,4 @@
-//h_ItemBase.cs
+//ItemBase.cs
 
 using UnityEngine;
 

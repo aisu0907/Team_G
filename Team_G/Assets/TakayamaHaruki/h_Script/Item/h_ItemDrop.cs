@@ -1,9 +1,9 @@
-//h_Item_Drop.cs
+//Item_Drop.cs
 
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item_Drop : MonoBehaviour
+public class Item_Drop : ItemBase
 {
     [SerializeField] List<GameObject> itemList;//アイテムリスト
     public GameObject Life_item;   //回復アイテムオブジェクト

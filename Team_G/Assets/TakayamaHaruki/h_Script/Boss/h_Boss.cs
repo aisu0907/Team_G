@@ -1,7 +1,5 @@
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using Unity.VisualScripting;
+//h_Boss.cs
+
 using UnityEngine;
 
 public class h_Boss : BossBase
