@@ -1,4 +1,4 @@
-//Bomb_Gage.cs
+//BombGage.cs
 
 using UnityEngine;
 using UnityEngine.UI;

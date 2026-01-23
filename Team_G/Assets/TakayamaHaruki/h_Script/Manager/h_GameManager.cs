@@ -128,7 +128,7 @@ public class GameManager : MonoBehaviour
     public void ModeChange(bool mode)
     {
         for (int i = 0; i < item_drop.Count; i++)
-            item_drop[i].GetComponent<Item_Drop>().drop_switch = mode;  //アイテムドロップをOFF
+            item_drop[i].GetComponent<ItemDrop>().drop_switch = mode;  //アイテムドロップをOFF
         spawner.GetComponent<t_Enemy_Spwan>().spawn_switch = mode;      //エネミーの出現をOFF
         gameObject.GetComponent<Score_Manager>().score_switch = mode;   //スコア取得OFF        
     }

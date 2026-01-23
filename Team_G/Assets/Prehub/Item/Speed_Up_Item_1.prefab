@@ -175,6 +175,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 388ea2f668590e542a45b931c53242c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item_fall_Velocity: -1
+  item_fall_Velocity: -3
   item_id: 0
   max_item_count: 5
