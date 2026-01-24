@@ -6,11 +6,11 @@ using UnityEngine.UI;
 public class BombGage : MonoBehaviour
 {
     //ゲームオブジェクト
-    [Header("▼BombGageObjectData")]
+    [Header("▼Object Data")]
     public Slider bomb_gage;  //スライダーを取得
     public AudioClip bomb_get;//ボム取得時の音
     //ボム
-    [Header("▼BombGageSetting")]
+    [Header("▼BombGage Setting")]
     public float bomb_gage_max;//ボムゲージ最大値
     public float bomb_gage_up; //時間経過で進むボムゲージ
     public int bomb_time;      //ボムゲージが進む頻度
@@ -22,6 +22,7 @@ public class BombGage : MonoBehaviour
 
     private void Awake()
     {
+        //シングルトン
         Instance = this;
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created

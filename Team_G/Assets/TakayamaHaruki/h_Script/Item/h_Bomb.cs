@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour
 {
-    [Header("▼BombObjectData")]
+    //ゲームオブジェクト
+    [Header("▼Object Data")]
     public GameObject bomb_gage;//ボムゲージ
     public GameObject bomb;     //ボム
     public GameObject canvas;   //キャンバス
-    [Header("▼BombSetting")]
+    //ボムの座標
+    [Header("▼Bomb Setting")]
     public float bomb_space;//ボム間隔
-    public float bomb_pos_x;    //初期位置x
-    public float bomb_pos_y;    //初期位置y
+    public float bomb_pos_x;//初期位置x
+    public float bomb_pos_y;//初期位置y
 
     private Vector2 bomb_pos;//ボム座標
     private int bomb_count;//ボム数保存用

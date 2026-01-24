@@ -44,7 +44,7 @@ public class EJammer : Enemy
         Enemy other = collision.gameObject.GetComponent<Enemy>();
         if (other != null)
         {
-            Score_Manager.Instance.OnEnemiesCollided(this, other);
+            ScoreManager.Instance.OnEnemiesCollided(this, other);
         }
     }
 

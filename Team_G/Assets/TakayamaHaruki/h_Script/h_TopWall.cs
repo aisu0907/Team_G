@@ -12,7 +12,7 @@ public class TopWall : MonoBehaviour
             Enemy other = collision.gameObject.GetComponent<Enemy>();
             if (other != null)
             {
-                Score_Manager.Instance.Enemy_Score(other);
+                ScoreManager.Instance.Enemy_Score(other);
             }
             Destroy(collision.gameObject);
         }

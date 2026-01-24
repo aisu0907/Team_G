@@ -6,21 +6,22 @@ using System.Collections;
 public class BossDamageEffect : MonoBehaviour
 {
     //ゲームオブジェクト
-    [Header("▼EffectObjectData")]
+    [Header("▼Effect Object Data")]
     public GameObject flash;  //フラッシュ
     public GameObject explode;//爆発演出
     public SpriteRenderer img;//画像
     //オーディオ関係
-    [Header("▼SoundEffect")]
+    [Header("▼Sound Effect")]
     public AudioClip sound1;//サウンド
     public AudioClip sound2;//サウンド
     private AudioSource audio_source;//オーディオソース
     //ダメージエフェクト
-    [Header("▼DamageEffect")]
+    [Header("▼Damage Effect")]
     public int blinks_max  = 4; //点滅する回数
     public int damage_time = 10;//ダメージエフェクトタイミング
     public int save_time   = 20;//表示タイム
     //フラグ
+    [Header("▼Effect Flag")]
     public bool alive;//生存判定
     public bool damage_hit;//ダメージ判定
     //ダメージエフェクトカラー
@@ -110,7 +111,7 @@ public class BossDamageEffect : MonoBehaviour
             }
             if (timer == 220)
             {
-                Score_Manager.Instance.score_switch = true; //スコアが入るようにする
+                ScoreManager.Instance.score_switch = true; //スコアが入るようにする
                 StartCoroutine(DelayedFlash());
                 alive = true; //
             }

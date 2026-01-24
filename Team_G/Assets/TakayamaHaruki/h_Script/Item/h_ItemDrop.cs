@@ -6,11 +6,11 @@ using UnityEngine;
 public class ItemDrop : MonoBehaviour
 {
     //ゲームオブジェクト
-    [Header("▼ItemDropObjectData")]
+    [Header("▼Object Data")]
     [SerializeField] List<GameObject> itemList;//アイテムリスト
     public GameObject life_item;//回復アイテムオブジェクト
     //アイテムドロップ
-    [Header("▼ItemDropSetting")]
+    [Header("▼Item Drop Setting")]
     public bool drop_switch = true;//アイテムドロップ用フラグ
     public int life_drop = 0; //回復アイテムがドロップする確率
     private int rand_drop = 0;//回復アイテムドロップ抽選用

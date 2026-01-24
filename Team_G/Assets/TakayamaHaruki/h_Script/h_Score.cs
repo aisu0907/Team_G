@@ -14,6 +14,7 @@ public class Score : MonoBehaviour
     public static Score Instance { get; private set; }
     private void Awake()
     {
+        //ƒVƒ“ƒOƒ‹ƒgƒ“
         Instance = this;
     }
 

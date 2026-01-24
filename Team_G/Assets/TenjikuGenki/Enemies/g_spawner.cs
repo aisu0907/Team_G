@@ -44,7 +44,7 @@ public class t_Enemy_Spwan : MonoBehaviour
 
         if (spawn_switch)
         {
-            if (frame > enemy_list[GameManager.Instance.faze / 2].spawn_timer)
+            if (frame > enemy_list[GameManager.Instance.phase / 2].spawn_timer)
             {
                 // Decide Pos
                 float posX = Random.Range(minX, maxX);
@@ -52,10 +52,10 @@ public class t_Enemy_Spwan : MonoBehaviour
                 Vector2 pos = new Vector2(posX, posY);
 
                 // Spawn Enemy
-                int type = GameManager.Instance.faze == 0 ? 0 : Random.Range(0, 2);
+                int type = GameManager.Instance.phase == 0 ? 0 : Random.Range(0, 2);
                 int color = Random.Range(0, 2);
-                if (type == 0) { var e = Instantiate(prefab[type], pos, Quaternion.identity).GetComponent<ENormal>(); e.Init(enemy_list[GameManager.Instance.faze / 2].list[type], new Vector2(0, -1), color, enemy_list[GameManager.Instance.faze / 2].list[type].speed); }
-                if (type == 1) { var e = Instantiate(prefab[type], pos, Quaternion.identity).GetComponent<EReflect>(); e.Init(enemy_list[GameManager.Instance.faze / 2].list[type], new Vector2(0, -1), color, enemy_list[GameManager.Instance.faze / 2].list[type].speed); }
+                if (type == 0) { var e = Instantiate(prefab[type], pos, Quaternion.identity).GetComponent<ENormal>(); e.Init(enemy_list[GameManager.Instance.phase / 2].list[type], new Vector2(0, -1), color, enemy_list[GameManager.Instance.phase / 2].list[type].speed); }
+                if (type == 1) { var e = Instantiate(prefab[type], pos, Quaternion.identity).GetComponent<EReflect>(); e.Init(enemy_list[GameManager.Instance.phase / 2].list[type], new Vector2(0, -1), color, enemy_list[GameManager.Instance.phase / 2].list[type].speed); }
 
                 // Reset
                 frame = 0;
@@ -63,7 +63,7 @@ public class t_Enemy_Spwan : MonoBehaviour
             }
         }
 
-        if (GameManager.Instance.faze == 4)
+        if (GameManager.Instance.phase == 4)
         {
             jammer_timer++;
             if (jammer_timer >= jammer_spawn)
