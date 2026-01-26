@@ -12,11 +12,6 @@ public class ENormal : Enemy, IDamageable, IReflectable
         ;
     }
 
-    void Start()
-    {
-        ;
-    }
-
     void Update()
     {
         // Spin

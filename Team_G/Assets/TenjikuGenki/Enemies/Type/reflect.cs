@@ -12,11 +12,6 @@ public class EReflect : Enemy, IDamageable, IReflectable
         ;
     }
 
-    void Start()
-    {
-        ;
-    }
-
     void Update()
     {
         // Spin

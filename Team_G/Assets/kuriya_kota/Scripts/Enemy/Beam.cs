@@ -34,11 +34,11 @@ public class Beam : MonoBehaviour
     /// <param name="collision"></param>
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player"&&k_boss.Instance.health>5)
+        if (collision.gameObject.tag == "Player"&&LastBoss.Instance.health>5)
         {
             Player.Instance.Damage(1,gameObject,false);
         }
-        else if (collision.gameObject.tag == "Player" && k_boss.Instance.health <= 5)
+        else if (collision.gameObject.tag == "Player" && LastBoss.Instance.health <= 5)
         {
             Player.Instance.Damage(2,gameObject,false);
         }

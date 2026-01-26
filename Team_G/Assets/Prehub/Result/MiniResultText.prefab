@@ -100,7 +100,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 16
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -149,5 +149,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78df85d762b3b6f469a17987e93cf6bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dark: {fileID: 5190081689524932153, guid: d2a7753abe7e5554caf674eb152c44cc, type: 3}
   uiPrefab: {fileID: 593503372209779480, guid: ea5eaac365ca38b4e9ee505e212ad080, type: 3}

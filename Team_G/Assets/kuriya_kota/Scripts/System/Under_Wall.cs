@@ -2,7 +2,7 @@
 
 using UnityEngine;
 
-public class Under_Wall : MonoBehaviour
+public class UnderWall : MonoBehaviour
 {
     public GameObject player;
 

@@ -10,11 +10,6 @@ public class EJammer : Enemy
         ;
     }
 
-    void Start()
-    {
-        ;
-    }
-
     void Update()
     {
         ;
