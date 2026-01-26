@@ -20,9 +20,8 @@ public class Player : MonoBehaviour
 
     [Header("▼ Bom")]
     public int bom = 0;     //ボムの所持数
-    public int bom_time = 0;//ボムのクールタイム
     public int max_bom = 0; //ボム最大所持数
-    int frame = 0;
+    private bool bomb_switch;
 
     [Header("▼ DamageEffect")]
     public GameObject shake;
@@ -65,9 +64,9 @@ public class Player : MonoBehaviour
 
         //RigidBody
         rbody = this.GetComponent<Rigidbody2D>();
-        
+
         //ボム
-        frame = 300;
+        bomb_switch = true;
 
         //被弾
         damage_hit = true;
@@ -107,27 +106,27 @@ public class Player : MonoBehaviour
             Shield.Instance.transform.position = new Vector2(transform.position.x, transform.position.y + 0.8f);
 
             //ボムの処理
-            if (frame >= bom_time)
+            if (Input.GetKey(KeyCode.Space) && bom > 0 && bomb_switch)
             {
-                if (Input.GetKey(KeyCode.Space) && bom > 0)
+                bomb_switch = false;
+
+                // "Enemy"タグがついたすべてのオブジェクトを取得
+                GameObject[] objects = GameObject.FindGameObjectsWithTag("Enemy");
+
+                // 各オブジェクトを削除
+                foreach (GameObject obj in objects)
                 {
-                    frame = 0;
-                    // "Enemy"タグがついたすべてのオブジェクトを取得
-                    GameObject[] objects = GameObject.FindGameObjectsWithTag("Enemy");
-
-                    // 各オブジェクトを削除
-                    foreach (GameObject obj in objects)
-                    {
-                        Destroy(obj);
-                        Instantiate(explode, obj.transform.position, Quaternion.identity);
-                    }
-
-                    //bomの数を減らす
-                    bom--;
+                    Destroy(obj);
+                    Instantiate(explode, obj.transform.position, Quaternion.identity);
                 }
-            }
 
-            frame++;
+                //bomの数を減らす
+                bom--;
+            }
+            else
+            {
+                bomb_switch = true;
+            }
 
             // 被弾演出
             if (!damage_hit)
@@ -154,7 +153,7 @@ public class Player : MonoBehaviour
                 if (color_count >= blinks_max)
                 {
                     //リセット
-                    color_timer = 0; 
+                    color_timer = 0;
                     color_count = 0;
                     damage_hit = true;
                 }
