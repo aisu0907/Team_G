@@ -8,6 +8,7 @@ public class BossBase : MonoBehaviour
     [Header("▼Base Status")]
     public int health; //体力
     public float speed;//移動速度
+    //ボスの死亡位置
     [Header("▼Death Animation")]
     public float death_pos_x;//死亡後に移動する座標x
     public float death_pos_y;//死亡後に移動する座標y

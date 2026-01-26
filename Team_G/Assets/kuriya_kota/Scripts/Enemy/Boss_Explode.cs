@@ -4,13 +4,11 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Boss_Explode : MonoBehaviour
+public class BossExplode : MonoBehaviour
 {
     public float size = 0.0f;
     public float max_size = 0.8f;
     public float add_size = 0.1f;
-
-    
 
     public int timer = 0;
 
@@ -37,13 +35,13 @@ public class Boss_Explode : MonoBehaviour
 
 
 
-        if (timer == 10) random();
-        if (timer == 30)  random();
-        if (timer == 40)  random();
-        if (timer == 50)  random();
-        if (timer == 80)  random();
-        if (timer == 110) random();
-        if (timer == 120) random();
+        if (timer == 10) Random_Explode();
+        if (timer == 30) Random_Explode();
+        if (timer == 40)  Random_Explode();
+        if (timer == 50)  Random_Explode();
+        if (timer == 80)  Random_Explode();
+        if (timer == 110) Random_Explode();
+        if (timer == 120) Random_Explode();
         if (timer == 180)
         {
             audioSource.PlayOneShot(sound1);
@@ -53,18 +51,21 @@ public class Boss_Explode : MonoBehaviour
         //シーン見込み予定
         if (timer > 400) Destroy(gameObject);
 
-
-
     }
-
-    private void random()
+    /// <summary>
+    /// 爆破位置のXとYを-3から4のランダムな値で決めて、その部分に爆発演出を生成
+    /// </summary>
+    private void Random_Explode()
     {
         int x = Random.Range(-3, 4);
         int y = Random.Range(-3, 4);
         Instantiate(explode, new Vector2(k_boss.Instance.transform.position.x + x, k_boss.Instance.transform.position.y + y), Quaternion.identity);
     }
 
-
+    /// <summary>
+    /// 爆発演出待機後、画面をフラッシュさせてフェイズが5以上ならリザルト画面に移行する
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator DelayedFlash()
     {
         int waitFrames1 = 60; // 待ちたいフレーム数

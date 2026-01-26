@@ -41,6 +41,7 @@ public class h_Boss : BossBase
 
     private void Awake()
     {
+        //ƒVƒ“ƒOƒ‹ƒgƒ“
         Instance = this;
     }
 

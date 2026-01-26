@@ -17,7 +17,7 @@ public class Health : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //hp‚Ì‰æ‘œ‚ğİ’è
+        //HP‚Ì‰æ‘œ‚ğİ’è
         hp3 = Resources.Load<Sprite>("HP3");
         hp2 = Resources.Load<Sprite>("HP2");
         hp1 = Resources.Load<Sprite>("HP1");

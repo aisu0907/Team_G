@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class Score_Display : MonoBehaviour
+public class ScoreDisplay : MonoBehaviour
 {
     private TMP_Text scoreText;
 
@@ -20,6 +20,6 @@ public class Score_Display : MonoBehaviour
     void Update()
     {
         // Score_Receiver ‚Ì static score ‚ð‚»‚Ì‚Ü‚Ü•\Ž¦‚·‚é
-        scoreText.text = "SCORE " + Score_Receiver.score.ToString();
+        scoreText.text = "SCORE " + ScoreReceiver.score.ToString();
     }
 }

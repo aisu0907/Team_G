@@ -3,7 +3,7 @@ using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class k_boss : BossBase 
+public class LastBoss : BossBase 
 {
     Rigidbody2D rb;
     SpriteRenderer img;
@@ -12,7 +12,6 @@ public class k_boss : BossBase
     public int jamamer_timer;
     public int attack=0;
     int mode = 0;
-    int jama = 0;
 
     bool move = true;
     bool isDying = false;
@@ -30,9 +29,9 @@ public class k_boss : BossBase
 
     public GameObject prefab2;
     public EnemyData enemy2;
-    public GameObject kill;
+    public GameObject prefab3;
 
-    public GameObject flash;
+    public GameObject prefab4;
 
     AudioSource audioSource;
 
@@ -41,7 +40,7 @@ public class k_boss : BossBase
         Instance = this;
     }
 
-    public static k_boss Instance { get; private set; }
+    public static LastBoss Instance { get; private set; }
 
     void Start()
     {
@@ -85,13 +84,13 @@ public class k_boss : BossBase
 
             case 1:
                 if (health <= 5)
-                    StartCoroutine(KillRapid());
+                    StartCoroutine(RapidBeam());
                 else
                     Beam();
                 break;
 
             case 2:
-                StartCoroutine(Gumishot());
+                StartCoroutine(ContinuousShot());
                 if (health <= 5) Beam();
                 break;
 
@@ -111,18 +110,26 @@ public class k_boss : BossBase
             Die();
         }
     }
-
+    /// <summary>
+    /// ボスの体力を減らす
+    /// </summary>
+    /// <param name="collision"></param>
     void OnTriggerEnter2D(Collider2D collision) {
         if (health > 0)
             boss_damage(collision);
     }
-
+    /// <summary>
+    /// ボスを左右に一定幅動かす
+    /// </summary>
     private void Move()
     {
             float x = Mathf.Sin(Time.time) * speed - 2f;
             transform.position = new Vector2(x, transform.position.y);
     }
 
+    /// <summary>
+    /// ボスをY0に固定してX方向に震わせる
+    /// </summary>
     private void Death_Move()
     {
         float speed = 40f;
@@ -132,7 +139,9 @@ public class k_boss : BossBase
 
         transform.position = basePos + new Vector2(offsetX, 0);
     }
-
+    /// <summary>
+    /// 下方向にウイルスを3体拡散して飛ばす
+    /// </summary>
     private void SpiralShot()
     {
         if (!spiralOnce) return;
@@ -155,7 +164,9 @@ public class k_boss : BossBase
         spiralOnce = true;
         mode = 0;
     }
-
+    /// <summary>
+    /// ビームのオブジェクトをプレイヤーの位置に呼び出す
+    /// </summary>
     private void Beam()
     {
         if (!beamOnce) return;
@@ -163,11 +174,15 @@ public class k_boss : BossBase
 
         timer = 0;
 
-        Instantiate(kill, Player.Instance.transform.position, Quaternion.identity);
+        Instantiate(prefab3, Player.Instance.transform.position, Quaternion.identity);
 
         StartCoroutine(ResetBeam());
     }
 
+    /// <summary>
+    ///  beamOnceを管理するためのコルーチン
+    /// </summary>
+    /// <returns></returns>
     IEnumerator ResetBeam()
     {
         yield return new WaitForSeconds(2f);
@@ -175,7 +190,9 @@ public class k_boss : BossBase
         timer = 0;
         mode = 0;
     }
-
+    /// <summary>
+    /// ジャマーウイルスを生成
+    /// </summary>
     private void SummonJammer()
     {
         if (!summonOnce) return;
@@ -187,23 +204,29 @@ public class k_boss : BossBase
 
         summonOnce = true;
     }
-
-    private IEnumerator KillRapid()
+    /// <summary>
+    /// ビームを連続で3本生成する
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator RapidBeam()
     {
         if (!beamOnce) yield break;
         beamOnce = false;
 
         for (int i = 0; i < 2; i++)
         {
-            Instantiate(kill, Player.Instance.transform.position, Quaternion.identity);
+            Instantiate(prefab3, Player.Instance.transform.position, Quaternion.identity);
             yield return new WaitForSeconds(2f);
         }
 
         beamOnce = true;
         mode = 0;
     }
-
-    private IEnumerator Gumishot()
+    /// <summary>
+    /// ウイルスをプレイヤーの方向に連続で発射する
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator ContinuousShot()
     {
         if (!targetOnce) yield break;
         targetOnce = false;
@@ -222,7 +245,9 @@ public class k_boss : BossBase
         mode = 0;
     }
 
-
+    /// <summary>
+    /// 死亡時演出
+    /// </summary>
     public void Die()
     {
         if (isDying) return;
@@ -230,7 +255,7 @@ public class k_boss : BossBase
         move = false;
         StageBGM.Instance.bgm_stop = true;
 
-        if (gameObject.GetComponent<BossDamageEffect>().alive == true)
-            gameObject.GetComponent<BossDamageEffect>().alive = false;
+        if (gameObject.GetComponent<BossDamageEffect>().alive == false)
+            gameObject.GetComponent<BossDamageEffect>().alive = true;
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class Beam_Line : MonoBehaviour
+public class BeamLine : MonoBehaviour
 {
     public GameObject prefab;   // 呼び出すオブジェクト
     public float blinkInterval = 0.05f; // 点滅間隔
@@ -23,7 +23,10 @@ public class Beam_Line : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         audioSource.PlayOneShot(sound1);
     }
-
+    /// <summary>
+    /// timerがlifeTime未満ならblinkInterval間隔で点滅させる
+    /// </summary>
+    /// <returns></returns>
     IEnumerator BlinkAndSpawn()
     {
         float timer = 0f;

@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class Score_Receiver : MonoBehaviour
+public class ScoreReceiver : MonoBehaviour
 {
 
-    public static Score_Receiver Instance { get; private set; }
+    public static ScoreReceiver Instance { get; private set; }
 
     //public static int score = 0;
     public static int score = 0;

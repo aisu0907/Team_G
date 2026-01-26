@@ -3,7 +3,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Shield_Arrow : MonoBehaviour
+public class ShieldArrow : MonoBehaviour
 {
     public GameObject red;    // 赤のターゲット
     public GameObject green;  // 緑のターゲット

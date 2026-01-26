@@ -34,7 +34,7 @@ public class ResultText : MonoBehaviour
                 Destroy(gameObject);
                 GameManager.Instance.ModeChange(true);
                 GameManager.Instance.frame = 0;
-                GameManager.Instance.faze++;
+                GameManager.Instance.phase++;
                 DataHolder.GetGameData();
             }
         }

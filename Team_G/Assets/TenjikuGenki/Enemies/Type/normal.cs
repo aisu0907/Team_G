@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ENormal : Enemy, IDamageable
+public class ENormal : Enemy, IDamageable, IReflectable
 {
     int timer = 0;
     public List<Sprite> Img;
-    //public float ref_speed { get; set; } = 0;
+    public float ref_speed { get; set; } = 0;
 
     void Awake()
     {
@@ -46,7 +46,7 @@ public class ENormal : Enemy, IDamageable
             if(on_hitting)
                 rb.linearVelocity = vec.normalized * speed;
             else
-                rb.linearVelocity = vec.normalized * (speed);
+                rb.linearVelocity = vec.normalized * (speed + ref_speed);
     }
 
     public void Init(EnemyData db, Vector2 _vec, int _color, float _speed)
@@ -73,7 +73,7 @@ public class ENormal : Enemy, IDamageable
         Enemy other = collision.gameObject.GetComponent<Enemy>();
         if (other != null)
         {
-            Score_Manager.Instance.OnEnemiesCollided(this, other);
+            ScoreManager.Instance.OnEnemiesCollided(this, other);
         }
     }
 

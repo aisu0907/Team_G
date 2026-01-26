@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Title_Arrow : MonoBehaviour
+public class TitleArrow : MonoBehaviour
 {
     public GameObject arrow;  // 矢印
     public GameObject start;    
@@ -59,22 +59,30 @@ public class Title_Arrow : MonoBehaviour
         }
     }
 
+    /// <summary>
+    ///  決定音が鳴り終わるまで少し待つ
+    /// </summary>
+    /// <param name="selected"></param>
+    /// <returns></returns>
+
     private System.Collections.IEnumerator WaitAndExecute(int selected)
     {
-        // 決定音が鳴り終わるまで少し待つ
+        
         yield return new WaitForSeconds(0.5f);
 
         switch (selected)
         {
             case 0:
-                SceneManager.LoadScene("Play_Scene");
+                SceneManager.LoadScene("information");
                 break;
             case 1:
                 EndGame();
                 break;
         }
     }
-
+    /// <summary>
+    /// ゲームを終了する
+    /// </summary>
     private void EndGame()
     {
 #if UNITY_EDITOR

@@ -1,4 +1,4 @@
-//画面上部の当たり判定
+//TopWall
 
 using UnityEngine;
 
@@ -9,11 +9,15 @@ public class TopWall : MonoBehaviour
         //壁に触れたらエネミーを削除
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            //触れたエネミーの情報を保存
             Enemy other = collision.gameObject.GetComponent<Enemy>();
+            
             if (other != null)
             {
-                Score_Manager.Instance.Enemy_Score(other);
+                //壁に触れた敵のスコアを追加
+                ScoreManager.Instance.Enemy_Score(other);
             }
+            //エネミーを削除
             Destroy(collision.gameObject);
         }
     }

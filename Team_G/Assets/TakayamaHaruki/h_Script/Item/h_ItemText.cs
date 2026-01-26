@@ -5,6 +5,7 @@ using TMPro;
 
 public class ItemText : ItemBase
 {
+    [Header("▼Display Time")]
     public int display_on;//テキスト表示時間
 
     private TMP_Text item_text_display;//テキストコンポーネント
@@ -20,6 +21,7 @@ public class ItemText : ItemBase
     public static ItemText Instance { get; private set; }
     void Awake()
     {
+        //シングルトン
         Instance = this;
     }
 
