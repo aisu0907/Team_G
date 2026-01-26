@@ -1,7 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 
-public class Text_miene : MonoBehaviour
+public class HideText : MonoBehaviour
 {
     TMP_Text text;
     float speed = 2f;  // 虹色の変化スピード

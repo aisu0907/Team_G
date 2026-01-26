@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Return : MonoBehaviour
+public class Continue : MonoBehaviour
 {
     // Update is called once per frame
     void Update()

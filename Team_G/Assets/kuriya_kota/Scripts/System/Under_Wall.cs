@@ -2,7 +2,7 @@
 
 using UnityEngine;
 
-public class Kill_Death : MonoBehaviour
+public class Under_Wall : MonoBehaviour
 {
     public GameObject player;
 

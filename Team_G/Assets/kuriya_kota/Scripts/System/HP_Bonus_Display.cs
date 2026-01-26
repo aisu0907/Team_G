@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class HP_Bonus_Display : MonoBehaviour
+public class HPBonusDisplay : MonoBehaviour
 {
     private TMP_Text hpText;
 
@@ -20,6 +20,6 @@ public class HP_Bonus_Display : MonoBehaviour
     void Update()
     {
         // Score_Receiver ‚Ì static score ‚ð‚»‚Ì‚Ü‚Ü•\Ž¦‚·‚é
-        hpText.text = "HP_BONUS " + Score_Receiver.hp.ToString();
+        hpText.text = "HP_BONUS " + ScoreReceiver.hp.ToString();
     }
 }

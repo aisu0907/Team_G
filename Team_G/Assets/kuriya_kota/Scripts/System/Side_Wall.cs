@@ -2,7 +2,7 @@
 
 using UnityEngine;
 
-public class Side_Wall : MonoBehaviour
+public class SideWall : MonoBehaviour
 {
     void OnTriggerEnter2D(Collider2D collision)
     {

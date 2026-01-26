@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
-public class test_flash : MonoBehaviour
+public class Flash : MonoBehaviour
 {
     SpriteRenderer img;
 
@@ -25,11 +25,18 @@ public class test_flash : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// 外部からコルーチンを呼び出す
+    /// </summary>
     public void FlashAndDisappear()
     {
         StartCoroutine(FlashCoroutine());
     }
 
+    /// <summary>
+    /// 画像を一瞬白くフラッシュさせてから透明にフェードアウトする処理
+    /// </summary>
+    /// <returns></returns>
     IEnumerator FlashCoroutine()
     {
         

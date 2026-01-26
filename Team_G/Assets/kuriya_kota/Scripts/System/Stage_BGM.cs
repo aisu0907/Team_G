@@ -1,13 +1,13 @@
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class Stage_BGM : MonoBehaviour
+public class StageBGM : MonoBehaviour
 {
     public bool bgm_stop=false;
     public AudioClip bgm;
     AudioSource audioSource;
 
-    public static Stage_BGM Instance { get; private set; }
+    public static StageBGM Instance { get; private set; }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()

@@ -3,9 +3,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Result_Manager : MonoBehaviour
+public class ResultManager : MonoBehaviour
 {
-    public static Result_Manager Instance { get; private set; }
+    public static ResultManager Instance { get; private set; }
 
     public static int score = 0;
     public int timer = 0;
@@ -37,7 +37,7 @@ public class Result_Manager : MonoBehaviour
     void Start()
     {
         DataHolder.DataReset();
-        score = Score_Receiver.score;
+        score = ScoreReceiver.score;
 
         AudioSource[] sources = GetComponents<AudioSource>();
         if (sources.Length >= 2)
@@ -92,7 +92,7 @@ public class Result_Manager : MonoBehaviour
         {
             SceneManager.LoadScene("Title");
         }
-        score = Score_Receiver.score + (Score_Receiver.hp * 10000);
+        score = ScoreReceiver.score + (ScoreReceiver.hp * 10000);
     }
     /// <summary>
     /// 受け取った値を参照してランクを表示する

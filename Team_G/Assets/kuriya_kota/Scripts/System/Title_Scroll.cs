@@ -6,7 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Titele_Scroll : MonoBehaviour
+public class TiteleScroll : MonoBehaviour
 {
     public float speed = 0.5f;          // スクロール速度
     public float resetPositionY = -10f; // どこまで下がったらリセットするか

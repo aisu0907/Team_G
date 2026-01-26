@@ -28,7 +28,10 @@ public class Beam : MonoBehaviour
         // 1秒後に自動破壊
         Destroy(gameObject, 1);
     }
-
+    /// <summary>
+    /// ボスの体力が5以下ならビームのダメージを２にする
+    /// </summary>
+    /// <param name="collision"></param>
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player"&&k_boss.Instance.health>5)
@@ -40,6 +43,4 @@ public class Beam : MonoBehaviour
             Player.Instance.Damage(2,gameObject,false);
         }
     }
-
-
 }
