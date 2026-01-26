@@ -21,8 +21,8 @@ public class DataHolder : MonoBehaviour
     static public void GetGameData()
     {
         // 盾からアイテムの情報を取得
-        var Shield = Shield.Instance.GetComponent<Shield_Item>();
-        for(int i = 0; i < 3; i++) player_took_item[i] = Shield.item_count[i];
+        var shield = Shield.Instance.GetComponent<Shield_Item>();
+        for(int i = 0; i < 3; i++) player_took_item[i] = shield.item_count[i];
 
         // フェーズの数値を取得
         game_phaze = GameManager.Instance.phase;
