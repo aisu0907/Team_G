@@ -699,6 +699,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8949682691573965162, guid: 3fab587ec9c776b4b9521d2fb3352860, type: 3}
     - target: {fileID: 2021564740943638649, guid: ece49d0188f35714ea82e5bc99c9d451, type: 3}
+      propertyPath: shield
+      value: 
+      objectReference: {fileID: 5988915149965031515, guid: b36ce76bff42ffc429c359ef883cf6a9, type: 3}
+    - target: {fileID: 2021564740943638649, guid: ece49d0188f35714ea82e5bc99c9d451, type: 3}
       propertyPath: sound1
       value: 
       objectReference: {fileID: 8300000, guid: d172f115053ed4e439c6c0772519aab8, type: 3}
@@ -1448,6 +1452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c13208dc5fb8b1242a4a3f546b0f47ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawner: {fileID: 1308437786}
   boss:
   - {fileID: 11400000, guid: 17838ab36a55bcb429fc4970c4930a7d, type: 2}
   - {fileID: 11400000, guid: 8361bcc07b98ab54dadf070088d04893, type: 2}
@@ -1456,13 +1461,12 @@ MonoBehaviour:
   - {fileID: 1323917000318406210, guid: 4e7fcc606545e1043bf191ae82e78847, type: 3}
   - {fileID: 1323917000318406210, guid: 153c5c8e6b3195a4ab8f621276dbfb1e, type: 3}
   - {fileID: 1323917000318406210, guid: eb5917cc4ddf9bd449a67f453b91cefc, type: 3}
-  spawner: {fileID: 1308437786}
-  uiPrefab: {fileID: 1197736991271366334}
+  uiprefab: {fileID: 0}
   text: {fileID: 8731943311653199152, guid: 29b2213af102eb042acd5e09a9d86478, type: 3}
   dark: {fileID: 5190081689524932153, guid: d2a7753abe7e5554caf674eb152c44cc, type: 3}
   boss_position_x: -2.6
   boss_position_y: 3
-  faze: 0
+  phase: 0
   boss_die: 0
   frame: 0
 --- !u!114 &1451417415
