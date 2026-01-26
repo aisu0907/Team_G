@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
 {
     [Header("▼ GameObject")]
     public GameObject explode;
-    public GameObject Shield;
+    public GameObject shield;
     public SpriteRenderer img; //画像
     public Rigidbody2D rbody;
 
@@ -57,7 +57,7 @@ public class Player : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Instantiate(Shield);
+        Instantiate(shield);
 
         //開始位置
         transform.position = new Vector3(start_x,start_y,0);
