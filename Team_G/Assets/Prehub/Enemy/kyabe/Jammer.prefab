@@ -110,6 +110,7 @@ MonoBehaviour:
   score: 0
   on_hitting: 0
   explode: {fileID: 2661303078993959966, guid: f0f7fc77f27d1e849b18df3a82666c42, type: 3}
+  rb: {fileID: 0}
   window: {fileID: 5133228388402802461, guid: 282ce410365575f43b7fdfdeff5860e3, type: 3}
 --- !u!50 &-8079904616705478854
 Rigidbody2D:
@@ -190,6 +191,6 @@ MonoBehaviour:
   - {fileID: 7649682198198143427, guid: 1098454608030ad42b3cc46301ef6de8, type: 3}
   - {fileID: 2421750453974295715, guid: 9d236791badac4e458af18aaf6974148, type: 3}
   - {fileID: 4738802059314880400, guid: 1ef76d50663a4324c9e74362c6e288ef, type: 3}
-  Life_item: {fileID: 1573918439574613243, guid: 0e984b1775ef31d4a8aaec7b7b537c76, type: 3}
-  drop_switch: 0
+  life_item: {fileID: 1573918439574613243, guid: 0e984b1775ef31d4a8aaec7b7b537c76, type: 3}
+  drop_switch: 1
   life_drop: 3

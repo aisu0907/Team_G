@@ -1,27 +1,33 @@
-using System.Net;
+//Bomb.cs
+
 using UnityEngine;
 
-public class h_Bomb : MonoBehaviour
+public class Bomb : MonoBehaviour
 {
-    public GameObject bomb_gage; //ボムゲージ
-    public GameObject bomb; //ボム
-    public float bomb_x;  //初期位置
-    public float bomb_y;  //初期位置
-    public float bomb_space; //ボム間隔
+    //ゲームオブジェクト
+    [Header("▼Object Data")]
+    public GameObject bomb_gage;//ボムゲージ
+    public GameObject bomb;     //ボム
+    public GameObject canvas;   //キャンバス
+    //ボムの座標
+    [Header("▼Bomb Setting")]
+    public float bomb_space;//ボム間隔
+    public float bomb_pos_x;//初期位置x
+    public float bomb_pos_y;//初期位置y
 
-    private Vector2 v;  //ボム座標
-    private int bomb_save;  //ボム数保存用
-    private GameObject[] bomb_num; //ボムカウント用
-    public static h_Bomb Instance { get; private set; }
+    private Vector2 bomb_pos;//ボム座標
+    private int bomb_count;//ボム数保存用
+    private GameObject[] bomb_num;//ボムカウント用
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         //リセット
-        bomb_save = 0;
-        bomb_y = bomb_y + bomb_gage.transform.position.y;
-        bomb_x = bomb_x + bomb_gage.transform.position.x;
-        v = new Vector2(bomb_x, bomb_y);
+        bomb_count = 0; //ボムの数を0に
+        //座標作成
+        bomb_pos_y = bomb_pos_y + bomb_gage.transform.position.y; //ボムの表示位置y
+        bomb_pos_x = bomb_pos_x + bomb_gage.transform.position.x; //ボムの表示位置x
+        bomb_pos = new Vector2(bomb_pos_x, bomb_pos_y);
         bomb_num = new GameObject[Player.Instance.max_bom];
     }
 
@@ -30,7 +36,7 @@ public class h_Bomb : MonoBehaviour
     {
         if (Player.Instance.health > 0)
         {
-            if (Player.Instance.bom != bomb_save)
+            if (Player.Instance.bom != bomb_count)
             {
                 //ボム表示リセット
                 Delete_Bomb();
@@ -38,18 +44,21 @@ public class h_Bomb : MonoBehaviour
                 //所持してる分だけボムを表示
                 for (int i = 0; i < Player.Instance.bom; i++)
                 {
-                    bomb_num[i] = Instantiate(bomb, v, Quaternion.identity); //ボムの生成
-                    v.x += bomb_space; //ボム同士の間隔を開ける
+                    bomb_num[i] = (GameObject)Instantiate(bomb);
+                    bomb_num[i].transform.SetParent(canvas.transform, false); //ボムの生成
+                    bomb_pos.x += bomb_space; //ボム同士の間隔を開ける
                 }
 
-                v.x = bomb_x; //位置リセット
+                bomb_pos.x = bomb_pos_x; //位置リセット
             }
 
-            bomb_save = Player.Instance.bom; //情報を更新
+            bomb_count = Player.Instance.bom; //情報を更新
         }
     }
 
-    //ボムの表示を消す
+    /// <summary>
+    /// ボム表示を消す用のメソッド。 表示されているボムの回数分消します。
+    /// </summary>
     public void Delete_Bomb()
     {
         for (int i = 0; i < bomb_num.Length; i++)

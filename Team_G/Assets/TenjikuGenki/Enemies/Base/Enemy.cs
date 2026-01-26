@@ -32,7 +32,7 @@ public class Enemy : MonoBehaviour
         Destroy(obj.gameObject);
         Destroy(gameObject);
         if (Player.Instance.bom < Player.Instance.max_bom)
-            h_Bomb_Gage.Instance.bomb_gage.value += power;
+            BombGage.Instance.bomb_gage.value += power;
     }
 
     public bool IsHitEnemy(GameObject obj)

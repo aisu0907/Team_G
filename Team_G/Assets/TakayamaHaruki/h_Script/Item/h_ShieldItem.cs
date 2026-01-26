@@ -1,46 +1,41 @@
-//h_Sheild_Item.cs
+//ShieldItem.cs
 
-using JetBrains.Annotations;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class Sheild_Item : ItemBase
 {
-    public GameObject enemy_ref;
+    [Header("Object Data")]
+    public GameObject display;
+    public Player player;
 
     //アイテム効果の上昇率
+    [Header("Item EffectUp Setting")]
     public int plus_bom = 1;             //ボムの取得量
     public int item_score = 0;           //アイテム取得時のスコア
     public int heal_hp = 1;              //回復量
     public float up_speed = 0.5f;        //スピード上昇率
-    public float up_sheild = 0.5f;       //シールド範囲上昇率
+    public float up_shield = 0.5f;       //シールド範囲上昇率
     public float up_reflect_speed = 0.5f;//反射スピード上昇率
 
+    public int[] item_count;   //アイテム取得回数
+
     private int max_health = 3; //最大体力  
-    public int[] item_count;   //アイテム取得回数   
-    private int max_bom = 3;    //ボム最大所持数
-    private Vector3 sheild_size;//シールドサイズ
-    public Player player;
+    private Vector3 shield_size;//シールドサイズ
 
     public static Sheild_Item Instance { get; private set; }
-
-    [Header("test")]
-    public GameObject display;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
+        //シングルトン
         Instance = this;
     }
-
 
     void Start()
     {
         //変数リセット
         item_count = new int[3];
-        sheild_size = new Vector2(3, 3);
+        shield_size = new Vector2(3, 3);
         player = Player.Instance;
 
         // データがあったら引き継ぐ
@@ -50,17 +45,12 @@ public class Sheild_Item : ItemBase
             player.speed += up_speed * DataHolder.player_took_item[0];
 
             // 盾の大きさ
-            sheild_size.x += up_sheild * DataHolder.player_took_item[2];
-            Sheild.Instance.transform.localScale = sheild_size;
+            shield_size.x += up_shield * DataHolder.player_took_item[2];
+            Sheild.Instance.transform.localScale = shield_size;
 
             // 回数の同期
             for(int i = 0; i < 3; i++) item_count[i] = DataHolder.player_took_item[i];
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -76,15 +66,14 @@ public class Sheild_Item : ItemBase
                 {
                     //プレイヤーの移動スピードを上げる
                     player.speed += up_speed;
-                    Debug.Log(Player.Instance.speed);
                     //累積カウント
                     item_count[speed_item]++;
 
-                    SummonDisplay(i);
-                    SummonText(i);
+                    //アイテム取得演出
+                    SummonItemGetEffect(i);
                 }
                 else
-                    Score_Manager.Instance.ItemScore();
+                    ScoreManager.Instance.ItemScore();
 
             //反射スピード
             if (i.item_id == reflect_item)
@@ -96,31 +85,28 @@ public class Sheild_Item : ItemBase
                     //累積カウント
                     item_count[reflect_item]++;
 
-                    SummonDisplay(i);
-                    SummonText(i);
-
+                    //アイテム取得演出
+                    SummonItemGetEffect(i);
                 }
                 else
-                    Score_Manager.Instance.ItemScore();
+                    ScoreManager.Instance.ItemScore();
 
             //反射範囲
-            if (i.item_id == sheild_item)
+            if (i.item_id == shield_item)
                 //累積上限に達していなかった場合
-                if (item_count[sheild_item] < i.max_item_count)
+                if (item_count[shield_item] < i.max_item_count)
                 {
                     //シールドを横に大きくする
-                    sheild_size.x += up_sheild;
-                    Sheild.Instance.transform.localScale = sheild_size;
-                    Debug.Log(Sheild.Instance.transform.localScale);
+                    shield_size.x += up_shield;
+                    Sheild.Instance.transform.localScale = shield_size;
                     //累積カウント
-                    item_count[sheild_item]++;
+                    item_count[shield_item]++;
 
-                    SummonDisplay(i);
-                    SummonText(i);
-
+                    //アイテム取得演出
+                    SummonItemGetEffect(i);
                 }
                 else
-                    Score_Manager.Instance.ItemScore();
+                    ScoreManager.Instance.ItemScore();
 
             //回復
             if (i.item_id == life_item)
@@ -129,29 +115,30 @@ public class Sheild_Item : ItemBase
                 {
                     //プレイヤーの体力を増やす
                     player.health += heal_hp;
-                    SummonText(i);
-                }
 
+                    //アイテムテキストを表示
+                    ItemText.Instance.ItemUpText(i);
+                }
 
             //アイテムを削除
             Destroy(i.gameObject);
-
         }
     }
 
-    void SummonDisplay(Item i)
+    /// <summary>
+    /// アイテム取得時の演出用メソッド。 取得したアイテムを大きく表示する演出を表示します。
+    /// </summary>
+    /// <param name="i">取得したアイテム</param>
+    void SummonItemGetEffect(Item i)
     {
-        // アイテムの表示
+        //アイテムの表示
         Get_Item ui = i.GetComponent<Get_Item>();
-        
-        var d = Instantiate(display,gameObject.transform.position,Quaternion.Euler(0,0,10)).GetComponent<DisplayItem>();
-        d.SummonDisplay(i.GetComponent<SpriteRenderer>().sprite);
-    }
 
-    //アイテム文字表示
-    void SummonText( Item i)
-    {
-        h_Item_Text.Instance.Item_Up_Text(i);
+        var d = Instantiate(display, gameObject.transform.position, Quaternion.Euler(0, 0, 10)).GetComponent<DisplayItem>();
+        d.SummonDisplay(i.GetComponent<SpriteRenderer>().sprite);
+
+        //テキスト表示
+        ItemText.Instance.ItemUpText(i);
     }
 }
 

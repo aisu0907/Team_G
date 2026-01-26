@@ -33,7 +33,7 @@ public class ENormal : Enemy, IDamageable, IReflectable
                 Instantiate(explode, transform.position, Quaternion.identity);
                 Destroy(gameObject);
                 if (Player.Instance.bom < Player.Instance.max_bom)
-                h_Bomb_Gage.Instance.bomb_gage.value += power;
+                BombGage.Instance.bomb_gage.value += power;
             }
         }
     }
@@ -73,7 +73,7 @@ public class ENormal : Enemy, IDamageable, IReflectable
         Enemy other = collision.gameObject.GetComponent<Enemy>();
         if (other != null)
         {
-            Score_Manager.Instance.OnEnemiesCollided(this, other);
+            ScoreManager.Instance.OnEnemiesCollided(this, other);
         }
     }
 

@@ -1,19 +1,17 @@
-//h_Score.cs
+//Score.cs
 
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class Score : MonoBehaviour
 {
-
     public int total_score = 0; //合計スコア
     private TMP_Text scoreText; //テキストオブジェクト
 
     public static Score Instance { get; private set; }
     private void Awake()
     {
+        //シングルトン
         Instance = this;
     }
 

@@ -24,7 +24,7 @@ public class TipsManager : MonoBehaviour
         if (Player.Instance.health > 0)
         {
             timer++;
-            if (GameManager.Instance.faze == 0)
+            if (GameManager.Instance.phase == 0)
             {
                 if (timer == 300)
                 {
@@ -36,7 +36,7 @@ public class TipsManager : MonoBehaviour
             }
             else
             {
-                ChangeNextTips(GameManager.Instance.faze + 1);
+                ChangeNextTips(GameManager.Instance.phase + 1);
             }
         }
     }

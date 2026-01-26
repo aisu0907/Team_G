@@ -1,33 +1,22 @@
-//h_Score_Manager
+//ScoreManager
 
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 
-public class Score_Manager : MonoBehaviour
+public class ScoreManager : MonoBehaviour
 {
-    public float score_rate = 0; //エネミー同士がぶつかったときのスコア倍率
-    public int item_score = 0;   //アイテムスコア
-    public bool score_switch;
+    public float score_rate;  //エネミー同士がぶつかったときのスコア倍率
+    public int item_score = 0;//アイテムスコア
+    public bool score_switch; //スコア取得切り替えフラグ
 
-    private float enemy_score = 0; //エネミースコアを保存用
+    private float enemy_score = 0;//エネミースコアを保存用
 
-    public static Score_Manager Instance { get; private set; }
+    public static ScoreManager Instance { get; private set; }
 
     private void Awake()
     {
+        //シングルトン
         Instance = this;
-    }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     //エネミー衝突スコア関数
@@ -46,18 +35,23 @@ public class Score_Manager : MonoBehaviour
         }
     }
 
-    //アイテムスコア関数
+    /// <summary>
+    /// アイテムスコア追加用メソッド。 アイテムを上限以上取得した際にスコアを適用します
+    /// </summary>
     public void ItemScore()
     {
         Score.Instance.total_score += item_score; //スコア追加
     }
 
-    //エネミースコア関数
+    /// <summary>
+    /// エネミースコア追加用メソッド。 エネミーをぶつけて倒した際にスコアを追加します
+    /// </summary>
+    /// <param name="e">エネミー</param>
     public void Enemy_Score(Enemy e)
     {
         if (score_switch)
             Score.Instance.total_score += e.score; //スコア追加
     }
 
-    private HashSet<string> recentCollisions = new HashSet<string>();
+    private HashSet<string> recentCollisions = new HashSet<string>();//エネミーペア記憶用
 }
