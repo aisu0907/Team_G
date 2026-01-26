@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class dark : MonoBehaviour
+public class Dark : MonoBehaviour
 {
-    public static dark Instance;
+    public static Dark Instance;
 
     void Awake()
     {

@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
 {
     [Header("▼ GameObject")]
     public GameObject explode;
-    public GameObject sheild;
+    public GameObject Shield;
     public SpriteRenderer img; //画像
     public Rigidbody2D rbody;
 
@@ -57,24 +57,24 @@ public class Player : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        Instantiate(Shield);
 
         //開始位置
         transform.position = new Vector3(start_x,start_y,0);
+        start_anime = true;
 
-
-        //リセット
-        // RigidBody2D��������擾����
+        //RigidBody
         rbody = this.GetComponent<Rigidbody2D>();
-        // ���̐���
-        Instantiate(sheild);
+        
+        //ボム
         frame = 300;
+
+        //被弾
         damage_hit = true;
-        //色関係
         color_count = 0;
         color_timer = 0;
         save_color = img.color;
         damage_color = new Color(save_color.r, save_color.g, save_color.b, 0.5f);
-        start_anime = true;
     }
 
     // Update is called once per frame
@@ -95,7 +95,7 @@ public class Player : MonoBehaviour
 
         if (health > 0&&!start_anime)
         {
-            // �L�[�擾
+            // 移動
             axisH = Input.GetAxisRaw("Horizontal");
             axisV = Input.GetAxisRaw("Vertical");
             if (0.2 <= transform.position.y) 
@@ -103,8 +103,8 @@ public class Player : MonoBehaviour
             if (transform.position.y <= -5.5)
                 if(axisV < 0.0f) axisV = 0.00f;
 
-            // �Ǐ]����
-            Sheild.Instance.transform.position = new Vector2(transform.position.x, transform.position.y + 0.8f);
+            // 盾の位置更新
+            Shield.Instance.transform.position = new Vector2(transform.position.x, transform.position.y + 0.8f);
 
             //ボムの処理
             if (frame >= bom_time)
@@ -129,6 +129,7 @@ public class Player : MonoBehaviour
 
             frame++;
 
+            // 被弾演出
             if (!damage_hit)
             {
                 color_timer++;

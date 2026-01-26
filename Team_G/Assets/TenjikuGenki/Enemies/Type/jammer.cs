@@ -12,7 +12,7 @@ public class EJammer : Enemy
 
     void Start()
     {
-        t_Enemy_Spwan.Instance.counter++;
+        EnemySpawn.Instance.counter++;
     }
 
     void Update()
@@ -25,6 +25,13 @@ public class EJammer : Enemy
         ;
     }
 
+    /// <summary>
+    /// ‰Šú‰»
+    /// </summary>
+    /// <param name="db"></param>
+    /// <param name="_vec"></param>
+    /// <param name="_color"></param>
+    /// <param name="_speed"></param>
     public void Init(EnemyData db, Vector2 _vec, float _speed)
     {
         // Initialize Status

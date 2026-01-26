@@ -1,23 +1,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class t_Enemy_Spwan : MonoBehaviour
+public class EnemySpawn : MonoBehaviour
 {
+    [Header("▼ SpawnPosition")]
     [SerializeField] Transform pos;                 //スポナー位置
     [SerializeField] Transform pos2;                //スポナー位置
+
+    [Header("▼ SpawnComponent")]
     [SerializeField] List<PopEnemyList> enemy_list; //スポーンする敵
     [SerializeField] int generateFrame;             //生成速度
-    float minX, maxX, minY, maxY;                   //生成位置
     public List<GameObject> prefab;
     public int jammer_spawn; //邪魔ウイルス生成速度
     public bool spawn_switch = true;
+    float minX, maxX, minY, maxY;                   //生成位置
+    public int counter = 0;
 
     List<Sprite> Img = new List<Sprite>();
     private int frame; //ウイルス生成タイマー
     private int jammer_timer; //邪魔ウイルスタイマー
-    public int counter = 0;
 
-    public static t_Enemy_Spwan Instance { get; private set; }
+    public static EnemySpawn Instance { get; private set; }
 
     private void Awake()
     {
@@ -63,6 +66,7 @@ public class t_Enemy_Spwan : MonoBehaviour
             }
         }
 
+        // 妨害ウイルスを出現
         if (GameManager.Instance.phase == 4)
         {
             jammer_timer++;

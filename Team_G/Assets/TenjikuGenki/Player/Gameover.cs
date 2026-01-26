@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerGameover : MonoBehaviour
 {
-    [Header("< Gameover >")]
+    [Header("Бе Gameover")]
     [SerializeField] GameObject error;
     [SerializeField] GameObject ui;
     [SerializeField] CanvasGroup white;

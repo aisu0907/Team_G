@@ -12,13 +12,13 @@ public class ShieldArrow : MonoBehaviour
 
     void Update()
     {
-        if (Sheild.Instance.color == 0)
+        if (Shield.Instance.color == 0)
         {
             vec = red.transform.position;
             vec.y += 1.4f;
             transform.position = vec;
         }
-        if (Sheild.Instance.color == 1)
+        if (Shield.Instance.color == 1)
         {
             vec = green.transform.position;
             vec.y += 1.4f;

@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
                 if (frame >= boss[phase / 2].timer) 
                 {
                     //画面にエネミーが残っていない場合
-                    if (t_Enemy_Spwan.Instance.counter == 0)
+                    if (EnemySpawn.Instance.counter == 0)
                     {
                         SpawnBoss(); //ボスを出現
                         frame = 0; //フレームをリセット
@@ -137,7 +137,7 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < item_drop.Count; i++)
             item_drop[i].GetComponent<ItemDrop>().drop_switch = mode;  //アイテムドロップ
-        spawner.GetComponent<t_Enemy_Spwan>().spawn_switch = mode;     //エネミーの出現
+        spawner.GetComponent<EnemySpawn>().spawn_switch = mode;     //エネミーの出現
         gameObject.GetComponent<ScoreManager>().score_switch = mode;  //スコア取得     
     }
 }

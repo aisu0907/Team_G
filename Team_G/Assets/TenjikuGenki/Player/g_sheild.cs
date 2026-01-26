@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class Sheild : MonoBehaviour
+public class Shield : MonoBehaviour
 {
-    // 変数
+    [Header("▼ Shield")]
     SpriteRenderer img;
     public int color = 0;
     [SerializeField] List<Sprite> Img;   //�摜
-    public static Sheild Instance { get; private set; }
+    
+    public static Shield Instance { get; private set; }
 
     private void Awake()
     {
@@ -26,8 +27,9 @@ public class Sheild : MonoBehaviour
     {
         // 盾の色を変更
         if(Input.GetKeyDown(KeyCode.Z))
-            ChangeSheildColor(color == (int)COLOR.RED ? COLOR.GREEN : COLOR.RED);
+            ChangeShieldColor(color == (int)COLOR.RED ? COLOR.GREEN : COLOR.RED);
     }
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         // 敵機の情報を取得
@@ -54,10 +56,10 @@ public class Sheild : MonoBehaviour
     }
 
     // 盾の色を変更する
-    void ChangeSheildColor(COLOR n)
+    void ChangeShieldColor(COLOR n)
     {
         img.sprite = Img[(int)n];
         color = (int)n;
-        AudioManager.instance.PlaySound("SheildChange");
+        AudioManager.instance.PlaySound("ShieldChange");
     }
 }

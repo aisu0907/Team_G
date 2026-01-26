@@ -8,6 +8,7 @@ public class Window : MonoBehaviour
     // Update is called once per frame
     void Start()
     {
+        // 妨害ウィンドウの生成
         Destroy(gameObject, 5);
         int index = Random.Range(0, pos.Count);
         transform.position = pos[index];

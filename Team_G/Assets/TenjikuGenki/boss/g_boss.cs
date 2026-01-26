@@ -57,12 +57,12 @@ public class g_boss : BossBase
     {
         if (health > 0)
             boss_damage(collision);
-        if (collision.GetComponent<Side_Wall>()) left_move = !left_move;
+        if (collision.GetComponent<SideWall>()) left_move = !left_move;
     }
 
+    // ËŒ‚
     void ShootBullet()
     {
-        // ÀÛ‚É‚Í‚±‚±‚Å’ePrefab‚ğInstantiate‚µ‚½‚èAObjectPool‚ğg‚Á‚½‚è‚µ‚Ü‚·
         int color = Random.Range(0, list.Count);
         img.sprite = sprites[color];
         //Vector2 d = (Player.Instance.transform.position - transform.position).normalized;

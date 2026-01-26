@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 
-public class target : MonoBehaviour
+public class Target : MonoBehaviour
 {
     // Update is called once per frame
     void Update()

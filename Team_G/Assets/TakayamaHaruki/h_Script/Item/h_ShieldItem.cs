@@ -2,7 +2,7 @@
 
 using UnityEngine;
 
-public class Sheild_Item : ItemBase
+public class Shield_Item : ItemBase
 {
     [Header("Object Data")]
     public GameObject display;
@@ -22,7 +22,7 @@ public class Sheild_Item : ItemBase
     private int max_health = 3; //最大体力  
     private Vector3 shield_size;//シールドサイズ
 
-    public static Sheild_Item Instance { get; private set; }
+    public static Shield_Item Instance { get; private set; }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -46,7 +46,7 @@ public class Sheild_Item : ItemBase
 
             // 盾の大きさ
             shield_size.x += up_shield * DataHolder.player_took_item[2];
-            Sheild.Instance.transform.localScale = shield_size;
+            Shield.Instance.transform.localScale = shield_size;
 
             // 回数の同期
             for(int i = 0; i < 3; i++) item_count[i] = DataHolder.player_took_item[i];
@@ -98,7 +98,7 @@ public class Sheild_Item : ItemBase
                 {
                     //シールドを横に大きくする
                     shield_size.x += up_shield;
-                    Sheild.Instance.transform.localScale = shield_size;
+                    Shield.Instance.transform.localScale = shield_size;
                     //累積カウント
                     item_count[shield_item]++;
 
