@@ -20,5 +20,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/kuriya_kota/Secen/K_Result.unity
     guid: c2beed9631197bb4c92157ee1e8434aa
+  - enabled: 1
+    path: Assets/MainScenes/information.unity
+    guid: a2b1145352afbf94a8310d129a7a7903
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
