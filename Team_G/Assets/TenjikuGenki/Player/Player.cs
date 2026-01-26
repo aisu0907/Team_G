@@ -65,9 +65,6 @@ public class Player : MonoBehaviour
         //RigidBody
         rbody = this.GetComponent<Rigidbody2D>();
 
-        //ボム
-        bomb_switch = true;
-
         //被弾
         damage_hit = true;
         color_count = 0;
@@ -106,22 +103,27 @@ public class Player : MonoBehaviour
             Shield.Instance.transform.position = new Vector2(transform.position.x, transform.position.y + 0.8f);
 
             //ボムの処理
-            if (Input.GetKey(KeyCode.Space) && bom > 0 && bomb_switch)
+            if (Input.GetKey(KeyCode.Space))
             {
-                bomb_switch = false;
 
-                // "Enemy"タグがついたすべてのオブジェクトを取得
-                GameObject[] objects = GameObject.FindGameObjectsWithTag("Enemy");
-
-                // 各オブジェクトを削除
-                foreach (GameObject obj in objects)
+                if (bom > 0 && bomb_switch)
                 {
-                    Destroy(obj);
-                    Instantiate(explode, obj.transform.position, Quaternion.identity);
+
+                    // "Enemy"タグがついたすべてのオブジェクトを取得
+                    GameObject[] objects = GameObject.FindGameObjectsWithTag("Enemy");
+
+                    // 各オブジェクトを削除
+                    foreach (GameObject obj in objects)
+                    {
+                        Destroy(obj);
+                        Instantiate(explode, obj.transform.position, Quaternion.identity);
+                    }
+
+                    //bomの数を減らす
+                    bom--;
                 }
 
-                //bomの数を減らす
-                bom--;
+                bomb_switch = false; 
             }
             else
             {
@@ -134,7 +136,7 @@ public class Player : MonoBehaviour
                 color_timer++;
 
                 tmp_pos = shake.transform.position.x;
-                shake.transform.position = new Vector3(right == true ? tmp_pos + 0.2f : tmp_pos - 0.2f, 0, -10);
+                shake.transform.position = new Vector3(right == true ? tmp_pos + 0.15f : tmp_pos - 0.15f, 0, -10);
                 right = !right;
 
                 if (color_timer == save_time)
