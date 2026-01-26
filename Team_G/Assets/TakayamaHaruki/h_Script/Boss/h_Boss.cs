@@ -15,7 +15,7 @@ public class h_Boss : BossBase
     private int range_attack_time;   //”ÍˆÍUŒ‚‚ÌUŒ‚ŠÔŠu
     //ŠK’iUŒ‚
     [Header("¥Stairs Attack")]
-    public int stairs_attack_interval;      //ŠK’iUŒ‚
+    public int stairs_attack_interval;    //ŠK’iUŒ‚
     public float stairs_attack_cooldown;  //ŠK’iUŒ‚‚Ì’e‚ÌƒN[ƒ‹ƒ^ƒCƒ€
     public float stairs_attack_space;     //ŠK’iUŒ‚‚Ì’e‚ÌŠÔŠu
     public int stairs_attack_speed;       //ŠK’iUŒ‚‚Ì’e‚Ì‘¬“x
