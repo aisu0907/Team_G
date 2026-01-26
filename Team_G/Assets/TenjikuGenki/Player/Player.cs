@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
     [Header("▼ Bom")]
     public int bom = 0;     //ボムの所持数
     public int max_bom = 0; //ボム最大所持数
-    private bool bomb_switch;
+    bool bomb_switch;
 
     [Header("▼ DamageEffect")]
     public GameObject shake;
@@ -29,14 +29,15 @@ public class Player : MonoBehaviour
     public int damage_time; //消滅タイミング
     public int save_time;   //表示タイム
     public int timer = 0;   //タイマー
+    public int shake_max;   //画面の振動回数
     bool damage_hit;        //ダメージ判定
     Color save_color;       //通常の色
     Color damage_color;     //ダメージ時の色
     int color_timer;        //色切り替えタイマー
     int color_count;        //色切り替え回数
+    int shake_count;        //振動した回数
     float tmp_pos;
     bool right = true;
-    bool y = true;
 
     [Header("▼ StartPosition")]
     public float start_x = -2;  //X座標
@@ -69,6 +70,7 @@ public class Player : MonoBehaviour
         damage_hit = true;
         color_count = 0;
         color_timer = 0;
+        shake_count = 0;
         save_color = img.color;
         damage_color = new Color(save_color.r, save_color.g, save_color.b, 0.5f);
     }
@@ -123,6 +125,7 @@ public class Player : MonoBehaviour
                     bom--;
                 }
 
+
                 bomb_switch = false; 
             }
             else
@@ -135,9 +138,13 @@ public class Player : MonoBehaviour
             {
                 color_timer++;
 
-                tmp_pos = shake.transform.position.x;
-                shake.transform.position = new Vector3(right == true ? tmp_pos + 0.15f : tmp_pos - 0.15f, 0, -10);
-                right = !right;
+                if(shake_count < shake_max)
+                {
+                    tmp_pos = shake.transform.position.x;
+                    shake.transform.position = new Vector3(right == true ? tmp_pos + 0.15f : tmp_pos - 0.15f, 0, -10);
+                    right = !right;
+                    shake_count++;
+                }
 
                 if (color_timer == save_time)
                 {
@@ -157,6 +164,7 @@ public class Player : MonoBehaviour
                     //リセット
                     color_timer = 0;
                     color_count = 0;
+                    shake_count = 0;
                     damage_hit = true;
                 }
             }

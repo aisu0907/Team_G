@@ -14,7 +14,7 @@ public class EReflect : Enemy, IDamageable, IReflectable
 
     void Start()
     {
-        EnemySpawn.Instance.counter++;
+        ;
     }
 
     void Update()
