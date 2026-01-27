@@ -138,8 +138,8 @@ MonoBehaviour:
   enemy: {fileID: 11400000, guid: 0060511f69e9d2a4fb1e007ad5c1b610, type: 2}
   prefab2: {fileID: 1323917000318406210, guid: eb5917cc4ddf9bd449a67f453b91cefc, type: 3}
   enemy2: {fileID: 11400000, guid: 58ab6cbe37866b744ace51bd52f36a28, type: 2}
-  kill: {fileID: 7582930186525683671, guid: 73f3352dff0f57b46a4d540704b666e3, type: 3}
-  flash: {fileID: 3001600071046506143, guid: 318cf17a939cc084b8253bff2c8a1679, type: 3}
+  prefab3: {fileID: 7582930186525683671, guid: 73f3352dff0f57b46a4d540704b666e3, type: 3}
+  prefab4: {fileID: 0}
 --- !u!50 &1987593275706827861
 Rigidbody2D:
   serializedVersion: 5

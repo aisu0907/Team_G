@@ -20,9 +20,8 @@ public class Player : MonoBehaviour
 
     [Header("▼ Bom")]
     public int bom = 0;     //ボムの所持数
-    public int bom_time = 0;//ボムのクールタイム
     public int max_bom = 0; //ボム最大所持数
-    int frame = 0;
+    bool bomb_switch;
 
     [Header("▼ DamageEffect")]
     public GameObject shake;
@@ -30,14 +29,15 @@ public class Player : MonoBehaviour
     public int damage_time; //消滅タイミング
     public int save_time;   //表示タイム
     public int timer = 0;   //タイマー
+    public int shake_max;   //画面の振動回数
     bool damage_hit;        //ダメージ判定
     Color save_color;       //通常の色
     Color damage_color;     //ダメージ時の色
     int color_timer;        //色切り替えタイマー
     int color_count;        //色切り替え回数
+    int shake_count;        //振動した回数
     float tmp_pos;
     bool right = true;
-    bool y = true;
 
     [Header("▼ StartPosition")]
     public float start_x = -2;  //X座標
@@ -65,14 +65,12 @@ public class Player : MonoBehaviour
 
         //RigidBody
         rbody = this.GetComponent<Rigidbody2D>();
-        
-        //ボム
-        frame = 300;
 
         //被弾
         damage_hit = true;
         color_count = 0;
         color_timer = 0;
+        shake_count = 0;
         save_color = img.color;
         damage_color = new Color(save_color.r, save_color.g, save_color.b, 0.5f);
     }
@@ -107,11 +105,12 @@ public class Player : MonoBehaviour
             Shield.Instance.transform.position = new Vector2(transform.position.x, transform.position.y + 0.8f);
 
             //ボムの処理
-            if (frame >= bom_time)
+            if (Input.GetKey(KeyCode.Space))
             {
-                if (Input.GetKey(KeyCode.Space) && bom > 0)
+
+                if (bom > 0 && bomb_switch)
                 {
-                    frame = 0;
+
                     // "Enemy"タグがついたすべてのオブジェクトを取得
                     GameObject[] objects = GameObject.FindGameObjectsWithTag("Enemy");
 
@@ -125,18 +124,27 @@ public class Player : MonoBehaviour
                     //bomの数を減らす
                     bom--;
                 }
-            }
 
-            frame++;
+
+                bomb_switch = false; 
+            }
+            else
+            {
+                bomb_switch = true;
+            }
 
             // 被弾演出
             if (!damage_hit)
             {
                 color_timer++;
 
-                tmp_pos = shake.transform.position.x;
-                shake.transform.position = new Vector3(right == true ? tmp_pos + 0.2f : tmp_pos - 0.2f, 0, -10);
-                right = !right;
+                if(shake_count < shake_max)
+                {
+                    tmp_pos = shake.transform.position.x;
+                    shake.transform.position = new Vector3(right == true ? tmp_pos + 0.15f : tmp_pos - 0.15f, 0, -10);
+                    right = !right;
+                    shake_count++;
+                }
 
                 if (color_timer == save_time)
                 {
@@ -154,8 +162,9 @@ public class Player : MonoBehaviour
                 if (color_count >= blinks_max)
                 {
                     //リセット
-                    color_timer = 0; 
+                    color_timer = 0;
                     color_count = 0;
+                    shake_count = 0;
                     damage_hit = true;
                 }
             }

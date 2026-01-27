@@ -4,7 +4,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Boss_Explode : MonoBehaviour
+public class BossExplode : MonoBehaviour
 {
     public float size = 0.0f;
     public float max_size = 0.8f;
@@ -61,7 +61,7 @@ public class Boss_Explode : MonoBehaviour
     {
         int x = Random.Range(-3, 4);
         int y = Random.Range(-3, 4);
-        Instantiate(explode, new Vector2(k_boss.Instance.transform.position.x + x, k_boss.Instance.transform.position.y + y), Quaternion.identity);
+        Instantiate(explode, new Vector2(LastBoss.Instance.transform.position.x + x, LastBoss.Instance.transform.position.y + y), Quaternion.identity);
     }
 
 
@@ -77,8 +77,8 @@ public class Boss_Explode : MonoBehaviour
         }
         audioSource.PlayOneShot(sound2);
         //screenFlash.Flash();
-        Instantiate(flash, new Vector2(k_boss.Instance.transform.position.x, k_boss.Instance.transform.position.y), Quaternion.identity);
-        Destroy(k_boss.Instance.gameObject);
+        Instantiate(flash, new Vector2(LastBoss.Instance.transform.position.x, LastBoss.Instance.transform.position.y), Quaternion.identity);
+        Destroy(LastBoss.Instance.gameObject);
 
         for (int i = 0; i < waitFrames2; i++)
         {

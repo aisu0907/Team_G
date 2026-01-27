@@ -31,8 +31,6 @@ public class LastBoss : BossBase
     public EnemyData enemy2;
     public GameObject prefab3;
 
-    public GameObject prefab4;
-
     AudioSource audioSource;
 
     private void Awake()
@@ -255,7 +253,7 @@ public class LastBoss : BossBase
         move = false;
         StageBGM.Instance.bgm_stop = true;
 
-        if (gameObject.GetComponent<BossDamageEffect>().alive == false)
-            gameObject.GetComponent<BossDamageEffect>().alive = true;
+        if (gameObject.GetComponent<BossDamageEffect>().alive == true)
+            gameObject.GetComponent<BossDamageEffect>().alive = false;
     }
 }

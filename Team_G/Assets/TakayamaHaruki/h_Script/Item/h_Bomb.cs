@@ -24,9 +24,6 @@ public class Bomb : MonoBehaviour
     {
         //リセット
         bomb_count = 0; //ボムの数を0に
-        //座標作成
-        bomb_pos_y = bomb_pos_y + bomb_gage.transform.position.y; //ボムの表示位置y
-        bomb_pos_x = bomb_pos_x + bomb_gage.transform.position.x; //ボムの表示位置x
         bomb_pos = new Vector2(bomb_pos_x, bomb_pos_y);
         bomb_num = new GameObject[Player.Instance.max_bom];
     }
@@ -39,13 +36,18 @@ public class Bomb : MonoBehaviour
             if (Player.Instance.bom != bomb_count)
             {
                 //ボム表示リセット
-                Delete_Bomb();
+                DeleteBomb();
 
                 //所持してる分だけボムを表示
                 for (int i = 0; i < Player.Instance.bom; i++)
                 {
                     bomb_num[i] = (GameObject)Instantiate(bomb);
-                    bomb_num[i].transform.SetParent(canvas.transform, false); //ボムの生成
+                    bomb_num[i].transform.SetParent(canvas.transform, false);//ボムの生成
+                    
+                    //ボムの座標を設定
+                    RectTransform rect = bomb_num[i].GetComponent<RectTransform>();
+                    rect.anchoredPosition = bomb_pos;
+
                     bomb_pos.x += bomb_space; //ボム同士の間隔を開ける
                 }
 
@@ -59,7 +61,7 @@ public class Bomb : MonoBehaviour
     /// <summary>
     /// ボム表示を消す用のメソッド。 表示されているボムの回数分消します。
     /// </summary>
-    public void Delete_Bomb()
+    public void DeleteBomb()
     {
         for (int i = 0; i < bomb_num.Length; i++)
         {
