@@ -9,19 +9,19 @@ EditorBuildSettings:
     path: Assets/MainScenes/Title.unity
     guid: 2fc37907f8f94b142a347f5b290abe23
   - enabled: 1
-    path: Assets/MainScenes/Play_Scene.unity
+    path: Assets/MainScenes/Play.unity
     guid: 1cd8321fa9e9db34cbd90516e4bca2b1
   - enabled: 1
-    path: Assets/MainScenes/Gameover_Scene.unity
+    path: Assets/MainScenes/Gameover.unity
     guid: e669854b1b622e24bb4b8c754a6d1148
-  - enabled: 1
+  - enabled: 0
     path: Assets/MainScenes/Result_Scene.unity
     guid: df0cb020dbdac75478d4dc607d343a44
   - enabled: 1
-    path: Assets/kuriya_kota/Secen/K_Result.unity
+    path: Assets/MainScenes/Result.unity
     guid: c2beed9631197bb4c92157ee1e8434aa
   - enabled: 1
-    path: Assets/MainScenes/information.unity
+    path: Assets/MainScenes/Information.unity
     guid: a2b1145352afbf94a8310d129a7a7903
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

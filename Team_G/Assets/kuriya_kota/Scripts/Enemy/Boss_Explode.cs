@@ -85,8 +85,5 @@ public class BossExplode : MonoBehaviour
         {
             yield return null; // 1ƒtƒŒ[ƒ€‘Ò‚Â
         }
-
-        if(GameManager.Instance.phase >= 5)
-            SceneManager.LoadScene("K_Result");
     }
 }
