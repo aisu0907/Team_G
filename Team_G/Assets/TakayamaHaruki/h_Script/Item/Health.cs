@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class Health : MonoBehaviour
 {
     //ゲームオブジェクト
-    private GameObject image_object;//画像オブジェクト
     private Image image_component;  //画像コンポーネント
     //HPグラフィック
     private Sprite hp3;
@@ -22,10 +21,9 @@ public class Health : MonoBehaviour
         hp2 = Resources.Load<Sprite>("HP2");
         hp1 = Resources.Load<Sprite>("HP1");
         hp0 = Resources.Load<Sprite>("HP0");
-        // オブジェクトの取得
-        image_object = GameObject.Find("HP");
+
         // コンポーネントの取得
-        image_component = image_object.GetComponent<Image>();
+        image_component = GetComponent<Image>();
     }
 
     void Update()

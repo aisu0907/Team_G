@@ -53,6 +53,6 @@ public class Enemy : MonoBehaviour
 
     void OnDestroy()
     {
-         EnemySpawn.Instance.counter--;
+        EnemySpawn.Instance.counter--;
     }
 }

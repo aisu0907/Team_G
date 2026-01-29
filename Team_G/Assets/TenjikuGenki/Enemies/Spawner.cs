@@ -57,7 +57,7 @@ public class EnemySpawn : MonoBehaviour
                 // Spawn Enemy
                 int type = GameManager.Instance.phase == 0 ? 0 : Random.Range(0, 2);
                 int color = Random.Range(0, 2);
-                if (type == 0) { var e = Instantiate(prefab[type], pos, Quaternion.identity).GetComponent<ENormal>(); e.Init(enemy_list[GameManager.Instance.phase / 2].list[type], new Vector2(0, -1), color, enemy_list[GameManager.Instance.phase / 2].list[type].speed); }
+                if (type == 0) { var e = Instantiate(prefab[type], pos, Quaternion.identity).GetComponent<ENormal>();  e.Init(enemy_list[GameManager.Instance.phase / 2].list[type], new Vector2(0, -1), color, enemy_list[GameManager.Instance.phase / 2].list[type].speed); }
                 if (type == 1) { var e = Instantiate(prefab[type], pos, Quaternion.identity).GetComponent<EReflect>(); e.Init(enemy_list[GameManager.Instance.phase / 2].list[type], new Vector2(0, -1), color, enemy_list[GameManager.Instance.phase / 2].list[type].speed); }
 
                 // Reset
