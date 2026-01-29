@@ -174,7 +174,7 @@ public class Player : MonoBehaviour
             timer++;
             if (timer >= 120)
             {
-                SceneManager.LoadScene("Gameover_Scene");
+                SceneManager.LoadScene("GameoverScene");
             }
         }
     }

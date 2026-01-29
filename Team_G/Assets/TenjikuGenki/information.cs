@@ -14,7 +14,7 @@ public class information : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Z))
         {
-            SceneManager.LoadScene("Play_Scene");
+            SceneManager.LoadScene("PlayScene");
         }
     }
 }
