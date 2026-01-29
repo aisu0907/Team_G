@@ -45,6 +45,7 @@ public class Shield_Item : ItemBase
             // ‘¬“x
             player.speed += up_speed * DataHolder.player_took_item[0];
 
+            reflect_speed += up_reflect_speed * DataHolder.player_took_item[1];
             // ‚‚Ì‘å‚«‚³
             shield_size.x += up_shield * DataHolder.player_took_item[2];
             Shield.Instance.transform.localScale = shield_size;

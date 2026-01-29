@@ -96,7 +96,7 @@ public class ResultManager : MonoBehaviour
 
         if (timer > 320 && Input.GetKey(KeyCode.Z))
         {
-            SceneManager.LoadScene("Title");
+            SceneManager.LoadScene("TitleScene");
         }
         score = ScoreReceiver.score + (ScoreReceiver.hp * hp_bonus);
     }
