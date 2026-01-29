@@ -57,7 +57,7 @@ public class Player : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Instantiate(shield);
+        //Instantiate(shield);
 
         //開始位置
         transform.position = new Vector3(start_x,start_y,0);

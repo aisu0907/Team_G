@@ -7,6 +7,8 @@ public class Shield : MonoBehaviour
     SpriteRenderer img;
     public int color = 0;
     [SerializeField] List<Sprite> Img;   //�摜
+    [SerializeField] GameObject go;
+    IPhazeManager pm;
     
     public static Shield Instance { get; private set; }
 
@@ -20,14 +22,16 @@ public class Shield : MonoBehaviour
     void Start()
     {
         img = GetComponent<SpriteRenderer>();
+        pm = go.GetComponent<IPhazeManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
         // 盾の色を変更
-        if(Input.GetKeyDown(KeyCode.Z))
-            ChangeShieldColor(color == (int)COLOR.RED ? COLOR.GREEN : COLOR.RED);
+        if (Input.GetKeyDown(KeyCode.Z))
+            if (pm.is_change_color == true)
+                ChangeShieldColor(color == (int)COLOR.RED ? COLOR.GREEN : COLOR.RED);
     }
 
     void OnTriggerEnter2D(Collider2D collision)

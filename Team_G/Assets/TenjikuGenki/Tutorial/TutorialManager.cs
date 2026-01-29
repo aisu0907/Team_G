@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class TutorialManager : MonoBehaviour, IPhazeManager
 {
     public int phase { get; set; } = 0;
+    public bool is_change_color { get; set; } = false;
     [SerializeField] GameObject window;
     [SerializeField] List<Sprite> window_img;
     bool is_window = true;
@@ -11,7 +12,7 @@ public class TutorialManager : MonoBehaviour, IPhazeManager
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //is_window = true;
+        ;
     }
 
     // Update is called once per frame

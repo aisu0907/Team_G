@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: TutorialTips
   m_EditorClassIdentifier: 
   text:
+  - Press 'Z' Key\n to Close Pop-up
   - Press 'Enter'\n to Skip Tutorial
   - Press 'Enter'\n to Skip Tutorial

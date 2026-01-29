@@ -106,6 +106,7 @@ MonoBehaviour:
   Img:
   - {fileID: -6556403868631285073, guid: b0642d7a69aa9d64cbc86bcba14e9aea, type: 3}
   - {fileID: -7696752515786996293, guid: 1ce3f8e14ec5b4744a9dbc307a60cd71, type: 3}
+  go: {fileID: 3045932546470836219, guid: cc8fc34330d578c4ca72c5ef3425e7b0, type: 3}
 --- !u!114 &5806836250297397262
 MonoBehaviour:
   m_ObjectHideFlags: 0

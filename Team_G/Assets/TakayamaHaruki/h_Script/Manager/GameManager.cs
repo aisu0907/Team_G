@@ -21,8 +21,9 @@ public class GameManager : MonoBehaviour, IPhazeManager
     public float boss_position_y; //ボス位置Y
     //
     [Header("▼Game Manager Setting")]
-    public int phase { get; set; } = 0;//フェーズ
     public bool boss_die;//ボス死亡判定
+    public bool is_change_color { get; set; } = true;
+    public int phase { get; set; } = 0;//フェーズ
 
     //タイマー
     private float boss_timer;  //ボス出現タイマー
@@ -40,10 +41,10 @@ public class GameManager : MonoBehaviour, IPhazeManager
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is create
-
     private void Start()
     {
         //リセット
+        is_change_color = true;
         //ボスの初期位置設定
         boss_position = new Vector2 (boss_position_x, boss_position_y);
         boss_die = true;
@@ -59,7 +60,7 @@ public class GameManager : MonoBehaviour, IPhazeManager
             if(DataHolder.game_phaze % 2 != 0) Instantiate(boss[phase / 2].prefab, boss_position , Quaternion.identity);
         }
         else
-            ModeChange(true);   
+            ModeChange(true);
     }
 
     private void Update()
