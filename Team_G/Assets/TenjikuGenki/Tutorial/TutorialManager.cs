@@ -14,7 +14,6 @@ public class TutorialManager : MonoBehaviour, IPhazeManager
     [SerializeField] public GameObject window;
     [SerializeField] List<Sprite> window_img;
     bool is_window = true;
-    [SerializeField] List<EnemyData> enemy_data;
 
     public GameObject enemy;
     public int enemy_speed;
