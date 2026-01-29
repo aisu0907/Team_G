@@ -21,7 +21,11 @@ EditorBuildSettings:
     path: Assets/MainScenes/ResultScene.unity
     guid: c2beed9631197bb4c92157ee1e8434aa
   - enabled: 1
+<<<<<<< HEAD
     path: Assets/MainScenes/InformationScene.unity
+=======
+    path: Assets/MainScenes/information.unity
+>>>>>>> e9fe4eec765ce78223b1f2420994f885d186bf37
     guid: a2b1145352afbf94a8310d129a7a7903
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
