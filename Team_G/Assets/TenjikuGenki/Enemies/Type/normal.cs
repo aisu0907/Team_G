@@ -1,12 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ENormal : Enemy, IDamageable, IReflectable
+public class ENormal : Enemy, IDamageable
 {
     int timer = 0;
     public List<Sprite> Img;
-    public float ref_speed { get; set; } = 0;
-
     void Awake()
     {
         ;
@@ -39,9 +37,9 @@ public class ENormal : Enemy, IDamageable, IReflectable
         rb.linearVelocity = vec;
         if (rb.linearVelocity.magnitude != speed)
             if(on_hitting)
-                rb.linearVelocity = vec.normalized * speed;
+                rb.linearVelocity = vec.normalized * (speed + Shield_Item.Instance.reflect_speed);
             else
-                rb.linearVelocity = vec.normalized * (speed + ref_speed);
+                rb.linearVelocity = vec.normalized * speed;
     }
 
     /// <summary>

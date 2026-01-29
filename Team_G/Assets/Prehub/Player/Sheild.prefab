@@ -118,19 +118,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e48d95038713842439224d282b280b91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy_ref: {fileID: 3457435008533907693, guid: 35484c594a614a545b8db4efbeaf555c, type: 3}
-  puls_bom: 1
+  display: {fileID: 1843163215658175290, guid: 2ae498e857a77cc4daa1516f0c0ef3c8, type: 3}
+  player: {fileID: 0}
+  plus_bom: 1
   item_score: 0
   heal_hp: 1
   up_speed: 0.5
-  up_sheild: 1
-  up_reflect_speed: 0.5
+  up_shield: 0.5
+  up_reflect_speed: 0.3
+  reflect_speed: 0
   item_count: 
-  display: {fileID: 1843163215658175290, guid: 2ae498e857a77cc4daa1516f0c0ef3c8, type: 3}
-  item_text: {fileID: 7929519447015071108, guid: 056804f174ae22244a97210b687cf916, type: 3}
-  player: {fileID: 0}
-  ui: {fileID: 2534170387833257352, guid: ea5eaac365ca38b4e9ee505e212ad080, type: 3}
-  item_name: null
 --- !u!61 &8223017186961346377
 BoxCollider2D:
   m_ObjectHideFlags: 0

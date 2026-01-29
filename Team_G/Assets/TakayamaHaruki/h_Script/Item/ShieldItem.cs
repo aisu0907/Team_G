@@ -16,11 +16,12 @@ public class Shield_Item : ItemBase
     public float up_speed = 0.5f;        //スピード上昇率
     public float up_shield = 0.5f;       //シールド範囲上昇率
     public float up_reflect_speed = 0.5f;//反射スピード上昇率
+    public float reflect_speed;          //反射スピード保存用
 
-    public int[] item_count;   //アイテム取得回数
+    public int[] item_count;//アイテム取得回数
 
     private int max_health = 3; //最大体力  
-    private Vector3 shield_size;//シールドサイズ
+    private Vector2 shield_size;//シールドサイズ
 
     public static Shield_Item Instance { get; private set; }
 
@@ -58,7 +59,9 @@ public class Shield_Item : ItemBase
         //アイテムに当たった場合
         if (collision.TryGetComponent<Item>(out var i))
         {
+            //音を鳴らす
             AudioManager.instance.PlaySound("GetItem");
+
             //スピード
             if (i.item_id == speed_item)
                 //累積上限に達していなかった場合
@@ -66,6 +69,7 @@ public class Shield_Item : ItemBase
                 {
                     //プレイヤーの移動スピードを上げる
                     player.speed += up_speed;
+
                     //累積カウント
                     item_count[speed_item]++;
 
@@ -81,7 +85,8 @@ public class Shield_Item : ItemBase
                 if (item_count[reflect_item] < i.max_item_count)
                 {
                     //反射スピードup
-                    //if (collision.TryGetComponent<Enemy>(out var e)) e.speed += up_reflect_speed;
+                    reflect_speed += up_reflect_speed;
+
                     //累積カウント
                     item_count[reflect_item]++;
 
@@ -99,6 +104,7 @@ public class Shield_Item : ItemBase
                     //シールドを横に大きくする
                     shield_size.x += up_shield;
                     Shield.Instance.transform.localScale = shield_size;
+
                     //累積カウント
                     item_count[shield_item]++;
 
