@@ -9,13 +9,13 @@ public class Continue : MonoBehaviour
         // Zならコンテニュー
         if(Input.GetKeyUp(KeyCode.Z))
         {
-            SceneManager.LoadScene("Play_Scene");
+            SceneManager.LoadScene("PlayScene");
         }
 
         // Xならタイトルに戻る
         if(Input.GetKeyUp(KeyCode.X))
         {
-            SceneManager.LoadScene("Title");
+            SceneManager.LoadScene("TitleScene");
             DataHolder.DataReset();
         }
     }

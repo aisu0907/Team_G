@@ -73,7 +73,7 @@ public class TitleArrow : MonoBehaviour
         switch (selected)
         {
             case 0:
-                SceneManager.LoadScene("information");
+                SceneManager.LoadScene("InformationScene");
                 break;
             case 1:
                 EndGame();
