@@ -114,6 +114,7 @@ MonoBehaviour:
   save_time: 20
   alive: 0
   damage_hit: 0
+  boss_score: 10000
 --- !u!114 &1637508818350216243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,7 +140,6 @@ MonoBehaviour:
   prefab2: {fileID: 1323917000318406210, guid: eb5917cc4ddf9bd449a67f453b91cefc, type: 3}
   enemy2: {fileID: 11400000, guid: 58ab6cbe37866b744ace51bd52f36a28, type: 2}
   prefab3: {fileID: 7582930186525683671, guid: 73f3352dff0f57b46a4d540704b666e3, type: 3}
-  prefab4: {fileID: 0}
 --- !u!50 &1987593275706827861
 Rigidbody2D:
   serializedVersion: 5
