@@ -9,6 +9,12 @@ public class ResultManager : MonoBehaviour
 
     public static int score = 0;
     public int timer = 0;
+    public int hp_bonus;
+    public int s_rank;
+    public int a_rank;
+    public int b_rank;
+    public int c_rank;
+    public int d_rank;
 
     public GameObject score_box;
     public GameObject bonus_box;
@@ -92,7 +98,7 @@ public class ResultManager : MonoBehaviour
         {
             SceneManager.LoadScene("Title");
         }
-        score = ScoreReceiver.score + (ScoreReceiver.hp * 10000);
+        score = ScoreReceiver.score + (ScoreReceiver.hp * hp_bonus);
     }
     /// <summary>
     /// 受け取った値を参照してランクを表示する
@@ -101,11 +107,11 @@ public class ResultManager : MonoBehaviour
     {
         GameObject rankObj = null;
 
-        if (score >= 100000) rankObj = S;
-        else if (score >= 90000) rankObj = A;
-        else if (score >= 80000) rankObj = B;
-        else if (score >= 70000) rankObj = C;
-        else if (score >= 60000) rankObj = D;
+        if (score >= s_rank) rankObj = S;
+        else if (score >= a_rank) rankObj = A;
+        else if (score >= b_rank) rankObj = B;
+        else if (score >= c_rank) rankObj = C;
+        else if (score >= d_rank) rankObj = D;
         else rankObj = E;
 
         Instantiate(rankObj, transform.position, Quaternion.identity);

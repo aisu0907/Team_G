@@ -141,6 +141,7 @@ MonoBehaviour:
   save_time: 20
   alive: 0
   damage_hit: 0
+  boss_score: 10000
 --- !u!50 &1829111181030531218
 Rigidbody2D:
   serializedVersion: 5

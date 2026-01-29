@@ -24,6 +24,9 @@ public class BossDamageEffect : MonoBehaviour
     [Header("▼Effect Flag")]
     public bool alive;//生存判定
     public bool damage_hit;//ダメージ判定
+
+    public int boss_score;
+
     //ダメージエフェクトカラー
     private Color default_color;//通常の色
     private Color damage_color; //ダメージ時の色
@@ -114,6 +117,7 @@ public class BossDamageEffect : MonoBehaviour
                 ScoreManager.Instance.score_switch = true; //スコアが入るようにする
                 StartCoroutine(DelayedFlash());
                 alive = true; //
+                Score.Instance.total_score += boss_score;
             }
         }
     }
