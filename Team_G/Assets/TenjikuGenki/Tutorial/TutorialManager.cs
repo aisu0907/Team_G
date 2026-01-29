@@ -25,6 +25,7 @@ public class TutorialManager : MonoBehaviour, IPhazeManager
                 window.SetActive(false);
                 phase++;
                 is_window = false;
+                is_change_color = true;
             }
         }
     }

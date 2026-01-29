@@ -28,19 +28,19 @@ public class TipsManager : MonoBehaviour
         if (Player.Instance.health > 0)
         {
             timer++;
-            if (pm.phase == 0)
+            if (timer == 300)
             {
-                if (timer == 300)
+                if (pm.phase == 0)
                 {
                     if (ch) ChangeNextTips(0);
                     if (!ch) ChangeNextTips(1);
                     timer = 0;
                     ch = !ch;
                 }
-            }
-            else
-            {
-                ChangeNextTips(pm.phase + 1);
+                else
+                {
+                    ChangeNextTips(pm.phase + 1);
+                }
             }
         }
     }
