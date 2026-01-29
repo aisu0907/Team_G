@@ -1404,6 +1404,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5806836250297397262, guid: b36ce76bff42ffc429c359ef883cf6a9, type: 3}
+      propertyPath: up_speed
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5806836250297397262, guid: b36ce76bff42ffc429c359ef883cf6a9, type: 3}
+      propertyPath: reflect_speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5806836250297397262, guid: b36ce76bff42ffc429c359ef883cf6a9, type: 3}
+      propertyPath: up_reflect_speed
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 5988915149965031515, guid: b36ce76bff42ffc429c359ef883cf6a9, type: 3}
       propertyPath: m_Name
       value: Sheild
@@ -1703,6 +1715,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2621086916589599481, guid: 182f2860488fc5548871950b5cfd8681, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3637313039213512884, guid: 182f2860488fc5548871950b5cfd8681, type: 3}
       propertyPath: audio_list.Array.size
       value: 7
@@ -1838,6 +1854,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 887983876}
+    - target: {fileID: 3699776250020943352, guid: ea5eaac365ca38b4e9ee505e212ad080, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4816849045373986088, guid: ea5eaac365ca38b4e9ee505e212ad080, type: 3}
       propertyPath: go
       value: 

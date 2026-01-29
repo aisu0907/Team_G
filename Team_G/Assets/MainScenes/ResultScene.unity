@@ -1000,8 +1000,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: 0
   hp_bonus: 5000
-  s_rank: 100000
-  a_rank: 90000
+  s_rank: 125000
+  a_rank: 100000
   b_rank: 80000
   c_rank: 70000
   d_rank: 60000

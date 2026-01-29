@@ -117,7 +117,6 @@ public class BossDamageEffect : MonoBehaviour
                 ScoreManager.Instance.score_switch = true; //スコアが入るようにする
                 StartCoroutine(DelayedFlash());
                 alive = true; //
-                Score.Instance.total_score += boss_score;
             }
         }
     }
@@ -148,6 +147,7 @@ public class BossDamageEffect : MonoBehaviour
         audio_source.PlayOneShot(sound2); //SEをを再生
         Instantiate(flash, new Vector2(transform.position.x,transform.position.y), Quaternion.identity); //画面全体にフラッシュを生成
         GameManager.Instance.boss_die = false;  
+        Score.Instance.total_score += boss_score;
         Destroy(gameObject);
     }
 }

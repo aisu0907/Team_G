@@ -120,7 +120,7 @@ public class GameManager : MonoBehaviour, IPhazeManager
     {
         //ラスボス撃破後の場合ゲームリザルトに
         if (phase >= 5)
-            SceneManager.LoadScene("Result");
+            SceneManager.LoadScene("ResultScene");
         //道中ボスの場合ミニリザルトに
         else
         {   
