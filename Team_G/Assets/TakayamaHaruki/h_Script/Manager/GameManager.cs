@@ -3,7 +3,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour, IPhazeManager
 {
 
     //ゲームオブジェクト
@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     public float boss_position_y; //ボス位置Y
     //
     [Header("▼Game Manager Setting")]
-    public int phase = 0;//フェーズ
+    public int phase { get; set; } = 0;//フェーズ
     public bool boss_die;//ボス死亡判定
 
     //タイマー

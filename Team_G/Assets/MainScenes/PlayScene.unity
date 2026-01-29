@@ -1557,7 +1557,6 @@ MonoBehaviour:
   dark: {fileID: 5190081689524932153, guid: d2a7753abe7e5554caf674eb152c44cc, type: 3}
   boss_position_x: -2.6
   boss_position_y: 3
-  phase: 0
   boss_die: 0
   frame: 0
 --- !u!114 &1451417415
@@ -1688,7 +1687,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1356498362545404966, guid: ea5eaac365ca38b4e9ee505e212ad080, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2266906530996990810, guid: ea5eaac365ca38b4e9ee505e212ad080, type: 3}
       propertyPath: m_Pivot.x
@@ -1774,6 +1773,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 887983876}
+    - target: {fileID: 4816849045373986088, guid: ea5eaac365ca38b4e9ee505e212ad080, type: 3}
+      propertyPath: go
+      value: 
+      objectReference: {fileID: 1451417410}
     - target: {fileID: 5046058940295061222, guid: ea5eaac365ca38b4e9ee505e212ad080, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

@@ -10,6 +10,8 @@ public class TipsManager : MonoBehaviour
     [SerializeField] int timer;
     bool ch = false;
     TextMeshProUGUI tips;
+    [SerializeField] GameObject go;
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,7 +26,8 @@ public class TipsManager : MonoBehaviour
         if (Player.Instance.health > 0)
         {
             timer++;
-            if (GameManager.Instance.phase == 0)
+            IPhazeManager pm = go.GetComponent<IPhazeManager>();
+            if (pm.phase == 0)
             {
                 if (timer == 300)
                 {
@@ -36,7 +39,7 @@ public class TipsManager : MonoBehaviour
             }
             else
             {
-                ChangeNextTips(GameManager.Instance.phase + 1);
+                ChangeNextTips(pm.phase + 1);
             }
         }
     }
