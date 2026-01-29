@@ -121,12 +121,12 @@ MonoBehaviour:
   display: {fileID: 1843163215658175290, guid: 2ae498e857a77cc4daa1516f0c0ef3c8, type: 3}
   player: {fileID: 0}
   plus_bom: 1
-  item_score: 0
+  item_score: 500
   heal_hp: 1
   up_speed: 0.5
   up_shield: 0.5
-  up_reflect_speed: 0.3
-  reflect_speed: 0
+  up_reflect_speed: 0.6
+  reflect_speed: 0.3
   item_count: 
 --- !u!61 &8223017186961346377
 BoxCollider2D:

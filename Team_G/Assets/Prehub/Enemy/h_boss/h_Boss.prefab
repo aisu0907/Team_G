@@ -186,13 +186,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 21
-  speed: 0
+  speed: 0.8
   death_pos_x: -2.6
   death_pos_y: 3
   explode: {fileID: 2661303078993959966, guid: f0f7fc77f27d1e849b18df3a82666c42, type: 3}
   bullet_data: {fileID: 11400000, guid: 0060511f69e9d2a4fb1e007ad5c1b610, type: 2}
   bullet: {fileID: 1323917000318406210, guid: 4e7fcc606545e1043bf191ae82e78847, type: 3}
   warning: {fileID: 2028448528721712660, guid: e47145f969b65f14d81fcc403f055aae, type: 3}
+  left_turn_pos: -3.3
+  right_turn_pos: -1.9
+  boost_speed: 0
   range_attack_interval: 480
   stairs_attack_interval: 240
   stairs_attack_cooldown: 0.5
