@@ -39,7 +39,17 @@ public class TipsManager : MonoBehaviour
                 }
                 else
                 {
-                    ChangeNextTips(pm.phase + 1);
+                    if (tips.text.Length == 2)
+                    {
+                        ChangeNextTips(pm.phase + 1);
+                    }
+                    else
+                    {
+                        if (ch) ChangeNextTips(0);
+                        if (!ch) ChangeNextTips(1);
+                        timer = 0;
+                        ch = !ch;
+                    }
                 }
             }
         }
