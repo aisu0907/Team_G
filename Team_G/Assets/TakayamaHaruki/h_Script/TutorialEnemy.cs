@@ -1,11 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TutorialEnemy : Enemy
+public class TutorialEnemy : Enemy, IDamageable
 {
     [SerializeField] List<Sprite> enemy_img;
-
-    private Rigidbody2D rb;
 
     // Update is called once per frame
     void Update()

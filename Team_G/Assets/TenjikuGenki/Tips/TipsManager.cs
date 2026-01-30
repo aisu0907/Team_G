@@ -18,24 +18,22 @@ public class TipsManager : MonoBehaviour
     void Start()
     {
         tips = GetComponent<TextMeshProUGUI>();
-        pm = go.GetComponent<IPhazeManager>();
         ChangeNextTips(0);
     }
 
 
     void Update()
     {
+        pm = go.GetComponent<IPhazeManager>();
+
         if (Player.Instance.health > 0)
         {
             timer++;
             if (timer == 300)
             {
-                if (pm.phase == 0)
+                if (pm.phase == 8)
                 {
-                    if (ch) ChangeNextTips(0);
-                    if (!ch) ChangeNextTips(1);
-                    timer = 0;
-                    ch = !ch;
+                    ChangeNextTips(2);
                 }
                 else
                 {

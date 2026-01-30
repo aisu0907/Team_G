@@ -59,9 +59,6 @@ public class Player : MonoBehaviour
     {
         //Instantiate(shield);
 
-        //開始位置
-        transform.position = new Vector3(start_x,start_y,0);
-        start_anime = true;
 
         //RigidBody
         rbody = this.GetComponent<Rigidbody2D>();
@@ -73,6 +70,10 @@ public class Player : MonoBehaviour
         shake_count = 0;
         save_color = img.color;
         damage_color = new Color(save_color.r, save_color.g, save_color.b, 0.5f);
+
+        //開始位置
+        transform.position = new Vector3(start_x,start_y,0);
+        start_anime = true;
     }
 
     // Update is called once per frame
