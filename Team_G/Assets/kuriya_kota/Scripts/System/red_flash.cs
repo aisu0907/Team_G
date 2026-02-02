@@ -11,7 +11,7 @@ public class RedFlash : MonoBehaviour
     AudioSource audioSource;
 
 
-    public float flashInTime = 0.05f;   // 白くなるまで
+    public float flashInTime = 0.05f;   // 赤くなるまで
     public float fadeOutTime = 0.9f;    // 消えるまでの時間
 
     public bool isFlashing = false;
@@ -33,7 +33,7 @@ public class RedFlash : MonoBehaviour
     }
 
     /// <summary>
-    /// 画像を一瞬白くフラッシュさせてから透明にフェードアウトする処理
+    /// 画像を一瞬赤くフラッシュさせてから透明にフェードアウトする処理
     /// </summary>
     /// <returns></returns>
     IEnumerator FlashCoroutine()
