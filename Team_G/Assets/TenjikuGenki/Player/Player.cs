@@ -112,6 +112,7 @@ public class Player : MonoBehaviour
                 if (bom > 0 && bomb_switch)
                 {
 
+                    AudioManager.instance.PlaySound("bom", 1f);
                     // "Enemy"タグがついたすべてのオブジェクトを取得
                     GameObject[] objects = GameObject.FindGameObjectsWithTag("Enemy");
 
