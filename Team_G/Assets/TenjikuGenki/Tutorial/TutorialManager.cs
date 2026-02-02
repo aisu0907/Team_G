@@ -154,9 +154,10 @@ public class TutorialManager : MonoBehaviour, IPhazeManager
                 window.SetActive(true); //ウィンドを表示
                 pop_window = true;  //ウィンドを表示した状態に
 
+                //チュートリアルをクリアしていたら
                 if (bomb_pop && enemy_hit_count >= 3)
                 {
-                    pop_id = 2;
+                    pop_id = 2; 
                     bomb_pop = false;
                 }
                 else

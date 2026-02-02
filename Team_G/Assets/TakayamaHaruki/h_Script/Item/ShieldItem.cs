@@ -110,7 +110,7 @@ public class Shield_Item : ItemBase
                     item_count[shield_item]++;
 
                     //アイテム取得演出
-                    SummonItemGetEffect(i);
+                    SummonItemGetEffect(i, i.item_id);
                 }
                 else
                     ScoreManager.Instance.ItemScore();
@@ -136,7 +136,15 @@ public class Shield_Item : ItemBase
     /// アイテム取得時の演出用メソッド。 取得したアイテムを大きく表示する演出を表示します。
     /// </summary>
     /// <param name="i">取得したアイテム</param>
-    void SummonItemGetEffect(Item i)
+    void SummonItemGetEffect(Item i, int item_id)
+    {
+        if (item_count[item_id] < i.max_item_count)
+        {
+            
+        }
+    }
+
+    void ItemGetEffect(Item i)
     {
         //アイテムの表示
         Get_Item ui = i.GetComponent<Get_Item>();

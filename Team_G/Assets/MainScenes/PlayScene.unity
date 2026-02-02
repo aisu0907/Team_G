@@ -695,6 +695,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4507864264245097953, guid: 404b54dc4139e514aa339b4cd7e754ac, type: 3}
     - target: {fileID: 2021564740943638649, guid: ece49d0188f35714ea82e5bc99c9d451, type: 3}
+      propertyPath: flash
+      value: 
+      objectReference: {fileID: 3001600071046506143, guid: 318cf17a939cc084b8253bff2c8a1679, type: 3}
+    - target: {fileID: 2021564740943638649, guid: ece49d0188f35714ea82e5bc99c9d451, type: 3}
       propertyPath: shake
       value: 
       objectReference: {fileID: 887983874}
