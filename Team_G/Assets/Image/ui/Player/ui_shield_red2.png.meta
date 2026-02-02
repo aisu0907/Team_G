@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 9310b050c2808b44eba0db77ad8ad832
+guid: 42b6796d3a7b4aa428ead6cb0c0d71d6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 9035238072627502858
-    second: jama_enemy_0
+      213: -516040001517070946
+    second: ui_shield_red2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: jama_enemy_0
+      name: ui_shield_red2_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 4
-        width: 23
-        height: 27
+        x: 1
+        y: 0
+        width: 15
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a0f1c04082d936d70800000000000000
-      internalID: 9035238072627502858
+      spriteID: e95deab4a58a6d8f0800000000000000
+      internalID: -516040001517070946
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      jama_enemy_0: 9035238072627502858
+      ui_shield_red2_0: -516040001517070946
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

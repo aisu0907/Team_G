@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 18917d4395f4a8943a867bec101d204b
+guid: 9e1cf9700907fb842a89c6df64604f58
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3695540991007769659
-    second: HP2_0
+      213: 8303954443382524186
+    second: ui_shield_green2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HP2_0
+      name: ui_shield_green2_0
       rect:
         serializedVersion: 2
         x: 1
-        y: 3
-        width: 14
-        height: 10
+        y: 0
+        width: 15
+        height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b34c9e593f2394330800000000000000
-      internalID: 3695540991007769659
+      spriteID: a1987dce1929d3370800000000000000
+      internalID: 8303954443382524186
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: e0548765487a5724db9b01d885b50efa
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      HP2_0: 3695540991007769659
+      ui_shield_green2_0: 8303954443382524186
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
