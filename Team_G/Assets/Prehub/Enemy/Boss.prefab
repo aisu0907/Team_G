@@ -119,6 +119,7 @@ MonoBehaviour:
   - {fileID: -8784003655823627391, guid: c7a4d6d5f118e2b42bf2dbbf21b060d5, type: 3}
   - {fileID: -8430282202468897226, guid: 93e6c17ad0a136949bbb8ff85a1059e4, type: 3}
   Timer: 0
+  rflash: {fileID: 3001600071046506143, guid: 45736fdf1760391428cc0d3d74f507fc, type: 3}
 --- !u!114 &2190680439373376589
 MonoBehaviour:
   m_ObjectHideFlags: 0
