@@ -1,159 +1,159 @@
-//ShieldItem.cs
+////ShieldItem.cs
 
-using UnityEngine;
+//using UnityEngine;
 
-public class Shield_Item : ItemBase
-{
-    [Header("Object Data")]
-    public GameObject display;
-    public Player player;
+//public class Shield_Item : ItemBase
+//{
+//    [Header("Object Data")]
+//    public GameObject display;
+//    public Player player;
 
-    //アイテム効果の上昇率
-    [Header("Item EffectUp Setting")]
-    public int plus_bom = 1;             //ボムの取得量
-    public int item_score = 0;           //アイテム取得時のスコア
-    public int heal_hp = 1;              //回復量
-    public float up_speed = 0.5f;        //スピード上昇率
-    public float up_shield = 0.5f;       //シールド範囲上昇率
-    public float up_reflect_speed = 0.5f;//反射スピード上昇率
-    public float reflect_speed;          //反射スピード保存用
+//    //アイテム効果の上昇率
+//    [Header("Item EffectUp Setting")]
+//    public int plus_bom = 1;             //ボムの取得量
+//    public int item_score = 0;           //アイテム取得時のスコア
+//    public int heal_hp = 1;              //回復量
+//    public float up_speed = 0.5f;        //スピード上昇率
+//    public float up_shield = 0.5f;       //シールド範囲上昇率
+//    public float up_reflect_speed = 0.5f;//反射スピード上昇率
+//    public float reflect_speed;          //反射スピード保存用
 
-    public int[] item_count;//アイテム取得回数
+//    public int[] item_count;//アイテム取得回数
 
-    private int max_health = 3; //最大体力  
-    private Vector2 shield_size;//シールドサイズ
+//    private int max_health = 3; //最大体力  
+//    private Vector2 shield_size;//シールドサイズ
 
-    public static Shield_Item Instance { get; private set; }
+//    public static Shield_Item Instance { get; private set; }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Awake()
-    {
-        //シングルトン
-        Instance = this;
-    }
+//    // Start is called once before the first execution of Update after the MonoBehaviour is created
+//    void Awake()
+//    {
+//        //シングルトン
+//        Instance = this;
+//    }
 
-    void Start()
-    {
-        //変数リセット
-        item_count = new int[3];
-        shield_size = new Vector2(3, 3);
-        player = Player.Instance;
+//    void Start()
+//    {
+//        //変数リセット
+//        item_count = new int[3];
+//        shield_size = new Vector2(3, 3);
+//        player = Player.Instance;
 
-        // データがあったら引き継ぐ
-        if(!(DataHolder.game_phaze < 0))
-        {
-            // 速度
-            player.speed += up_speed * DataHolder.player_took_item[0];
+//        // データがあったら引き継ぐ
+//        if(!(DataHolder.game_phaze < 0))
+//        {
+//            // 速度
+//            player.speed += up_speed * DataHolder.player_took_item[0];
 
-            reflect_speed += up_reflect_speed * DataHolder.player_took_item[1];
-            // 盾の大きさ
-            shield_size.x += up_shield * DataHolder.player_took_item[2];
-            Shield.Instance.transform.localScale = shield_size;
+//            reflect_speed += up_reflect_speed * DataHolder.player_took_item[1];
+//            // 盾の大きさ
+//            shield_size.x += up_shield * DataHolder.player_took_item[2];
+//            Shield.Instance.transform.localScale = shield_size;
 
-            // 回数の同期
-            for(int i = 0; i < 3; i++) item_count[i] = DataHolder.player_took_item[i];
-        }
-    }
+//            // 回数の同期
+//            for(int i = 0; i < 3; i++) item_count[i] = DataHolder.player_took_item[i];
+//        }
+//    }
 
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        //アイテムに当たった場合
-        if (collision.TryGetComponent<Item>(out var i))
-        {
-            //音を鳴らす
-            AudioManager.instance.PlaySound("GetItem");
+//    void OnTriggerEnter2D(Collider2D collision)
+//    {
+//        //アイテムに当たった場合
+//        if (collision.TryGetComponent<Item>(out var i))
+//        {
+//            //音を鳴らす
+//            AudioManager.instance.PlaySound("GetItem");
 
-            //スピード
-            if (i.item_id == speed_item)
-                //累積上限に達していなかった場合
-                if (item_count[speed_item] < i.max_item_count)
-                {
-                    //プレイヤーの移動スピードを上げる
-                    player.speed += up_speed;
+//            //スピード
+//            if (i.item_id == speed_item)
+//                //累積上限に達していなかった場合
+//                if (item_count[speed_item] < i.max_item_count)
+//                {
+//                    //プレイヤーの移動スピードを上げる
+//                    player.speed += up_speed;
 
-                    //累積カウント
-                    item_count[speed_item]++;
+//                    //累積カウント
+//                    item_count[speed_item]++;
 
-                    //アイテム取得演出
-                    SummonItemGetEffect(i);
-                }
-                else
-                    ScoreManager.Instance.ItemScore();
+//                    //アイテム取得演出
+//                    SummonItemGetEffect(i);
+//                }
+//                else
+//                    ScoreManager.Instance.ItemScore();
 
-            //反射スピード
-            if (i.item_id == reflect_item)
-                //累積上限に達していなかった場合
-                if (item_count[reflect_item] < i.max_item_count)
-                {
-                    //反射スピードup
-                    reflect_speed += up_reflect_speed;
+//            //反射スピード
+//            if (i.item_id == reflect_item)
+//                //累積上限に達していなかった場合
+//                if (item_count[reflect_item] < i.max_item_count)
+//                {
+//                    //反射スピードup
+//                    reflect_speed += up_reflect_speed;
 
-                    //累積カウント
-                    item_count[reflect_item]++;
+//                    //累積カウント
+//                    item_count[reflect_item]++;
 
-                    //アイテム取得演出
-                    SummonItemGetEffect(i);
-                }
-                else
-                    ScoreManager.Instance.ItemScore();
+//                    //アイテム取得演出
+//                    SummonItemGetEffect(i);
+//                }
+//                else
+//                    ScoreManager.Instance.ItemScore();
 
-            //反射範囲
-            if (i.item_id == shield_item)
-                //累積上限に達していなかった場合
-                if (item_count[shield_item] < i.max_item_count)
-                {
-                    //シールドを横に大きくする
-                    shield_size.x += up_shield;
-                    Shield.Instance.transform.localScale = shield_size;
+//            //反射範囲
+//            if (i.item_id == shield_item)
+//                //累積上限に達していなかった場合
+//                if (item_count[shield_item] < i.max_item_count)
+//                {
+//                    //シールドを横に大きくする
+//                    shield_size.x += up_shield;
+//                    Shield.Instance.transform.localScale = shield_size;
 
-                    //累積カウント
-                    item_count[shield_item]++;
+//                    //累積カウント
+//                    item_count[shield_item]++;
 
-                    //アイテム取得演出
-                    SummonItemGetEffect(i, i.item_id);
-                }
-                else
-                    ScoreManager.Instance.ItemScore();
+//                    //アイテム取得演出
+//                    SummonItemGetEffect(i, i.item_id);
+//                }
+//                else
+//                    ScoreManager.Instance.ItemScore();
 
-            //回復
-            if (i.item_id == life_item)
-                //プレイヤーの体力が最大じゃない場合
-                if (max_health > player.health)
-                {
-                    //プレイヤーの体力を増やす
-                    player.health += heal_hp;
+//            //回復
+//            if (i.item_id == life_item)
+//                //プレイヤーの体力が最大じゃない場合
+//                if (max_health > player.health)
+//                {
+//                    //プレイヤーの体力を増やす
+//                    player.health += heal_hp;
 
-                    //アイテムテキストを表示
-                    ItemText.Instance.ItemUpText(i);
-                }
+//                    //アイテムテキストを表示
+//                    ItemText.Instance.ItemUpText(i);
+//                }
 
-            //アイテムを削除
-            Destroy(i.gameObject);
-        }
-    }
+//            //アイテムを削除
+//            Destroy(i.gameObject);
+//        }
+//    }
 
-    /// <summary>
-    /// アイテム取得時の演出用メソッド。 取得したアイテムを大きく表示する演出を表示します。
-    /// </summary>
-    /// <param name="i">取得したアイテム</param>
-    void SummonItemGetEffect(Item i, int item_id)
-    {
-        if (item_count[item_id] < i.max_item_count)
-        {
+//    /// <summary>
+//    /// アイテム取得時の演出用メソッド。 取得したアイテムを大きく表示する演出を表示します。
+//    /// </summary>
+//    /// <param name="i">取得したアイテム</param>
+//    void SummonItemGetEffect(Item i, int item_id)
+//    {
+//        if (item_count[item_id] < i.max_item_count)
+//        {
             
-        }
-    }
+//        }
+//    }
 
-    void ItemGetEffect(Item i)
-    {
-        //アイテムの表示
-        Get_Item ui = i.GetComponent<Get_Item>();
+//    void ItemGetEffect(Item i)
+//    {
+//        //アイテムの表示
+//        Get_Item ui = i.GetComponent<Get_Item>();
 
-        var d = Instantiate(display, gameObject.transform.position, Quaternion.Euler(0, 0, 10)).GetComponent<DisplayItem>();
-        d.SummonDisplay(i.GetComponent<SpriteRenderer>().sprite);
+//        var d = Instantiate(display, gameObject.transform.position, Quaternion.Euler(0, 0, 10)).GetComponent<DisplayItem>();
+//        d.SummonDisplay(i.GetComponent<SpriteRenderer>().sprite);
 
-        //テキスト表示
-        ItemText.Instance.ItemUpText(i);
-    }
-}
+//        //テキスト表示
+//        ItemText.Instance.ItemUpText(i);
+//    }
+//}
 
