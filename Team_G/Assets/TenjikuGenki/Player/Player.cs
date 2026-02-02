@@ -200,6 +200,18 @@ public class Player : MonoBehaviour
 
             //if (collision.TryGetComponent<Gasubura>(out var b)) b.Damage(); 
         }
+
+        //アイテムに当たった場合
+        if (collision.TryGetComponent<Item>(out var i))
+        {
+            //音を鳴らす
+            AudioManager.instance.PlaySound("GetItem");
+
+            Shield_Item.Instance.ItemGet(i, i.item_id);
+
+            //アイテムを削除
+            Destroy(i.gameObject);
+        }
     }
 
     /// <summary>
