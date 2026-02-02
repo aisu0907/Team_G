@@ -73,7 +73,7 @@ public class LastBoss : BossBase
         switch (mode)
         {
             case 0:
-                if(!isDying) timer++;
+                if(!isDying&&move) timer++;
                 if (timer >= attack)
                 {
                     mode = Random.Range(1, 5);
@@ -248,7 +248,7 @@ public class LastBoss : BossBase
     /// </summary>
     public void Die()
     {
-        if (isDying) return;
+        if (isDying&&timer==0) return;
         isDying = true;
         move = false;
         StageBGM.Instance.bgm_stop = true;
