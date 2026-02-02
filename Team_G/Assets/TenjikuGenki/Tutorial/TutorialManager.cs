@@ -24,15 +24,22 @@ public class TutorialManager : MonoBehaviour, IPhazeManager
     [SerializeField] private int pop_time_count;
     [SerializeField] private int key_time_count;
 
-    private int enemy_color;//
-    private int save_hp;　
-    private int pop_num;
     private Image img;
-    private bool pop_window;
-    private bool hp_pop;
-    private bool bomb_pop;
-    private bool key_swicth;
+    private bool pop_window;//ポップ表示確認用フラグ
+    private bool bomb_pop;  //ボム説明ポップ確認用フラグ
+    private bool hp_pop;　　//ダメージポップ確認用フラグ
+    private int enemy_color;//敵の色
+    private int save_hp;　  //プレイヤーHP
+    private int pop_id;     //ポップID
+    private bool key_switch;
     private bool start_window;
+
+    public static TutorialManager Instance { get; private set; }
+
+    private void Awake()
+    {
+        Instance = this;
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -44,7 +51,7 @@ public class TutorialManager : MonoBehaviour, IPhazeManager
         bomb_pop = true;
         phase = 6;
         enemy_color = 0;
-        pop_num = 1;
+        pop_id = 1;
         save_hp = Player.Instance.health;
         //タイム系
         key_time_count = 0;
@@ -72,7 +79,7 @@ public class TutorialManager : MonoBehaviour, IPhazeManager
 
         if (Input.GetKeyDown(KeyCode.Z) && pop_window)
         {
-            if (!is_window && key_swicth && key_time < key_time_count)
+            if (!is_window && key_switch && key_time < key_time_count)
             {
                 window.SetActive(false);
                 pop_window = false;
@@ -82,17 +89,17 @@ public class TutorialManager : MonoBehaviour, IPhazeManager
                 key_time_count = 0;
             }
 
-            if (is_window && key_swicth && key_time < key_time_count)
+            if (is_window && key_switch && key_time < key_time_count)
             {
-                img.sprite = window_img[pop_num];
+                img.sprite = window_img[pop_id];
                 is_window = false;
                 key_time_count = 0;
             }
 
-            key_swicth = false;
+            key_switch = false;
         }
         else
-            key_swicth = true;
+            key_switch = true;
 
         if (phase >= 1 && !pop_window)
         {
@@ -124,7 +131,7 @@ public class TutorialManager : MonoBehaviour, IPhazeManager
 
                 if (bomb_pop && enemy_hit_count >= 3)
                 {
-                    pop_num = 2;
+                    pop_id = 2;
                     bomb_pop = false;
                 }
                 else
