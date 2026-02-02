@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 1747a30b39f452548b31e0871a444f66
+guid: 8c7eb9fb7924afe448a30e1de469f6c5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4693150557520481461
-    second: HP3_0
+      213: -8680797543115379092
+    second: A_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HP3_0
+      name: A_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 3
-        width: 14
-        height: 10
+        x: 3
+        y: 1
+        width: 26
+        height: 31
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5bc4f62119b612140800000000000000
-      internalID: 4693150557520481461
+      spriteID: c6e268b90ac978780800000000000000
+      internalID: -8680797543115379092
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 8d9eb2cbca6e05641a84c2ce70494509
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      HP3_0: 4693150557520481461
+      A_0: -8680797543115379092
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

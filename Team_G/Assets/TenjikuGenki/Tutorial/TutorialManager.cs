@@ -24,7 +24,7 @@ public class TutorialManager : MonoBehaviour, IPhazeManager
     [SerializeField] private int pop_time_count;
     [SerializeField] private int key_time_count;
 
-    private Image img;
+    private Image img;      
     private bool pop_window;//ポップ表示確認用フラグ
     private bool bomb_pop;  //ボム説明ポップ確認用フラグ
     private bool hp_pop;　　//ダメージポップ確認用フラグ
