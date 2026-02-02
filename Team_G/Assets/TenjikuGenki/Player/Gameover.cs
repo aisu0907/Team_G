@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerGameover : MonoBehaviour
@@ -6,6 +7,7 @@ public class PlayerGameover : MonoBehaviour
     [SerializeField] GameObject error;
     [SerializeField] GameObject ui;
     [SerializeField] CanvasGroup white;
+    public static event Action OnPlayerDead;
 
     // ïœêî
     bool isGameover = false;
@@ -33,6 +35,7 @@ public class PlayerGameover : MonoBehaviour
                 Instantiate(error, new Vector2(0, 0), Quaternion.identity);
 
                 // èîÅX
+                OnPlayerDead?.Invoke();
                 isGameover = true;
                 Time.timeScale = 0.0f;
                 player.rbody.linearVelocity = Vector2.zero;

@@ -26,6 +26,7 @@ public class StageBGM : MonoBehaviour
             Debug.LogWarning($"{name}: AudioSource Ç™å©Ç¬Ç©ÇËÇ‹ÇπÇÒÅBé©ìÆÇ≈í«â¡ÇµÇ‹Ç∑ÅB");
             audioSource = gameObject.AddComponent<AudioSource>();
         }
+        PlayerGameover.OnPlayerDead += StopBGM;
     }
 
     // Update is called once per frame
@@ -40,5 +41,10 @@ public class StageBGM : MonoBehaviour
         }
         else audioSource.Stop();
 
+    }
+
+    void StopBGM()
+    {
+        bgm_stop = true;
     }
 }
