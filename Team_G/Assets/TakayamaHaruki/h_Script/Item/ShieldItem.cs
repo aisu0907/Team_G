@@ -75,7 +75,7 @@ public class Shield_Item : ItemBase
     /// </summary>
     /// <param name="i">取得したアイテム</param>
     /// <param name="item_id">アイテムID/param>
-    void ItemGet(Item i, int item_id)
+     public void ItemGet(Item i, int item_id)
     {
         //回復アイテム
         if (i.item_id == life_item)

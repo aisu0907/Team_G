@@ -11,6 +11,7 @@ public class h_Boss : BossBase
     public EnemyData bullet_data;//弾の情報
     public GameObject bullet;    //弾
     public GameObject warning;   //警告
+    public GameObject flash;     //出現時演出フラッシュ
     [Header("▼Boss Move")]
     public float left_turn_pos; //右側の反転位置
     public float right_turn_pos;//左側の反転位置
@@ -57,6 +58,8 @@ public class h_Boss : BossBase
 
     void Start()
     {
+        Instantiate(flash, new Vector2(transform.position.x,transform.position.y), Quaternion.identity); //画面全体にフラッシュを生成
+
         //リセット
         rb = GetComponent<Rigidbody2D>();
         warning_switch = true;
