@@ -1574,7 +1574,7 @@ MonoBehaviour:
   enemy_speed: 3
   enemy_hit_count: 0
   enemy_hit: 3
-  enemy_spawn_pos: {x: -2.6, y: 6}
+  enemy_spawn_pos: {x: -2.6, y: 5}
   pop_time: 180
   key_time: 60
   pop_time_count: 0
