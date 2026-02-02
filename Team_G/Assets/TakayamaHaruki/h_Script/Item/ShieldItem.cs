@@ -6,7 +6,6 @@ public class Shield_Item : ItemBase
 {
     [Header("Object Data")]
     public GameObject display;
-    public Player player;
 
     //アイテム効果の上昇率
     [Header("Item EffectUp Setting")]
@@ -22,6 +21,7 @@ public class Shield_Item : ItemBase
 
     private int max_health = 3; //最大体力  
     private Vector2 shield_size;//シールドサイズ
+    private Player player;
 
     public static Shield_Item Instance { get; private set; }
 
@@ -37,9 +37,10 @@ public class Shield_Item : ItemBase
         //変数リセット
         item_count = new int[3];
         shield_size = new Vector2(3, 3);
+        player = Player.Instance;
 
         // データがあったら引き継ぐ
-        if(!(DataHolder.game_phaze < 0))
+        if((DataHolder.game_phaze > 0))
         {
             // 速度
             player.speed += up_speed * DataHolder.player_took_item[0];
@@ -76,6 +77,20 @@ public class Shield_Item : ItemBase
     /// <param name="item_id">アイテムID/param>
     void ItemGet(Item i, int item_id)
     {
+        //回復アイテム
+        if (i.item_id == life_item)
+            //プレイヤーの体力が最大じゃない場合
+            if (max_health > player.health)
+            {
+                //プレイヤーの体力を増やす
+                player.health += heal_hp;
+
+                //アイテムテキストを表示
+                ItemText.Instance.ItemUpText(i);
+
+                return;
+            }
+
         if (item_count[item_id] < i.max_item_count)
         {
             //対応したアイテムの効果を適用する
@@ -83,37 +98,34 @@ public class Shield_Item : ItemBase
                 //移動速度アップアイテム
                 if (i.item_id == speed_item)
                     player.speed += up_speed; //プレイヤーの移動スピードを上げる
+                
                 //反射速度アップアイテム
-                else if (i.item_id == reflect_speed)
+                if (i.item_id == reflect_speed)
                    reflect_speed += up_reflect_speed; //反射スピードup
+                
                 //反射範囲アップアイテム
-                else if (i.item_id == shield_item)
+                if (i.item_id == shield_item)
                 {
                     //シールドを横に大きくする
                     shield_size.x += up_shield;
                     Shield.Instance.transform.localScale = shield_size;
                 }
-                //回復アイテム
-                if (i.item_id == life_item)
-                    //プレイヤーの体力が最大じゃない場合
-                    if (max_health > player.health)
-                    {
-                        //プレイヤーの体力を増やす
-                        player.health += heal_hp;
 
-                        //アイテムテキストを表示
-                        ItemText.Instance.ItemUpText(i);
-                    }
             }
 
-            item_count[item_id]++;//累積カウント
+            item_count[item_id]++; //累積カウント
 
-            ItemGetEffect(i);
+            ItemGetEffect(i); //アイテム演出メソッド
         }
         else
             ScoreManager.Instance.ItemScore();
+
     }
 
+    /// <summary>
+    /// アイテム取得演出用メソッド。 アイテム取得時に呼び出し対応したアイテムの演出を表示します。
+    /// </summary>
+    /// <param name="i">取得したアイテム</param>
     void ItemGetEffect(Item i)
     {
         //アイテムの表示

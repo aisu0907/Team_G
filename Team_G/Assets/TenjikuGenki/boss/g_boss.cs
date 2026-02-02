@@ -13,6 +13,7 @@ public class g_boss : BossBase
     Vector2 tmp_pos;
     Rigidbody2D rb; // ”­ŽËŠÔŠu
     bool left_move = true;
+    public GameObject rflash;
     
     void Update()
     {
@@ -51,6 +52,7 @@ public class g_boss : BossBase
         tmp_pos = transform.position;
         rb = GetComponent<Rigidbody2D>();
         transform.position = new Vector2(transform.position.x - 0.5f,transform.position.y);
+        Instantiate(rflash);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
