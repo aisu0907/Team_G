@@ -37,7 +37,6 @@ public class Shield_Item : ItemBase
         //変数リセット
         item_count = new int[3];
         shield_size = new Vector2(3, 3);
-        player = Player.Instance;
 
         // データがあったら引き継ぐ
         if(!(DataHolder.game_phaze < 0))
@@ -63,69 +62,7 @@ public class Shield_Item : ItemBase
             //音を鳴らす
             AudioManager.instance.PlaySound("GetItem");
 
-            //スピード
-            if (i.item_id == speed_item)
-                //累積上限に達していなかった場合
-                if (item_count[speed_item] < i.max_item_count)
-                {
-                    //プレイヤーの移動スピードを上げる
-                    player.speed += up_speed;
-
-                    //累積カウント
-                    item_count[speed_item]++;
-
-                    //アイテム取得演出
-                    SummonItemGetEffect(i);
-                }
-                else
-                    ScoreManager.Instance.ItemScore();
-
-            //反射スピード
-            if (i.item_id == reflect_item)
-                //累積上限に達していなかった場合
-                if (item_count[reflect_item] < i.max_item_count)
-                {
-                    //反射スピードup
-                    reflect_speed += up_reflect_speed;
-
-                    //累積カウント
-                    item_count[reflect_item]++;
-
-                    //アイテム取得演出
-                    SummonItemGetEffect(i);
-                }
-                else
-                    ScoreManager.Instance.ItemScore();
-
-            //反射範囲
-            if (i.item_id == shield_item)
-                //累積上限に達していなかった場合
-                if (item_count[shield_item] < i.max_item_count)
-                {
-                    //シールドを横に大きくする
-                    shield_size.x += up_shield;
-                    Shield.Instance.transform.localScale = shield_size;
-
-                    //累積カウント
-                    item_count[shield_item]++;
-
-                    //アイテム取得演出
-                    SummonItemGetEffect(i, i.item_id);
-                }
-                else
-                    ScoreManager.Instance.ItemScore();
-
-            //回復
-            if (i.item_id == life_item)
-                //プレイヤーの体力が最大じゃない場合
-                if (max_health > player.health)
-                {
-                    //プレイヤーの体力を増やす
-                    player.health += heal_hp;
-
-                    //アイテムテキストを表示
-                    ItemText.Instance.ItemUpText(i);
-                }
+            ItemGet(i, i.item_id);
 
             //アイテムを削除
             Destroy(i.gameObject);
@@ -136,12 +73,46 @@ public class Shield_Item : ItemBase
     /// アイテム取得時の演出用メソッド。 取得したアイテムを大きく表示する演出を表示します。
     /// </summary>
     /// <param name="i">取得したアイテム</param>
-    void SummonItemGetEffect(Item i, int item_id)
+    /// <param name="item_id">アイテムID/param>
+    void ItemGet(Item i, int item_id)
     {
         if (item_count[item_id] < i.max_item_count)
         {
-            
+            //対応したアイテムの効果を適用する
+            {
+                //移動速度アップアイテム
+                if (i.item_id == speed_item)
+                    player.speed += up_speed; //プレイヤーの移動スピードを上げる
+                //反射速度アップアイテム
+                else if (i.item_id == reflect_speed)
+                   reflect_speed += up_reflect_speed; //反射スピードup
+                //反射範囲アップアイテム
+                else if (i.item_id == shield_item)
+                {
+                    //シールドを横に大きくする
+                    shield_size.x += up_shield;
+                    Shield.Instance.transform.localScale = shield_size;
+                }
+
+                //回復アイテム
+                if (i.item_id == life_item)
+                    //プレイヤーの体力が最大じゃない場合
+                    if (max_health > player.health)
+                    {
+                        //プレイヤーの体力を増やす
+                        player.health += heal_hp;
+
+                        //アイテムテキストを表示
+                        ItemText.Instance.ItemUpText(i);
+                    }
+            }
+
+            item_count[item_id]++;//累積カウント
+
+            ItemGetEffect(i);
         }
+        else
+            ScoreManager.Instance.ItemScore();
     }
 
     void ItemGetEffect(Item i)
