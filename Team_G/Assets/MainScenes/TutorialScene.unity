@@ -1573,6 +1573,7 @@ MonoBehaviour:
   enemy: {fileID: 1323917000318406210, guid: e413b633f57ef0242a32bb2dcc9cfb90, type: 3}
   enemy_speed: 3
   enemy_hit_count: 0
+  enemy_hit: 3
   enemy_spawn_pos: {x: -2.6, y: 6}
   pop_time: 180
   key_time: 60

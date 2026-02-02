@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     [Header("▼ GameObject")]
     public GameObject explode;
     public GameObject shield;
+    public GameObject flash;
     public SpriteRenderer img; //画像
     public Rigidbody2D rbody;
 
@@ -122,6 +123,8 @@ public class Player : MonoBehaviour
                         Destroy(obj);
                         Instantiate(explode, obj.transform.position, Quaternion.identity);
                     }
+
+                    Instantiate(flash, new Vector2(transform.position.x, transform.position.y), Quaternion.identity); //画面全体にフラッシュを生成
 
                     //bomの数を減らす
                     bom--;

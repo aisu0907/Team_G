@@ -56,7 +56,7 @@ public class LastBoss : BossBase
         if (move) Move();
         else Death_Move();
 
-        if (jamamer_timer >= attack*4)
+        if (jamamer_timer >= attack*4&&!isDying)
         {
             jamamer_timer = 0;
             SummonJammer();
