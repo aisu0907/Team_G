@@ -12,7 +12,7 @@ public class Flash : MonoBehaviour
     AudioSource audioSource;
 
 
-    public float flashInTime = 0.05f;   // ê‘Ç≠Ç»ÇÈÇ‹Ç≈
+    public float flashInTime = 0.05f;   // îíÇ≠Ç»ÇÈÇ‹Ç≈
     public float fadeOutTime = 0.9f;    // è¡Ç¶ÇÈÇ‹Ç≈ÇÃéûä‘
 
     public bool isFlashing = false;
@@ -47,12 +47,12 @@ public class Flash : MonoBehaviour
         {
             t += Time.deltaTime;
             float lerp = t / flashInTime;
-            img.color = Color.Lerp(img.color, Color.red, lerp);
+            img.color = Color.Lerp(img.color, Color.white, lerp);
             yield return null;
         }
         audioSource.PlayOneShot(sound1);
         audioSource.PlayOneShot(sound2);
-        img.color = Color.red;  
+        img.color = Color.white;  
 
         t = 0f;
         Color startColor = img.color;

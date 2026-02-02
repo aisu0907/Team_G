@@ -30,11 +30,13 @@ public class LastBoss : BossBase
     public GameObject prefab2;
     public EnemyData enemy2;
     public GameObject prefab3;
+    public GameObject r_falsh;
 
     AudioSource audioSource;
 
     private void Awake()
     {
+        Instantiate(r_falsh, transform.position, Quaternion.identity);
         Instance = this;
     }
 
@@ -46,7 +48,8 @@ public class LastBoss : BossBase
         img = GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
 
-        basePos = transform.position; 
+        basePos = transform.position;
+     
     }
 
     void Update()

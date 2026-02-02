@@ -140,6 +140,7 @@ MonoBehaviour:
   prefab2: {fileID: 1323917000318406210, guid: eb5917cc4ddf9bd449a67f453b91cefc, type: 3}
   enemy2: {fileID: 11400000, guid: 58ab6cbe37866b744ace51bd52f36a28, type: 2}
   prefab3: {fileID: 7582930186525683671, guid: 73f3352dff0f57b46a4d540704b666e3, type: 3}
+  r_falsh: {fileID: 3001600071046506143, guid: 45736fdf1760391428cc0d3d74f507fc, type: 3}
 --- !u!50 &1987593275706827861
 Rigidbody2D:
   serializedVersion: 5
