@@ -10,6 +10,12 @@ public class EJammer : Enemy
         ;
     }
 
+    void Start()
+    {
+
+        EnemySpawn.Instance.counter++;
+    }
+
     void Update()
     {
         ;
@@ -53,6 +59,11 @@ public class EJammer : Enemy
     void OnTriggerStay2D(Collider2D collision)
     {
         if (IsHitEnemy(collision.gameObject)) Delete(collision);
+    }
+
+    void OnDestroy()
+    {
+        EnemySpawn.Instance.counter--;
     }
 
     public void PopWindow()
