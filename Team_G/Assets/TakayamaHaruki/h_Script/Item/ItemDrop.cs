@@ -27,17 +27,21 @@ public class ItemDrop : MonoBehaviour
                 rand_item = Random.Range(0, itemList.Count);//ドロップアイテムを決定
                 rand_drop = Random.Range(0, 9);             //回復アイテムがドロップするかを決める
 
+                //座標を変更
+                Vector2 pos = (e.transform.position + transform.position) / 2;
+                pos.y += 0.5f;
+
                 //アイテムをドロップ
                 if (rand_drop < life_drop && Player.Instance.health < 3)
                 {
                     //敵の位置に回復アイテムを生成
-                    Instantiate(life_item, e.transform.position, Quaternion.identity);
+                    Instantiate(life_item, pos, Quaternion.identity);
                 }
                 else
                 {
                     //敵の位置にアイテムを生成
                     if (drop_switch)
-                        Instantiate(itemList[rand_item], e.transform.position, Quaternion.identity);
+                        Instantiate(itemList[rand_item], pos, Quaternion.identity);
                 }
             }
     }
