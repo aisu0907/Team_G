@@ -1,8 +1,5 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
-using static UnityEngine.GraphicsBuffer;
 
 
 public class Player : MonoBehaviour
@@ -13,6 +10,7 @@ public class Player : MonoBehaviour
     public GameObject flash;
     public SpriteRenderer img; //画像
     public Rigidbody2D rbody;
+    public GameObject bgm;
 
     [Header("▼ PlayerStatus")]
     public int health = 3;      //体力
@@ -113,6 +111,7 @@ public class Player : MonoBehaviour
                 if (bom > 0 && bomb_switch)
                 {
 
+                    AudioManager.instance.PlaySound("bom", 1f);
                     // "Enemy"タグがついたすべてのオブジェクトを取得
                     GameObject[] objects = GameObject.FindGameObjectsWithTag("Enemy");
 
