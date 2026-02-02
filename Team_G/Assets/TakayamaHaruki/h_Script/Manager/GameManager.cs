@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour, IPhazeManager
     private float boss_timer;  //ボス出現タイマー
     private float result_timer;//リザルト
     public  int frame = 0;//フレーム
+    public int spawn_time = 0;
     //座標
     private Vector2 boss_position;
 
@@ -74,13 +75,20 @@ public class GameManager : MonoBehaviour, IPhazeManager
                 frame++;
 
                 //指定フレーム経過するとボスを出現させる
-                if (frame >= boss[phase / 2].timer) 
+                if (frame >= boss[phase / 2].timer)
                 {
+                    spawner.GetComponent<EnemySpawn>().spawn_switch = false;
+
                     //画面にエネミーが残っていない場合
                     if (EnemySpawn.Instance.counter == 0)
                     {
-                        SpawnBoss(); //ボスを出現
-                        frame = 0; //フレームをリセット
+                        spawn_time++;
+                        if (spawn_time >= 120)
+                        {
+                            SpawnBoss(); //ボスを出現
+                            frame = 0; //フレームをリセット
+                            spawn_time = 0;
+                        }
                     }
                 }
             }
