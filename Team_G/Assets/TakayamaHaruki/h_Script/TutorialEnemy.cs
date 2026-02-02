@@ -1,11 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TutorialEnemy : Enemy
+public class TutorialEnemy : Enemy, IDamageable
 {
-    [SerializeField] List<Sprite> enemy_img;
-
-    private Rigidbody2D rb;
+    public GameObject tm;
+    public List<Sprite> enemy_img;
 
     // Update is called once per frame
     void Update()
@@ -54,5 +53,11 @@ public class TutorialEnemy : Enemy
         // Decision Vector
         rb = GetComponent<Rigidbody2D>();
         rb.linearVelocity = vec * speed;
+    }
+
+    public void OnDestroy()
+    {
+        if (on_hitting)
+            TutorialManager.Instance.enemy_hit_count++;
     }
 }

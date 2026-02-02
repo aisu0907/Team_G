@@ -23,5 +23,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MainScenes/InformationScene.unity
     guid: a2b1145352afbf94a8310d129a7a7903
+  - enabled: 1
+    path: Assets/MainScenes/TutorialScene.unity
+    guid: e1cf10189d96487408a54c13a529a843
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

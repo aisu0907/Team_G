@@ -11,6 +11,12 @@ public class EReflect : Enemy, IDamageable
         ;
     }
 
+    void Start()
+    {
+
+        EnemySpawn.Instance.counter++;
+    }
+
     void Update()
     {
         // Spin
@@ -53,6 +59,24 @@ public class EReflect : Enemy, IDamageable
                 rb.linearVelocity = vec.normalized * speed;
     }
 
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        Enemy other = collision.gameObject.GetComponent<Enemy>();
+        if (other != null)
+        {
+            ScoreManager.Instance.OnEnemiesCollided(this, other);
+        }
+    }
+    void OnTriggerStay2D(Collider2D collision)
+    {
+        if (IsHitEnemy(collision.gameObject)) Delete(collision);
+    }
+
+    void OnDestroy()
+    {
+        EnemySpawn.Instance.counter--;
+    }
+
     /// <summary>
     /// èâä˙âª
     /// </summary>
@@ -79,16 +103,4 @@ public class EReflect : Enemy, IDamageable
         rb.linearVelocity = vec * speed;
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        Enemy other = collision.gameObject.GetComponent<Enemy>();
-        if (other != null)
-        {
-            ScoreManager.Instance.OnEnemiesCollided(this, other);
-        }
-    }
-    void OnTriggerStay2D(Collider2D collision)
-    {
-        if (IsHitEnemy(collision.gameObject)) Delete(collision);
-    }
 }
