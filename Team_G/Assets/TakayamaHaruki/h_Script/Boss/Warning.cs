@@ -7,8 +7,8 @@ public class Warning : MonoBehaviour
     //ゲームオブジェクト
     [Header("▼WarningObjectData")]
     public GameObject range_attack;//範囲攻撃
-    public AudioClip warning_sound;//警告音
     public SpriteRenderer img;     //画像
+    public AudioClip warning_sound;//警告音
     private AudioSource audio_source;//サウンド
     //警告表示
     [Header("▼WarningSetting")]
