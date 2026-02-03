@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour, IPhazeManager
     //
     [Header("▼Game Manager Setting")]
     public bool boss_die;//ボス死亡判定
+
+    public int result_time;
     public bool is_change_color { get; set; } = true;
     public int phase { get; set; } = 0;//フェーズ
 
@@ -101,7 +103,7 @@ public class GameManager : MonoBehaviour, IPhazeManager
             if(!boss_die)
             {
                 result_timer++;
-                if(result_timer >= 60)
+                if(result_timer >= result_time)
                 {
                     Result();
                     boss_die = true;
@@ -129,9 +131,9 @@ public class GameManager : MonoBehaviour, IPhazeManager
         //ラスボス撃破後の場合ゲームリザルトに
         if (phase >= 5)
             SceneManager.LoadScene("ResultScene");
-        //道中ボスの場合ミニリザルトに
+            //道中ボスの場合ミニリザルトに
         else
-        {   
+        {
             Instantiate(dark, uiprefab.transform);
             var ui = Instantiate(text, uiprefab.transform).GetComponent<ResultText>();
             ui.init(boss_timer);
