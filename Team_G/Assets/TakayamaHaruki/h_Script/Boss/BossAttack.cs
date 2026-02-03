@@ -25,15 +25,9 @@ public class BossAttack : MonoBehaviour
         damage_time++;
         Display_time++;
 
-        //表示時間が終了した場合
-        if (Display_time >= Display_end)
+        //表示時間が終了したまたはボスが死んでいた場合
+        if (Display_time >= Display_end || h_Boss.Instance.health <= 0)
             Destroy(gameObject); //範囲攻撃を削除
-        
-        //ボスが死んでいた場合
-        if(h_Boss.Instance.health <= 0)
-        {
-            Destroy(gameObject); //範囲攻撃を削除
-        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)

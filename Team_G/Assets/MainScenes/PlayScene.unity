@@ -1639,6 +1639,7 @@ MonoBehaviour:
   boss_position_x: -2.6
   boss_position_y: 3
   boss_die: 0
+  result_time: 0
   frame: 0
   spawn_time: 0
 --- !u!114 &1451417415
@@ -1781,7 +1782,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1442043366611083162, guid: ea5eaac365ca38b4e9ee505e212ad080, type: 3}
       propertyPath: m_text
-      value: aaaaaaaaaaa
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1442043366611083162, guid: ea5eaac365ca38b4e9ee505e212ad080, type: 3}
       propertyPath: m_fontSize
