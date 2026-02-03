@@ -1,4 +1,12 @@
 public interface IReflectable
 {
-    float ref_speed { get; set; }
+    int timer { get; set; }
+    public void SpinLimit(Enemy e)
+    {
+        timer++;
+        if (timer > 180)
+        {
+            e.Delete();
+        }
+    }
 }

@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EReflect : Enemy, IDamageable
+public class EReflect : Enemy, IDamageable, IReflectable
 {
     public List<Sprite> Img;
-    int timer;
+    public int timer { get; set; } = 0;
+    IReflectable iref;
 
     void Awake()
     {
@@ -13,7 +14,7 @@ public class EReflect : Enemy, IDamageable
 
     void Start()
     {
-
+        iref = GetComponent<IReflectable>();
         EnemySpawn.Instance.counter++;
     }
 
@@ -38,13 +39,8 @@ public class EReflect : Enemy, IDamageable
                     timer = 0;
                 }
             }
-            if(timer > 300)
-            {
-                Instantiate(explode, transform.position, Quaternion.identity);
-                Destroy(gameObject);
-                if (Player.Instance.bom < Player.Instance.max_bom)
-                BombGage.Instance.bomb_gage.value += power;
-            }
+            if (EnemySpawn.Instance.spawn_switch == false)
+                iref.SpinLimit(this);
         }
     }
 
