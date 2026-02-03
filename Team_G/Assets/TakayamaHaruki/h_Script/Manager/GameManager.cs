@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour, IPhazeManager
         //タイマーリセット
         boss_timer = 0;
         result_timer = 0;
+        phase = 4;
 
         // アイテムと敵の出現をONにする
         if(!(DataHolder.game_phaze <= 0))

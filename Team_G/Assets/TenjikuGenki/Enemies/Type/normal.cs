@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ENormal : Enemy, IDamageable
+public class ENormal : Enemy, IDamageable, IReflectable
 {
-    int timer = 0;
+    public int timer { get; set; } = 0;
     public List<Sprite> Img;
+    IReflectable iref;
     void Awake()
     {
         ;
@@ -12,7 +13,7 @@ public class ENormal : Enemy, IDamageable
 
     void Start()
     {
-
+        iref = GetComponent<IReflectable>();
         EnemySpawn.Instance.counter++;
     }
 
@@ -26,14 +27,8 @@ public class ENormal : Enemy, IDamageable
                 vec.y = -vec.y;
             }
             transform.Rotate(0, 0, EnemyConst.ROTATION_ANGLE);
-            timer++;
-            if(timer > 300)
-            {
-                Instantiate(explode, transform.position, Quaternion.identity);
-                Destroy(gameObject);
-                if (Player.Instance.bom < Player.Instance.max_bom)
-                BombGage.Instance.bomb_gage.value += power;
-            }
+            if (EnemySpawn.Instance.spawn_switch == false)
+                iref.SpinLimit(this);
         }
     }
 
