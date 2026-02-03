@@ -18,6 +18,11 @@ public class BeamLine : MonoBehaviour
 
     void Start()
     {
+        if (LastBoss.Instance.health <= 0)
+        {
+            Destroy(gameObject);
+        }
+
         sr = GetComponent<SpriteRenderer>();
         StartCoroutine(BlinkAndSpawn()); 
         audioSource = GetComponent<AudioSource>();

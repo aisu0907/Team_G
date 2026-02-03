@@ -54,6 +54,8 @@ public class LastBoss : BossBase
 
     void Update()
     {
+    
+
         jamamer_timer++;
 
         if (move) Move();
@@ -159,6 +161,7 @@ public class LastBoss : BossBase
             var e = Instantiate(prefab, transform.position, Quaternion.identity)
                     .GetComponent<ENormal>();
             e.Init(enemy, d, Random.Range(0, 2), 3.5f);
+            if (health <= 0) break;
         }
         AudioManager.instance.PlaySound("Shoot");
 
@@ -239,6 +242,7 @@ public class LastBoss : BossBase
             var e = Instantiate(prefab, transform.position, Quaternion.identity).GetComponent<ENormal>(); e.Init(enemy, d, Random.Range(0, 2), 3);
             AudioManager.instance.PlaySound("Shoot");
             yield return new WaitForSeconds(1.0f);
+            if (health <= 0) break;
         }
 
         targetOnce = true;
