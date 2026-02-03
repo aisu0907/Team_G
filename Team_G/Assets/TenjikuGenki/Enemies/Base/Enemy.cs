@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
     }
 
     // 死亡
-    protected void Delete(Collider2D obj = null)
+    public void Delete(Collider2D obj = null)
     {
         //オブジェクトを生成
         Instantiate(explode, transform.position, Quaternion.identity);
