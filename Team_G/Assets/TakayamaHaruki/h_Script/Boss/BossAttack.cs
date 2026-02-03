@@ -8,7 +8,11 @@ public class BossAttack : MonoBehaviour
     public int damage;//ダメージ
     public int damage_interval;//ダメージ間隔
     public int Display_end;//表示終了
+    [Header("▼Audio Setting")]
+    public AudioClip attack_sound;
 
+
+    private AudioSource attack_audio;
     private int Display_time;//表示時間　　　　　　　　　　　　　　　　　　　　　　　　　　　
     private int damage_time; //ダメージタイム
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -16,6 +20,8 @@ public class BossAttack : MonoBehaviour
     {
         //ダメージ間隔をリセット
         damage_time = damage_interval;
+        attack_audio = GetComponent<AudioSource>();
+        attack_audio.clip = attack_sound;
     }
 
     // Update is called once per frame
@@ -25,15 +31,9 @@ public class BossAttack : MonoBehaviour
         damage_time++;
         Display_time++;
 
-        //表示時間が終了した場合
-        if (Display_time >= Display_end)
+        //表示時間が終了したまたはボスが死んでいた場合
+        if (Display_time >= Display_end || h_Boss.Instance.health <= 0)
             Destroy(gameObject); //範囲攻撃を削除
-        
-        //ボスが死んでいた場合
-        if(h_Boss.Instance.health <= 0)
-        {
-            Destroy(gameObject); //範囲攻撃を削除
-        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)

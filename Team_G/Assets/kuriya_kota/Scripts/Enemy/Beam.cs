@@ -20,7 +20,7 @@ public class Beam : MonoBehaviour
         }
 
         // sound1を再生
-        if (sound1 != null)
+        if (sound1 != null&& LastBoss.Instance.health > 0)
         {
             audioSource.PlayOneShot(sound1);
         }
@@ -28,6 +28,16 @@ public class Beam : MonoBehaviour
         // 1秒後に自動破壊
         Destroy(gameObject, 1);
     }
+
+    private void Update()
+    {
+        if (LastBoss.Instance.health <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+
     /// <summary>
     /// ボスの体力が5以下ならビームのダメージを２にする
     /// </summary>
