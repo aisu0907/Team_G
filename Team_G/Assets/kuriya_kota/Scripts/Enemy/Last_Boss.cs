@@ -54,6 +54,8 @@ public class LastBoss : BossBase
 
     void Update()
     {
+    
+
         jamamer_timer++;
 
         if (move) Move();
@@ -152,13 +154,14 @@ public class LastBoss : BossBase
 
         for (int i = 0; i < 3; i++)
         {
-
+            if (health <= 0) break;
             float angle = (-90f + (i - 1) * 70f) * Mathf.Deg2Rad;
             Vector2 d = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
 
             var e = Instantiate(prefab, transform.position, Quaternion.identity)
                     .GetComponent<ENormal>();
             e.Init(enemy, d, Random.Range(0, 2), 3.5f);
+          
         }
         AudioManager.instance.PlaySound("Shoot");
 
@@ -216,6 +219,7 @@ public class LastBoss : BossBase
 
         for (int i = 0; i < 2; i++)
         {
+            if (health <= 0) break;
             Instantiate(prefab3, Player.Instance.transform.position, Quaternion.identity);
             yield return new WaitForSeconds(2f);
         }
@@ -234,7 +238,7 @@ public class LastBoss : BossBase
 
         for (int i = 0; i < 5; i++)
         {
-
+            if (health <= 0) break;
             Vector2 d = (Player.Instance.transform.position - transform.position).normalized;
             var e = Instantiate(prefab, transform.position, Quaternion.identity).GetComponent<ENormal>(); e.Init(enemy, d, Random.Range(0, 2), 3);
             AudioManager.instance.PlaySound("Shoot");

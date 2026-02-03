@@ -218,7 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c1c70316a4294e4ab39755534610c79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flash: {fileID: 3001600071046506143, guid: 45736fdf1760391428cc0d3d74f507fc, type: 3}
+  flash: {fileID: 3001600071046506143, guid: 318cf17a939cc084b8253bff2c8a1679, type: 3}
   explode: {fileID: 2661303078993959966, guid: f0f7fc77f27d1e849b18df3a82666c42, type: 3}
   img: {fileID: 7205743345275765037}
   sound1: {fileID: 8300000, guid: 66e8fd1a0439d9044bc37f824f5f536d, type: 3}
