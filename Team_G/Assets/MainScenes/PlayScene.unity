@@ -313,7 +313,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3045932546470836219, guid: cc8fc34330d578c4ca72c5ef3425e7b0, type: 3}
       propertyPath: m_TagString
-      value: Manager
+      value: GameManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1640,6 +1640,7 @@ MonoBehaviour:
   boss_position_y: 3
   boss_die: 0
   frame: 0
+  spawn_time: 0
 --- !u!114 &1451417415
 MonoBehaviour:
   m_ObjectHideFlags: 0

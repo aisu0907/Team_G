@@ -31,13 +31,13 @@ public class ItemDrop : MonoBehaviour
                 if (rand_drop < life_drop && Player.Instance.health < 3)
                 {
                     //敵の位置に回復アイテムを生成
-                    Instantiate(life_item, e.transform.position, Quaternion.identity);
+                    Instantiate(life_item, transform.position, Quaternion.identity);
                 }
                 else
                 {
                     //敵の位置にアイテムを生成
                     if (drop_switch)
-                        Instantiate(itemList[rand_item], e.transform.position, Quaternion.identity);
+                        Instantiate(itemList[rand_item], transform.position, Quaternion.identity);
                 }
             }
     }

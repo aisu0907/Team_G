@@ -27,7 +27,7 @@ public class ENormal : Enemy, IDamageable
             }
             transform.Rotate(0, 0, EnemyConst.ROTATION_ANGLE);
             timer++;
-            if(timer > 180)
+            if(timer > 300)
             {
                 Instantiate(explode, transform.position, Quaternion.identity);
                 Destroy(gameObject);
