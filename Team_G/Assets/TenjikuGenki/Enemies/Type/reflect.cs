@@ -38,7 +38,7 @@ public class EReflect : Enemy, IDamageable
                     timer = 0;
                 }
             }
-            if(timer > 180)
+            if(timer > 300)
             {
                 Instantiate(explode, transform.position, Quaternion.identity);
                 Destroy(gameObject);

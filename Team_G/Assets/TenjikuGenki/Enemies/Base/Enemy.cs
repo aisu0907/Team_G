@@ -20,11 +20,11 @@ public class Enemy : MonoBehaviour
     }
 
     // 死亡
-    protected void Delete(Collider2D obj)
+    protected void Delete(Collider2D obj = null)
     {
         //オブジェクトを生成
         Instantiate(explode, transform.position, Quaternion.identity);
-        Destroy(obj.gameObject);
+        if (obj != null) Destroy(obj.gameObject);
         Destroy(gameObject);
         if (Player.Instance.bom < Player.Instance.max_bom)
             BombGage.Instance.bomb_gage.value += power;
