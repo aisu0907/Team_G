@@ -15,7 +15,9 @@ public class TutorialManager : MonoBehaviour, IPhazeManager
     public int enemy_speed;//出現させる敵のスピード
     public int enemy_hit_count;//チュートリアルクリア条件カウント
     public int enemy_hit; //チュートリアルクリア条件
-    public Vector2 enemy_spawn_pos;//敵の出現位置
+    public Vector2 right_enemy_spawn_pos;//敵の右出現位置
+    public Vector2 left_enemy_spawn_pos; //敵の左出現位置
+    public Vector2 mid_enemy_spawn_pos;  //敵の真ん中出現位置
 
     public int pop_time;   //敵の出現頻度
     public int key_time;   //キーを受け付けない時間
@@ -25,15 +27,19 @@ public class TutorialManager : MonoBehaviour, IPhazeManager
     [SerializeField] private int pop_time_count;
     [SerializeField] private int key_time_count;
 
-    private Image img;      
-    private bool pop_window;//ポップ表示確認用フラグ
-    private bool bomb_pop;  //ボム説明ポップ確認用フラグ
-    private bool hp_pop;　　//ダメージポップ確認用フラグ
+    private Image img;
+    private Vector2 enemy_spawn_pos;//敵の出現位置
+    private int enemy_pop_count;   //敵の出現した回数
     private int enemy_color;//敵の色
     private int save_hp;　  //プレイヤーHP
     private int pop_id;     //ポップID
+    private bool pop_window;//ポップ表示確認用フラグ
+    private bool bomb_pop;  //ボム説明ポップ確認用フラグ
+    private bool hp_pop;　　//ダメージポップ確認用フラグ
+    private bool lane;      //敵の出現位置切り替えようフラグ
     private bool key_switch;//キーを押してるか確認用フラグ
     private bool start_window;//最初にウィンドウを表示する用フラグ
+    private bool reset;//リセット
 
     public static TutorialManager Instance { get; private set; }
 
@@ -53,10 +59,12 @@ public class TutorialManager : MonoBehaviour, IPhazeManager
         enemy_color = 0;
         pop_id = 1;
         save_hp = Player.Instance.health;
+        enemy_spawn_pos = right_enemy_spawn_pos;
         //フラグ
         hp_pop = true;
         bomb_pop = true;
         start_window = true;
+        reset = true;
         //タイム
         key_time_count = 0;
         pop_time_count = 0;
@@ -121,23 +129,94 @@ public class TutorialManager : MonoBehaviour, IPhazeManager
             pop_time_count++; //敵の出現時間カウント
 
             //敵の出現時間になったら
-            if (pop_time <= pop_time_count)
+            if (pop_time_count >= pop_time)
             {
-                var e = Instantiate(enemy, enemy_spawn_pos, Quaternion.identity).GetComponent<TutorialEnemy>(); //敵を生成
-                e.Init(new Vector2(0, -1), enemy_color, enemy_speed); //敵の情報を設定
-
-                //敵の色を毎回変える
+                if (phase == 7)
                 {
-                    //敵の色が赤だったら
-                    if (enemy_color == 0)
-                        enemy_color++;
-                    //敵の色が緑だったら
-                    else
-                        enemy_color--;
+                    //敵が2回出現したら位置を変える
+                    if (enemy_pop_count == 2)
+                    {
+                        if (!lane)
+                        {
+                            enemy_spawn_pos = left_enemy_spawn_pos;
+                            enemy_color = 1;
+                        }
+                        else
+                        {
+                            enemy_spawn_pos = right_enemy_spawn_pos;
+                            enemy_color = 0;
+                        }
+
+                        lane = !lane;
+                        enemy_pop_count = 0;
+                    }
+
+                    var e = Instantiate(enemy, enemy_spawn_pos, Quaternion.identity).GetComponent<TutorialEnemy>(); //敵を生成
+                    e.Init(new Vector2(0, -1), enemy_color, enemy_speed); //敵の情報を設定
+                    enemy_pop_count++;//敵の出現数をカウント
+
+                    //敵の色を毎回変える
+                    {
+                        //敵の色が赤だったら
+                        if (enemy_color == 0)
+                            enemy_color++;
+                        //敵の色が緑だったら
+                        else
+                            enemy_color--;
+                    }
+                    pop_time_count = 0;//敵の出現時間をリセット
                 }
 
-                //敵の出現時間をリセット
-                pop_time_count = 0;
+                if(reset && phase >= 8)
+                {
+                    pop_time_count = 0;
+                    enemy_pop_count = 0;
+                    reset = false;
+                }
+
+                if (phase >= 8)
+                {
+                    if (enemy_pop_count == 0)
+                    {
+                        enemy_color = 0;
+                        enemy_spawn_pos = mid_enemy_spawn_pos;//位置を設定
+                        var e = Instantiate(enemy, enemy_spawn_pos, Quaternion.identity).GetComponent<TutorialEnemy>(); //敵を生成
+                        e.Init(new Vector2(0, -1), enemy_color, enemy_speed); //敵の情報を設定
+                        enemy_pop_count++;//敵の出現数をカウント
+                    }
+                    
+                    if (enemy_pop_count == 1 && pop_time_count >= 209)
+                    {
+                        enemy_spawn_pos = right_enemy_spawn_pos;//位置を設定
+                        var e = Instantiate(enemy, enemy_spawn_pos, Quaternion.identity).GetComponent<TutorialEnemy>(); //敵を生成
+                        e.Init(new Vector2(0, -1), enemy_color, enemy_speed); //敵の情報を設定
+                        enemy_pop_count++;//敵の出現数をカウント
+                        pop_time_count++; //敵の出現時間を増やす
+
+                    }
+                    
+                    if (enemy_pop_count == 2 && pop_time_count >= 210)
+                    {
+                        enemy_spawn_pos = left_enemy_spawn_pos;//位置を設定
+                        var e = Instantiate(enemy, enemy_spawn_pos, Quaternion.identity).GetComponent<TutorialEnemy>(); //敵を生成
+                        e.Init(new Vector2(0, -1), enemy_color, enemy_speed); //敵の情報を設定
+                        enemy_pop_count++;//敵の出現数をカウント
+
+                        pop_time_count = 0;//敵の出現時間をリセット
+                        enemy_pop_count = 0;
+                    }
+
+                    //敵の色を毎回変える
+                    {
+                        //敵の色が赤だったら
+                        if (enemy_color == 0)
+                            enemy_color++;
+                        //敵の色が緑だったら
+                        else
+                            enemy_color--;
+                    }
+                }
+
             }
         }
 
@@ -163,6 +242,7 @@ public class TutorialManager : MonoBehaviour, IPhazeManager
                 else
                     is_window = false;
             }
+            //ボム説明が出ていなくてかつチュートリアルをクリアしていたら
             else if(bomb_pop && enemy_hit_count >= enemy_hit)
             {
                 bomb_pop = false;

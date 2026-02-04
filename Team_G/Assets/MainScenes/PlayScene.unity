@@ -194,7 +194,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Z\uFF1A\u5207\u308A\u66FF\u3048\n\u30B9\u30DA\u30FC\u30B9\uFF1A\u7206\u5F3E\n\u2191\u2193\u2190\u2192\uFF1A\u79FB\u52D5"
+  m_Text: "Z\uFF1A\u5207\u308A\u66FF\u3048\n\u30B9\u30DA\u30FC\u30B9\uFF1A\u30DC\u30E0\n\u2191\u2193\u2190\u2192\uFF1A\u79FB\u52D5"
 --- !u!222 &82182656
 CanvasRenderer:
   m_ObjectHideFlags: 0
