@@ -21,7 +21,7 @@ public class BossAttack : MonoBehaviour
         //ダメージ間隔をリセット
         damage_time = damage_interval;
         attack_audio = GetComponent<AudioSource>();
-        attack_audio.clip = attack_sound;
+        attack_audio.PlayOneShot(attack_sound);
     }
 
     // Update is called once per frame
