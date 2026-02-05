@@ -1921,7 +1921,7 @@ MonoBehaviour:
   boss_position_x: -2.6
   boss_position_y: 3
   boss_die: 0
-  result_time: 0
+  result_time: 180
   frame: 0
   spawn_time: 0
 --- !u!114 &1451417415
