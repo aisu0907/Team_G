@@ -90,6 +90,11 @@ public class Shield_Item : ItemBase
 
                 return;
             }
+            else
+            {
+                ScoreManager.Instance.ItemScore();
+                return;
+            }
 
         if (item_count[item_id] < i.max_item_count)
         {
