@@ -22,7 +22,7 @@ public class g_boss : BossBase
         // ˆê’èŽžŠÔ‚²‚Æ‚É’e‚ð”­ŽË
         if (health > 0)
         {
-            if (Timer >= 120)
+            if (Timer >= 210)
             {
                 Timer = 60;
                 ShootBullet();
@@ -69,7 +69,7 @@ public class g_boss : BossBase
         img.sprite = sprites[color];
         //Vector2 d = (Player.Instance.transform.position - transform.position).normalized;
         //var e = Instantiate(list[0].pf, transform.position, Quaternion.identity).GetComponent<ENormal>(); e.Init(list[0].db, d, color, 5);
-        var e = Instantiate(list[0].pf, transform.position, Quaternion.identity).GetComponent<ENormal>(); e.Init(list[0].db, new Vector2(0,-3), color, 5);
+        var e = Instantiate(list[0].pf, transform.position, Quaternion.identity).GetComponent<ENormal>(); e.Init(list[0].db, new Vector2(0,-2.5f), color, 5);
         AudioManager.instance.PlaySound("Shoot");
     }
 }

@@ -91,13 +91,6 @@ public class Player : MonoBehaviour
             }
         }
 
-        //ESCでタイトルに戻る
-        if (Input.GetKeyUp(KeyCode.Escape))
-        {
-            SceneManager.LoadScene("TitleScene");
-        }
-
-
         if (health > 0&&!start_anime)
         {
             // 移動
