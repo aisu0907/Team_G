@@ -64,22 +64,22 @@ public class EnemySpawn : MonoBehaviour
                 frame = 0;
                 //counter++;
             }
-        }
 
-        // 妨害ウイルスを出現
-        if (GameManager.Instance.phase == 4)
-        {
-            jammer_timer++;
-            if (jammer_timer >= jammer_spawn)
+            // 妨害ウイルスを出現
+            if (GameManager.Instance.phase == 4)
             {
-                float posX = Random.Range(minX, maxX);
-                float posY = Random.Range(minY, maxY);
-                Vector2 pos = new Vector2(posX, posY);
+                jammer_timer++;
+                if (jammer_timer >= jammer_spawn)
+                {
+                    float posX = Random.Range(minX, maxX);
+                    float posY = Random.Range(minY, maxY);
+                    Vector2 pos = new Vector2(posX, posY);
 
-                var e = Instantiate(prefab[2], pos, Quaternion.identity).GetComponent<EJammer>();
-                e.Init(enemy_list[2].list[2], new Vector2(0, -1), enemy_list[2].list[2].speed);
-                jammer_timer = 0;
-                //counter++;
+                    var e = Instantiate(prefab[2], pos, Quaternion.identity).GetComponent<EJammer>();
+                    e.Init(enemy_list[2].list[2], new Vector2(0, -1), enemy_list[2].list[2].speed);
+                    jammer_timer = 0;
+                    //counter++;
+                }
             }
         }
     }

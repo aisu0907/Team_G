@@ -27,11 +27,13 @@ public class GameManager : MonoBehaviour, IPhazeManager
     public bool is_change_color { get; set; } = true;
     public int phase { get; set; } = 0;//フェーズ
 
+    public int set_phase_num; //フェーズ設定
     //タイマー
+    public int spawn_time;
+    public  int frame = 0;//フレーム
     private float boss_timer;  //ボス出現タイマー
     private float result_timer;//リザルト
-    public  int frame = 0;//フレーム
-    public int spawn_time = 0;
+    private int spawn_timer;
     //座標
     private Vector2 boss_position;
 
@@ -54,7 +56,7 @@ public class GameManager : MonoBehaviour, IPhazeManager
         //タイマーリセット
         boss_timer = 0;
         result_timer = 0;
-        phase = 0;
+        phase = set_phase_num;
 
         // アイテムと敵の出現をONにする
         if(!(DataHolder.game_phaze <= 0))
@@ -85,12 +87,12 @@ public class GameManager : MonoBehaviour, IPhazeManager
                     //画面にエネミーが残っていない場合
                     if (EnemySpawn.Instance.counter == 0)
                     {
-                        spawn_time++;
-                        if (spawn_time >= 120)
+                        spawn_timer++;
+                        if (spawn_timer >= spawn_time)
                         {
                             SpawnBoss(); //ボスを出現
                             frame = 0; //フレームをリセット
-                            spawn_time = 0;
+                            spawn_timer = 0;
                         }
                     }
                 }
