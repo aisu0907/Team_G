@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Shield : MonoBehaviour
 {
@@ -8,8 +9,10 @@ public class Shield : MonoBehaviour
     public int color = 0;
     [SerializeField] List<Sprite> Img;   //�摜
     [SerializeField] GameObject go;
+    [SerializeField] Image shield_ui_obj;
+    [SerializeField] List<Sprite> shields_ui_img;
     IPhazeManager pm;
-    
+
     public static Shield Instance { get; private set; }
 
     private void Awake()
@@ -30,10 +33,14 @@ public class Shield : MonoBehaviour
     {
         // 盾の色を変更
         if (Input.GetKeyDown(KeyCode.Z))
+        {
             if (pm.is_change_color == true)
+            {
                 ChangeShieldColor(color == (int)COLOR.RED ? COLOR.GREEN : COLOR.RED);
+                shield_ui_obj.sprite = shields_ui_img[(int)color];
+            }
+        }
     }
-
     void OnTriggerEnter2D(Collider2D collision)
     {
         // 敵機の情報を取得
@@ -46,7 +53,7 @@ public class Shield : MonoBehaviour
                 Vector2 d = (collision.transform.position - transform.position).normalized;
                 obj.vec = d;
                 obj.on_hitting = true;
-                AudioManager.instance.PlaySound("ReflectEnemy",0.4f);
+                AudioManager.instance.PlaySound("ReflectEnemy", 0.4f);
             }
         }
     }
