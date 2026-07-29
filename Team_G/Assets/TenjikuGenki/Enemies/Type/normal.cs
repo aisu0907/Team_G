@@ -38,7 +38,7 @@ public class ENormal : Enemy, IDamageable, IReflectable
         rb.linearVelocity = vec;
         if (rb.linearVelocity.magnitude != speed)
             if(on_hitting)
-                rb.linearVelocity = vec.normalized * (speed + Shield_Item.Instance.reflect_speed);
+                rb.linearVelocity = vec.normalized * (speed + Shield_Item.Instance.reflect_speed) * 2;
             else
                 rb.linearVelocity = vec.normalized * speed;
     }
