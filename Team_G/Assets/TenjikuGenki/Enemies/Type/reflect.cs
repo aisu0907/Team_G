@@ -12,13 +12,14 @@ public class EReflect : Enemy, IDamageable, IReflectable
         ;
     }
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         iref = GetComponent<IReflectable>();
         EnemySpawn.Instance.counter++;
     }
 
-    void Update()
+    protected override void Update()
     {
         // Spin
         if (on_hitting)

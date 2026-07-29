@@ -2,19 +2,17 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public class Player : MonoBehaviour
+public class Player : ObjBase
 {
     [Header("▼ GameObject")]
     public GameObject explode;
     public GameObject shield;
     public GameObject flash;
     public SpriteRenderer img; //画像
-    public Rigidbody2D rbody;
     public GameObject bgm;
 
     [Header("▼ PlayerStatus")]
     public int health = 3;      //体力
-    public float speed = 3.0f;  //移動速度
     float axisH, axisV = 0.0f;  //移動ベクトル
 
     [Header("▼ Bom")]
@@ -41,10 +39,13 @@ public class Player : MonoBehaviour
     [Header("▼ StartPosition")]
     public float start_x = -2;  //X座標
     public float start_y = -6;  //Y座標
-    
+
     [Header("▼ Direction")]
     public float targetY = -3.0f;   //出現位置
     public bool start_anime = true; //アニメーション切り替え
+
+
+    bool isStop = false;
 
 
     public static Player Instance { get; private set; }
@@ -54,13 +55,11 @@ public class Player : MonoBehaviour
         Instance = this;
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    protected override void Start()
     {
-        //Instantiate(shield);
+        base.Start();
 
-
-        //RigidBody
-        rbody = this.GetComponent<Rigidbody2D>();
+        speed = 3.0f;
 
         //被弾
         damage_hit = true;
@@ -71,12 +70,12 @@ public class Player : MonoBehaviour
         damage_color = new Color(save_color.r, save_color.g, save_color.b, 0.5f);
 
         //開始位置
-        transform.position = new Vector3(start_x,start_y,0);
+        transform.position = new Vector3(start_x, start_y, 0);
         start_anime = true;
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
         //画面下から出現
         if (start_anime)
@@ -98,57 +97,15 @@ public class Player : MonoBehaviour
         }
 
 
-        if (health > 0&&!start_anime)
+        if (health > 0 && !start_anime)
         {
-            // 移動
-            axisH = Input.GetAxisRaw("Horizontal");
-            axisV = Input.GetAxisRaw("Vertical");
-            if (0.2 <= transform.position.y) 
-                if(axisV > 0.0f) axisV = 0.00f;
-            if (transform.position.y <= -5.5)
-                if(axisV < 0.0f) axisV = 0.00f;
-
-            // 盾の位置更新
-            Shield.Instance.transform.position = new Vector2(transform.position.x, transform.position.y + 0.8f);
-
-            //ボムの処理
-            if (Input.GetKey(KeyCode.Space))
-            {
-
-                if (bom > 0 && bomb_switch)
-                {
-
-                    AudioManager.instance.PlaySound("bom", 1f);
-                    // "Enemy"タグがついたすべてのオブジェクトを取得
-                    GameObject[] objects = GameObject.FindGameObjectsWithTag("Enemy");
-
-                    // 各オブジェクトを削除
-                    foreach (GameObject obj in objects)
-                    {
-                        Destroy(obj);
-                        Instantiate(explode, obj.transform.position, Quaternion.identity);
-                    }
-
-                    Instantiate(flash, new Vector2(transform.position.x, transform.position.y), Quaternion.identity); //画面全体にフラッシュを生成
-
-                    //bomの数を減らす
-                    bom--;
-                }
-
-
-                bomb_switch = false; 
-            }
-            else
-            {
-                bomb_switch = true;
-            }
 
             // 被弾演出
             if (!damage_hit)
             {
                 color_timer++;
 
-                if(shake_count < shake_max)
+                if (shake_count < shake_max)
                 {
                     tmp_pos = shake.transform.position.x;
                     shake.transform.position = new Vector3(right == true ? tmp_pos + 0.15f : tmp_pos - 0.15f, 0, -10);
@@ -187,12 +144,58 @@ public class Player : MonoBehaviour
                 SceneManager.LoadScene("GameoverScene");
             }
         }
+
+        // 中断
+        if (isStop) return;
+
+        // 移動
+        axisH = Input.GetAxisRaw("Horizontal");
+        axisV = Input.GetAxisRaw("Vertical");
+        if (0.2 <= transform.position.y)
+            if (axisV > 0.0f) axisV = 0.00f;
+        if (transform.position.y <= -5.5)
+            if (axisV < 0.0f) axisV = 0.00f;
+
+        // 盾の位置更新
+        Shield.Instance.transform.position = new Vector2(transform.position.x, transform.position.y + 0.8f);
+
+        //ボムの処理
+        if (Input.GetKey(KeyCode.Space))
+        {
+
+            if (bom > 0 && bomb_switch)
+            {
+
+                AudioManager.instance.PlaySound("bom", 1f);
+                // "Enemy"タグがついたすべてのオブジェクトを取得
+                GameObject[] objects = GameObject.FindGameObjectsWithTag("Enemy");
+
+                // 各オブジェクトを削除
+                foreach (GameObject obj in objects)
+                {
+                    Destroy(obj);
+                    Instantiate(explode, obj.transform.position, Quaternion.identity);
+                }
+
+                Instantiate(flash, new Vector2(transform.position.x, transform.position.y), Quaternion.identity); //画面全体にフラッシュを生成
+
+                //bomの数を減らす
+                bom--;
+            }
+
+
+            bomb_switch = false;
+        }
+        else
+        {
+            bomb_switch = true;
+        }
     }
 
     void FixedUpdate()
     {
         // 移動処理
-        rbody.linearVelocity = new Vector2(axisH * speed, axisV * speed);
+        rb.linearVelocity = new Vector2(axisH * speed, axisV * speed);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -237,5 +240,11 @@ public class Player : MonoBehaviour
             damage_hit = false;
         }
         if (destroy) Destroy(obj);
+    }
+
+    public void Stop()
+    {
+        rb.linearVelocity = Vector2.zero;
+        isStop = true;
     }
 }

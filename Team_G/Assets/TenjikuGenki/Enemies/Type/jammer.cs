@@ -10,13 +10,13 @@ public class EJammer : Enemy
         ;
     }
 
-    void Start()
+    protected override void Start()
     {
-
+        base.Start();
         EnemySpawn.Instance.counter++;
     }
 
-    void Update()
+    protected override void Update()
     {
         ;
     }
@@ -43,7 +43,6 @@ public class EJammer : Enemy
         power = db.power;
 
         // Decision Vector
-        rb = GetComponent<Rigidbody2D>();
         rb.linearVelocity = vec * speed;
     }
 

@@ -47,7 +47,6 @@ public class h_Boss : BossBase
     private Vector2 warning_top_pos;  //警告表示位置1
     private Vector2 warning_down_pos; //警告表示位置2
 
-    private Rigidbody2D rb;
     public static h_Boss Instance { get; private set; }
 
     private void Awake()
@@ -56,12 +55,13 @@ public class h_Boss : BossBase
         Instance = this;
     }
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
+
         Instantiate(flash, new Vector2(transform.position.x,transform.position.y), Quaternion.identity); //画面全体にフラッシュを生成
 
         //リセット
-        rb = GetComponent<Rigidbody2D>();
         warning_switch = true;
         //タイム関係リセット
         next_stairs_attack_time = 0;
@@ -81,7 +81,7 @@ public class h_Boss : BossBase
         start_speed = speed;
     }
 
-    public void Update()
+    protected override void Update()
     {
         //攻撃のタイムカウント
         stairs_attack_time++;

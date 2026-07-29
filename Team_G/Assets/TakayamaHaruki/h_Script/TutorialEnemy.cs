@@ -7,7 +7,7 @@ public class TutorialEnemy : Enemy, IDamageable
     public List<Sprite> enemy_img;
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
         // Spin
         if (on_hitting)

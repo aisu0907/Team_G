@@ -11,11 +11,10 @@ public class g_boss : BossBase
     public List<Sprite> sprites;
     [SerializeField] int Timer;
     Vector2 tmp_pos;
-    Rigidbody2D rb; // ”­ËŠÔŠu
     bool left_move = true;
     public GameObject rflash;
     
-    void Update()
+    protected override void Update()
     {
         Timer += 1;
 
@@ -45,12 +44,13 @@ public class g_boss : BossBase
             rb.linearVelocityX = -speed;
         }
     }
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
+
         // Å‰‚Ìó‘Ô‚ğPhase1‚Éİ’è
         img = GetComponent<SpriteRenderer>();
         tmp_pos = transform.position;
-        rb = GetComponent<Rigidbody2D>();
         transform.position = new Vector2(transform.position.x - 0.5f,transform.position.y);
         Instantiate(rflash);
     }

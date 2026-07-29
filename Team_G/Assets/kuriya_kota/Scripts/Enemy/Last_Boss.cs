@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class LastBoss : BossBase 
 {
-    Rigidbody2D rb;
     SpriteRenderer img;
 
     public int timer;
@@ -42,9 +41,10 @@ public class LastBoss : BossBase
 
     public static LastBoss Instance { get; private set; }
 
-    void Start()
+    protected override void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        base.Start();
+
         img = GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
 
@@ -52,7 +52,7 @@ public class LastBoss : BossBase
      
     }
 
-    void Update()
+    protected override void Update()
     {
     
 

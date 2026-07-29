@@ -1,20 +1,17 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Enemy : MonoBehaviour
+public class Enemy : ObjBase
 {
     [Header("Бе BaseStatus")]
     public int type, color;
-    public Vector2 vec;
-    public float speed;
     public int score;
     protected int power;
     public bool on_hitting = false;
     public GameObject explode;
-    public Rigidbody2D rb;
     
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
         ;
     }

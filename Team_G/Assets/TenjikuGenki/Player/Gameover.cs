@@ -38,7 +38,7 @@ public class PlayerGameover : MonoBehaviour
                 OnPlayerDead?.Invoke();
                 isGameover = true;
                 Time.timeScale = 0.0f;
-                player.rbody.linearVelocity = Vector2.zero;
+                player.Stop();
             }
         }
     }

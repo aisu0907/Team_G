@@ -1077,7 +1077,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -1380,6 +1380,18 @@ PrefabInstance:
     - target: {fileID: 3030750760519983728, guid: 2c612dd4d159fc143928e78379e70901, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5915981074846363926, guid: 2c612dd4d159fc143928e78379e70901, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5915981074846363926, guid: 2c612dd4d159fc143928e78379e70901, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 5915981074846363926, guid: 2c612dd4d159fc143928e78379e70901, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 8185244071109125226, guid: 2c612dd4d159fc143928e78379e70901, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1975,6 +1987,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 887983876}
+    - target: {fileID: 3819395989984231923, guid: ea5eaac365ca38b4e9ee505e212ad080, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4816849045373986088, guid: ea5eaac365ca38b4e9ee505e212ad080, type: 3}
       propertyPath: go
       value: 

@@ -73,4 +73,6 @@ public class GhostFade : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    
 }
