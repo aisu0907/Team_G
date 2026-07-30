@@ -2,10 +2,16 @@ using UnityEngine;
 
 public class ObjBase : MonoBehaviour
 {
-    // 物理
+    // ----- プロパティ ----- //
+    [Header("物理")]
+    public float Speed => _speed;
+    public Vector2 Velocity => rb.linearVelocity;
+
+    // ----- メンバ変数 ----- //
+    [Header("物理")]
     protected Rigidbody2D rb;
-    public Vector2 vec;
-    public float speed = 1.0f;
+    protected Vector2 _vec;
+    protected float _speed = 1.0f;
 
     protected virtual void Start()
     {

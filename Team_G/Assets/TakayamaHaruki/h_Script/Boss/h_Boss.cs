@@ -78,7 +78,7 @@ public class h_Boss : BossBase
         warning_down_pos = new Vector2(warning_x_pos, warning_y_down_pos);
         //ˆÚ“®‘¬“xİ’è
         turn = true;
-        start_speed = speed;
+        start_speed = _speed;
     }
 
     protected override void Update()
@@ -91,16 +91,16 @@ public class h_Boss : BossBase
         if (health > 0)
         {
             if (turn)
-                rb.linearVelocityX = speed;
+                rb.linearVelocityX = _speed;
             else
-                rb.linearVelocityX = -speed;
+                rb.linearVelocityX = -_speed;
 
-            speed += +boost_speed;
+            _speed += +boost_speed;
 
             if ((transform.position.x > right_turn_pos && turn )|| (transform.position.x < left_turn_pos && !turn))
             {
                 turn = !turn;
-                speed = start_speed;
+                _speed = start_speed;
             }
 
 
@@ -157,7 +157,7 @@ public class h_Boss : BossBase
     {
         int color = Random.Range(0, 2); //’e‚ÌF‚ğŒˆ‚ß‚é
         var e = Instantiate(bullet, sp, Quaternion.identity).GetComponent<ENormal>(); //’e‚ğ¶¬
-        e.Init(bullet_data, bv, color, stairs_attack_speed); //’e‚Ìî•ñ‚ğw’è
+        e.Init(bullet_data, bv, (COLOR)color, stairs_attack_speed); //’e‚Ìî•ñ‚ğw’è
     }
 
     /// <summary>

@@ -19,10 +19,10 @@ public class BossBase : ObjBase
     public void boss_damage(Collider2D collision)
     {
         //触れた相手にEnemyクラスがついていたら
-        if (collision.TryGetComponent<Enemy>(out var enemy))
+        if (collision.TryGetComponent<IReflectable>(out var enemy))
 
             //触れたウイルスが打ち返されたものならば
-            if (enemy.on_hitting)
+            if (enemy.Hitting)
             {
                 Destroy(collision.gameObject);　//触れたウイルスを削除
                 gameObject.GetComponent<BossBase>().health--; //ボスのHPを減らす
@@ -32,7 +32,7 @@ public class BossBase : ObjBase
                 //ボスの体力が0以下なら
                 if(gameObject.GetComponent<BossBase>().health <= 0)
                 {
-                    gameObject.GetComponent<BossBase>().speed = 0; //移動速度を0にする
+                    gameObject.GetComponent<BossBase>()._speed = 0; //移動速度を0にする
                     gameObject.transform.position = new Vector2(death_pos_x, death_pos_y); //死亡位置に移動させる
                 }
             }

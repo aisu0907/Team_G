@@ -3,7 +3,8 @@ using UnityEngine;
 
 public enum COLOR
 {
-    RED, GREEN
+    RED = 0,
+    GREEN = 1
 }
 public static class EnemyConst
 {

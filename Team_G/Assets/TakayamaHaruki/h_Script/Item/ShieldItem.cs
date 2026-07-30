@@ -43,7 +43,7 @@ public class Shield_Item : ItemBase
         if((DataHolder.game_phaze > 0))
         {
             // 速度
-            player.speed += up_speed * DataHolder.player_took_item[0];
+            //player.speed += up_speed * DataHolder.player_took_item[0];
 
             reflect_speed += up_reflect_speed * DataHolder.player_took_item[1];
             // 盾の大きさ
@@ -102,7 +102,7 @@ public class Shield_Item : ItemBase
             {
                 //移動速度アップアイテム
                 if (i.item_id == speed_item)
-                    player.speed += up_speed; //プレイヤーの移動スピードを上げる
+                    //player.speed += up_speed; //プレイヤーの移動スピードを上げる
                 
                 //反射速度アップアイテム
                 if (i.item_id == reflect_speed)

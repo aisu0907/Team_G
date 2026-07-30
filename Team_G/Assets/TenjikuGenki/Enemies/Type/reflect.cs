@@ -1,10 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EReflect : Enemy, IDamageable, IReflectable
+public class EReflect : Enemy, IReflectable
 {
     public List<Sprite> Img;
-    public int timer { get; set; } = 0;
+    public int _timer { get; set; } = 0;
+    public bool Hitting => _onHitting;
+    public COLOR Color => _color;
+    protected COLOR _color { get; set; } = COLOR.RED;
+    protected bool _onHitting { get; set; } = false;
     IReflectable iref;
 
     void Awake()
@@ -17,43 +21,6 @@ public class EReflect : Enemy, IDamageable, IReflectable
         base.Start();
         iref = GetComponent<IReflectable>();
         EnemySpawn.Instance.counter++;
-    }
-
-    protected override void Update()
-    {
-        // Spin
-        if (on_hitting)
-        {
-            if (vec.y < 0)
-            {
-                vec.y = -vec.y;
-            }
-            transform.Rotate(0, 0, EnemyConst.ROTATION_ANGLE);
-            timer++;
-            if(GameManager.Instance.frame < GameManager.Instance.boss[GameManager.Instance.phase / 2].timer)
-            {
-                if (timer >= EnemyConst.TIME_SPENT_IN_RETURN)
-                {
-                    on_hitting = false;
-                    transform.localRotation = default;
-                    vec = new Vector2(0, -speed);
-                    timer = 0;
-                }
-            }
-            if (EnemySpawn.Instance.spawn_switch == false)
-                iref.SpinLimit(this);
-        }
-    }
-
-    void FixedUpdate()
-    {
-        // Fix Vector
-        rb.linearVelocity = vec;
-        if (rb.linearVelocity.magnitude != speed)
-            if(on_hitting)
-                rb.linearVelocity = vec.normalized * (speed + Shield_Item.Instance.reflect_speed);
-            else
-                rb.linearVelocity = vec.normalized * speed;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -81,23 +48,46 @@ public class EReflect : Enemy, IDamageable, IReflectable
     /// <param name="_vec"></param>
     /// <param name="_color"></param>
     /// <param name="_speed"></param>
-    public void Init(EnemyData db, Vector2 _vec, int _color, float _speed)
+    public void Init(EnemyData db, Vector2 vec, COLOR color, float speed)
     {
-        // Initialize Status
+        // ステータスの初期化
         type = (int)db.type;
-        color = _color;
-        vec = _vec;
-        speed = _speed;
+        _color = color;
+        _vec = vec;
+        _speed = speed;
         score = db.score;
         power = db.power;
+        _damage = 1;
 
-        // Change Img
+        // 色と画像を合わせる
         SpriteRenderer img = GetComponent<SpriteRenderer>();
-        img.sprite = Img[color];
+        img.sprite = Img[(int)_color];
 
-        // Decision Vector
+        // ベクトルの補正
         rb = GetComponent<Rigidbody2D>();
-        rb.linearVelocity = vec * speed;
+        rb.linearVelocity = vec.normalized * speed;
     }
 
+    public void Reflect(Vector2 ref_vec, bool hitting)
+    {
+        rb.linearVelocity = ref_vec.normalized * _speed;
+        _onHitting = hitting;
+    }
+
+    public void Rotation()
+    {
+        if (!_onHitting) return;
+
+        transform.Rotate(0, 0, EnemyConst.ROTATION_ANGLE);
+        if (++_timer >= EnemyConst.TIME_SPENT_IN_RETURN)
+        {
+            // 物理関係をリセット
+            rb.linearVelocity = _vec.normalized * _speed;
+            transform.localRotation = default;
+            _onHitting = false;
+
+            // タイマーを初期化
+            _timer = 0;
+        }
+    }
 }

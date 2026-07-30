@@ -59,14 +59,14 @@ public class Player : ObjBase
     {
         base.Start();
 
-        speed = 3.0f;
+        _speed = 3.0f;
 
         //被弾
-        damage_hit = true;
         color_count = 0;
         color_timer = 0;
         shake_count = 0;
-        save_color = img.color;
+        save_color = new Color(img.color.r, img.color.g, img.color.b, img.color.a);
+        damage_hit = true;
         damage_color = new Color(save_color.r, save_color.g, save_color.b, 0.5f);
 
         //開始位置
@@ -77,12 +77,20 @@ public class Player : ObjBase
     // Update is called once per frame
     protected override void Update()
     {
+        if (health <= 0)
+        {
+            // ちょっと待つ
+            if (++timer >= 120)
+                SceneManager.LoadScene("GameoverScene");
+            return;
+        }
+
         //画面下から出現
         if (start_anime)
         {
             if (transform.position.y < targetY)
             {
-                transform.position += new Vector3(0, speed * Time.deltaTime, 0);
+                transform.position += new Vector3(0, _speed * Time.deltaTime, 0);
             }
             else
             {
@@ -90,59 +98,47 @@ public class Player : ObjBase
             }
         }
 
+        if (!damage_hit)
+        {
+            color_timer++;
+
+            if (shake_count < shake_max)
+            {
+                tmp_pos = shake.transform.position.x;
+                shake.transform.position = new Vector3(right == true ? tmp_pos + 0.15f : tmp_pos - 0.15f, 0, -10);
+                right = !right;
+                shake_count++;
+            }
+
+            if (color_timer == save_time)
+            {
+                img.color = save_color;//通常の色に変更
+                color_count++;
+            }
+
+            if (color_timer >= damage_time)
+            {
+                img.color = damage_color;//ダメージ時の色に変更
+                color_count++;
+                color_timer = 0;//タイマーリセット
+            }
+
+            //色切り替え回数が最大回数に達したら
+            if (color_count >= blinks_max)
+            {
+                img.color = save_color;//通常の色に変更
+                //リセット
+                color_timer = 0;
+                color_count = 0;
+                shake_count = 0;
+                damage_hit = true;
+            }
+        }
+
         //ESCでタイトルに戻る
         if (Input.GetKeyUp(KeyCode.Escape))
         {
             SceneManager.LoadScene("TitleScene");
-        }
-
-
-        if (health > 0 && !start_anime)
-        {
-
-            // 被弾演出
-            if (!damage_hit)
-            {
-                color_timer++;
-
-                if (shake_count < shake_max)
-                {
-                    tmp_pos = shake.transform.position.x;
-                    shake.transform.position = new Vector3(right == true ? tmp_pos + 0.15f : tmp_pos - 0.15f, 0, -10);
-                    right = !right;
-                    shake_count++;
-                }
-
-                if (color_timer == save_time)
-                {
-                    img.color = save_color;//通常の色に変更
-                    color_count++;
-                }
-
-                if (color_timer >= damage_time)
-                {
-                    img.color = damage_color;//ダメージ時の色に変更
-                    color_count++;
-                    color_timer = 0;//タイマーリセット
-                }
-                //色切り替え回数が最大回数に達したら
-                if (color_count >= blinks_max)
-                {
-                    //リセット
-                    color_timer = 0;
-                    color_count = 0;
-                    shake_count = 0;
-                    damage_hit = true;
-                }
-            }
-        }
-        else
-        {
-            timer++;
-            if (timer >= 120)
-            {
-                SceneManager.LoadScene("GameoverScene");
-            }
         }
 
         // 中断
@@ -162,10 +158,8 @@ public class Player : ObjBase
         //ボムの処理
         if (Input.GetKey(KeyCode.Space))
         {
-
             if (bom > 0 && bomb_switch)
             {
-
                 AudioManager.instance.PlaySound("bom", 1f);
                 // "Enemy"タグがついたすべてのオブジェクトを取得
                 GameObject[] objects = GameObject.FindGameObjectsWithTag("Enemy");
@@ -195,20 +189,17 @@ public class Player : ObjBase
     void FixedUpdate()
     {
         // 移動処理
-        rb.linearVelocity = new Vector2(axisH * speed, axisV * speed);
+        rb.linearVelocity = new Vector2(axisH * _speed, axisV * _speed);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        // 衝突判定
-        if (collision.TryGetComponent<IDamageable>(out var hit))
+        if (collision.TryGetComponent<Enemy>(out var e))
         {
-            if (collision.TryGetComponent<Enemy>(out var e) && !e.on_hitting)
-            {
-                Damage(1, collision.gameObject);
-            }
+            if (e.GetComponent<IReflectable>().Hitting) return;
 
-            //if (collision.TryGetComponent<Gasubura>(out var b)) b.Damage(); 
+            e.Damage();
+            Damage(e.HitDamage);
         }
 
         //アイテムに当たった場合
@@ -230,15 +221,18 @@ public class Player : ObjBase
     /// <param name="damage"></param>
     /// <param name="obj"></param>
     /// <param name="destroy"></param>
-    public void Damage(int damage, GameObject obj, bool destroy = true)
+    public void Damage(int damage, GameObject obj = null, bool destroy = true)
     {
-        if (damage_hit)
-        {
-            img.color = damage_color;
-            health -= damage;
-            AudioManager.instance.PlaySound("PlayerDamage");
-            damage_hit = false;
-        }
+        // ダメージのクールタイム中なら中断
+        if (!damage_hit) return;
+
+        // ビジュアル
+        img.color = damage_color;
+        AudioManager.instance.PlaySound("PlayerDamage");
+
+        // ヒット処理
+        health -= damage;
+        damage_hit = false;
         if (destroy) Destroy(obj);
     }
 

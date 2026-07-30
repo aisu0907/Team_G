@@ -15,7 +15,7 @@ public class AfterImage : MonoBehaviour
 
     void Update()
     {
-        if (!GetComponent<Enemy>().on_hitting) return;
+        if (!GetComponent<IReflectable>().Hitting) return;
         timer += Time.deltaTime;
 
         if (timer >= interval)

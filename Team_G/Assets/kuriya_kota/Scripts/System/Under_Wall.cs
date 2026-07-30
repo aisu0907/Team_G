@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class UnderWall : MonoBehaviour
 {
-    public GameObject player;
+    public Player player;
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<EJammer>(out var jammer)) jammer.PopWindow();
-        else if (collision.CompareTag("Enemy")) Player.Instance.Damage(1, collision.gameObject);
+        if (collision.TryGetComponent<Enemy>(out var e))
+        {
+            e.Damage();
+            player.Damage(e.HitDamage, collision.gameObject);
+        }
 
         if (collision.gameObject.tag == "Item")
         {

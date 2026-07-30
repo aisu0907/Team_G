@@ -1,16 +1,16 @@
-//横の壁
-
 using UnityEngine;
 
 public class SideWall : MonoBehaviour
 {
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        // 反射できるオブジェクトなら、
+        if (collision.TryGetComponent<IReflectable>(out var enemy))
         {
-            //反射処理
-            Vector2 tmp = new Vector2(-collision.gameObject.GetComponent<Enemy>().vec.x, collision.gameObject.GetComponent<Enemy>().vec.y);
-            collision.gameObject.GetComponent<Enemy>().vec = tmp;
+            // 反射する
+            Vector2 vec = new Vector2(-collision.gameObject.GetComponent<Enemy>().Velocity.x,
+                collision.gameObject.GetComponent<Enemy>().Velocity.y);
+            enemy.Reflect(vec, enemy.Hitting);
         }
     }
 }

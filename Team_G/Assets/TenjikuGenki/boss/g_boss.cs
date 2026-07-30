@@ -37,11 +37,11 @@ public class g_boss : BossBase
         // ç∂âEà⁄ìÆ
         if(left_move)
         {
-            rb.linearVelocityX = speed;
+            rb.linearVelocityX = _speed;
         }
         else
         {
-            rb.linearVelocityX = -speed;
+            rb.linearVelocityX = -_speed;
         }
     }
     protected override void Start()
@@ -65,8 +65,8 @@ public class g_boss : BossBase
     // éÀåÇ
     void ShootBullet()
     {
-        int color = Random.Range(0, list.Count);
-        img.sprite = sprites[color];
+        COLOR color = (COLOR)Random.Range(0, list.Count);
+        img.sprite = sprites[(int)color];
         //Vector2 d = (Player.Instance.transform.position - transform.position).normalized;
         //var e = Instantiate(list[0].pf, transform.position, Quaternion.identity).GetComponent<ENormal>(); e.Init(list[0].db, d, color, 5);
         var e = Instantiate(list[0].pf, transform.position, Quaternion.identity).GetComponent<ENormal>(); e.Init(list[0].db, new Vector2(0,-2.5f), color, 5);

@@ -33,17 +33,19 @@ public class EJammer : Enemy
     /// <param name="_vec"></param>
     /// <param name="_color"></param>
     /// <param name="_speed"></param>
-    public void Init(EnemyData db, Vector2 _vec, float _speed)
+    public void Init(EnemyData db, Vector2 vec, float speed)
     {
-        // Initialize Status
+        // ステータスの初期化
         type = (int)db.type;
-        vec = _vec;
-        speed = _speed;
+        _vec = vec;
+        _speed = speed;
         score = db.score;
         power = db.power;
+        _damage = 0;
 
-        // Decision Vector
-        rb.linearVelocity = vec * speed;
+        // ベクトルの補正
+        rb = GetComponent<Rigidbody2D>();
+        rb.linearVelocity = _vec * _speed;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -65,9 +67,10 @@ public class EJammer : Enemy
         EnemySpawn.Instance.counter--;
     }
 
-    public void PopWindow()
+    public override void Damage()
     {
         Instantiate(window).GetComponent<Window>();
         Destroy(gameObject);
+        base.Damage();
     }
 }

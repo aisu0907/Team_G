@@ -3,12 +3,13 @@ using UnityEngine.UI;
 
 public class Enemy : ObjBase
 {
+    public int HitDamage => _damage;
     [Header("▼ BaseStatus")]
-    public int type, color;
+    public int type;
     public int score;
     protected int power;
-    public bool on_hitting = false;
     public GameObject explode;
+    protected int _damage;
     
     // Update is called once per frame
     protected override void Update()
@@ -28,16 +29,20 @@ public class Enemy : ObjBase
     }
 
     // ヒットチェック
-    public bool IsHitEnemy(GameObject obj)
+    public virtual bool IsHitEnemy(GameObject obj)
     {
-        if (obj.CompareTag("Enemy")) return obj.GetComponent<Enemy>().on_hitting;
+        if (obj.TryGetComponent<IReflectable>(out var enemy)) return obj.GetComponent<IReflectable>().Hitting;
         return false;
     }
 
     // 被弾
-    public void Damage()
+    public virtual void Damage()
     {
         Destroy(gameObject);
-        Player.Instance.health--;
+    }
+
+    public void VectorReshape(Vector2 vec)
+    {
+        rb.linearVelocity = vec;
     }
 }

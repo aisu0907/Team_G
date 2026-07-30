@@ -126,7 +126,7 @@ public class LastBoss : BossBase
     /// </summary>
     private void Move()
     {
-            float x = Mathf.Sin(Time.time) * speed - 2f;
+            float x = Mathf.Sin(Time.time) * _speed - 2f;
             transform.position = new Vector2(x, transform.position.y);
     }
 
@@ -160,7 +160,7 @@ public class LastBoss : BossBase
 
             var e = Instantiate(prefab, transform.position, Quaternion.identity)
                     .GetComponent<ENormal>();
-            e.Init(enemy, d, Random.Range(0, 2), 3.5f);
+            e.Init(enemy, d, (COLOR)Random.Range(0, 2), 3.5f);
           
         }
         AudioManager.instance.PlaySound("Shoot");
@@ -240,7 +240,7 @@ public class LastBoss : BossBase
         {
             if (health <= 0) break;
             Vector2 d = (Player.Instance.transform.position - transform.position).normalized;
-            var e = Instantiate(prefab, transform.position, Quaternion.identity).GetComponent<ENormal>(); e.Init(enemy, d, Random.Range(0, 2), 3);
+            var e = Instantiate(prefab, transform.position, Quaternion.identity).GetComponent<ENormal>(); e.Init(enemy, d, (COLOR)Random.Range(0, 2), 3);
             AudioManager.instance.PlaySound("Shoot");
             yield return new WaitForSeconds(1.0f);
         }

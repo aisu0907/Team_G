@@ -75,7 +75,7 @@
 //    }
 //    void OnTriggerEnter2D(Collider2D collision)
 //    {
-//        if (collision.gameObject.tag == "Enemy" && collision.gameObject.GetComponent<Enemy>().on_hitting)
+//        if (collision.gameObject.tag == "Enemy" && collision.gameObject.GetComponent<Enemy>()._onHitting)
 //        {
 //            --health;
 //            Destroy(collision.gameObject);

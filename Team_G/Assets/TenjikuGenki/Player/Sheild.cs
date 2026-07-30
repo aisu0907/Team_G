@@ -44,26 +44,19 @@ public class Shield : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         // 敵機の情報を取得
-        if (collision.TryGetComponent<Enemy>(out var obj))
+        if (collision.TryGetComponent<IReflectable>(out var enemy))
         {
+            if (enemy.Hitting) return;
+
             // 接触した敵機と盾の色が同じでかつ、それが妨害ウイルスじゃないなら、
-            if (IsHitFallingEnemy(obj) && obj.type != (int)EnemyConst.TYPE.JAMMER)
+            if (enemy.Color == (COLOR)color && !enemy.Hitting)
             {
                 // ベクトルを反転
                 Vector2 d = (collision.transform.position - transform.position).normalized;
-                obj.vec = d;
-                obj.on_hitting = true;
+                enemy.Reflect(d, true);
                 AudioManager.instance.PlaySound("ReflectEnemy", 0.4f);
             }
         }
-    }
-
-    // 接触した敵機と盾の色が同じでかつ、それが敵機が降下中でないかどうか判定する
-    bool IsHitFallingEnemy(Enemy obj)
-    {
-        if (!obj.on_hitting && obj.color == color)
-            return true;
-        return false;
     }
 
     // 盾の色を変更する

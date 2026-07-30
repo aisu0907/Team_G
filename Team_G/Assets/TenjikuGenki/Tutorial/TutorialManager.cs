@@ -152,7 +152,7 @@ public class TutorialManager : MonoBehaviour, IPhazeManager
                     }
 
                     var e = Instantiate(enemy, enemy_spawn_pos, Quaternion.identity).GetComponent<TutorialEnemy>(); //“G‚ğ¶¬
-                    e.Init(new Vector2(0, -1), enemy_color, enemy_speed); //“G‚Ìî•ñ‚ğİ’è
+                    e.Init(new Vector2(0, -1), (COLOR)enemy_color, enemy_speed); //“G‚Ìî•ñ‚ğİ’è
                     enemy_pop_count++;//“G‚ÌoŒ»”‚ğƒJƒEƒ“ƒg
 
                     //“G‚ÌF‚ğ–ˆ‰ñ•Ï‚¦‚é
@@ -181,7 +181,7 @@ public class TutorialManager : MonoBehaviour, IPhazeManager
                         enemy_color = 0;
                         enemy_spawn_pos = mid_enemy_spawn_pos;//ˆÊ’u‚ğİ’è
                         var e = Instantiate(enemy, enemy_spawn_pos, Quaternion.identity).GetComponent<TutorialEnemy>(); //“G‚ğ¶¬
-                        e.Init(new Vector2(0, -1), enemy_color, enemy_speed); //“G‚Ìî•ñ‚ğİ’è
+                        e.Init(new Vector2(0, -1), (COLOR)enemy_color, enemy_speed); //“G‚Ìî•ñ‚ğİ’è
                         enemy_pop_count++;//“G‚ÌoŒ»”‚ğƒJƒEƒ“ƒg
                     }
                     
@@ -189,7 +189,7 @@ public class TutorialManager : MonoBehaviour, IPhazeManager
                     {
                         enemy_spawn_pos = right_enemy_spawn_pos;//ˆÊ’u‚ğİ’è
                         var e = Instantiate(enemy, enemy_spawn_pos, Quaternion.identity).GetComponent<TutorialEnemy>(); //“G‚ğ¶¬
-                        e.Init(new Vector2(0, -1), enemy_color, enemy_speed); //“G‚Ìî•ñ‚ğİ’è
+                        e.Init(new Vector2(0, -1), (COLOR)enemy_color, enemy_speed); //“G‚Ìî•ñ‚ğİ’è
                         enemy_pop_count++;//“G‚ÌoŒ»”‚ğƒJƒEƒ“ƒg
                         pop_time_count++; //“G‚ÌoŒ»ŠÔ‚ğ‘‚â‚·
 
@@ -199,7 +199,7 @@ public class TutorialManager : MonoBehaviour, IPhazeManager
                     {
                         enemy_spawn_pos = left_enemy_spawn_pos;//ˆÊ’u‚ğİ’è
                         var e = Instantiate(enemy, enemy_spawn_pos, Quaternion.identity).GetComponent<TutorialEnemy>(); //“G‚ğ¶¬
-                        e.Init(new Vector2(0, -1), enemy_color, enemy_speed); //“G‚Ìî•ñ‚ğİ’è
+                        e.Init(new Vector2(0, -1), (COLOR)enemy_color, enemy_speed); //“G‚Ìî•ñ‚ğİ’è
                         enemy_pop_count++;//“G‚ÌoŒ»”‚ğƒJƒEƒ“ƒg
 
                         pop_time_count = 0;//“G‚ÌoŒ»ŠÔ‚ğƒŠƒZƒbƒg

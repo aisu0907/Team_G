@@ -1,12 +1,10 @@
+
+using UnityEngine;
+
 public interface IReflectable
 {
-    int timer { get; set; }
-    public void SpinLimit(Enemy e)
-    {
-        timer++;
-        if (timer > 180)
-        {
-            e.Delete();
-        }
-    }
+    public bool Hitting { get; }
+    public COLOR Color { get; }
+
+    public void Reflect(Vector2 ref_vec, bool hitting) { }
 }

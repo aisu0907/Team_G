@@ -1,10 +1,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ENormal : Enemy, IDamageable, IReflectable
+public class ENormal : Enemy, IReflectable
 {
-    public int timer { get; set; } = 0;
+    // ----- プロパティ ----- //
+    public bool Hitting => _onHitting;
+    protected COLOR _color { get; set; } = COLOR.RED;
+
+    // ----- メンバ変数 ----- //
     public List<Sprite> Img;
+    public COLOR Color => _color;
+    protected bool _onHitting { get; set; } = false;
     IReflectable iref;
 
     void Awake()
@@ -22,28 +28,11 @@ public class ENormal : Enemy, IDamageable, IReflectable
 
     protected override void Update()
     {
-        // Spin
-        if (on_hitting)
-        {
-            if (vec.y < 0)
-            {
-                vec.y = -vec.y;
-            }
-            transform.Rotate(0, 0, EnemyConst.ROTATION_ANGLE);
-            if (EnemySpawn.Instance.spawn_switch == false)
-                iref.SpinLimit(this);
-        }
-    }
+        base.Update();
 
-    void FixedUpdate()
-    {
-        // Fix Vector
-        rb.linearVelocity = vec;
-        if (rb.linearVelocity.magnitude != speed)
-            if(on_hitting)
-                rb.linearVelocity = vec.normalized * (speed + Shield_Item.Instance.reflect_speed) * 2;
-            else
-                rb.linearVelocity = vec.normalized * speed;
+        // ヒット中なら回転
+        if (_onHitting)
+            transform.Rotate(0.0f, 0.0f, EnemyConst.ROTATION_ANGLE);
     }
 
     void OnTriggerStay2D(Collider2D collision)
@@ -65,29 +54,30 @@ public class ENormal : Enemy, IDamageable, IReflectable
         EnemySpawn.Instance.counter--;
     }
 
-    /// <summary>
-    /// 初期化
-    /// </summary>
-    /// <param name="db"></param>
-    /// <param name="_vec"></param>
-    /// <param name="_color"></param>
-    /// <param name="_speed"></param>
-    public void Init(EnemyData db, Vector2 _vec, int _color, float _speed)
+    /// <summary> 初期化 </summary>
+    public void Init(EnemyData db, Vector2 vec, COLOR color, float speed)
     {
-        // Initialize Status
+        // ステータスの初期化
         type = (int)db.type;
-        color = _color;
-        vec = _vec;
-        speed = _speed;
+        _color = (COLOR)color;
+        _vec = vec;
+        _speed = speed;
         score = db.score;
         power = db.power;
+        _damage = 1;
 
-        // Change Img
+        // 色と画像を合わせる
         SpriteRenderer img = GetComponent<SpriteRenderer>();
-        img.sprite = Img[color];
+        img.sprite = Img[(int)color];
 
-        // Decision Vector
+        // ベクトルの補正
         rb = GetComponent<Rigidbody2D>();
-        rb.linearVelocity = vec * speed;
+        rb.linearVelocity = vec.normalized * speed;
+    }
+
+    public void Reflect(Vector2 ref_vec, bool hitting)
+    {
+        rb.linearVelocity = ref_vec.normalized * _speed;
+        _onHitting = hitting;
     }
 }

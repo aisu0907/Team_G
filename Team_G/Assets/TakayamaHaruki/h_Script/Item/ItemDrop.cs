@@ -19,9 +19,9 @@ public class ItemDrop : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         //エネミーにぶつかったら
-        if (collision.TryGetComponent<Enemy>(out var e))
+        if (collision.TryGetComponent<IReflectable>(out var e))
             //
-            if (e.on_hitting)
+            if (e.Hitting)
             {
                 //ランダムでアイテムを決める
                 rand_item = Random.Range(0, itemList.Count);//ドロップアイテムを決定
