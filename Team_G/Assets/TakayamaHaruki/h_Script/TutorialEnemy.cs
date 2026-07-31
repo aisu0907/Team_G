@@ -4,10 +4,13 @@ using UnityEngine;
 public class TutorialEnemy : Enemy, IReflectable
 {
     public GameObject tm;
-    public List<Sprite> enemy_img;
+    // ----- プロパティ ----- //
     public bool Hitting => _onHitting;
-    public COLOR Color => _color;
     protected COLOR _color { get; set; } = COLOR.RED;
+
+    // ----- メンバ変数 ----- //
+    public List<Sprite> enemy_img;
+    public COLOR Color => _color;
     protected bool _onHitting { get; set; } = false;
 
     // Update is called once per frame
@@ -46,7 +49,7 @@ public class TutorialEnemy : Enemy, IReflectable
     public void Init(Vector2 vec, COLOR color, float speed)
     {
         // Initialize Status
-        _color = _color;
+        _color = color;
         _vec = vec;
         _speed = speed;
 
@@ -63,5 +66,11 @@ public class TutorialEnemy : Enemy, IReflectable
     {
         if (_onHitting)
             TutorialManager.Instance.enemy_hit_count++;
+    }
+
+    public void Reflect(Vector2 ref_vec, bool hitting)
+    {
+        _rb.linearVelocity = ref_vec.normalized * _speed;
+        _onHitting = hitting;
     }
 }

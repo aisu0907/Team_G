@@ -15,6 +15,7 @@ TagManager:
   - Warnig
   - Manager
   - GameManager
+  - PlayerBlocker
   layers:
   - Default
   - TransparentFX

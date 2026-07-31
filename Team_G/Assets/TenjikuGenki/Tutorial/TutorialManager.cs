@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class TutorialManager : MonoBehaviour, IPhazeManager
 {
+    [SerializeField] StartAnimation sa;
     public int phase { get; set; } = 0;
     public bool is_change_color { get; set; } = false;
     //ゲームオブジェクト
@@ -84,7 +85,7 @@ public class TutorialManager : MonoBehaviour, IPhazeManager
             SceneManager.LoadScene("PlayScene");
 
         //プレイヤーの登場演出が終わったら
-        if (!Player.Instance.start_anime && start_window)
+        if (sa.StartAnime() && start_window)
         {
             //基礎説明を表示
             window.SetActive(true);

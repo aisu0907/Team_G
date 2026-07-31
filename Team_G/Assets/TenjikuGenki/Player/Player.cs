@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 
@@ -13,12 +14,10 @@ public class Player : ObjBase
 
     [Header("▼ PlayerStatus")]
     public int health = 3;      //体力
-    float axisH, axisV = 0.0f;  //移動ベクトル
 
     [Header("▼ Bom")]
     public int bom = 0;     //ボムの所持数
     public int max_bom = 0; //ボム最大所持数
-    bool bomb_switch;
 
     [Header("▼ DamageEffect")]
     public GameObject shake;
@@ -44,9 +43,16 @@ public class Player : ObjBase
     public float targetY = -3.0f;   //出現位置
     public bool start_anime = true; //アニメーション切り替え
 
-
     bool isStop = false;
 
+    [Header("▼ Phisics")]
+    [SerializeField] Transform TopMoveLimit;
+    [SerializeField] Transform BottomMoveLimit;
+    bool IsMoveLimit(Vector2 vec) {
+        return transform.position.y > TopMoveLimit.position.y && vec.y > 0.0f ||
+            transform.position.y < BottomMoveLimit.position.y && vec.y < 0.0f;
+    }
+    public StartAnimation sa;
 
     public static Player Instance { get; private set; }
 
@@ -68,34 +74,19 @@ public class Player : ObjBase
         save_color = new Color(img.color.r, img.color.g, img.color.b, img.color.a);
         damage_hit = true;
         damage_color = new Color(save_color.r, save_color.g, save_color.b, 0.5f);
-
-        //開始位置
-        transform.position = new Vector3(start_x, start_y, 0);
-        start_anime = true;
     }
 
     // Update is called once per frame
     protected override void Update()
     {
+        if (!sa.StartAnime()) return;
+
         if (health <= 0)
         {
             // ちょっと待つ
             if (++timer >= 120)
                 SceneManager.LoadScene("GameoverScene");
             return;
-        }
-
-        //画面下から出現
-        if (start_anime)
-        {
-            if (transform.position.y < targetY)
-            {
-                transform.position += new Vector3(0, _speed * Time.deltaTime, 0);
-            }
-            else
-            {
-                start_anime = false;
-            }
         }
 
         if (!damage_hit)
@@ -144,52 +135,8 @@ public class Player : ObjBase
         // 中断
         if (isStop) return;
 
-        // 移動
-        axisH = Input.GetAxisRaw("Horizontal");
-        axisV = Input.GetAxisRaw("Vertical");
-        if (0.2 <= transform.position.y)
-            if (axisV > 0.0f) axisV = 0.00f;
-        if (transform.position.y <= -5.5)
-            if (axisV < 0.0f) axisV = 0.00f;
-
         // 盾の位置更新
         Shield.Instance.transform.position = new Vector2(transform.position.x, transform.position.y + 0.8f);
-
-        //ボムの処理
-        if (Input.GetKey(KeyCode.Space))
-        {
-            if (bom > 0 && bomb_switch)
-            {
-                AudioManager.instance.PlaySound("bom", 1f);
-                // "Enemy"タグがついたすべてのオブジェクトを取得
-                GameObject[] objects = GameObject.FindGameObjectsWithTag("Enemy");
-
-                // 各オブジェクトを削除
-                foreach (GameObject obj in objects)
-                {
-                    Destroy(obj);
-                    Instantiate(explode, obj.transform.position, Quaternion.identity);
-                }
-
-                Instantiate(flash, new Vector2(transform.position.x, transform.position.y), Quaternion.identity); //画面全体にフラッシュを生成
-
-                //bomの数を減らす
-                bom--;
-            }
-
-
-            bomb_switch = false;
-        }
-        else
-        {
-            bomb_switch = true;
-        }
-    }
-
-    void FixedUpdate()
-    {
-        // 移動処理
-        _rb.linearVelocity = new Vector2(axisH, axisV) * _speed;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -205,11 +152,55 @@ public class Player : ObjBase
         {
             //音を鳴らす
             AudioManager.instance.PlaySound("GetItem");
-
             Shield_Item.Instance.ItemGet(i, i.item_id);
 
             //アイテムを削除
             Destroy(i.gameObject);
+        }
+    }
+
+    void FixedUpdate()
+    {
+        // これ以上移動できないなら、移動を中断
+        if (IsMoveLimit(_rb.linearVelocity))
+            _rb.linearVelocityY = 0;
+    }
+
+    public void Move(InputAction.CallbackContext ctx)
+    {
+        if (!(health > 0) && sa.StartAnime()) return;
+
+        // 移動処理
+        Vector2 vec = ctx.ReadValue<Vector2>();
+
+        // 移動に限界を設定する
+        if (IsMoveLimit(vec)) vec.y = 0.0f;
+        _rb.linearVelocity = vec * _speed;
+    }
+
+    public void Bom(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed)
+        {
+            if (!(health > 0)) return;
+
+            if (bom > 0)
+            {
+                AudioManager.instance.PlaySound("bom", 1f);
+                // "Enemy"タグがついたすべてのオブジェクトを取得
+                GameObject[] objects = GameObject.FindGameObjectsWithTag("Enemy");
+
+                // 各オブジェクトを削除
+                foreach (GameObject obj in objects)
+                {
+                    Destroy(obj);
+                    Instantiate(explode, obj.transform.position, Quaternion.identity);
+                }
+                Instantiate(flash, new Vector2(transform.position.x, transform.position.y), Quaternion.identity); //画面全体にフラッシュを生成
+
+                //bomの数を減らす
+                bom--;
+            }
         }
     }
 
