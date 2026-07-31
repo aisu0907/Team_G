@@ -52,7 +52,8 @@ public class Player : ObjBase
         return transform.position.y > TopMoveLimit.position.y && vec.y > 0.0f ||
             transform.position.y < BottomMoveLimit.position.y && vec.y < 0.0f;
     }
-    public StartAnimation sa;
+    [SerializeField] StartAnimation sa;
+    public float item_up_speed;
 
     public static Player Instance { get; private set; }
 
@@ -175,7 +176,8 @@ public class Player : ObjBase
 
         // 移動に限界を設定する
         if (IsMoveLimit(vec)) vec.y = 0.0f;
-        _rb.linearVelocity = vec * _speed;
+        Vector2 speed = new(_speed + item_up_speed, _speed + item_up_speed);
+        _rb.linearVelocity = vec * speed;
     }
 
     public void Bom(InputAction.CallbackContext ctx)
