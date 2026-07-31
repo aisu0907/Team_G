@@ -8,3 +8,9 @@ public interface IReflectable
 
     public void Reflect(Vector2 ref_vec, bool hitting) { }
 }
+
+public interface IHitable
+{
+    public int Damage { get; }
+    public virtual void Hit() { }
+}

@@ -22,7 +22,7 @@ namespace TMPro.Examples
         public float MaxElevationAngle = 85.0f;
         public float MinElevationAngle = 0f;
 
-        public float OrbitalAngle = 0f;
+        public float O_rbitalAngle = 0f;
 
         public CameraModes CameraMode = CameraModes.Follow;
 
@@ -87,11 +87,11 @@ namespace TMPro.Examples
             {
                 if (CameraMode == CameraModes.Isometric)
                 {
-                    desiredPosition = CameraTarget.position + Quaternion.Euler(ElevationAngle, OrbitalAngle, 0f) * new Vector3(0, 0, -FollowDistance);
+                    desiredPosition = CameraTarget.position + Quaternion.Euler(ElevationAngle, O_rbitalAngle, 0f) * new Vector3(0, 0, -FollowDistance);
                 }
                 else if (CameraMode == CameraModes.Follow)
                 {
-                    desiredPosition = CameraTarget.position + CameraTarget.TransformDirection(Quaternion.Euler(ElevationAngle, OrbitalAngle, 0f) * (new Vector3(0, 0, -FollowDistance)));
+                    desiredPosition = CameraTarget.position + CameraTarget.TransformDirection(Quaternion.Euler(ElevationAngle, O_rbitalAngle, 0f) * (new Vector3(0, 0, -FollowDistance)));
                 }
                 else
                 {
@@ -161,11 +161,11 @@ namespace TMPro.Examples
 
                     if (mouseX > 0.01f || mouseX < -0.01f)
                     {
-                        OrbitalAngle += mouseX * MoveSensitivity;
-                        if (OrbitalAngle > 360)
-                            OrbitalAngle -= 360;
-                        if (OrbitalAngle < 0)
-                            OrbitalAngle += 360;
+                        O_rbitalAngle += mouseX * MoveSensitivity;
+                        if (O_rbitalAngle > 360)
+                            O_rbitalAngle -= 360;
+                        if (O_rbitalAngle < 0)
+                            O_rbitalAngle += 360;
                     }
                 }
 
@@ -186,11 +186,11 @@ namespace TMPro.Examples
                     // Handle left & right 
                     if (deltaPosition.x > 0.01f || deltaPosition.x < -0.01f)
                     {
-                        OrbitalAngle += deltaPosition.x * 0.1f;
-                        if (OrbitalAngle > 360)
-                            OrbitalAngle -= 360;
-                        if (OrbitalAngle < 0)
-                            OrbitalAngle += 360;
+                        O_rbitalAngle += deltaPosition.x * 0.1f;
+                        if (O_rbitalAngle > 360)
+                            O_rbitalAngle -= 360;
+                        if (O_rbitalAngle < 0)
+                            O_rbitalAngle += 360;
                     }
 
                 }
@@ -206,12 +206,12 @@ namespace TMPro.Examples
                         if (hit.transform == CameraTarget)
                         {
                             // Reset Follow Position
-                            OrbitalAngle = 0;
+                            O_rbitalAngle = 0;
                         }
                         else
                         {
                             CameraTarget = hit.transform;
-                            OrbitalAngle = 0;
+                            O_rbitalAngle = 0;
                             MovementSmoothing = previousSmoothing;
                         }
 

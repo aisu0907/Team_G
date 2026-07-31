@@ -2,9 +2,10 @@
 
 using UnityEngine;
 
-public class BossAttack : MonoBehaviour
+public class BossAttack : MonoBehaviour, IHitable
 {
     [Header("▼Range Attack Setting")]
+    public int Damage => damage;
     public int damage;//ダメージ
     public int damage_interval;//ダメージ間隔
     public int Display_end;//表示終了
@@ -36,10 +37,20 @@ public class BossAttack : MonoBehaviour
             Destroy(gameObject); //範囲攻撃を削除
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    //private void OnTriggerStay2D(Collider2D collision)
+    //{
+    //    //プレイヤーに触れた場合
+    //    if(collision.CompareTag("Player") && damage_interval <= damage_time)
+    //    {
+    //        damage_time = 0; //タイムリセット
+    //        Player.Instance.Damage(damage, gameObject, false); //プレイヤーにダメージ
+    //    }
+    //}
+
+    public void Hit()
     {
         //プレイヤーに触れた場合
-        if(collision.CompareTag("Player") && damage_interval <= damage_time)
+        if (damage_interval <= damage_time)
         {
             damage_time = 0; //タイムリセット
             Player.Instance.Damage(damage, gameObject, false); //プレイヤーにダメージ

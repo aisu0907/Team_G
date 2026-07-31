@@ -9,19 +9,19 @@ public class Item : ItemBase
     public int item_id = 0;                   //アイテムの種類
     public int max_item_count = 5;            //アイテム累積上限
    
-    private Rigidbody2D rb;
+    private Rigidbody2D _rb;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created    
     void Start()
     {
-        rb = this.GetComponent<Rigidbody2D>();
+        _rb = this.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
         //アイテムの位置更新
-        rb.linearVelocity = new Vector2(0, item_fall_Velocity);
+        _rb.linearVelocity = new Vector2(0, item_fall_Velocity);
     }
     
 }

@@ -176,7 +176,7 @@ SubShader {
 
 		    #if (UNDERLAY_ON | UNDERLAY_INNER)
 			layerScale /= 1 + ((_UnderlaySoftness * _ScaleRatioC) * layerScale);
-			float layerBias = (.5 - weight) * layerScale - .5 - ((_UnderlayDilate * _ScaleRatioC) * .5 * layerScale);
+			float laye_rbias = (.5 - weight) * layerScale - .5 - ((_UnderlayDilate * _ScaleRatioC) * .5 * layerScale);
 
 			float x = -(_UnderlayOffsetX * _ScaleRatioC) * _GradientScale / _TextureWidth;
 			float y = -(_UnderlayOffsetY * _ScaleRatioC) * _GradientScale / _TextureHeight;
@@ -197,7 +197,7 @@ SubShader {
 			output.mask = half4(vert.xy * 2 - clampedRect.xy - clampedRect.zw, 0.25 / (0.25 * maskSoftness + pixelSize.xy));
 			#if (UNDERLAY_ON || UNDERLAY_INNER)
 			output.texcoord1 = float4(input.texcoord0 + layerOffset, input.color.a, 0);
-			output.underlayParam = half2(layerScale, layerBias);
+			output.underlayParam = half2(layerScale, laye_rbias);
 			#endif
 
 			return output;

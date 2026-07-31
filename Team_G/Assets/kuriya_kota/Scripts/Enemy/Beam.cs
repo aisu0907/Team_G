@@ -1,8 +1,12 @@
 using UnityEngine;
 
-public class Beam : MonoBehaviour
+public class Beam : MonoBehaviour, IHitable
 //IDamageable
 {
+    // ダメージ処理
+    public int Damage => _damage;
+    int _damage = 0;
+
     [Header("Audio Clips")]
     [SerializeField] private AudioClip sound1;
     [SerializeField] private AudioClip sound2;
@@ -37,20 +41,10 @@ public class Beam : MonoBehaviour
         }
     }
 
-
-    /// <summary>
-    /// ボスの体力が5以下ならビームのダメージを２にする
-    /// </summary>
-    /// <param name="collision"></param>
-    void OnTriggerEnter2D(Collider2D collision)
+    public void Hit()
     {
-        if (collision.gameObject.tag == "Player"&&LastBoss.Instance.health>5)
-        {
-            Player.Instance.Damage(1,gameObject,false);
-        }
-        else if (collision.gameObject.tag == "Player" && LastBoss.Instance.health <= 5)
-        {
-            Player.Instance.Damage(2,gameObject,false);
-        }
+        // 体力によって攻撃力を変更する
+        if (LastBoss.Instance.health > 5) _damage = 1;
+        else _damage = 0;
     }
 }

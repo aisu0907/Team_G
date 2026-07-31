@@ -5,34 +5,16 @@ public class EJammer : Enemy
 {
     public GameObject window;
 
-    void Awake()
-    {
-        ;
-    }
-
     protected override void Start()
     {
         base.Start();
         EnemySpawn.Instance.counter++;
     }
-
-    protected override void Update()
-    {
-        ;
-    }
-
-    void FixedUpdate()
-    {
-        ;
-    }
-
-    /// <summary>
-    /// 初期化
-    /// </summary>
-    /// <param name="db"></param>
-    /// <param name="_vec"></param>
-    /// <param name="_color"></param>
-    /// <param name="_speed"></param>
+    
+    /// <summary> 初期化変数 </summary>
+    /// <param name="db"> 個体データ </param>
+    /// <param name="vec"> 進行方向 </param>
+    /// <param name="speed"> 速度 </param>
     public void Init(EnemyData db, Vector2 vec, float speed)
     {
         // ステータスの初期化
@@ -44,8 +26,8 @@ public class EJammer : Enemy
         _damage = 0;
 
         // ベクトルの補正
-        rb = GetComponent<Rigidbody2D>();
-        rb.linearVelocity = _vec * _speed;
+        _rb = GetComponent<Rigidbody2D>();
+        _rb.linearVelocity = _vec * _speed;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -67,10 +49,9 @@ public class EJammer : Enemy
         EnemySpawn.Instance.counter--;
     }
 
-    public override void Damage()
+    public override void Hit()
     {
         Instantiate(window).GetComponent<Window>();
         Destroy(gameObject);
-        base.Damage();
     }
 }

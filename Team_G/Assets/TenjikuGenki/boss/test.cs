@@ -4,7 +4,7 @@
 
 //public class g_boss : MonoBehaviour
 //{
-//    Rigidbody2D rb;
+//    Rigidbody2D _rb;
 //    public int timer;
 //    int mode = 0;
 //    public bool reflect = false;
@@ -40,8 +40,8 @@
 //    // Start is called once before the first execution of Update after the MonoBehaviour is created
 //    void Start()
 //    {
-//        // CharacterBase?p??
-//        rb = GetComponent<Rigidbody2D>();
+//        // Characte_rbase?p??
+//        _rb = GetComponent<Rigidbody2D>();
 //        img = GetComponent<SpriteRenderer>();
 //        audioSource = GetComponent<AudioSource>();
 //    }
@@ -97,15 +97,15 @@
 //            n += 0.5f;
 //            if (!reflect)
 //            {
-//                rb.linearVelocity = new Vector2(0, -speed - n);
+//                _rb.linearVelocity = new Vector2(0, -speed - n);
 //                if (Player.Instance.health != _health) reflect = true;
 //            }
 //            else
 //            {
-//                rb.linearVelocity = new Vector2(0, 3);
+//                _rb.linearVelocity = new Vector2(0, 3);
 //                if (transform.position.y >= 3)
 //                {
-//                    rb.linearVelocity = new Vector2(0, 0);
+//                    _rb.linearVelocity = new Vector2(0, 0);
 //                    n = 0;
 //                    mode = 0;
 //                    once = true;

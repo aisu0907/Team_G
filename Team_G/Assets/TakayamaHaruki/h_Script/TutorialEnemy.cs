@@ -27,9 +27,9 @@ public class TutorialEnemy : Enemy, IReflectable
     void FixedUpdate()
     {
         // Fix Vector
-        rb.linearVelocity = _vec;
-        if (rb.linearVelocity.magnitude != _speed)
-            rb.linearVelocity = _vec.normalized * _speed;
+        _rb.linearVelocity = _vec;
+        if (_rb.linearVelocity.magnitude != _speed)
+            _rb.linearVelocity = _vec.normalized * _speed;
     }
 
     void OnTriggerStay2D(Collider2D collision)
@@ -55,8 +55,8 @@ public class TutorialEnemy : Enemy, IReflectable
         img.sprite = enemy_img[(int)color];
 
         // Decision Vector
-        rb = GetComponent<Rigidbody2D>();
-        rb.linearVelocity = _vec * _speed;
+        _rb = GetComponent<Rigidbody2D>();
+        _rb.linearVelocity = _vec * _speed;
     }
 
     public void OnDestroy()

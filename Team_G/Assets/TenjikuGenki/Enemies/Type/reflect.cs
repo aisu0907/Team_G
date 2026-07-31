@@ -64,13 +64,13 @@ public class EReflect : Enemy, IReflectable
         img.sprite = Img[(int)_color];
 
         // ベクトルの補正
-        rb = GetComponent<Rigidbody2D>();
-        rb.linearVelocity = vec.normalized * speed;
+        _rb = GetComponent<Rigidbody2D>();
+        _rb.linearVelocity = vec.normalized * speed;
     }
 
     public void Reflect(Vector2 ref_vec, bool hitting)
     {
-        rb.linearVelocity = ref_vec.normalized * _speed;
+        _rb.linearVelocity = ref_vec.normalized * _speed;
         _onHitting = hitting;
     }
 
@@ -82,7 +82,7 @@ public class EReflect : Enemy, IReflectable
         if (++_timer >= EnemyConst.TIME_SPENT_IN_RETURN)
         {
             // 物理関係をリセット
-            rb.linearVelocity = _vec.normalized * _speed;
+            _rb.linearVelocity = _vec.normalized * _speed;
             transform.localRotation = default;
             _onHitting = false;
 

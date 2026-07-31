@@ -71,13 +71,13 @@ public class ENormal : Enemy, IReflectable
         img.sprite = Img[(int)color];
 
         // ÉxÉNÉgÉãÇÃï‚ê≥
-        rb = GetComponent<Rigidbody2D>();
-        rb.linearVelocity = vec.normalized * speed;
+        _rb = GetComponent<Rigidbody2D>();
+        _rb.linearVelocity = vec.normalized * speed;
     }
 
     public void Reflect(Vector2 ref_vec, bool hitting)
     {
-        rb.linearVelocity = ref_vec.normalized * _speed;
+        _rb.linearVelocity = ref_vec.normalized * _speed;
         _onHitting = hitting;
     }
 }

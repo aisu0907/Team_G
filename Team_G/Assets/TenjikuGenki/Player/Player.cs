@@ -189,17 +189,15 @@ public class Player : ObjBase
     void FixedUpdate()
     {
         // 移動処理
-        rb.linearVelocity = new Vector2(axisH * _speed, axisV * _speed);
+        _rb.linearVelocity = new Vector2(axisH, axisV) * _speed;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<Enemy>(out var e))
+        if (collision.TryGetComponent<IHitable>(out var e))
         {
-            if (e.GetComponent<IReflectable>().Hitting) return;
-
-            e.Damage();
-            Damage(e.HitDamage);
+            e.Hit();
+            Damage(e.Damage);
         }
 
         //アイテムに当たった場合
@@ -238,7 +236,7 @@ public class Player : ObjBase
 
     public void Stop()
     {
-        rb.linearVelocity = Vector2.zero;
+        _rb.linearVelocity = Vector2.zero;
         isStop = true;
     }
 }

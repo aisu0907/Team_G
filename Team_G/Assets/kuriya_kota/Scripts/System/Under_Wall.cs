@@ -8,10 +8,10 @@ public class UnderWall : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<Enemy>(out var e))
+        if (collision.TryGetComponent<IHitable>(out var e))
         {
-            e.Damage();
-            player.Damage(e.HitDamage, collision.gameObject);
+            e.Hit();
+            player.Damage(e.Damage);
         }
 
         if (collision.gameObject.tag == "Item")

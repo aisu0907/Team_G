@@ -37,11 +37,11 @@ public class g_boss : BossBase
         // ¶‰EˆÚ“®
         if(left_move)
         {
-            rb.linearVelocityX = _speed;
+            _rb.linearVelocityX = _speed;
         }
         else
         {
-            rb.linearVelocityX = -_speed;
+            _rb.linearVelocityX = -_speed;
         }
     }
     protected override void Start()

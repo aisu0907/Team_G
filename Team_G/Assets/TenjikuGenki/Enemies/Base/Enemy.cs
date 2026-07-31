@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Enemy : ObjBase
+public class Enemy : ObjBase, IHitable
 {
-    public int HitDamage => _damage;
+    public int Damage => _damage;
     [Header("▼ BaseStatus")]
     public int type;
     public int score;
@@ -35,14 +35,15 @@ public class Enemy : ObjBase
         return false;
     }
 
-    // 被弾
-    public virtual void Damage()
+    /// <summary> プレイヤーと接触した時に起動する関数 </summary>
+    /// <returns> 与えるダメージ量 </returns>
+    public virtual void Hit()
     {
         Destroy(gameObject);
     }
 
     public void VectorReshape(Vector2 vec)
     {
-        rb.linearVelocity = vec;
+        _rb.linearVelocity = vec;
     }
 }

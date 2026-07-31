@@ -91,9 +91,9 @@ public class h_Boss : BossBase
         if (health > 0)
         {
             if (turn)
-                rb.linearVelocityX = _speed;
+                _rb.linearVelocityX = _speed;
             else
-                rb.linearVelocityX = -_speed;
+                _rb.linearVelocityX = -_speed;
 
             _speed += +boost_speed;
 
@@ -135,7 +135,7 @@ public class h_Boss : BossBase
         }
         else
         {
-            rb.linearVelocityX = 0;
+            _rb.linearVelocityX = 0;
             if(gameObject.GetComponent<BossDamageEffect>().alive == true)
                 gameObject.GetComponent<BossDamageEffect>().alive = false;
         }
