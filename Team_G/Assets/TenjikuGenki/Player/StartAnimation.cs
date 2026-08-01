@@ -7,7 +7,7 @@ public class StartAnimation : MonoBehaviour
     const float MOVE_SPEED_Y = 3.0f;
     const float LIMIT_Y = -3.0f;
 
-    public bool start_anime = true; //アニメーション切り替え
+    bool start_anime = true; //アニメーション切り替え
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -19,12 +19,14 @@ public class StartAnimation : MonoBehaviour
 
     public bool StartAnime()
     {
+        if (!start_anime) return true;
+
         // 移動処理
         if (transform.position.y < LIMIT_Y)
             transform.position += new Vector3(0.0f, MOVE_SPEED_Y * Time.deltaTime, 0.0f);
-        else return true;
+        else start_anime = false;
         
         // 移動中ならfalse
-        return false;
+        return !start_anime;
     }
 }
