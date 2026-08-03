@@ -106,14 +106,11 @@ public class EnemySpawn : MonoBehaviour
                 continue;
             }
 
-            // 反射敵なら回転
-            if (enemy_manager[i].obj.TryGetComponent<EReflect>(out var er)) er.Rotation();
-
             // スポーンスイッチがオフなら、
             if (!spawn_switch)
             {
                 // 一定時間生き残っていたら、
-                if (++enemy_manager[i].timer > 60)
+                if (++enemy_manager[i].timer > 180)
                 {
                     // リスト内の自身と、オブジェクトを削除
                     enemy_manager[i].obj.Delete();

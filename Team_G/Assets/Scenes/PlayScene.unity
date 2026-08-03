@@ -918,7 +918,7 @@ PrefabInstance:
     - target: {fileID: 2021564740943638649, guid: ece49d0188f35714ea82e5bc99c9d451, type: 3}
       propertyPath: shield
       value: 
-      objectReference: {fileID: 5988915149965031515, guid: b36ce76bff42ffc429c359ef883cf6a9, type: 3}
+      objectReference: {fileID: 1263051643}
     - target: {fileID: 2021564740943638649, guid: ece49d0188f35714ea82e5bc99c9d451, type: 3}
       propertyPath: sound1
       value: 
@@ -1762,6 +1762,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b36ce76bff42ffc429c359ef883cf6a9, type: 3}
+--- !u!114 &1263051643 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -1092089730999334728, guid: b36ce76bff42ffc429c359ef883cf6a9, type: 3}
+  m_PrefabInstance: {fileID: 1263051642}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2b41675f5c2ed4ea14cd86126ae42c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1271273137
 PrefabInstance:
   m_ObjectHideFlags: 0

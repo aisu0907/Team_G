@@ -105,16 +105,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  color: 0
-  vec: {x: 0, y: 0}
-  speed: 0
   score: 0
-  on_hitting: 0
   explode: {fileID: 2661303078993959966, guid: f0f7fc77f27d1e849b18df3a82666c42, type: 3}
-  rb: {fileID: 0}
-  Img:
+  _spriteRenderer: {fileID: 4817361562044634262}
+  _imgNormal:
   - {fileID: 5733918765317724893, guid: 5301f0a169e3e424db9522ca6e03e0a2, type: 3}
   - {fileID: 3790222209720900523, guid: 83c3ec688b0c7a64a9f678d67a44e859, type: 3}
+  _imgDamaged:
+  - {fileID: 1322020223243713394, guid: 702662ec59842424098bdfc55bb6d969, type: 3}
+  - {fileID: 3281010772095182004, guid: 0d046ba116d6f5f4b9df8aa8996070d7, type: 3}
 --- !u!50 &-8079904616705478854
 Rigidbody2D:
   serializedVersion: 5
@@ -195,7 +194,7 @@ MonoBehaviour:
   - {fileID: 2421750453974295715, guid: 9d236791badac4e458af18aaf6974148, type: 3}
   - {fileID: 4738802059314880400, guid: 1ef76d50663a4324c9e74362c6e288ef, type: 3}
   life_item: {fileID: 1573918439574613243, guid: 0e984b1775ef31d4a8aaec7b7b537c76, type: 3}
-  drop_switch: 0
+  drop_switch: 1
   life_drop: 3
 --- !u!114 &-4974206433174773200
 MonoBehaviour:

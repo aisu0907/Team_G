@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -4442570745054869448}
   - component: {fileID: -8079904616705478854}
   - component: {fileID: 2280981832510062104}
+  - component: {fileID: 5948949249800761068}
   m_Layer: 0
   m_Name: Reflect
   m_TagString: Enemy
@@ -104,16 +105,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  color: 0
-  vec: {x: 0, y: 0}
-  speed: 0
   score: 0
-  on_hitting: 0
   explode: {fileID: 2661303078993959966, guid: f0f7fc77f27d1e849b18df3a82666c42, type: 3}
-  rb: {fileID: 0}
-  Img:
+  _spriteRenderer: {fileID: 4817361562044634262}
+  _imgNormal:
   - {fileID: -1786884696479516206, guid: a7df23b6b269b8a46aabf63a4eb15647, type: 3}
   - {fileID: 7508395005116419572, guid: 0be7ad386df9002468df94939a5751a6, type: 3}
+  _imgDamaged:
+  - {fileID: 4548733883941534847, guid: 7d75577ace5130a4e93967fd36f27f0a, type: 3}
+  - {fileID: 8237101831880495340, guid: e983a31ff99ced44eb42f91091edfa18, type: 3}
 --- !u!114 &-4442570745054869448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,3 +196,17 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.17
+--- !u!114 &5948949249800761068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323917000318406210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95330ed67d0d99e4b9db28fa99340da0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interval: 0.05
+  lifeTime: 0.3

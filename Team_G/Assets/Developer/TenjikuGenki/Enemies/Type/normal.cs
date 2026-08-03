@@ -8,10 +8,11 @@ public class ENormal : Enemy, IReflectable
     protected COLOR _color { get; set; } = COLOR.RED;
 
     // ----- メンバ変数 ----- //
-    public List<Sprite> Img;
+    [SerializeField] SpriteRenderer _spriteRenderer;
+    [SerializeField] List<Sprite> _imgNormal;
+    [SerializeField] List<Sprite> _imgDamaged;
     public COLOR Color => _color;
     protected bool _onHitting { get; set; } = false;
-    IReflectable iref;
 
     void Awake()
     {
@@ -22,7 +23,6 @@ public class ENormal : Enemy, IReflectable
     {
         base.Start();
 
-        iref = GetComponent<IReflectable>();
         EnemySpawn.Instance.counter++;
     }
 
@@ -68,7 +68,7 @@ public class ENormal : Enemy, IReflectable
 
         // 色と画像を合わせる
         SpriteRenderer img = GetComponent<SpriteRenderer>();
-        img.sprite = Img[(int)color];
+        img.sprite = _imgNormal[(int)color];
 
         // ベクトルの補正
         _rb = GetComponent<Rigidbody2D>();
@@ -79,5 +79,6 @@ public class ENormal : Enemy, IReflectable
     {
         _rb.linearVelocity = ref_vec.normalized * _speed;
         _onHitting = hitting;
+        _spriteRenderer.sprite = _imgDamaged[(int)_color];
     }
 }

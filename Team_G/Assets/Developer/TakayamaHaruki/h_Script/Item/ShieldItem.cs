@@ -22,6 +22,7 @@ public class Shield_Item : ItemBase
     private int max_health = 3; //最大体力  
     private Vector2 shield_size;//シールドサイズ
     private Player player;
+    Shield shield;
 
     public static Shield_Item Instance { get; private set; }
 
@@ -38,6 +39,7 @@ public class Shield_Item : ItemBase
         item_count = new int[3];
         shield_size = new Vector2(3, 3);
         player = Player.Instance;
+        shield = GetComponent<Shield>();
 
         // データがあったら引き継ぐ
         if((DataHolder.game_phaze > 0))
@@ -48,7 +50,7 @@ public class Shield_Item : ItemBase
             reflect_speed += up_reflect_speed * DataHolder.player_took_item[1];
             // 盾の大きさ
             shield_size.x += up_shield * DataHolder.player_took_item[2];
-            Shield.Instance.transform.localScale = shield_size;
+            shield.transform.localScale = shield_size;
 
             // 回数の同期
             for(int i = 0; i < 3; i++) item_count[i] = DataHolder.player_took_item[i];
@@ -113,7 +115,7 @@ public class Shield_Item : ItemBase
                 {
                     //シールドを横に大きくする
                     shield_size.x += up_shield;
-                    Shield.Instance.transform.localScale = shield_size;
+                    shield.transform.localScale = shield_size;
                 }
 
             }

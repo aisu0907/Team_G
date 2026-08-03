@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1050848629110424088}
   - component: {fileID: 489013248214253143}
   - component: {fileID: -1092089730999334728}
+  - component: {fileID: -42038719779715273}
   - component: {fileID: 5806836250297397262}
   - component: {fileID: 8223017186961346377}
   m_Layer: 0
@@ -102,11 +103,61 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f2b41675f5c2ed4ea14cd86126ae42c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  img: {fileID: 489013248214253143}
   color: 0
   Img:
   - {fileID: -6556403868631285073, guid: b0642d7a69aa9d64cbc86bcba14e9aea, type: 3}
   - {fileID: -7696752515786996293, guid: 1ce3f8e14ec5b4744a9dbc307a60cd71, type: 3}
-  go: {fileID: 3045932546470836219, guid: cc8fc34330d578c4ca72c5ef3425e7b0, type: 3}
+  shield_ui_obj: {fileID: 0}
+  shields_ui_img:
+  - {fileID: -516040001517070946, guid: 42b6796d3a7b4aa428ead6cb0c0d71d6, type: 3}
+  - {fileID: 8303954443382524186, guid: 9e1cf9700907fb842a89c6df64604f58, type: 3}
+--- !u!114 &-42038719779715273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5988915149965031515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: aa43fde03057dd848a1b8d09b059ccd6, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -1092089730999334728}
+        m_TargetAssemblyTypeName: Shield, Assembly-CSharp
+        m_MethodName: ChangeShieldColor
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e1e26fef-cbd8-450a-8a91-8ec90ddb700d
+    m_ActionName: 'Shield/ChangeColor[/Keyboard/z]'
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Shield
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!114 &5806836250297397262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,7 +171,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   display: {fileID: 1843163215658175290, guid: 2ae498e857a77cc4daa1516f0c0ef3c8, type: 3}
-  player: {fileID: 0}
   plus_bom: 1
   item_score: 500
   heal_hp: 1

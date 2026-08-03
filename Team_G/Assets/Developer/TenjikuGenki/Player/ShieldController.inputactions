@@ -1,0 +1,34 @@
+{
+    "name": "ShieldController",
+    "maps": [
+        {
+            "name": "Shield",
+            "id": "6ce85e46-03e4-4b03-885f-7c8effbdc1be",
+            "actions": [
+                {
+                    "name": "ChangeColor",
+                    "type": "Button",
+                    "id": "e1e26fef-cbd8-450a-8a91-8ec90ddb700d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c02498a7-6c94-45fb-8bd7-215743f457f9",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeColor",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

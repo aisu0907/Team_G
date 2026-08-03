@@ -7,7 +7,6 @@ public class Player : ObjBase
 {
     [Header("▼ GameObject")]
     public GameObject explode;
-    public GameObject shield;
     public GameObject flash;
     public SpriteRenderer img; //画像
     public GameObject bgm;
@@ -54,6 +53,7 @@ public class Player : ObjBase
     }
     [SerializeField] StartAnimation sa;
     public float item_up_speed;
+    [SerializeField] Shield shield;
 
     public static Player Instance { get; private set; }
 
@@ -137,7 +137,7 @@ public class Player : ObjBase
         if (isStop) return;
 
         // 盾の位置更新
-        Shield.Instance.transform.position = new Vector2(transform.position.x, transform.position.y + 0.8f);
+        shield.transform.position = new Vector2(transform.position.x, transform.position.y + 0.8f);
     }
 
     void OnTriggerEnter2D(Collider2D collision)

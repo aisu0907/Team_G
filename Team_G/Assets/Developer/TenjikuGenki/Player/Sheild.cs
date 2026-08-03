@@ -1,46 +1,24 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class Shield : MonoBehaviour
 {
+    public COLOR ShieldColor => _color;
     [Header("▼ Shield")]
-    SpriteRenderer img;
-    public int color = 0;
+    [SerializeField] SpriteRenderer img;
+    COLOR _color = COLOR.RED;
     [SerializeField] List<Sprite> Img;   //�摜
-    [SerializeField] GameObject go;
     [SerializeField] Image shield_ui_obj;
     [SerializeField] List<Sprite> shields_ui_img;
-    IPhazeManager pm;
+    public static Shield Instance;
 
-    public static Shield Instance { get; private set; }
-
-    private void Awake()
+    void Awake()
     {
-        // シングルトンの定義
         Instance = this;
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        img = GetComponent<SpriteRenderer>();
-        pm = go.GetComponent<IPhazeManager>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        // 盾の色を変更
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            if (pm.is_change_color == true)
-            {
-                ChangeShieldColor(color == (int)COLOR.RED ? COLOR.GREEN : COLOR.RED);
-                shield_ui_obj.sprite = shields_ui_img[(int)color];
-            }
-        }
-    }
     void OnTriggerEnter2D(Collider2D collision)
     {
         // 敵機の情報を取得
@@ -49,7 +27,7 @@ public class Shield : MonoBehaviour
             if (enemy.Hitting) return;
 
             // 接触した敵機と盾の色が同じでかつ、それが妨害ウイルスじゃないなら、
-            if (enemy.Color == (COLOR)color && !enemy.Hitting)
+            if (enemy.Color == _color && !enemy.Hitting)
             {
                 // ベクトルを反転
                 Vector2 d = (collision.transform.position - transform.position).normalized;
@@ -60,10 +38,13 @@ public class Shield : MonoBehaviour
     }
 
     // 盾の色を変更する
-    void ChangeShieldColor(COLOR n)
+    public void ChangeShieldColor(InputAction.CallbackContext ctx)
     {
-        img.sprite = Img[(int)n];
-        color = (int)n;
-        AudioManager.instance.PlaySound("ShieldChange");
+        if (ctx.performed)
+        {
+            _color = _color == COLOR.RED ? COLOR.GREEN : COLOR.RED;
+            img.sprite = Img[(int)_color];
+            AudioManager.instance.PlaySound("ShieldChange");
+        }
     }
 }

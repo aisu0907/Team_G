@@ -3,7 +3,9 @@ using UnityEngine;
 
 public class EReflect : Enemy, IReflectable
 {
-    public List<Sprite> Img;
+    [SerializeField] SpriteRenderer _spriteRenderer;
+    [SerializeField] List<Sprite> _imgNormal;
+    [SerializeField] List<Sprite> _imgDamaged;
     public int _timer { get; set; } = 0;
     public bool Hitting => _onHitting;
     public COLOR Color => _color;
@@ -21,6 +23,24 @@ public class EReflect : Enemy, IReflectable
         base.Start();
         iref = GetComponent<IReflectable>();
         EnemySpawn.Instance.counter++;
+    }
+
+    protected override void Update()
+    {
+        if (!_onHitting) return;
+
+        transform.Rotate(0, 0, EnemyConst.ROTATION_ANGLE);
+        if (++_timer >= EnemyConst.TIME_SPENT_IN_RETURN)
+        {
+            // 物理関係をリセット
+            _rb.linearVelocity = _vec.normalized * _speed;
+            transform.localRotation = default;
+            _onHitting = false;
+
+            // タイマーを初期化
+            _timer = 0;
+            _spriteRenderer.sprite = _imgNormal[(int)_color];
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -61,7 +81,7 @@ public class EReflect : Enemy, IReflectable
 
         // 色と画像を合わせる
         SpriteRenderer img = GetComponent<SpriteRenderer>();
-        img.sprite = Img[(int)_color];
+        img.sprite = _imgNormal[(int)_color];
 
         // ベクトルの補正
         _rb = GetComponent<Rigidbody2D>();
@@ -72,22 +92,6 @@ public class EReflect : Enemy, IReflectable
     {
         _rb.linearVelocity = ref_vec.normalized * _speed;
         _onHitting = hitting;
-    }
-
-    public void Rotation()
-    {
-        if (!_onHitting) return;
-
-        transform.Rotate(0, 0, EnemyConst.ROTATION_ANGLE);
-        if (++_timer >= EnemyConst.TIME_SPENT_IN_RETURN)
-        {
-            // 物理関係をリセット
-            _rb.linearVelocity = _vec.normalized * _speed;
-            transform.localRotation = default;
-            _onHitting = false;
-
-            // タイマーを初期化
-            _timer = 0;
-        }
+        _spriteRenderer.sprite = _imgDamaged[(int)_color];
     }
 }
