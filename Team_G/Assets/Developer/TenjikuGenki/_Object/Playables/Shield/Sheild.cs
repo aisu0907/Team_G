@@ -12,6 +12,7 @@ public class Shield : MonoBehaviour
     [SerializeField] List<Sprite> Img;   //�摜
     [SerializeField] Image shield_ui_obj;
     [SerializeField] List<Sprite> shields_ui_img;
+    public bool canChange = false;
     public static Shield Instance;
 
     void Awake()
@@ -42,6 +43,8 @@ public class Shield : MonoBehaviour
     {
         if (ctx.performed)
         {
+            if (!canChange) return;
+
             _color = _color == COLOR.RED ? COLOR.GREEN : COLOR.RED;
             img.sprite = Img[(int)_color];
             AudioManager.instance.PlaySound("ShieldChange");

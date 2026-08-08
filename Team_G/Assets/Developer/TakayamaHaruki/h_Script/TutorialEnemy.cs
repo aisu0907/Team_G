@@ -9,30 +9,20 @@ public class TutorialEnemy : Enemy, IReflectable
     protected COLOR _color { get; set; } = COLOR.RED;
 
     // ----- ÉÅÉìÉoïœêî ----- //
-    public List<Sprite> enemy_img;
+    [SerializeField] SpriteRenderer _spriteRenderer;
+    [SerializeField] List<Sprite> _imgNormal;
+    [SerializeField] List<Sprite> _imgDamaged;
     public COLOR Color => _color;
     protected bool _onHitting { get; set; } = false;
 
     // Update is called once per frame
     protected override void Update()
     {
-        // Spin
-        if (_onHitting)
-        {
-            if (_vec.y < 0)
-            {
-                _vec.y = -_vec.y;
-            }
-            transform.Rotate(0, 0, EnemyConst.ROTATION_ANGLE);
-        }
-    }
+        base.Update();
 
-    void FixedUpdate()
-    {
-        // Fix Vector
-        _rb.linearVelocity = _vec;
-        if (_rb.linearVelocity.magnitude != _speed)
-            _rb.linearVelocity = _vec.normalized * _speed;
+        // ÉqÉbÉgíÜÇ»ÇÁâÒì]
+        if (_onHitting)
+            transform.Rotate(0.0f, 0.0f, EnemyConst.ROTATION_ANGLE);
     }
 
     void OnTriggerStay2D(Collider2D collision)
@@ -55,11 +45,11 @@ public class TutorialEnemy : Enemy, IReflectable
 
         // Change Img
         SpriteRenderer img = GetComponent<SpriteRenderer>();
-        img.sprite = enemy_img[(int)color];
+        img.sprite = _imgNormal[(int)color];
 
         // Decision Vector
         _rb = GetComponent<Rigidbody2D>();
-        _rb.linearVelocity = _vec * _speed;
+        _rb.linearVelocity = vec.normalized * speed;
     }
 
     public void OnDestroy()
@@ -72,5 +62,6 @@ public class TutorialEnemy : Enemy, IReflectable
     {
         _rb.linearVelocity = ref_vec.normalized * _speed;
         _onHitting = hitting;
+        _spriteRenderer.sprite = _imgDamaged[(int)_color];
     }
 }

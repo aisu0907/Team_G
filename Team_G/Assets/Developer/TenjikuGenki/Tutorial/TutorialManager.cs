@@ -108,6 +108,7 @@ public class TutorialManager : MonoBehaviour, IPhazeManager
                     phase++;
 
                 key_time_count = 0; //キー入力時間をリセット
+                Shield.Instance.canChange = true;
             }
 
             //ウィンドウに続きがある場合
@@ -224,6 +225,7 @@ public class TutorialManager : MonoBehaviour, IPhazeManager
         //プレイヤーがダメージ受けるかチュートリアルをクリアした時
         if (Player.Instance.health != save_hp || enemy_hit_count >= enemy_hit)
         {
+            Shield.Instance.canChange = false;
             //ダメージ説明がまだ出ていなかったら
             if (hp_pop)
             {
@@ -250,6 +252,7 @@ public class TutorialManager : MonoBehaviour, IPhazeManager
                 img.sprite = window_img[2];
                 window.SetActive(true);
                 pop_window = true;
+                Shield.Instance.canChange = true;
             }
 
             //プレイヤーの体力を回復

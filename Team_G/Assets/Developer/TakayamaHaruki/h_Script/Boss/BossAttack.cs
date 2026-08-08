@@ -53,7 +53,6 @@ public class BossAttack : MonoBehaviour, IHitable
         if (damage_interval <= damage_time)
         {
             damage_time = 0; //タイムリセット
-            Player.Instance.Damage(damage, gameObject, false); //プレイヤーにダメージ
         }
     }
 }

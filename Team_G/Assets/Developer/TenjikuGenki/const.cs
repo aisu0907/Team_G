@@ -1,6 +1,18 @@
 // ’è”ƒNƒ‰ƒX
 using UnityEngine;
 
+namespace Const
+{
+    public static class SceneNames
+    {
+        public static string Title = "TitleScene";
+        public static string Infomatione = "InfomationScene";
+        public static string Tutorial = "TutorialScene";
+        public static string Play = "PlayScene";
+        public static string Result = "ResultScene";
+        public static string Gameover = "GameoverScene";
+    }
+}
 public enum COLOR
 {
     RED = 0,
