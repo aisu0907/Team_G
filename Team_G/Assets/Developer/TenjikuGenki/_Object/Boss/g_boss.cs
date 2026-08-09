@@ -13,7 +13,19 @@ public class g_boss : BossBase
     Vector2 tmp_pos;
     bool left_move = true;
     public GameObject rflash;
-    
+
+    protected override void Start()
+    {
+        base.Start();
+        _states.Add(new MoveSpeed(1.0f));
+
+        // Å‰‚Ìó‘Ô‚ğPhase1‚Éİ’è
+        img = GetComponent<SpriteRenderer>();
+        tmp_pos = transform.position;
+        transform.position = new Vector2(transform.position.x - 0.5f, transform.position.y);
+        Instantiate(rflash);
+    }
+
     protected override void Update()
     {
         Timer += 1;
@@ -37,22 +49,12 @@ public class g_boss : BossBase
         // ¶‰EˆÚ“®
         if(left_move)
         {
-            _rb.linearVelocityX = _speed;
+            _rb.linearVelocityX = _states[(int)StateName.Speed].CurrentState;
         }
         else
         {
-            _rb.linearVelocityX = -_speed;
+            _rb.linearVelocityX = -_states[(int)StateName.Speed].CurrentState;
         }
-    }
-    protected override void Start()
-    {
-        base.Start();
-
-        // Å‰‚Ìó‘Ô‚ğPhase1‚Éİ’è
-        img = GetComponent<SpriteRenderer>();
-        tmp_pos = transform.position;
-        transform.position = new Vector2(transform.position.x - 0.5f,transform.position.y);
-        Instantiate(rflash);
     }
 
     void OnTriggerEnter2D(Collider2D collision)

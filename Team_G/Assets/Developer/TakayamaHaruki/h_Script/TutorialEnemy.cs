@@ -41,7 +41,7 @@ public class TutorialEnemy : Enemy, IReflectable
         // Initialize Status
         _color = color;
         _vec = vec;
-        _speed = speed;
+        _states.Add(new MoveSpeed(speed));
 
         // Change Img
         SpriteRenderer img = GetComponent<SpriteRenderer>();
@@ -60,7 +60,7 @@ public class TutorialEnemy : Enemy, IReflectable
 
     public void Reflect(Vector2 ref_vec, bool hitting)
     {
-        _rb.linearVelocity = ref_vec.normalized * _speed;
+        _rb.linearVelocity = ref_vec.normalized * _states[(int)StateName.Speed].CurrentState;
         _onHitting = hitting;
         _spriteRenderer.sprite = _imgDamaged[(int)_color];
     }

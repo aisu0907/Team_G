@@ -15,7 +15,6 @@ public class h_Boss : BossBase
     [Header("▼Boss Move")]
     public float left_turn_pos; //右側の反転位置
     public float right_turn_pos;//左側の反転位置
-    public float boost_speed;   //加速するスピード
     private float start_speed;  //スピード保存用
     private bool turn;//移動反転用フラグ
     //範囲攻撃
@@ -58,6 +57,7 @@ public class h_Boss : BossBase
     protected override void Start()
     {
         base.Start();
+        _states.Add(new MoveSpeed(1.0f));
 
         Instantiate(flash, new Vector2(transform.position.x,transform.position.y), Quaternion.identity); //画面全体にフラッシュを生成
 
@@ -78,7 +78,7 @@ public class h_Boss : BossBase
         warning_down_pos = new Vector2(warning_x_pos, warning_y_down_pos);
         //移動速度設定
         turn = true;
-        start_speed = _speed;
+        start_speed = _states[(int)StateName.Speed].CurrentState;
     }
 
     protected override void Update()
@@ -91,16 +91,13 @@ public class h_Boss : BossBase
         if (health > 0)
         {
             if (turn)
-                _rb.linearVelocityX = _speed;
+                _rb.linearVelocityX = _states[(int)StateName.Speed].CurrentState;
             else
-                _rb.linearVelocityX = -_speed;
-
-            _speed += +boost_speed;
+                _rb.linearVelocityX = -_states[(int)StateName.Speed].CurrentState;
 
             if ((transform.position.x > right_turn_pos && turn )|| (transform.position.x < left_turn_pos && !turn))
             {
                 turn = !turn;
-                _speed = start_speed;
             }
 
 

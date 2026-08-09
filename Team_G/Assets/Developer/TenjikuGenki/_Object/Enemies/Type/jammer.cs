@@ -20,14 +20,14 @@ public class EJammer : Enemy
         // ステータスの初期化
         type = (int)db.type;
         _vec = vec;
-        _speed = speed;
+        _states.Add(new MoveSpeed(speed));
         score = db.score;
         power = db.power;
         _damage = 0;
 
         // ベクトルの補正
         _rb = GetComponent<Rigidbody2D>();
-        _rb.linearVelocity = _vec * _speed;
+        _rb.linearVelocity = _vec * _states[(int)StateName.Speed].CurrentState;
     }
 
     void OnTriggerEnter2D(Collider2D collision)

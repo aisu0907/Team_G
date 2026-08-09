@@ -25,15 +25,15 @@ public class BossBase : ObjBase
             if (enemy.Hitting)
             {
                 Destroy(collision.gameObject);　//触れたウイルスを削除
-                gameObject.GetComponent<BossBase>().health--; //ボスのHPを減らす
-                gameObject.GetComponent<BossDamageEffect>().damage_hit = true; //ダメージを受ける
+                health--; //ボスのHPを減らす
+                GetComponent<BossDamageEffect>().damage_hit = true; //ダメージを受ける
                 Instantiate(explode, transform.position, Quaternion.identity);   //ダメージ演出表示
                 
                 //ボスの体力が0以下なら
                 if(gameObject.GetComponent<BossBase>().health <= 0)
                 {
-                    gameObject.GetComponent<BossBase>()._speed = 0; //移動速度を0にする
-                    gameObject.transform.position = new Vector2(death_pos_x, death_pos_y); //死亡位置に移動させる
+                    _states[(int)StateName.Speed].Mode(false); //移動速度を0にする
+                    transform.position = new Vector2(death_pos_x, death_pos_y); //死亡位置に移動させる
                 }
             }
     }

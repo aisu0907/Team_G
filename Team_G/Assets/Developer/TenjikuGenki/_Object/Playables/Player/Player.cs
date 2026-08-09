@@ -22,7 +22,6 @@ public class Player : ObjBase
 
     [Header("▼ PlayerStatus")]
     public int health = 3;      //体力
-    public List<State> _states = new();
 
     [Header("▼ Bom")]
     public int bom = 0;     //ボムの所持数

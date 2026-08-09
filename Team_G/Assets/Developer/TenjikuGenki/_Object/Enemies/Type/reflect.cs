@@ -33,7 +33,7 @@ public class EReflect : Enemy, IReflectable
         if (++_timer >= EnemyConst.TIME_SPENT_IN_RETURN)
         {
             // ï®óùä÷åWÇÉäÉZÉbÉg
-            _rb.linearVelocity = _vec.normalized * _speed;
+            _rb.linearVelocity = _vec.normalized * _states[(int)StateName.Speed].CurrentState;
             transform.localRotation = default;
             _onHitting = false;
 
@@ -74,7 +74,7 @@ public class EReflect : Enemy, IReflectable
         type = (int)db.type;
         _color = color;
         _vec = vec;
-        _speed = speed;
+        _states.Add(new MoveSpeed(speed));
         score = db.score;
         power = db.power;
         _damage = 1;
@@ -90,7 +90,7 @@ public class EReflect : Enemy, IReflectable
 
     public void Reflect(Vector2 ref_vec, bool hitting)
     {
-        _rb.linearVelocity = ref_vec.normalized * _speed;
+        _rb.linearVelocity = ref_vec.normalized * _states[(int)StateName.Speed].CurrentState;
         _onHitting = hitting;
         _spriteRenderer.sprite = _imgDamaged[(int)_color];
     }

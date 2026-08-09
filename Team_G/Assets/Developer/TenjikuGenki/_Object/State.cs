@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class State
@@ -7,13 +8,14 @@ public class State
     public float Generic => _generic;
     public List<Attribute> Buff => _buff;
     public List<Attribute> Debuff => _debuff;
-    public float CurrentState => _currentState;
+    public float CurrentState => ReturnValue(_currentState);
 
     // ----- メンバ変数 ----- //
     protected float _generic = 0.0f;
     protected List<Attribute> _buff = new();
     protected List<Attribute> _debuff = new();
     protected float _currentState = 0.0f;
+    protected bool mode = true;
 
     public State(float generic)
     {
@@ -58,10 +60,14 @@ public class State
                 if (_debuff[i].Time < 0.0f) _debuff.RemoveAt(i);
             }
         }
+        return ReturnValue(_currentState = Mathf.Max(_generic + buff + debuff, 0.0f));
+    }
 
+    protected float ReturnValue(float value)
+    {
         // 0 <= xの値を返す
-        _currentState = Mathf.Max(_generic + buff + debuff, 0.0f);
-        return _currentState;
+        if (mode) return value;
+        else return 0.0f;
     }
 
     public void UpdateAttribute(float remove)
@@ -80,6 +86,12 @@ public class State
 
         // 削除されてるなら、更新
         if (tmp > 0) GetState();
+    }
+
+    public void Mode(bool move)
+    {
+        mode = move;
+        GetState();
     }
 }
 

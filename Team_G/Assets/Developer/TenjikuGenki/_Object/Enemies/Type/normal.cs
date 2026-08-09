@@ -61,7 +61,7 @@ public class ENormal : Enemy, IReflectable
         type = (int)db.type;
         _color = (COLOR)color;
         _vec = vec;
-        _speed = speed;
+        _states.Add(new MoveSpeed(speed));
         score = db.score;
         power = db.power;
         _damage = 1;
@@ -77,7 +77,7 @@ public class ENormal : Enemy, IReflectable
 
     public void Reflect(Vector2 ref_vec, bool hitting)
     {
-        _rb.linearVelocity = ref_vec.normalized * _speed;
+        _rb.linearVelocity = ref_vec.normalized * _states[(int)StateName.Speed].CurrentState;
         _onHitting = hitting;
         _spriteRenderer.sprite = _imgDamaged[(int)_color];
     }

@@ -44,6 +44,7 @@ public class LastBoss : BossBase
     protected override void Start()
     {
         base.Start();
+        _states.Add(new MoveSpeed(1.0f));
 
         img = GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
@@ -126,7 +127,7 @@ public class LastBoss : BossBase
     /// </summary>
     private void Move()
     {
-            float x = Mathf.Sin(Time.time) * _speed - 2f;
+            float x = Mathf.Sin(Time.time) * _states[(int)StateName.Speed].CurrentState - 2f;
             transform.position = new Vector2(x, transform.position.y);
     }
 
