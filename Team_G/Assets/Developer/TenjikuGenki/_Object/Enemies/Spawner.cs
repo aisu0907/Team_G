@@ -35,6 +35,7 @@ public class EnemySpawn : MonoBehaviour
         //タイマー
         frame = 0;
         jammer_timer = 0;
+
         //座標
         minX = Mathf.Min(pos.position.x, pos2.position.x);
         maxX = Mathf.Max(pos.position.x, pos2.position.x);
