@@ -5,13 +5,13 @@ public class ENormal : Enemy, IReflectable
 {
     // ----- プロパティ ----- //
     public bool Hitting => _onHitting;
-    protected COLOR _color { get; set; } = COLOR.RED;
+    public COLOR Color => _color;
 
     // ----- メンバ変数 ----- //
     [SerializeField] SpriteRenderer _spriteRenderer;
     [SerializeField] List<Sprite> _imgNormal;
     [SerializeField] List<Sprite> _imgDamaged;
-    public COLOR Color => _color;
+    protected COLOR _color = COLOR.RED;
     protected bool _onHitting { get; set; } = false;
 
     void Awake()

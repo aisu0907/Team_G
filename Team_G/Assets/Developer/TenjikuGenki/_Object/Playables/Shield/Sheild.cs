@@ -43,8 +43,6 @@ public class Shield : MonoBehaviour
     {
         if (ctx.performed)
         {
-            Debug.Log("色変え成功");
-
             _color = _color == COLOR.RED ? COLOR.GREEN : COLOR.RED;
             img.sprite = Img[(int)_color];
             AudioManager.instance.PlaySound("ShieldChange");

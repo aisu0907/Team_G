@@ -3,15 +3,17 @@ using UnityEngine;
 
 public class EReflect : Enemy, IReflectable
 {
+    // ----- プロパティ ----- //
+    public bool Hitting => _onHitting;
+    public COLOR Color => _color;
+
+    // ----- メンバ変数 ----- //
     [SerializeField] SpriteRenderer _spriteRenderer;
     [SerializeField] List<Sprite> _imgNormal;
     [SerializeField] List<Sprite> _imgDamaged;
-    public int _timer { get; set; } = 0;
-    public bool Hitting => _onHitting;
-    public COLOR Color => _color;
-    protected COLOR _color { get; set; } = COLOR.RED;
-    protected bool _onHitting { get; set; } = false;
-    IReflectable iref;
+    protected COLOR _color = COLOR.RED;
+    protected bool _onHitting = false;
+    int _timer = 0;
 
     void Awake()
     {
@@ -21,7 +23,6 @@ public class EReflect : Enemy, IReflectable
     protected override void Start()
     {
         base.Start();
-        iref = GetComponent<IReflectable>();
         EnemySpawn.Instance.counter++;
     }
 

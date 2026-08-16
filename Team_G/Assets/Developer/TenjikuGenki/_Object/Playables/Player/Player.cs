@@ -88,6 +88,7 @@ public class Player : ObjBase
         if (collision.TryGetComponent<IHitable>(out var e))
         {
             e.Hit();
+
             // ダメージのクールタイム中なら中断
             if (!_damageAnime.CanHit) return;
 
