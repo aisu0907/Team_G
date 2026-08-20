@@ -12,6 +12,22 @@ namespace Const
         public static string Result = "ResultScene";
         public static string Gameover = "GameoverScene";
     }
+
+
+    public static class AudioConst
+    {
+        //オーディオID
+        public const int BGM = 0;
+        public const int SE = 1;
+
+        public enum BGM_ID
+        {
+        }
+
+        public enum SE_ID
+        {
+        }
+    }
 }
 public enum COLOR
 {
