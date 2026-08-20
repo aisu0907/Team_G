@@ -166,6 +166,7 @@ public class TutorialManager : MonoBehaviour, IPhazeManager
                         else
                             enemy_color--;
                     }
+
                     pop_time_count = 0;//敵の出現時間をリセット
                 }
 

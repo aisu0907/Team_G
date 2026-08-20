@@ -13,7 +13,6 @@ namespace Const
         public static string Gameover = "GameoverScene";
     }
 
-
     public static class AudioConst
     {
         //オーディオID
