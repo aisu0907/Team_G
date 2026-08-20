@@ -1,0 +1,45 @@
+{
+    "name": "IA_MiniResult",
+    "maps": [
+        {
+            "name": "Controller",
+            "id": "3f7bce58-0cda-4016-8efc-52650b62c6c9",
+            "actions": [
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "39ede779-94d0-4e65-bb87-4d4ab70032bc",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "30c55377-c2ec-4208-8ca1-1e91b0cfb1c5",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "199f1617-1e4d-402f-9fc9-abc20cf6e483",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

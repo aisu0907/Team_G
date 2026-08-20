@@ -1,22 +1,22 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using Const;
 
 public class Continue : MonoBehaviour
 {
-    // Update is called once per frame
-    void Update()
+    public void Interact(InputAction.CallbackContext ctx)
     {
-        // Zならコンテニュー
-        if(Input.GetKeyUp(KeyCode.Z))
+        if (ctx.performed)
         {
-            SceneManager.LoadScene("PlayScene");
+            SceneManager.LoadScene(SceneNames.Play);
         }
-
-        // Xならタイトルに戻る
-        if(Input.GetKeyUp(KeyCode.X))
+    }
+    public void Cancel(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed)
         {
-            SceneManager.LoadScene("TitleScene");
-            DataHolder.DataReset();
+            SceneManager.LoadScene(SceneNames.Title);
         }
     }
 }

@@ -1,7 +1,9 @@
 using System.Threading;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using Const;
 
 public class ResultManager : MonoBehaviour
 {
@@ -94,10 +96,6 @@ public class ResultManager : MonoBehaviour
             if (!bgmSource.isPlaying) bgmSource.Play();
         }
 
-        if (timer > 320 && Input.GetKey(KeyCode.Z))
-        {
-            SceneManager.LoadScene("TitleScene");
-        }
         score = ScoreReceiver.score + (ScoreReceiver.hp * hp_bonus);
     }
     /// <summary>
@@ -115,5 +113,16 @@ public class ResultManager : MonoBehaviour
         else rankObj = E;
 
         Instantiate(rankObj, transform.position, Quaternion.identity);
+    }
+
+    public void Interact(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed)
+        {
+            if (timer >= 320)
+            {
+                SceneManager.LoadScene(SceneNames.Title);
+            }
+        }
     }
 }

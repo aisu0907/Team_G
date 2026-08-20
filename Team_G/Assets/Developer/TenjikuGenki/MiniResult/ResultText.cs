@@ -1,6 +1,7 @@
 using System.Threading;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ResultText : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class ResultText : MonoBehaviour
     public GameObject uiPrefab;
     GameObject obj;
     float timer;
+    bool canInput = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -32,17 +34,7 @@ public class ResultText : MonoBehaviour
         else
         {
             tips.text = "ボスを倒した！\n\nタイム:" + timer.ToString("N1") + "\n\n\nPress Z Key";
-            
-            // Zキーでゲームを再開
-            if (Input.GetKeyDown(KeyCode.Z))
-            {
-                Destroy(Dark.Instance.gameObject);
-                Destroy(gameObject);
-                GameManager.Instance.ModeChange(true);
-                GameManager.Instance.frame = 0;
-                GameManager.Instance.phase++;
-                DataHolder.GetGameData();
-            }
+            canInput = true;
         }
     }
 
@@ -50,5 +42,20 @@ public class ResultText : MonoBehaviour
     public void init(float _timer)
     {
         timer = _timer;
+    }
+
+    public void Interact(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed)
+        {
+            if (!canInput) return;
+
+            Destroy(Dark.Instance.gameObject);
+            Destroy(gameObject);
+            GameManager.Instance.ModeChange(true);
+            GameManager.Instance.frame = 0;
+            GameManager.Instance.phase++;
+            DataHolder.GetGameData();
+        }
     }
 }
