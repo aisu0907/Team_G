@@ -6,23 +6,32 @@ using Const;
 
 public class TitleManager : MonoBehaviour
 {
+    [Range(0f, 1f)]
+    public float bgm_vlome;
+
+    [Range(0f, 1f)]
+    public float cursor_vlome;
+
+    [Range(0f, 1f)]
+    public float decision_vlome;
+
     [SerializeField] List<GameObject> _options = new();
     int currentOption = 0;
 
+    h_AudioManager audio;
+
     void Start()
     {
-        
-    }
+        audio = h_AudioManager.Instance; //è»ó™óp
 
-    void Update()
-    {
-
+        audio.PlayBGM(AudioConst.BGM_ID.TITLE_BGM, bgm_vlome); //BGMÇñ¬ÇÁÇ∑
     }
 
     public void Interact(InputAction.CallbackContext ctx)
     {
         if (ctx.performed)
         {
+            audio.PlaySE(AudioConst.SE_ID.DECISION_SE, decision_vlome);
             switch (currentOption)
             {
                 case 0:
@@ -60,6 +69,9 @@ public class TitleManager : MonoBehaviour
 
     void Draw()
     {
+        //
+        audio.PlaySE(AudioConst.SE_ID.DECISION_SE, decision_vlome);
+
         Vector2 pos = new(_options[currentOption].transform.position.x - 2.7f, _options[currentOption].transform.position.y);
         transform.position = pos;
     }

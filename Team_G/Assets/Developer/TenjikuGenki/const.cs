@@ -21,10 +21,18 @@ namespace Const
 
         public enum BGM_ID
         {
+            TITLE_BGM,
+            TUTRIAL_BGM,
+            GAME_BGM,
+            BOSS_BGM,
+            RESULT_BGM,
         }
 
         public enum SE_ID
         {
+            CURSOR_SE,
+            DECISION_SE,
+
         }
     }
 }

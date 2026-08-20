@@ -18,8 +18,10 @@ public class h_AudioManager : MonoBehaviour
     }
 
 
-    public void PlayBGM(int bgm_id, float vlome)
+    public void PlayBGM(AudioConst.BGM_ID bgm_id, float vlome)
     {
+        //ó‚¯æ‚Á‚½”’l‚ğintŒ^‚É•ÏŠ·
+        int id = (int)bgm_id;
 
         //BGM‚ª‚È‚Á‚Ä‚¢‚½‚ç~‚ß‚é
         if (bgm_audio.clip != null)
@@ -27,7 +29,7 @@ public class h_AudioManager : MonoBehaviour
 
         bgm_audio.volume = vlome; //‰¹—Ê‚ğİ’è
 
-        bgm_audio.clip = audio_data[AudioConst.BGM].audio[bgm_id]; //BGMİ’è
+        bgm_audio.clip = audio_data[AudioConst.BGM].audio[id]; //BGMİ’è
 
         bgm_audio.Play(); //‘Î‰‚µ‚½BGM‚ğ—¬‚·
     }
@@ -42,11 +44,14 @@ public class h_AudioManager : MonoBehaviour
     /// </summary>
     /// <param name="se_id"></param>
     /// <param name="vlome"></param>
-    public void PlaySE(int se_id, float vlome)
+    public void PlaySE(AudioConst.SE_ID se_id, float vlome)
     {
+        //ó‚¯æ‚Á‚½”’l‚ğintŒ^‚É•ÏŠ·
+        int id = (int)se_id;
+
         Debug.Log("SE‚ğ–Â‚ç‚µ‚Ü‚µ‚½");
         se_audio.volume = vlome; //‰¹—Ê‚ğİ’è
-        se_audio.PlayOneShot(audio_data[AudioConst.SE].audio[se_id]); //‘Î‰‚µ‚½SE‚ğ—¬‚·
+        se_audio.PlayOneShot(audio_data[AudioConst.SE].audio[id]); //‘Î‰‚µ‚½SE‚ğ—¬‚·
 
     }
 

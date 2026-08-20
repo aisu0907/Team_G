@@ -58,6 +58,28 @@
                 },
                 {
                     "name": "",
+                    "id": "9a8f2e46-0b4c-48e7-afa9-125d1c061259",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CursorUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3669627a-affc-4f9c-8ce4-f629d7e15e89",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CursorUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "201695f3-2725-434a-bac2-91f8a737a89e",
                     "path": "<Gamepad>/leftStick/down",
                     "interactions": "",
@@ -80,8 +102,41 @@
                 },
                 {
                     "name": "",
+                    "id": "5812b517-e259-4e46-982c-9fdfa544c64a",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CursorDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "08b1880b-2b39-4da6-91de-f915227f19c2",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CursorDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "5d2ffd8d-aca9-41b6-bee9-aa9a2c18efa3",
                     "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4b023276-a1b2-4f41-9d38-cd3d96078058",
+                    "path": "<Keyboard>/z",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
