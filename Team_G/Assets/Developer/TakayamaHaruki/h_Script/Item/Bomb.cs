@@ -1,6 +1,7 @@
 //Bomb.cs
 
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Bomb : MonoBehaviour
 {
@@ -12,20 +13,27 @@ public class Bomb : MonoBehaviour
     //ボムの座標
     [Header("▼Bomb Setting")]
     public float bomb_space;//ボム間隔
-    public float bomb_pos_x;//初期位置x
-    public float bomb_pos_y;//初期位置y
 
     private Vector2 bomb_pos;//ボム座標
+    private Vector2 bomb_start_pos;//ボム初期位置
     private int bomb_count;//ボム数保存用
     private GameObject[] bomb_num;//ボムカウント用
+    private RectTransform rect; //RectTramsform
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        RectTransform bomb_rect = bomb.GetComponent<RectTransform>();
+        rect = bomb_gage.GetComponent<RectTransform>();
         //リセット
         bomb_count = 0; //ボムの数を0に
-        bomb_pos = new Vector2(bomb_pos_x, bomb_pos_y);
+
+        //ボムの初期位置設定
+        bomb_start_pos = new Vector2(rect.anchoredPosition.x - rect.sizeDelta.x / 2 + bomb_rect.sizeDelta.x / 2, rect.anchoredPosition.y + bomb_rect.sizeDelta.y);
+        bomb_pos = bomb_start_pos;
         bomb_num = new GameObject[Player.Instance.max_bom];
+
+        bomb_space = bomb_rect.sizeDelta.x;
     }
 
     // Update is called once per frame
@@ -51,7 +59,7 @@ public class Bomb : MonoBehaviour
                     bomb_pos.x += bomb_space; //ボム同士の間隔を開ける
                 }
 
-                bomb_pos.x = bomb_pos_x; //位置リセット
+                bomb_pos.x = bomb_start_pos.x; //位置リセット
             }
 
             bomb_count = Player.Instance.bom; //情報を更新

@@ -9,7 +9,7 @@ public class ItemText : ItemBase
     public int display_on;//テキスト表示時間
 
     private TMP_Text item_text_display;//テキストコンポーネント
-    private int display_time;//テキスト表示時間カウント用
+    private float display_time;//テキスト表示時間カウント用
     //テキスト
     private string text;     //表示するテキスト
     private bool text_switch;//テキスト表示用フラグ
@@ -47,7 +47,7 @@ public class ItemText : ItemBase
         if(text_switch)
         {
             //タイムカウント
-            display_time++;
+            display_time += Time.deltaTime;
             
             //表示時間が終わったら
             if(display_time > display_on)

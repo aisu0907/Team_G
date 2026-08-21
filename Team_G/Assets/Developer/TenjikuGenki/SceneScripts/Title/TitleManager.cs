@@ -3,44 +3,47 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using Const;
+using System.Collections;
 
 public class TitleManager : MonoBehaviour
 {
     [Range(0f, 1f)]
-    public float bgm_vlome;
+    public float bgm_vlome; //BGM音量
 
     [Range(0f, 1f)]
-    public float cursor_vlome;
+    public float cursor_vlome; //カーソル移動SE音量
 
     [Range(0f, 1f)]
-    public float decision_vlome;
+    public float decision_vlome; //選択SE音量
 
     [SerializeField] List<GameObject> _options = new();
     int currentOption = 0;
 
-    h_AudioManager audio;
-
+    private h_AudioManager audio;
+    private Coroutine coroutine;
     void Start()
     {
+        currentOption = 0;
+
         audio = h_AudioManager.Instance; //省略用
 
         audio.PlayBGM(AudioConst.BGM_ID.TITLE_BGM, bgm_vlome); //BGMを鳴らす
+
+        Vector2 pos = new(_options[currentOption].transform.position.x - 2.7f, _options[currentOption].transform.position.y);
+        transform.position = pos;
     }
 
     public void Interact(InputAction.CallbackContext ctx)
     {
+
         if (ctx.performed)
         {
-            audio.PlaySE(AudioConst.SE_ID.DECISION_SE, decision_vlome);
-            switch (currentOption)
+            if (coroutine == null)
             {
-                case 0:
-                    SceneManager.LoadScene(SceneNames.Information);
-                    break;
+                //音を鳴らす
+                audio.PlaySE(AudioConst.SE_ID.DECISION_SE, decision_vlome);
 
-                case 1:
-                    EndGame();
-                    break;
+                coroutine = StartCoroutine(WaitSceneChange());
             }
         }
     }
@@ -69,19 +72,36 @@ public class TitleManager : MonoBehaviour
 
     void Draw()
     {
-        //
-        audio.PlaySE(AudioConst.SE_ID.DECISION_SE, decision_vlome);
+        //音を鳴らす
+        audio.PlaySE(AudioConst.SE_ID.CURSOR_SE, cursor_vlome);
 
         Vector2 pos = new(_options[currentOption].transform.position.x - 2.7f, _options[currentOption].transform.position.y);
         transform.position = pos;
     }
 
+    //シーン移動待機用コルーチン
+    IEnumerator WaitSceneChange()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        switch (currentOption)
+        {
+            case 0:
+                SceneManager.LoadScene(SceneNames.Information);
+                break;
+
+            case 1:
+                EndGame();
+                break;
+        }
+
+    }
     void EndGame()
     {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
     }
 }

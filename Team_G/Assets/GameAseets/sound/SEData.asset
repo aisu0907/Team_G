@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   auido_type: 1
   audio:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: e066960b233a3804fbaa64093bb3de05, type: 3}
+  - {fileID: 8300000, guid: 7e276211c760f614d9fa327410f35ff1, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
