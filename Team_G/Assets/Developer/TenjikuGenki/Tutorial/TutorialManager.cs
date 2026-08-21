@@ -2,10 +2,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Const;
 
 public class TutorialManager : MonoBehaviour, IPhazeManager
 {
     [SerializeField] StartAnimation sa;
+
     public int phase { get; set; } = 0;
     public bool is_change_color { get; set; } = false;
     //ゲームオブジェクト
@@ -24,11 +26,15 @@ public class TutorialManager : MonoBehaviour, IPhazeManager
     public int key_time;   //キーを受け付けない時間
     private bool is_window = true;//ウィンドウ管理フラグ
 
+    [Range(0f, 1f)]
+    public float bgm_vlome; //BGM音量
+
     //タイムカウント
     [SerializeField] private int pop_time_count;
     [SerializeField] private int key_time_count;
 
     private Image img;
+    private h_AudioManager audio;
     private Vector2 enemy_spawn_pos;//敵の出現位置
     private int enemy_pop_count;   //敵の出現した回数
     private int enemy_color;//敵の色
@@ -52,6 +58,8 @@ public class TutorialManager : MonoBehaviour, IPhazeManager
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        audio = h_AudioManager.Instance;
+
         //リセット
         img = window.GetComponent<Image>();
         img.sprite = window_img[0];
@@ -69,6 +77,8 @@ public class TutorialManager : MonoBehaviour, IPhazeManager
         //タイム
         key_time_count = 0;
         pop_time_count = 0;
+
+        audio.PlayBGM(AudioConst.BGM_ID.TUTRIAL_BGM, bgm_vlome); 
     }
 
     // Update is called once per frame
