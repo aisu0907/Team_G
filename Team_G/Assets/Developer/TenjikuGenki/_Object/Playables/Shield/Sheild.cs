@@ -5,14 +5,21 @@ using UnityEngine.UI;
 
 public class Shield : MonoBehaviour
 {
+    // ----- プロパティ ----- //
     public COLOR ShieldColor => _color;
-    [Header("▼ Shield")]
-    [SerializeField] SpriteRenderer img;
+
+    // ----- メンバ変数 ----- //
+    [Header("▼ ChangeColor")]
+    [SerializeField] SpriteRenderer _img;
+    [SerializeField] List<Sprite> _shield_colors;
     COLOR _color = COLOR.RED;
-    [SerializeField] List<Sprite> Img;   //�摜
+    public bool canChange = false;
+
+    [Header("▼ UI")]
     [SerializeField] Image shield_ui_obj;
     [SerializeField] List<Sprite> shields_ui_img;
-    public bool canChange = false;
+
+    // ----- シングルトン ----- //
     public static Shield Instance;
 
     void Awake()
@@ -44,7 +51,7 @@ public class Shield : MonoBehaviour
         if (ctx.performed)
         {
             _color = _color == COLOR.RED ? COLOR.GREEN : COLOR.RED;
-            img.sprite = Img[(int)_color];
+            _img.sprite = _shield_colors[(int)_color];
             AudioManager.instance.PlaySound("ShieldChange");
         }
     }

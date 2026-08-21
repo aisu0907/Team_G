@@ -87,6 +87,8 @@ public class Player : ObjBase
     {
         if (collision.TryGetComponent<IHitable>(out var e))
         {
+            if (collision.TryGetComponent<IReflectable>(out var r) && r.Hitting) return;
+
             e.Hit();
 
             // ダメージのクールタイム中なら中断
