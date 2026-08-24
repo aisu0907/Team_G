@@ -151,6 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiPrefab: {fileID: 593503372209779480, guid: ea5eaac365ca38b4e9ee505e212ad080, type: 3}
+  pos_x: -350
 --- !u!114 &6524775154655367683
 MonoBehaviour:
   m_ObjectHideFlags: 0

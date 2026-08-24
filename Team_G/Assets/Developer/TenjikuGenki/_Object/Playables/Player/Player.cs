@@ -33,11 +33,15 @@ public class Player : ObjBase
     bool isStop = false;
     public float item_up_speed;
 
+    [HideInInspector]
+    public bool player_inoperative = false;//操作受付用フラグ
+
     [Header("▼ Animations")]
     [SerializeField] StartAnimation _startAnime;
     [SerializeField] DamageAnimation _damageAnime;
     int timer = 0;
 
+    private h_AudioManager player_audio;
     public static Player Instance { get; private set; }
 
     private void Awake()
@@ -50,6 +54,8 @@ public class Player : ObjBase
         base.Start();
 
         _states.Add(new MoveSpeed(3.0f));
+
+        player_audio = h_AudioManager.Instance;
     }
 
     // Update is called once per frame
@@ -123,39 +129,49 @@ public class Player : ObjBase
 
     public void Move(InputAction.CallbackContext ctx)
     {
-        if (!(health > 0) && _startAnime.StartAnime()) return;
+        //操作可能の場合
+        if (!player_inoperative)
+        {
+            if (!(health > 0) && _startAnime.StartAnime()) return;
 
-        // 移動処理
-        Vector2 vec = ctx.ReadValue<Vector2>();
+            // 移動処理
+            Vector2 vec = ctx.ReadValue<Vector2>();
 
-        // 移動に限界を設定する
-        if (IsMoveLimit(vec)) vec.y = 0.0f;
-        Vector2 speed = Vector2.one * (_states[(int)StateName.Speed].CurrentState + item_up_speed);
-        _rb.linearVelocity = vec * speed;
+            // 移動に限界を設定する
+            if (IsMoveLimit(vec)) vec.y = 0.0f;
+            Vector2 speed = Vector2.one * (_states[(int)StateName.Speed].CurrentState + item_up_speed);
+            _rb.linearVelocity = vec * speed;
+        }
+        else
+            _rb.linearVelocity = Vector2.zero;
     }
 
     public void Bom(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed)
+        //操作可能の場合
+        if (!player_inoperative)
         {
-            if (!(health > 0)) return;
-
-            if (bom > 0)
+            if (ctx.performed)
             {
-                AudioManager.instance.PlaySound("bom", 1f);
-                // "Enemy"タグがついたすべてのオブジェクトを取得
-                GameObject[] objects = GameObject.FindGameObjectsWithTag("Enemy");
+                if (!(health > 0)) return;
 
-                // 各オブジェクトを削除
-                foreach (GameObject obj in objects)
+                if (bom > 0)
                 {
-                    Destroy(obj);
-                    Instantiate(explode, obj.transform.position, Quaternion.identity);
-                }
-                Instantiate(flash, new Vector2(transform.position.x, transform.position.y), Quaternion.identity); //画面全体にフラッシュを生成
+                    AudioManager.instance.PlaySound("bom", 1f);
+                    // "Enemy"タグがついたすべてのオブジェクトを取得
+                    GameObject[] objects = GameObject.FindGameObjectsWithTag("Enemy");
 
-                //bomの数を減らす
-                bom--;
+                    // 各オブジェクトを削除
+                    foreach (GameObject obj in objects)
+                    {
+                        Destroy(obj);
+                        Instantiate(explode, obj.transform.position, Quaternion.identity);
+                    }
+                    Instantiate(flash, new Vector2(transform.position.x, transform.position.y), Quaternion.identity); //画面全体にフラッシュを生成
+
+                    //bomの数を減らす
+                    bom--;
+                }
             }
         }
     }

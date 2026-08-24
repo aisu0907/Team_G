@@ -17,25 +17,23 @@ public class GameManager : MonoBehaviour, IPhazeManager
     public GameObject dark;    //フェードアウト
     //座標
     [Header("▼Boss Start Posion")]
-    public float boss_position_x; //ボス位置X
-    public float boss_position_y; //ボス位置Y
+    public Vector2 boss_position;
+
     //
     [Header("▼Game Manager Setting")]
-    public bool boss_die;//ボス死亡判定
 
-    public int result_time;
-    public bool is_change_color { get; set; } = true;
+    public bool boss_die = true;//ボス死亡判定
+
     public int phase { get; set; } = 0;//フェーズ
 
     public int set_phase_num; //フェーズ設定
+
     //タイマー
-    public int spawn_time;
-    public  int frame = 0;//フレーム
-    private float boss_timer;  //ボス出現タイマー
-    private float result_timer;//リザルト
-    private int spawn_timer;
-    //座標
-    private Vector2 boss_position;
+    public  float result_time = 0;
+    public  float spawn_time = 0;
+    private float boss_timer = 0;
+    private float result_timer = 0;//リザルト
+    private float spawn_timer = 0;
 
     public static GameManager Instance { get; private set; }
 
@@ -48,14 +46,6 @@ public class GameManager : MonoBehaviour, IPhazeManager
     // Start is called once before the first execution of Update after the MonoBehaviour is create
     private void Start()
     {
-        //リセット
-        is_change_color = true;
-        //ボスの初期位置設定
-        boss_position = new Vector2 (boss_position_x, boss_position_y);
-        boss_die = true;
-        //タイマーリセット
-        boss_timer = 0;
-        result_timer = 0;
         phase = set_phase_num;
 
         // アイテムと敵の出現をONにする
@@ -77,35 +67,32 @@ public class GameManager : MonoBehaviour, IPhazeManager
             if ((phase + 1) % 2 != 0)
             {
                 //フレームカウント
-                frame++;
+                boss_timer += Time.deltaTime;
 
                 //指定フレーム経過するとボスを出現させる
-                if (frame >= boss[phase / 2].timer)
+                if (boss_timer >= boss[phase / 2].timer)
                 {
                     spawner.GetComponent<EnemySpawn>().spawn_switch = false;
 
                     //画面にエネミーが残っていない場合
                     if (EnemySpawn.Instance.counter == 0)
                     {
-                        spawn_timer++;
-                        if (spawn_timer >= spawn_time)
+                        spawn_timer += Time.deltaTime;
+                        if(spawn_timer >= spawn_time)
                         {
                             SpawnBoss(); //ボスを出現
-                            frame = 0; //フレームをリセット
+                            boss_timer = 0; //フレームをリセット
                             spawn_timer = 0;
                         }
                     }
                 }
             }
-
-            if ((phase + 1) % 2 == 0)
-            {
-                boss_timer += Time.deltaTime;
-            }
             
+            //ボスが倒されたら
             if(!boss_die)
             {
-                result_timer++;
+                result_timer += Time.deltaTime;
+
                 if(result_timer >= result_time)
                 {
                     Result();

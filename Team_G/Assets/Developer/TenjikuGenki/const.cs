@@ -35,6 +35,19 @@ namespace Const
 
         }
     }
+
+    public static class ScoreConst
+    {
+        public enum SCORE
+        {
+            S,
+            A,
+            B,
+            C,
+            D,
+            E,
+        }
+    }
 }
 public enum COLOR
 {

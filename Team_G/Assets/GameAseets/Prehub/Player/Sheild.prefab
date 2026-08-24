@@ -103,11 +103,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f2b41675f5c2ed4ea14cd86126ae42c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 489013248214253143}
-  color: 0
-  Img:
+  _img: {fileID: 0}
+  _shield_colors:
   - {fileID: -6556403868631285073, guid: b0642d7a69aa9d64cbc86bcba14e9aea, type: 3}
   - {fileID: -7696752515786996293, guid: 1ce3f8e14ec5b4744a9dbc307a60cd71, type: 3}
+  canChange: 0
   shield_ui_obj: {fileID: 0}
   shields_ui_img:
   - {fileID: -516040001517070946, guid: 42b6796d3a7b4aa428ead6cb0c0d71d6, type: 3}

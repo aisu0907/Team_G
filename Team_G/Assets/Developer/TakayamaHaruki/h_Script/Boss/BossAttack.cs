@@ -37,16 +37,6 @@ public class BossAttack : MonoBehaviour, IHitable
             Destroy(gameObject); //範囲攻撃を削除
     }
 
-    //private void OnTriggerStay2D(Collider2D collision)
-    //{
-    //    //プレイヤーに触れた場合
-    //    if(collision.CompareTag("Player") && damage_interval <= damage_time)
-    //    {
-    //        damage_time = 0; //タイムリセット
-    //        Player.Instance.Damage(damage, gameObject, false); //プレイヤーにダメージ
-    //    }
-    //}
-
     public void Hit()
     {
         //プレイヤーに触れた場合

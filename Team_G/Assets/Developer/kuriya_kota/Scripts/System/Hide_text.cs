@@ -9,7 +9,6 @@ public class HideText : MonoBehaviour
     void Start()
     {
         text = GetComponent<TMP_Text>();
-        text.enabled = false;
     }
 
     void Update()

@@ -13,11 +13,15 @@ public class Shield : MonoBehaviour
     [SerializeField] SpriteRenderer _img;
     [SerializeField] List<Sprite> _shield_colors;
     COLOR _color = COLOR.RED;
-    public bool canChange = false;
 
     [Header("▼ UI")]
     [SerializeField] Image shield_ui_obj;
     [SerializeField] List<Sprite> shields_ui_img;
+
+    [HideInInspector]
+    public bool shield_inoperative = false; //操作受付用フラグ
+
+    private h_AudioManager shield_audio; //音
 
     // ----- シングルトン ----- //
     public static Shield Instance;
@@ -25,6 +29,8 @@ public class Shield : MonoBehaviour
     void Awake()
     {
         Instance = this;
+
+        _img = GetComponent<SpriteRenderer>();
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -48,11 +54,17 @@ public class Shield : MonoBehaviour
     // 盾の色を変更する
     public void ChangeShieldColor(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed)
+        if (!shield_inoperative)
         {
-            _color = _color == COLOR.RED ? COLOR.GREEN : COLOR.RED;
-            _img.sprite = _shield_colors[(int)_color];
-            AudioManager.instance.PlaySound("ShieldChange");
+            if (ctx.performed)
+            {
+                _color = _color == COLOR.RED ? COLOR.GREEN : COLOR.RED;
+                _img.sprite = _shield_colors[(int)_color];
+
+                //UIのシールドの色を変更
+                shield_ui_obj.sprite = shields_ui_img[(int)_color];
+                AudioManager.instance.PlaySound("ShieldChange");
+            }
         }
     }
 }

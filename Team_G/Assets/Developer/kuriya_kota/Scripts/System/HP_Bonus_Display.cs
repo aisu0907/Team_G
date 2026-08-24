@@ -7,7 +7,6 @@ public class HPBonusDisplay : MonoBehaviour
 
     void Start()
     {
-        GetComponent<TMP_Text>().enabled = false;
         // TextMeshPro のコンポーネント取得
         hpText = GetComponent<TMP_Text>();
 

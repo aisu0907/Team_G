@@ -56,6 +56,9 @@ public class TutorialEnemy : Enemy, IReflectable
     {
         if (_onHitting)
             TutorialManager.Instance.enemy_hit_count++;
+        else
+            TutorialManager.Instance.damage_help = true;
+
     }
 
     public void Reflect(Vector2 ref_vec, bool hitting)

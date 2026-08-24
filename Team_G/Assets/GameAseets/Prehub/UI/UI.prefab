@@ -520,7 +520,6 @@ GameObject:
   - component: {fileID: 4968364596490204782}
   - component: {fileID: 726502346281609150}
   - component: {fileID: 4278137304315244981}
-  - component: {fileID: 1642015555334160002}
   m_Layer: 5
   m_Name: UIShield
   m_TagString: Untagged
@@ -585,21 +584,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1642015555334160002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4335794452158018559}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 792aaf3729de9b841a0a20bf85cd7087, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shield_color:
-  - {fileID: -516040001517070946, guid: 42b6796d3a7b4aa428ead6cb0c0d71d6, type: 3}
-  - {fileID: 8303954443382524186, guid: 9e1cf9700907fb842a89c6df64604f58, type: 3}
 --- !u!1 &4753689778162126621
 GameObject:
   m_ObjectHideFlags: 0

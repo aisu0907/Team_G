@@ -13,6 +13,8 @@ public class ResultText : MonoBehaviour
     float timer;
     bool canInput = false;
 
+    public float pos_x;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -26,7 +28,7 @@ public class ResultText : MonoBehaviour
     void Update()
     {
         // テキストの移動
-        if (rect.anchoredPosition.x < -200)
+        if (rect.anchoredPosition.x < pos_x)
         {
             rect.anchoredPosition += new Vector2(700, 0f) * Time.deltaTime;
         }
@@ -53,7 +55,6 @@ public class ResultText : MonoBehaviour
             Destroy(Dark.Instance.gameObject);
             Destroy(gameObject);
             GameManager.Instance.ModeChange(true);
-            GameManager.Instance.frame = 0;
             GameManager.Instance.phase++;
             DataHolder.GetGameData();
         }

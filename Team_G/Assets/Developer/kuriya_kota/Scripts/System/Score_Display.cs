@@ -7,7 +7,6 @@ public class ScoreDisplay : MonoBehaviour
 
     void Start()
     {
-        GetComponent<TMP_Text>().enabled=false;
         // TextMeshPro のコンポーネント取得
         scoreText = GetComponent<TMP_Text>();
 
