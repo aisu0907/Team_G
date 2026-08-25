@@ -107,16 +107,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d81398e0119b4ee46902225eb64eab24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  start_x: -2
-  start_y: -6
-  shake: {fileID: 0}
-  blinks_max: 0
-  damage_time: 0
-  save_time: 0
-  shake_max: 0
-  img: {fileID: 0}
-  targetY: -3
-  start_anime: 1
 --- !u!114 &-5423041890755264582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,6 +164,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 22476677-e654-4a0e-acb9-3113508a345a
     m_ActionName: 'player/Bom[/Keyboard/space]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2021564740943638649}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: Menu
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: eb7cb8e8-c2a9-428b-9fd9-869c01f9d466
+    m_ActionName: 'player/Menu[/Keyboard/escape]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: player
@@ -192,16 +198,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explode: {fileID: 0}
-  shield: {fileID: 0}
   flash: {fileID: 0}
-  bgm: {fileID: 0}
-  sa: {fileID: 0}
+  shield: {fileID: 0}
   health: 3
   bom: 2
   max_bom: 2
-  timer: 0
   TopMoveLimit: {fileID: 0}
   BottomMoveLimit: {fileID: 0}
+  item_up_speed: 0
+  player_inoperative: 0
+  _startAnime: {fileID: 0}
+  _damageAnime: {fileID: 0}
 --- !u!61 &9077482841769352505
 BoxCollider2D:
   m_ObjectHideFlags: 0

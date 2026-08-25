@@ -45,6 +45,6 @@ public class Beam : MonoBehaviour, IHitable
     {
         // ‘Ì—Í‚É‚æ‚Á‚ÄUŒ‚—Í‚ð•ÏX‚·‚é
         if (LastBoss.Instance.health > 5) _damage = 1;
-        else _damage = 0;
+        else _damage = 2;
     }
 }

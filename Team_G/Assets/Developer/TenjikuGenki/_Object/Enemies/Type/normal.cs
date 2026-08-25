@@ -79,6 +79,6 @@ public class ENormal : Enemy, IReflectable
     {
         _rb.linearVelocity = ref_vec.normalized * _states[(int)StateName.Speed].CurrentState;
         _onHitting = hitting;
-        _spriteRenderer.sprite = _imgDamaged[(int)_color];
+        if (hitting) _spriteRenderer.sprite = _imgDamaged[(int)_color];
     }
 }

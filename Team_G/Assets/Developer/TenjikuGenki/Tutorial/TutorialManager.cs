@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Const;
 using System.Runtime.CompilerServices;
+using UnityEngine.InputSystem;
 
 public class TutorialManager : MonoBehaviour, IPhazeManager
 {
@@ -93,10 +94,10 @@ public class TutorialManager : MonoBehaviour, IPhazeManager
         }
 
         //Enterでチュートリアルをスキップ
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            SceneManager.LoadScene("PlayScene");
-        }
+        //if (Input.GetKeyDown(KeyCode.Return))
+        //{
+        //    SceneManager.LoadScene("PlayScene");
+        //}
         //プレイヤーの登場演出が終わったら
         if (sa.StartAnime() && start_window)
         {
@@ -107,35 +108,35 @@ public class TutorialManager : MonoBehaviour, IPhazeManager
         }
 
         //ウィンドウが表示されていた場合Zキーで進む
-        if (Input.GetKeyDown(KeyCode.Z) && pop_window)
-        {
-            //最後のウィンドウの場合
-            if (!is_window && key_switch && key_time < key_time_count)
-            {
-                window.SetActive(false); //ウィンドウを非表示
-                pop_window = false;      //ウィンドウが表示されている状態にする
+        //if (Input.GetKeyDown(KeyCode.Z) && pop_window)
+        //{
+        //    //最後のウィンドウの場合
+        //    if (!is_window && key_switch && key_time < key_time_count)
+        //    {
+        //        window.SetActive(false); //ウィンドウを非表示
+        //        pop_window = false;      //ウィンドウが表示されている状態にする
 
-                //ウィンドウをすべて表示していたら
-                if((!hp_pop && !bomb_pop) || (hp_pop && bomb_pop))
-                    //チュートリアルを次に進める
-                    phase++;
+        //        //ウィンドウをすべて表示していたら
+        //        if((!hp_pop && !bomb_pop) || (hp_pop && bomb_pop))
+        //            //チュートリアルを次に進める
+        //            phase++;
 
-                key_time_count = 0; //キー入力時間をリセット
-            }
+        //        key_time_count = 0; //キー入力時間をリセット
+        //    }
 
-            //ウィンドウに続きがある場合
-            if (is_window && key_switch && key_time < key_time_count)
-            {
-                img.sprite = window_img[pop_id]; //ウィンドウを表示
-                is_window = false;
+        //    //ウィンドウに続きがある場合
+        //    if (is_window && key_switch && key_time < key_time_count)
+        //    {
+        //        img.sprite = window_img[pop_id]; //ウィンドウを表示
+        //        is_window = false;
 
-                key_time_count = 0; //キー入力時間をリセット
-            }
+        //        key_time_count = 0; //キー入力時間をリセット
+        //    }
 
-            key_switch = false; //キーが押されている
-        }
-        else
-            key_switch = true; //キーが押されていない
+        //    key_switch = false; //キーが押されている
+        //}
+        //else
+        //    key_switch = true; //キーが押されていない
 
         //ウィンドウが非表示の時
         if (phase >= 6 && !pop_window)
@@ -257,5 +258,37 @@ public class TutorialManager : MonoBehaviour, IPhazeManager
         //敵の色が緑だったら
         else
             enemy_color--;
+    }
+
+    public void Interact(InputAction.CallbackContext ctx)
+    {
+        if (!ctx.performed) return;
+
+        //ウィンドウが表示されていた場合Zキーで進む
+        if (pop_window)
+        {
+            //最後のウィンドウの場合
+            if (!is_window && key_time < key_time_count)
+            {
+                window.SetActive(false); //ウィンドウを非表示
+                pop_window = false;      //ウィンドウが表示されている状態にする
+
+                //ウィンドウをすべて表示していたら
+                if ((!hp_pop && !bomb_pop) || (hp_pop && bomb_pop))
+                    //チュートリアルを次に進める
+                    phase++;
+
+                key_time_count = 0; //キー入力時間をリセット
+            }
+
+            //ウィンドウに続きがある場合
+            if (is_window && key_time < key_time_count)
+            {
+                img.sprite = window_img[pop_id]; //ウィンドウを表示
+                is_window = false;
+
+                key_time_count = 0; //キー入力時間をリセット
+            }
+        }
     }
 }

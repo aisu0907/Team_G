@@ -341,6 +341,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1562305472}
     - target: {fileID: 5633525005645797798, guid: cc8fc34330d578c4ca72c5ef3425e7b0, type: 3}
+      propertyPath: set_phase_num
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5633525005645797798, guid: cc8fc34330d578c4ca72c5ef3425e7b0, type: 3}
       propertyPath: boss_position.x
       value: -2.6
       objectReference: {fileID: 0}
@@ -851,6 +855,10 @@ PrefabInstance:
       propertyPath: BottomMoveLimit
       value: 
       objectReference: {fileID: 1365637270}
+    - target: {fileID: 2021564740943638649, guid: ece49d0188f35714ea82e5bc99c9d451, type: 3}
+      propertyPath: change_scene_name
+      value: TitleScene
+      objectReference: {fileID: 0}
     - target: {fileID: 2149414446791707951, guid: ece49d0188f35714ea82e5bc99c9d451, type: 3}
       propertyPath: m_Name
       value: Player

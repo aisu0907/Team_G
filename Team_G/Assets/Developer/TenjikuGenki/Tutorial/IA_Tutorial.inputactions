@@ -1,0 +1,45 @@
+{
+    "name": "IA_Tutorial",
+    "maps": [
+        {
+            "name": "Tutorial",
+            "id": "f353a6fa-74d2-4a05-b368-389cdf00c803",
+            "actions": [
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "b2efef81-5dde-4090-a3d6-76f9f7eb77ee",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "42596f21-c63a-4563-bc87-33fb38b87bc2",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6dc01566-7a4a-47ee-8dbe-2e0965883de4",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

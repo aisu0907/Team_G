@@ -30,6 +30,7 @@ public class Player : ObjBase
     [Header("▼ Phisics")]
     [SerializeField] Transform TopMoveLimit;    // 移動制限（上）
     [SerializeField] Transform BottomMoveLimit; // 移動制限（下）
+    [SerializeField] string change_scene_name;
     bool isStop = false;
     public float item_up_speed;
 
@@ -75,12 +76,6 @@ public class Player : ObjBase
 
         // ダメージのアニメーション
         _damageAnime.Anime();
-
-        //ESCでタイトルに戻る
-        if (Input.GetKeyUp(KeyCode.Escape))
-        {
-            SceneManager.LoadScene(SceneNames.Title);
-        }
 
         // 中断
         if (isStop) return;
@@ -174,6 +169,11 @@ public class Player : ObjBase
                 }
             }
         }
+    }
+
+    public void Menu(InputAction.CallbackContext ctx)
+    {
+        SceneManager.LoadScene(change_scene_name);
     }
 
     /// <summary>
