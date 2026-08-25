@@ -29,11 +29,12 @@ public class GameManager : MonoBehaviour, IPhazeManager
     public int set_phase_num; //フェーズ設定
 
     //タイマー
-    public  float result_time = 0;
+    public  float result_delay = 0;
     public  float spawn_time = 0;
     private float boss_timer = 0;
-    private float result_timer = 0;//リザルト
+    private float result_delay_timer = 0;//リザルト
     private float spawn_timer = 0;
+    float boss_result = 0.0f;
 
     public static GameManager Instance { get; private set; }
 
@@ -68,6 +69,7 @@ public class GameManager : MonoBehaviour, IPhazeManager
             {
                 //フレームカウント
                 boss_timer += Time.deltaTime;
+                Debug.Log(boss_timer);
 
                 //指定フレーム経過するとボスを出現させる
                 if (boss_timer >= boss[phase / 2].timer)
@@ -78,7 +80,7 @@ public class GameManager : MonoBehaviour, IPhazeManager
                     if (EnemySpawn.Instance.counter == 0)
                     {
                         spawn_timer += Time.deltaTime;
-                        if(spawn_timer >= spawn_time)
+                        if (spawn_timer >= spawn_time)
                         {
                             SpawnBoss(); //ボスを出現
                             boss_timer = 0; //フレームをリセット
@@ -87,17 +89,19 @@ public class GameManager : MonoBehaviour, IPhazeManager
                     }
                 }
             }
-            
-            //ボスが倒されたら
-            if(!boss_die)
-            {
-                result_timer += Time.deltaTime;
+            else
+                boss_result += Time.deltaTime;
 
-                if(result_timer >= result_time)
+            //ボスが倒されたら
+            if (!boss_die)
+            {
+                result_delay_timer += Time.deltaTime;
+
+                if (result_delay_timer >= result_delay)
                 {
                     Result();
                     boss_die = true;
-                    result_timer = 0;
+                    result_delay_timer = 0;
                 }
             }
         }
@@ -127,7 +131,8 @@ public class GameManager : MonoBehaviour, IPhazeManager
         {
             Instantiate(dark, uiprefab.transform);
             var ui = Instantiate(text, uiprefab.transform).GetComponent<ResultText>();
-            ui.init(boss_timer);
+            ui.init(boss_result);
+            boss_result = 0.0f;
         }
     }
 
