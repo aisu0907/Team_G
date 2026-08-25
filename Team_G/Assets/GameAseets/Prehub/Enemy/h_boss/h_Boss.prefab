@@ -201,7 +201,7 @@ MonoBehaviour:
   stairs_attack_space: 2
   stairs_attack_speed: 3
   stairs_attack_max: 3
-  warning_x_pos: -2.42
+  warning_x_pos: -2.5
   warning_y_top_pos: -0.177
   warning_y_down_pos: -3.725
 --- !u!114 &5489096167248919293
