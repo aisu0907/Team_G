@@ -149,8 +149,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  damage_interval: 90
-  Display_end: 120
+  damage_interval: 1.5
+  display_end: 2
   attack_sound: {fileID: 8300000, guid: c7cef7149ff9a34468ddfd2790cced8c, type: 3}
 --- !u!82 &-6371321972019122182
 AudioSource:

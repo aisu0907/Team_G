@@ -1082,6 +1082,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: BackGround
       objectReference: {fileID: 0}
+    - target: {fileID: 8185244071109125226, guid: 5ecf63da0113c9c4f9b4b340e1c779b5, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8185244071109125226, guid: 5ecf63da0113c9c4f9b4b340e1c779b5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8185244071109125226, guid: 5ecf63da0113c9c4f9b4b340e1c779b5, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8185244071109125226, guid: 5ecf63da0113c9c4f9b4b340e1c779b5, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8185244071109125226, guid: 5ecf63da0113c9c4f9b4b340e1c779b5, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8185244071109125226, guid: 5ecf63da0113c9c4f9b4b340e1c779b5, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

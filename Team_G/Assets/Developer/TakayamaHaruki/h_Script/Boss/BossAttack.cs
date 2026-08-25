@@ -7,15 +7,15 @@ public class BossAttack : MonoBehaviour, IHitable
     [Header("▼Range Attack Setting")]
     public int Damage => damage;
     public int damage;//ダメージ
-    public int damage_interval;//ダメージ間隔
-    public int Display_end;//表示終了
+    public float damage_interval;//ダメージ間隔
+    public float display_end;//表示終了
     [Header("▼Audio Setting")]
+
     public AudioClip attack_sound;
 
-
     private AudioSource attack_audio;
-    private int Display_time;//表示時間　　　　　　　　　　　　　　　　　　　　　　　　　　　
-    private int damage_time; //ダメージタイム
+    private float display_time;//表示時間　　　　　　　　　　　　　　　　　　　　　　　　　　　
+    private float damage_time; //ダメージタイム
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -29,11 +29,11 @@ public class BossAttack : MonoBehaviour, IHitable
     void Update()
     {
         //タイムカウント
-        damage_time++;
-        Display_time++;
+        damage_time += Time.deltaTime;
+        display_time += Time.deltaTime;
 
         //表示時間が終了したまたはボスが死んでいた場合
-        if (Display_time >= Display_end || h_Boss.Instance.health <= 0)
+        if (display_time >= display_end || h_Boss.Instance.health <= 0)
             Destroy(gameObject); //範囲攻撃を削除
     }
 

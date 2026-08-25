@@ -16,7 +16,7 @@ public class BombGage : MonoBehaviour
     public int bomb_time;      //ボムゲージが進む頻度
 
     private AudioSource audio_source;//オーディオ取得
-    private int frame = 0;//フレーム
+    private float bomb_chage_count = 0;//フレーム
 
     public static BombGage Instance { get; private set; }
 
@@ -37,13 +37,14 @@ public class BombGage : MonoBehaviour
     void Update()
     {
         //タイムカウント
-        frame++;
+        bomb_chage_count += Time.deltaTime;
 
         //1秒間にためるゲージ
-        if (frame >= bomb_time)
+        if (bomb_chage_count >= bomb_time)
         {
-            //frameをリセット
-            frame = 0;
+            //カウントをリセット
+            bomb_chage_count = 0;
+
             //ゲージを増やす
             if (Player.Instance.bom < Player.Instance.max_bom)
                 bomb_gage.value += bomb_gage_up;

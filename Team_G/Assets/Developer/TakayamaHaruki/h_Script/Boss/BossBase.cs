@@ -27,6 +27,7 @@ public class BossBase : ObjBase
                 Destroy(collision.gameObject);　//触れたウイルスを削除
                 health--; //ボスのHPを減らす
                 GetComponent<BossDamageEffect>().damage_hit = true; //ダメージを受ける
+
                 Instantiate(explode, transform.position, Quaternion.identity);   //ダメージ演出表示
                 
                 //ボスの体力が0以下なら
