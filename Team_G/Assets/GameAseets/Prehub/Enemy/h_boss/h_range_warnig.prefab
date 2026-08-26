@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -7967408628048707128}
   - component: {fileID: -6639668193073629452}
   m_Layer: 0
-  m_Name: h_Range_Warnig
+  m_Name: h_range_warnig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.5, y: -3.725, z: 0}
-  m_LocalScale: {x: 8.344654, y: 2.55, z: 1}
+  m_LocalScale: {x: 12, y: 2.55, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,8 +76,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1649744011
-  m_SortingLayer: 6
+  m_SortingLayerID: 2119638405
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.5283019, g: 0.012459949, b: 0.012459949, a: 0.5882353}

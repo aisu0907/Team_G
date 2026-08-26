@@ -1082,6 +1082,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BackGround
       objectReference: {fileID: 0}
+    - target: {fileID: 5915981074846363926, guid: 5ecf63da0113c9c4f9b4b340e1c779b5, type: 3}
+      propertyPath: m_ScreenMatchMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5915981074846363926, guid: 5ecf63da0113c9c4f9b4b340e1c779b5, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8185244071109125226, guid: 5ecf63da0113c9c4f9b4b340e1c779b5, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -1484,6 +1492,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1297630111818247253, guid: 03bc64ff7c0300849994cec933860081, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1780634268494352081, guid: 03bc64ff7c0300849994cec933860081, type: 3}
+      propertyPath: m_MatchWidthOrHeight
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4142986036495335622, guid: 03bc64ff7c0300849994cec933860081, type: 3}
