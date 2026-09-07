@@ -1,5 +1,6 @@
 //h_Boss.cs
 
+using Const;
 using System.Diagnostics.CodeAnalysis;
 using Unity.Jobs;
 using UnityEngine;
@@ -79,6 +80,10 @@ public class h_Boss : BossBase
         //ˆÚ“®‘¬“xİ’è
         turn = true;
         start_speed = _states[(int)StateName.Speed].CurrentState;
+
+        boss_bgm = h_AudioManager.Instance;
+
+        boss_bgm.PlayBGM(AudioConst.BGM_ID.BOSS_BGM_2, bgm_volume);
     }
 
     protected override void Update()

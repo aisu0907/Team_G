@@ -51,6 +51,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d905c70bf65b78c4dbf28a856e1cadea, type: 2}
   bgm_audio: {fileID: 7574321264826223522}
   se_audio: {fileID: 8493053803824454571}
+  fade_time: 2
 --- !u!82 &8493053803824454571
 AudioSource:
   m_ObjectHideFlags: 0

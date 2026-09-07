@@ -33,7 +33,7 @@ public class TutorialManager : MonoBehaviour, IPhazeManager
     private bool is_window = true;//ウィンドウ管理フラグ
 
     [Range(0f, 1f)]
-    public float bgm_vlome; //BGM音量
+    public float bgm_volume; //BGM音量
 
     //タイムカウント
     private float pop_time_count = 0;
@@ -74,7 +74,7 @@ public class TutorialManager : MonoBehaviour, IPhazeManager
         save_hp = Player.Instance.health;
         enemy_spawn_pos = right_enemy_spawn_pos;
 
-        tutorial_audio.PlayBGM(AudioConst.BGM_ID.TUTRIAL_BGM, bgm_vlome); 
+        tutorial_audio.PlayBGM(AudioConst.BGM_ID.TUTRIAL_BGM, bgm_volume); 
     }
 
     // Update is called once per frame

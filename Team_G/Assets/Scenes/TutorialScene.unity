@@ -1678,10 +1678,10 @@ MonoBehaviour:
   sa: {fileID: 652196337}
   window: {fileID: 1965590109}
   window_img:
-  - {fileID: 545674604198605251, guid: 37bc73067574be2478df1f8f7e1a14fc, type: 3}
-  - {fileID: 216196283485497992, guid: 5bed95ec23b932f469d657b5589b92a7, type: 3}
-  - {fileID: 3011460103595523445, guid: 6da3c2afb5da02844b73067d8179cd6a, type: 3}
-  - {fileID: -262493660310960678, guid: a62bb40caa9dad547a955bb00217cd88, type: 3}
+  - {fileID: -1677274348908255408, guid: 37bc73067574be2478df1f8f7e1a14fc, type: 3}
+  - {fileID: -6033806017665178977, guid: 3d968a19ccea240478706521b86e1949, type: 3}
+  - {fileID: 3890424362861641089, guid: 22753b4442ca84b4ba8f34bf9edc0248, type: 3}
+  - {fileID: -1483665779731714255, guid: 6da3c2afb5da02844b73067d8179cd6a, type: 3}
   enemy: {fileID: 1323917000318406210, guid: e413b633f57ef0242a32bb2dcc9cfb90, type: 3}
   enemy_speed: 3
   enemy_hit_count: 0
@@ -1693,7 +1693,7 @@ MonoBehaviour:
   pop_time: 3
   next_pop_time: 3.5
   key_time: 1
-  bgm_vlome: 0.7
+  bgm_volume: 0.7
 --- !u!4 &1899446117
 Transform:
   m_ObjectHideFlags: 0
@@ -1823,7 +1823,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 545674604198605251, guid: 37bc73067574be2478df1f8f7e1a14fc, type: 3}
+  m_Sprite: {fileID: -1677274348908255408, guid: 37bc73067574be2478df1f8f7e1a14fc, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -2,6 +2,7 @@ using System.Threading;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Const;
 
 public class ResultText : MonoBehaviour
 {
@@ -35,7 +36,7 @@ public class ResultText : MonoBehaviour
         // 一定位置まで移動したらリザルトを表示
         else
         {
-            tips.text = "ボスを倒した！\n\nタイム:" + timer.ToString("N1") + "\n\n\nPress Z Key";
+            tips.text = "ボスを倒した！\n\nタイム:" + timer.ToString("N1") + "\n\n\nPress Bボタン";
             canInput = true;
         }
     }
@@ -57,6 +58,7 @@ public class ResultText : MonoBehaviour
             GameManager.Instance.ModeChange(true);
             GameManager.Instance.phase++;
             DataHolder.GetGameData();
+            h_AudioManager.Instance.PlayBGM(AudioConst.BGM_ID.STAGE_BGM, 0.7f);
         }
     }
 }

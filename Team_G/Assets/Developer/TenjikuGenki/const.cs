@@ -23,8 +23,10 @@ namespace Const
         {
             TITLE_BGM,
             TUTRIAL_BGM,
-            GAME_BGM,
-            BOSS_BGM,
+            STAGE_BGM,
+            BOSS_BGM_1,
+            BOSS_BGM_2,
+            BOSS_BGM_3,
             RESULT_BGM,
         }
 

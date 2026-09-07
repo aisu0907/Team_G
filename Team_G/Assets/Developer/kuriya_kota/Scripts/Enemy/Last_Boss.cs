@@ -2,6 +2,7 @@
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using Const;
 
 public class LastBoss : BossBase 
 {
@@ -51,6 +52,9 @@ public class LastBoss : BossBase
 
         basePos = transform.position;
      
+        boss_bgm = h_AudioManager.Instance;
+
+        boss_bgm.PlayBGM(AudioConst.BGM_ID.BOSS_BGM_3, bgm_volume);
     }
 
     protected override void Update()

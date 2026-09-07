@@ -3,6 +3,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using Const;
+
 public class GameManager : MonoBehaviour, IPhazeManager
 {
 
@@ -28,13 +30,21 @@ public class GameManager : MonoBehaviour, IPhazeManager
 
     public int set_phase_num; //フェーズ設定
 
+    public float stage_bgm_volume = 0.7f;
+    public float boss_bgm_volume;
+
     //タイマー
     public  float result_delay = 0;
     public  float spawn_time = 0;
     private float boss_timer = 0;
     private float result_delay_timer = 0;//リザルト
     private float spawn_timer = 0;
+
+    private h_AudioManager stage_audio;
+
     float boss_result = 0.0f;
+
+    private bool bgm_stop;
 
     public static GameManager Instance { get; private set; }
 
@@ -47,7 +57,13 @@ public class GameManager : MonoBehaviour, IPhazeManager
     // Start is called once before the first execution of Update after the MonoBehaviour is create
     private void Start()
     {
+        bgm_stop = true;
+
         phase = set_phase_num;
+
+        stage_audio = h_AudioManager.Instance;
+
+        stage_audio.PlayBGM(AudioConst.BGM_ID.STAGE_BGM, stage_bgm_volume);
 
         // アイテムと敵の出現をONにする
         if(!(DataHolder.game_phaze <= 0))
@@ -69,12 +85,17 @@ public class GameManager : MonoBehaviour, IPhazeManager
             {
                 //フレームカウント
                 boss_timer += Time.deltaTime;
-                Debug.Log(boss_timer);
 
                 //指定フレーム経過するとボスを出現させる
                 if (boss_timer >= boss[phase / 2].timer)
                 {
                     spawner.GetComponent<EnemySpawn>().spawn_switch = false;
+
+                    if(bgm_stop)
+                    {
+                        stage_audio.FadeStopBGM();
+                        bgm_stop = false;
+                    }
 
                     //画面にエネミーが残っていない場合
                     if (EnemySpawn.Instance.counter == 0)
@@ -82,6 +103,10 @@ public class GameManager : MonoBehaviour, IPhazeManager
                         spawn_timer += Time.deltaTime;
                         if (spawn_timer >= spawn_time)
                         {
+                            //BGMをストップ
+                            stage_audio.StopBGM();
+                            bgm_stop = true;
+
                             SpawnBoss(); //ボスを出現
                             boss_timer = 0; //フレームをリセット
                             spawn_timer = 0;
@@ -103,6 +128,7 @@ public class GameManager : MonoBehaviour, IPhazeManager
                     boss_die = true;
                     result_delay_timer = 0;
                 }
+
             }
         }
     }

@@ -15,6 +15,9 @@ public class BossBase : ObjBase
     //ゲームオブジェクト
     public GameObject explode; //爆発演出
 
+    public float bgm_volume = 0.7f;
+    protected h_AudioManager boss_bgm;
+
     //ダメージ判定関数
     public void boss_damage(Collider2D collision)
     {
@@ -33,6 +36,7 @@ public class BossBase : ObjBase
                 //ボスの体力が0以下なら
                 if(gameObject.GetComponent<BossBase>().health <= 0)
                 {
+                    h_AudioManager.Instance.StopBGM();
                     _states[(int)StateName.Speed].Mode(false); //移動速度を0にする
                     transform.position = new Vector2(death_pos_x, death_pos_y); //死亡位置に移動させる
                 }

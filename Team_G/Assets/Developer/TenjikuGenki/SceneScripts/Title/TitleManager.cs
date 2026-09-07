@@ -8,13 +8,13 @@ using System.Collections;
 public class TitleManager : MonoBehaviour
 {
     [Range(0f, 1f)]
-    public float bgm_vlome; //BGM音量
+    public float bgm_volume; //BGM音量
 
     [Range(0f, 1f)]
-    public float cursor_vlome; //カーソル移動SE音量
+    public float cursor_volume; //カーソル移動SE音量
 
     [Range(0f, 1f)]
-    public float decision_vlome; //選択SE音量
+    public float decision_volume; //選択SE音量
 
     [SerializeField] List<GameObject> _options = new();
     int currentOption = 0;
@@ -27,7 +27,7 @@ public class TitleManager : MonoBehaviour
 
         audio = h_AudioManager.Instance; //省略用
 
-        audio.PlayBGM(AudioConst.BGM_ID.TITLE_BGM, bgm_vlome); //BGMを鳴らす
+        audio.PlayBGM(AudioConst.BGM_ID.TITLE_BGM, bgm_volume); //BGMを鳴らす
 
         Vector2 pos = new(_options[currentOption].transform.position.x - 2.7f, _options[currentOption].transform.position.y);
         transform.position = pos;
@@ -41,7 +41,7 @@ public class TitleManager : MonoBehaviour
             if (coroutine == null)
             {
                 //音を鳴らす
-                audio.PlaySE(AudioConst.SE_ID.DECISION_SE, decision_vlome);
+                audio.PlaySE(AudioConst.SE_ID.DECISION_SE, decision_volume);
 
                 coroutine = StartCoroutine(WaitSceneChange());
             }
@@ -73,7 +73,7 @@ public class TitleManager : MonoBehaviour
     void Draw()
     {
         //音を鳴らす
-        audio.PlaySE(AudioConst.SE_ID.CURSOR_SE, cursor_vlome);
+        audio.PlaySE(AudioConst.SE_ID.CURSOR_SE, cursor_volume);
 
         Vector2 pos = new(_options[currentOption].transform.position.x - 2.7f, _options[currentOption].transform.position.y);
         transform.position = pos;

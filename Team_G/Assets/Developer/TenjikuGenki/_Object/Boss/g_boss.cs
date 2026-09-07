@@ -1,3 +1,4 @@
+using Const;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,6 +25,10 @@ public class g_boss : BossBase
         tmp_pos = transform.position;
         transform.position = new Vector2(transform.position.x - 0.5f, transform.position.y);
         Instantiate(rflash);
+
+        boss_bgm = h_AudioManager.Instance;
+
+        boss_bgm.PlayBGM(AudioConst.BGM_ID.BOSS_BGM_1, bgm_volume);
     }
 
     protected override void Update()
