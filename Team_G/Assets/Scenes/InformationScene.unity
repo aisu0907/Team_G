@@ -180,7 +180,7 @@ MonoBehaviour:
   m_text: 'Press : '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b4b0467789dfb9d468954f262ecb5739, type: 2}
-  m_sharedMaterial: {fileID: 765642988520894810, guid: b4b0467789dfb9d468954f262ecb5739, type: 2}
+  m_sharedMaterial: {fileID: -1953002598942611441, guid: b4b0467789dfb9d468954f262ecb5739, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -874,7 +874,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -7505503088822868480, guid: 222000bee031a4f4897849a7a98cd733, type: 3}
+  m_Sprite: {fileID: 5837829297762069037, guid: decc965140913cb4c8dc05510ac6e963, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
