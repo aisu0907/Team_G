@@ -16,6 +16,7 @@ public class TutorialManager : MonoBehaviour, IPhazeManager
     [SerializeField] public GameObject window;//表示するウィンドウ
     [SerializeField] List<Sprite> window_img; //ウィンドウに表示する画像
     public GameObject enemy;//出現させる敵
+    public GameObject clear_text;
 
     public int enemy_speed;//出現させる敵のスピード
     public int enemy_hit_count;//チュートリアルクリア条件カウント
@@ -29,11 +30,15 @@ public class TutorialManager : MonoBehaviour, IPhazeManager
 
     public float pop_time; //敵の出現頻度
     public float next_pop_time; //
+    public float second_pop_time;
+    public float second_next_pop_time;
     public float key_time; //キーを受け付けない時間
     private bool is_window = true;//ウィンドウ管理フラグ
 
     [Range(0f, 1f)]
     public float bgm_volume; //BGM音量
+
+    public bool clear; //チュートリアルクリア
 
     //タイムカウント
     private float pop_time_count = 0;
@@ -52,6 +57,7 @@ public class TutorialManager : MonoBehaviour, IPhazeManager
     private bool lane   = true;      //敵の出現位置切り替えようフラグ
     private bool key_switch ;//キーを押してるか確認用フラグ
     private bool start_window = true;//最初にウィンドウを表示する用フラグ
+    private int wave; //ウエーブ数
 
     public static TutorialManager Instance { get; private set; }
 
@@ -70,6 +76,10 @@ public class TutorialManager : MonoBehaviour, IPhazeManager
         img = window.GetComponent<Image>();
         img.sprite = window_img[0];
 
+        wave = 0;
+        clear = false;
+
+        clear_text.SetActive(false);
         window.SetActive(false);
         save_hp = Player.Instance.health;
         enemy_spawn_pos = right_enemy_spawn_pos;
@@ -106,37 +116,6 @@ public class TutorialManager : MonoBehaviour, IPhazeManager
             pop_window = true;
             start_window = false;
         }
-
-        //ウィンドウが表示されていた場合Zキーで進む
-        //if (Input.GetKeyDown(KeyCode.Z) && pop_window)
-        //{
-        //    //最後のウィンドウの場合
-        //    if (!is_window && key_switch && key_time < key_time_count)
-        //    {
-        //        window.SetActive(false); //ウィンドウを非表示
-        //        pop_window = false;      //ウィンドウが表示されている状態にする
-
-        //        //ウィンドウをすべて表示していたら
-        //        if((!hp_pop && !bomb_pop) || (hp_pop && bomb_pop))
-        //            //チュートリアルを次に進める
-        //            phase++;
-
-        //        key_time_count = 0; //キー入力時間をリセット
-        //    }
-
-        //    //ウィンドウに続きがある場合
-        //    if (is_window && key_switch && key_time < key_time_count)
-        //    {
-        //        img.sprite = window_img[pop_id]; //ウィンドウを表示
-        //        is_window = false;
-
-        //        key_time_count = 0; //キー入力時間をリセット
-        //    }
-
-        //    key_switch = false; //キーが押されている
-        //}
-        //else
-        //    key_switch = true; //キーが押されていない
 
         //ウィンドウが非表示の時
         if (phase >= 6 && !pop_window)
@@ -180,17 +159,33 @@ public class TutorialManager : MonoBehaviour, IPhazeManager
                         Enemyspawn(mid_enemy_spawn_pos);
 
                         Enemycolorchange();
+                        wave++;
                     }
-                    else if (pop_time_count >= next_pop_time)
+                    else if (pop_time_count >= next_pop_time && wave == 1)
+                    {
+                        Enemyspawn(right_enemy_spawn_pos);
+                        Enemyspawn(left_enemy_spawn_pos);       
+                        Enemycolorchange();
+                        wave++;
+                    }
+                    else if(pop_time_count >= second_pop_time && wave == 2)
+                    {
+                        Enemycolorchange();
+                        Enemyspawn(mid_enemy_spawn_pos);
+                        Enemycolorchange();
+                        wave++;
+                    }
+                    else if(pop_time_count >= second_next_pop_time && wave == 3)
                     {
                         Enemyspawn(right_enemy_spawn_pos);
                         Enemyspawn(left_enemy_spawn_pos);
                         pop_time_count = 0;//敵の出現時間をリセット
                         enemy_pop_count = 0; //敵の数をリセット
-                        
-                        Enemycolorchange();
+                        wave = 0;
                     }
 
+                    if(clear)
+                        clear_text.SetActive(true);
                 }
 
             }

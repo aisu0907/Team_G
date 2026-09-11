@@ -68,6 +68,8 @@ public class Player : ObjBase
         // 体力が0以下なら終了
         if (health <= 0)
         {
+            player_audio.StopBGM();
+
             // ちょっと待つ
             if (++timer >= 120)
                 SceneManager.LoadScene(SceneNames.Gameover);

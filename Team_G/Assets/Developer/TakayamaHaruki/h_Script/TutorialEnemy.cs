@@ -59,6 +59,11 @@ public class TutorialEnemy : Enemy, IReflectable
         else
             TutorialManager.Instance.damage_help = true;
 
+        if(TutorialManager.Instance.phase >= 8 && Player.Instance.max_bom != Player.Instance.bom)
+        {
+            TutorialManager.Instance.clear = true;
+        }
+
     }
 
     public void Reflect(Vector2 ref_vec, bool hitting)
