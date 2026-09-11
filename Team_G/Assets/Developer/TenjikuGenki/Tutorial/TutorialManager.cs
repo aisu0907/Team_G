@@ -90,6 +90,7 @@ public class TutorialManager : MonoBehaviour, IPhazeManager
     // Update is called once per frame
     void Update()
     {
+
         //ウィンドウが表示されていたら
         if (pop_window)
         {
@@ -156,6 +157,8 @@ public class TutorialManager : MonoBehaviour, IPhazeManager
                 {
                     if (enemy_pop_count == 0)
                     {
+                        Player.Instance.bom = Player.Instance.max_bom;
+                        BombGage.Instance.bomb_gage.value = 100;
                         Enemyspawn(mid_enemy_spawn_pos);
 
                         Enemycolorchange();

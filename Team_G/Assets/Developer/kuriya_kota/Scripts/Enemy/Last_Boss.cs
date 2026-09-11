@@ -268,4 +268,9 @@ public class LastBoss : BossBase
         if (gameObject.GetComponent<BossDamageEffect>().alive == true)
             gameObject.GetComponent<BossDamageEffect>().alive = false;
     }
+
+    public override void boss_damage(Collider2D collision)
+    {
+        base.boss_damage(collision);
+    }
 }

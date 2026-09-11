@@ -14,11 +14,20 @@ public class g_boss : BossBase
     Vector2 tmp_pos;
     bool left_move = true;
     public GameObject rflash;
+    public float hit_up_speed;
+    public int attack_time;
+    public int down_attack_time;
+
+    private float up_speed;
+    private int hit_count;
 
     protected override void Start()
     {
         base.Start();
         _states.Add(new MoveSpeed(1.0f));
+
+        up_speed = 0;
+        hit_count = 0;
 
         // 最初の状態をPhase1に設定
         img = GetComponent<SpriteRenderer>();
@@ -38,7 +47,7 @@ public class g_boss : BossBase
         // 一定時間ごとに弾を発射
         if (health > 0)
         {
-            if (Timer >= 210)
+            if (Timer >= attack_time)
             {
                 Timer = 60;
                 ShootBullet();
@@ -48,17 +57,20 @@ public class g_boss : BossBase
         else
         {
             if (gameObject.GetComponent<BossDamageEffect>().alive == true)
+            {
+                up_speed = 0;
                 gameObject.GetComponent<BossDamageEffect>().alive = false;
+            }
         }
 
         // 左右移動
         if(left_move)
         {
-            _rb.linearVelocityX = _states[(int)StateName.Speed].CurrentState;
+            _rb.linearVelocityX = (_states[(int)StateName.Speed].CurrentState + up_speed);
         }
         else
         {
-            _rb.linearVelocityX = -_states[(int)StateName.Speed].CurrentState;
+            _rb.linearVelocityX = (-_states[(int)StateName.Speed].CurrentState - up_speed);
         }
     }
 
@@ -78,5 +90,26 @@ public class g_boss : BossBase
         //var e = Instantiate(list[0].pf, transform.position, Quaternion.identity).GetComponent<ENormal>(); e.Init(list[0].db, d, color, 5);
         var e = Instantiate(list[0].pf, transform.position, Quaternion.identity).GetComponent<ENormal>(); e.Init(list[0].db, new Vector2(0,-2.5f), color, 5);
         AudioManager.instance.PlaySound("Shoot");
+    }
+
+    public override void boss_damage(Collider2D collision)
+    {
+        base.boss_damage(collision);
+
+        //触れた相手にEnemyクラスがついていたら
+        if (collision.TryGetComponent<IReflectable>(out var enemy))
+            //触れたウイルスが打ち返されたものならば
+            if (enemy.Hitting)
+            {
+
+                if (hit_count >= 2)
+                {
+                    up_speed += hit_up_speed;
+                    attack_time -= down_attack_time;
+                    hit_count = 0;
+                }
+                else
+                    hit_count++;
+            }
     }
 }

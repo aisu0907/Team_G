@@ -69,6 +69,9 @@ public class Flash : MonoBehaviour
 
             yield return null;
         }
-        img.color = new Color(1, 1, 1, 0);    
+
+        img.color = new Color(1, 1, 1, 0);
+
+        Destroy(gameObject);
     }
 }

@@ -19,7 +19,7 @@ public class BossBase : ObjBase
     protected h_AudioManager boss_bgm;
 
     //ダメージ判定関数
-    public void boss_damage(Collider2D collision)
+    public virtual void boss_damage(Collider2D collision)
     {
         //触れた相手にEnemyクラスがついていたら
         if (collision.TryGetComponent<IReflectable>(out var enemy))

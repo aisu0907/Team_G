@@ -181,4 +181,9 @@ public class h_Boss : BossBase
         
         Instantiate(warning, warning_save, Quaternion.identity); //Œx‚ğ¶¬
     }
+
+    public override void boss_damage(Collider2D collision)
+    {
+        base.boss_damage(collision);
+    }
 }

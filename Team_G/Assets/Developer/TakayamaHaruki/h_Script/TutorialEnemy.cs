@@ -56,7 +56,7 @@ public class TutorialEnemy : Enemy, IReflectable
     {
         if (_onHitting)
             TutorialManager.Instance.enemy_hit_count++;
-        else
+        else if(Player.Instance.max_bom == Player.Instance.bom)
             TutorialManager.Instance.damage_help = true;
 
         if(TutorialManager.Instance.phase >= 8 && Player.Instance.max_bom != Player.Instance.bom)

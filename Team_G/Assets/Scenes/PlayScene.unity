@@ -350,6 +350,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1562305472}
     - target: {fileID: 5633525005645797798, guid: cc8fc34330d578c4ca72c5ef3425e7b0, type: 3}
+      propertyPath: result_delay
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5633525005645797798, guid: cc8fc34330d578c4ca72c5ef3425e7b0, type: 3}
       propertyPath: set_phase_num
       value: 0
       objectReference: {fileID: 0}
